@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07E34974-8982-469E-BFE8-9C302B3B5E3B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Kriptok.Noid</RootNamespace>
+    <AssemblyName>Kriptok.Noid</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Kriptok.Noid.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Kriptok.0.16.27\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Kriptok.Sdk.0.16.26\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Ball.cs" />
+    <Compile Include="Entities\Brick.cs" />
+    <Compile Include="Entities\Life.cs" />
+    <Compile Include="Entities\Pill.cs" />
+    <Compile Include="Entities\Racket.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\IntroScene.cs" />
+    <Compile Include="Scenes\LevelScene.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Assets\Levels\SCREEN.1" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.10" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.11" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.12" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.2" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.3" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.4" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.5" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.6" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.7" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.8" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.9" />
+    <EmbeddedResource Include="Assets\Levels\SCREEN.BLK" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.pdb" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.pdb" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.xml" />
+    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.exe" />
+    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.pdb" />
+    <EmbeddedResource Include="Assets\Images\Backs\Back1.png" />
+    <EmbeddedResource Include="Assets\Images\Backs\Back2.png" />
+    <EmbeddedResource Include="Assets\Images\Backs\Back3.png" />
+    <EmbeddedResource Include="Assets\Images\Backs\Back4.png" />
+    <EmbeddedResource Include="Assets\Images\Ball.png" />
+    <EmbeddedResource Include="Assets\Images\BallSuper.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block10.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block11.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block12.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block13.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block14.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block15.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block20.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block30.png" />
+    <EmbeddedResource Include="Assets\Images\Laser.png" />
+    <EmbeddedResource Include="Assets\Images\Life.png" />
+    <EmbeddedResource Include="Assets\Images\PadGlue.png" />
+    <EmbeddedResource Include="Assets\Images\PadLarge.png" />
+    <EmbeddedResource Include="Assets\Images\PadLaser.png" />
+    <EmbeddedResource Include="Assets\Images\PadNormal.png" />
+    <EmbeddedResource Include="Assets\Images\PadSmall.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\B_Backwards.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\D_MultiBall.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\E_Extended.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\G_Glue.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\L_Laser.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\M_ChangeBlocks.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\P_Life.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\R_Reduce.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\S_Speed.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\T_SuperBall.png" />
+    <EmbeddedResource Include="Assets\Images\ScoreBoard.png" />
+    <EmbeddedResource Include="Assets\Images\TitleScreen.png" />
+    <EmbeddedResource Include="Assets\Sounds\BANDA.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\BILLAR0.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\CAIDA7.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\DISPARO5.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\FX34.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\FX35.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\METAL10.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\TUBO.WAV" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
