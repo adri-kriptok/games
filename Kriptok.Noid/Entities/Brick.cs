@@ -67,11 +67,11 @@ namespace Kriptok.Noid.Entities
 
         internal static ObjectBase Create(int type, int x, int y)
         {
-            if (type == 30)
+            if (type == 8)
             {
                 return new BrickWall(x, y);
             }
-            else if (type == 20)
+            else if (type == 7)
             {
                 return new BrickSolid(x, y);
             }
@@ -111,7 +111,7 @@ namespace Kriptok.Noid.Entities
         private readonly IndexedSpriteView view;
 
         public BrickWall(int x, int y) 
-            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(30), 1, 3))
+            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(8), 1, 3))
         {
             this.view = (IndexedSpriteView)View;
         }
@@ -136,7 +136,7 @@ namespace Kriptok.Noid.Entities
         private bool change;
 
         public BrickSolid(int x, int y)
-            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(20), 1, 3))
+            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(7), 1, 3))
         {
             this.view = (IndexedSpriteView)View;
         }
@@ -154,7 +154,7 @@ namespace Kriptok.Noid.Entities
 
             if (change)
             {
-                Add(new Brick(14, (int)Location.X, (int)Location.Y));
+                Add(new Brick(5, (int)Location.X, (int)Location.Y));
                 Die();
                 return;
             }

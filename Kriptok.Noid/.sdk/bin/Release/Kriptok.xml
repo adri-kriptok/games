@@ -240,6 +240,16 @@
             1/4 de pantalla. Pixels de 2x2.
             </summary>
         </member>
+        <member name="T:Kriptok.Core.WindowModeEnumExtensions">
+            <summary>
+            Métodos asociados al enumerado <see cref="T:Kriptok.Core.WindowSizeEnum"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.WindowModeEnumExtensions.ToSize(Kriptok.Core.WindowSizeEnum)">
+            <summary>
+            Obtiene el tamaño (en pixels) de la pantalla a la que renderizar.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Core.ScreenRegionExtensions.Center(Kriptok.Core.ScreenRegion)">
             <summary>
             Obtiene las coordenadas del punto central de la pantalla.

@@ -7,7 +7,7 @@
     <ProjectGuid>{07E34974-8982-469E-BFE8-9C302B3B5E3B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Kriptok.Noid</RootNamespace>
-    <AssemblyName>Kriptok.Noid</AssemblyName>
+    <AssemblyName>Noid</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Kriptok.0.16.27\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.16.37\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Kriptok.Sdk.0.16.26\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.16.33\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\IntroScene.cs" />
     <Compile Include="Scenes\LevelScene.cs" />
+    <Compile Include="Scenes\NoidTileset.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,19 +75,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Assets\Levels\SCREEN.1" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.10" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.11" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.12" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.2" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.3" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.4" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.5" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.6" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.7" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.8" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.9" />
-    <EmbeddedResource Include="Assets\Levels\SCREEN.BLK" />
+    <EmbeddedResource Include="Assets\Levels\Level01.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level02.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level03.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level04.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level05.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level06.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level07.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level08.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level09.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level10.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level11.noidx" />
+    <EmbeddedResource Include="Assets\Levels\Level12.noidx" />
+    <None Include=".sdk\bin\lib-selector.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,35 +100,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.pdb" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.pdb" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.pdb" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.pdb" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.xml" />
-    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.exe" />
-    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.pdb" />
     <EmbeddedResource Include="Assets\Images\Backs\Back1.png" />
     <EmbeddedResource Include="Assets\Images\Backs\Back2.png" />
     <EmbeddedResource Include="Assets\Images\Backs\Back3.png" />
     <EmbeddedResource Include="Assets\Images\Backs\Back4.png" />
     <EmbeddedResource Include="Assets\Images\Ball.png" />
     <EmbeddedResource Include="Assets\Images\BallSuper.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block10.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block11.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block12.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block13.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block14.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block15.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block20.png" />
-    <EmbeddedResource Include="Assets\Images\Blocks\Block30.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block1.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block2.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block3.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block4.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block5.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block6.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block7.png" />
+    <EmbeddedResource Include="Assets\Images\Blocks\Block8.png" />
     <EmbeddedResource Include="Assets\Images\Laser.png" />
     <EmbeddedResource Include="Assets\Images\Life.png" />
     <EmbeddedResource Include="Assets\Images\PadGlue.png" />
@@ -156,5 +142,29 @@
     <EmbeddedResource Include="Assets\Sounds\METAL10.WAV" />
     <EmbeddedResource Include="Assets\Sounds\TUBO.WAV" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.pdb" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.pdb" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.xml" />
+    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.exe" />
+    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.pdb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

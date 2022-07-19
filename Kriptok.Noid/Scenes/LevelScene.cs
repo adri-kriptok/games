@@ -7,6 +7,8 @@ using Kriptok.Views;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Kriptok.Maps.Editor;
+using Kriptok.Maps.Tiles;
 
 namespace Kriptok.Noid.Scenes
 {
@@ -108,12 +110,14 @@ namespace Kriptok.Noid.Scenes
 
         private void LoadLevel(SceneHandler h)
         {
-            var levelData = ResourcesHelper.GetBytes(Assembly, $"Assets.Levels.SCREEN.{((level - 1) % 12) + 1}");
-            var levelData2 = new int[levelData.Length / 4];
-            for (int i = 0; i < levelData2.Length; i++)
-            {
-                levelData2[i] = levelData[i * 4];
-            }
+            // var levelData = ResourcesHelper.GetBytes(Assembly, $"Assets.Levels.SCREEN.{((level - 1) % 12) + 1}");
+            // var levelData2 = new int[levelData.Length / 4];
+            // for (int i = 0; i < levelData2.Length; i++)
+            // {
+            //     levelData2[i] = levelData[i * 4];
+            // }
+
+            var levelData2 = TiledMapConfig.Load(Assembly, $"Assets.Levels.Level{(((level - 1) % 12) + 1):00}.noidx").Data.Tiles;
 
             for (int y = 0; y < 14; y++)
             {
@@ -122,7 +126,7 @@ namespace Kriptok.Noid.Scenes
                     var brick = levelData2[y * 16 + x];
                     if (brick != 0)
                     {
-                        h.Add(Brick.Create(brick, 16 + x * 16, 12 + y * 8));
+                        h.Add(Brick.Create((int)brick, 16 + x * 16, 12 + y * 8));
                     }
                 }
             }
