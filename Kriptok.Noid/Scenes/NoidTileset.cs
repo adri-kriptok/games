@@ -1,4 +1,5 @@
 ﻿using Kriptok.Drawing;
+using Kriptok.Helpers;
 using Kriptok.Maps.Editor;
 using Kriptok.Maps.Tiles;
 using Kriptok.Maps.Tiles.Base;
@@ -18,7 +19,7 @@ namespace Kriptok.Noid.Scenes
             Layer0.AddEmptyTile();
 
             // Agrego los ladrillos.
-            foreach (var i in new int[] { 10, 11, 12, 13, 14, 15, 20, 30 })
+            foreach (var i in IntHelper.Iota(1, 9))
             {
                 using (var bmp = new FastBitmap(Assembly, $"Assets.Images.Blocks.Block{i}.png"))
                 {
