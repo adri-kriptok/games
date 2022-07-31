@@ -15,11 +15,11 @@ namespace Kriptok.Noid.Entities
         private static readonly string[] files = new string[10]
         {
             "Assets.Images.Pills.B_Backwards.png",     // 0
-            "Assets.Images.Pills.D_MultiBall.png",     // 1
-            "Assets.Images.Pills.E_Extended.png",      // 2
-            "Assets.Images.Pills.G_Glue.png",          // 3
+            "Assets.Images.Pills.C_ChangeBlocks.png",  // 1
+            "Assets.Images.Pills.D.png",               // 2
+            "Assets.Images.Pills.E_Extend.png",        // 3
             "Assets.Images.Pills.L_Laser.png",         // 4
-            "Assets.Images.Pills.M_ChangeBlocks.png",  // 5
+            "Assets.Images.Pills.M_MultiBall.png",     // 5
             "Assets.Images.Pills.P_Life.png",          // 6
             "Assets.Images.Pills.R_Reduce.png",        // 7
             "Assets.Images.Pills.S_Speed.png",         // 8
@@ -54,7 +54,7 @@ namespace Kriptok.Noid.Entities
 
             if (Location.Y > 205)
             {
-#if DEBUG
+#if DEBUG || SHOWFPS
                 OnPick();
 #endif
                 Die();
@@ -72,17 +72,48 @@ namespace Kriptok.Noid.Entities
 
         public static Pill Create(Vector3F location, int index)
         {
-            if (index == 5)
+            switch (index)
             {
-                return new RedPill(location, index);
+                case 0: return new Backwards_Pill(location, index);
+                case 2: return new ChangeBlocks_Pill(location, index);
+                case 5: return new MultiBall_Pill(location, index);
+                case 9: return new T_Pill(location, index);
             }
             return new Pill(location, index);
         }
     }
 
-    internal class RedPill : Pill
+    internal class Backwards_Pill : Pill
     {
-        internal RedPill(Vector3F location, int index) : base(location, index)
+        internal Backwards_Pill(Vector3F location, int index) : base(location, index)
+        {
+        }
+
+        protected override void OnPick()
+        {
+            base.OnPick();
+
+            Find.First<Racket>().Backwards();
+        }
+    }
+
+    internal class MultiBall_Pill : Pill
+    {
+        internal MultiBall_Pill(Vector3F location, int index) : base(location, index)
+        {
+        }
+
+        protected override void OnPick()
+        {
+            base.OnPick();
+
+            Find.First<Racket>().MultiBallPillPicked();
+        }
+    }
+
+    internal class ChangeBlocks_Pill : Pill
+    {
+        internal ChangeBlocks_Pill(Vector3F location, int index) : base(location, index)
         {
         }
 
@@ -93,6 +124,23 @@ namespace Kriptok.Noid.Entities
             foreach (var brick in Find.All<BrickSolid>())
             {
                 brick.Change();
+            }
+        }
+    }
+
+    internal class T_Pill : Pill
+    {
+        internal T_Pill(Vector3F location, int index) : base(location, index)
+        {
+        }
+
+        protected override void OnPick()
+        {
+            base.OnPick();
+
+            foreach (var ball in Find.All<Ball>())
+            {
+                ball.SuperBallPicked();
             }
         }
     }

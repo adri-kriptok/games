@@ -1,13 +1,7 @@
 ﻿using Kriptok.Drawing;
 using Kriptok.Helpers;
-using Kriptok.Maps.Editor;
-using Kriptok.Maps.Tiles;
 using Kriptok.Maps.Tiles.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kriptok.Maps.Tiles.Editor;
 
 namespace Kriptok.Noid.Scenes
 {

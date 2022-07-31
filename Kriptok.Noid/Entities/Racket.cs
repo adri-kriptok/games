@@ -1,4 +1,5 @@
 ﻿using Kriptok.Common;
+using Kriptok.Extensions;
 using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Objects.Collisions.Queries;
@@ -26,7 +27,7 @@ namespace Kriptok.Noid.Entities
         /// <summary>
         /// Indica si la dirección en que debe moverse está invertida.
         /// </summary>
-        private int camb_dir = 1;
+        private int backwardsControl = 1;
 
         /// <summary>
         /// Tamanio de la raqueta.
@@ -79,57 +80,30 @@ namespace Kriptok.Noid.Entities
                 // El jugador controla la raqueta
                 if (!demo)
                 {
-                    if (camb_dir == 1)
-                    {
+                    // if (camb_dir == 1)
+                    // {
                         // Comprueba la pulsacion de las teclas de los cursores
                         if (Input.Left() && incX > -MaxSpeed)
                         {
-                            incX -= 4;  // Acelera
+                            incX -= 4 * backwardsControl;  // Acelera
                         }
                         else if (Input.Right() && incX < MaxSpeed)
                         {
-                            incX += 4;  // Acelera
+                            incX += 4 * backwardsControl;  // Acelera
                         }
                         else
                         {
                             // Ninguna tecla pulsada
                             if (incX > 0)
                             {
-                                incX -= 2;
+                                incX -= 2 * backwardsControl;
                             }
                             else if (incX < 0)
                             {
                                 // Frena la raqueta
-                                incX += 2;
+                                incX += 2 * backwardsControl;
                             }
                         }
-                    }
-                }
-                // Mira si se ha cogido el icono de invertir mandos
-                else if (camb_dir == -1)
-                {
-                    // Lee los mandos al reves
-                    if (Input.Right() && incX > -MaxSpeed)
-                    {
-                        incX -= 4;  // Acelera la raqueta
-                    }
-                    else if (Input.Left() && incX < MaxSpeed)
-                    {
-                        incX += 4;
-                    }
-                    else
-                    {
-                        // Ninguna tecla pulsada
-                        if (incX > 0)
-                        {
-                            incX -= 2;
-                        }
-                        else if (incX < 0)
-                        {
-                            // Frena la raqueta
-                            incX += 2;
-                        }
-                    }
                 }
                 else 
                 {  
@@ -254,23 +228,7 @@ namespace Kriptok.Noid.Entities
                 //                        id3=get_id(TYPE bola);
                 //                    }
                 //                }
-                //                CASE 208:               // Cambia los ladrillos indestructibles
-                //                    FRAME(0);           // Actualiza procesos
-                //                    // Va mirando los ladrillos y cambia los indestructibles
-                //                    id3=get_id(TYPE ladrillo);
-                //                    While(() =>  (id3)
-                //                        if ((id3.graph>=20) && (id3.graph<30))
-                //                            ladrillo(id3.x,id3.y,14);
-                //                            signal(id3,s_kill);
-                //                            id3.graph=14;
-                //                            nladrillos++;
-                //                        }
-                //                        id3=get_id(TYPE ladrillo);
-                //                    }
-                //                }
-
-                //                CASE 209:               // P¡ldora de multibola
-                //                    get_id(TYPE bola).estado=1;
+                //                
                 //                }
 
                 //            }
@@ -284,19 +242,44 @@ namespace Kriptok.Noid.Entities
                     Location.X+=incX; 
                 }
 
+#if DEBUG || SHOWFPS                
+                Location.X = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
+#endif
+
                 // Limites de la pantalla segun el tamanio
-                if (Location.X < 23f + tamanio_raqueta)
+                if (Location.X < 24f + tamanio_raqueta)
                 {
-                    Location.X = 23f + tamanio_raqueta;
+                    Location.X = 24f + tamanio_raqueta;
                     incX = 0f;
                 }
-                if (Location.X > 248f - tamanio_raqueta)
+                if (Location.X > 249f - tamanio_raqueta)
                 {
-                    Location.X = 248f - tamanio_raqueta;
+                    Location.X = 249f - tamanio_raqueta;
                     incX = 0f;
                 }
                 Frame();
             });
+        }
+
+        /// <summary>
+        /// Acción a realizar cuando se agarra una píldora violeta que invierte las direcciones del teclado.
+        /// </summary>
+        internal void Backwards() => backwardsControl = backwardsControl * -1;        
+
+        /// <summary>
+        /// Indica que agarró una píldora que genera múltiples bolas.
+        /// </summary>
+        internal void MultiBallPillPicked()
+        {
+            if (!ball.IsAlive())
+            {
+                ball = Find.All<Ball>().FirstOrDefault();
+            }
+
+            if (ball != null)
+            {
+                ball.MultiBallPicked();
+            }
         }
     }
 

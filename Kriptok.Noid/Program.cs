@@ -1,10 +1,6 @@
 ﻿using Kriptok.Core;
-using Kriptok.Helpers;
-using Kriptok.Maps.Editor;
-using Kriptok.Maps.Tiles.Editor;
 using Kriptok.Noid.Scenes;
 using System;
-using System.Collections.Generic;
 
 namespace Kriptok.Noid
 {

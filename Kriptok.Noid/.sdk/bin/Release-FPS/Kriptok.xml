@@ -494,6 +494,13 @@
             Establece una nueva escena.
             </summary>        
         </member>
+        <member name="M:Kriptok.Forms.MainForm.SendMessageToScene(System.Object)">
+            <summary>
+            Envía el menasje a la escena. El mensaje puede ser cualquier cosa.
+            Pero depende de la escena saber interpretarlo en la implementación del método
+            <see cref="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)"/>.
+            </summary> 
+        </member>
         <member name="F:Kriptok.Forms.MainForm.components">
             <summary>
             Required designer variable.
@@ -513,7 +520,7 @@
         </member>
         <member name="T:Kriptok.Maps.Tiles.Base.Tileset4Base">
             <summary>
-            Representa un set de tiles con cuatro capas, que utiliza un byte para cada capa.
+            Representa un set de tiles de una sola capa de cuatro bytes.
             </summary>
         </member>
         <member name="T:Kriptok.Maps.Tiles.Base.TileBuilder">
@@ -559,20 +566,20 @@
         </member>
         <member name="T:Kriptok.Maps.Tiles.Base.Tileset121Base">
             <summary>
-            Representa un set de tiles con cuatro capas, que utiliza un byte para cada capa.
+            Representa un set de tiles tres capas, que utiliza un byte para la primera, uno para la última y dos para la del medio.
             </summary>
         </member>
         <member name="T:Kriptok.Maps.Tiles.Base.Tileset22Base">
             <summary>
-            Representa un set de tiles con cuatro capas, que utiliza un byte para cada capa.
+            Representa un set de tiles con dos capas de dos bytes cada una.
             </summary>
         </member>
         <member name="T:Kriptok.Maps.Tiles.Base.Tileset112Base">
             <summary>
-            Representa un set de tiles con cuatro capas, que utiliza un byte para cada capa.
+            Representa un set de tiles tres capas, que utiliza un byte para la primera y la segunda y dos para la tercera.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Base.Tileset112Base.Read(Kriptok.Maps.Editor.TiledMapConfig)">
+        <member name="M:Kriptok.Maps.Tiles.Base.Tileset112Base.Read(Kriptok.Maps.Tiles.Editor.TileMapX)">
             <summary>
             Lee la información de un mapa, y genera un arreglo fácil de leer y transformar
             en otras estructuras.
@@ -700,53 +707,75 @@
             Obtiene todos los <see cref="T:Kriptok.Maps.Tiles.Base.TilesetBase"/> que haya en los ensamblados cargados en el dominio.        
             </summary>        
         </member>
-        <member name="T:Kriptok.Maps.Tiles.Editor.TiledMapData`1">
-            <summary>
-            Clase que condensa la información necesaria para generar un mapa de tiles.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Maps.Tiles.Editor.TiledMapData">
-            <summary>
-            Clase que condensa la información necesaria para generar un mapa de tiles.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Maps.Tiles.Editor.TiledMapData.TileSize">
-            <summary>
-            Obtiene el tamaño de los tiles a representar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Tiles.Editor.TiledMapData.GetMap">
-            <summary>
-            Obtiene el mapa en base a los datos indicados en la estructura.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Maps.Tiles.Editor.TiledMapData.InfiniteScroll">
-            <summary>
-            Indica si el mapa está configurado para tener un scroll infinito.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Tiles.Editor.TiledMapData.GetBaseAndOverlayLayers">
-            <summary>
-            Genera y retorna dos mapas de tiles, uno para el mapa basa, y otro para 
-            la "capa superior" (ver <see cref="F:Kriptok.Maps.Tiles.TileFlagsEnum.OverlayLayer"/>).
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Maps.Tiles.TiledMapInfo">
+        <member name="T:Kriptok.Maps.Tiles.TileMapInfo`1">
             <summary>
             Representa la información de un mapa de tiles, antes de ser procesada para crear el mapa.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Tiles.TiledMapInfo.Size">
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo`1.#ctor(System.Reflection.Assembly,System.String)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Tiles.TileMapInfo"/> en base al <see cref="T:Kriptok.Maps.Tiles.Editor.TileMapX"/>
+            indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo`1.#ctor(Kriptok.Maps.Tiles.Editor.TileMapX)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Tiles.TileMapInfo"/> en base al <see cref="T:Kriptok.Maps.Tiles.Editor.TileMapX"/>
+            indicado por parámetro.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Tiles.TileMapInfo">
+            <summary>
+            Representa la información de un mapa de tiles, antes de ser procesada para crear el mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Maps.Tiles.TileMapInfo.objects">
+            <summary>
+            Objetos a crear en el mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo.#ctor(Kriptok.Maps.Tiles.Editor.TileMapX,Kriptok.Maps.Tiles.Base.TilesetBase)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Tiles.TileMapInfo"/> en base al <see cref="T:Kriptok.Maps.Tiles.Editor.TileMapX"/>
+            indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Maps.Tiles.TileMapInfo.Bitmap">
+            <summary>
+            Bits del mapa de tiles.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.Tileset">
+            <summary>
+            Tileset a utilizar para generar el mapa.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.InfiniteScroll">
+            <summary>
+            Indica si el mapa se repite infinitamente horizontal y verticalmente.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.Size">
             <summary>
             Tamaño (en tiles) del mapa.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Tiles.TiledMapInfo.Layers">
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.TileSize">
+            <summary>
+            Obtiene el tamaño de los tiles del mapa.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.FullSize">
+            <summary>
+            Tamaño (en pixels) del mapa.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.Layers">
             <summary>
             Cantidad de "capas" que tiene el mapa (entre 1 y 4).
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Tiles.TiledMapInfo.Item(System.Int32,System.Int32,System.Int32)">
+        <member name="P:Kriptok.Maps.Tiles.TileMapInfo.Item(System.Int32,System.Int32,System.Int32)">
             <summary>
             Obtiene o establece el valor del tile en las coordenadas y la capa
             indicadas por parámetro.
@@ -755,9 +784,20 @@
             <param name="x">Coordenada X del tile.</param>
             <param name="y">Coordenada Y del tile.</param>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMapInfo.CreateTiledMap">
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo.CreateTiledMap">
             <summary>
             Instancia el mapa para que pueda ser renderizado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo.GetBaseAndOverlayLayers">
+            <summary>
+            Genera y retorna dos mapas de tiles, uno para el mapa basa, y otro para 
+            la "capa superior" (ver <see cref="F:Kriptok.Maps.Tiles.TileFlagsEnum.OverlayLayer"/>).
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.TileMapInfo.CreateObjects">
+            <summary>
+            Genera instancias de los objetos registrados en el mapa.
             </summary>        
         </member>
         <member name="T:Kriptok.Maps.Tiles.TileHelper">
@@ -781,34 +821,34 @@
             de un tablero de ajedrez, con el primer casillero en "<see cref="!:true"/>".
             </summary>        
         </member>
-        <member name="F:Kriptok.Maps.Tiles.Map2DTilesetLayer.maxTiles">
+        <member name="F:Kriptok.Maps.Tiles.TilesetLayer.maxTiles">
             <summary>
             Cantidad máxima de tiles que puede tener esta capa.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.Map2DTilesetLayer.Index">
+        <member name="F:Kriptok.Maps.Tiles.TilesetLayer.Index">
             <summary>
             Indica el índice de la capa.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.AddEmptyTile">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.AddEmptyTile">
             <summary>
             Agrega un tile vacío para llenar espacios.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.AddRange(Kriptok.Maps.Tiles.Map2DTileInfo[])">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.AddRange(Kriptok.Maps.Tiles.Map2DTileInfo[])">
             <summary>
             Agrega una lista de tiles.
             </summary>
             <param name="newTiles">Nuevos tiles a agregar.</param>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.Add(Kriptok.Maps.Tiles.Map2DTileInfo)">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.Add(Kriptok.Maps.Tiles.Map2DTileInfo)">
             <summary>
             Agrega un nuevo tile.
             </summary>
             <param name="newTile">Nuevo tile a agregar.</param>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.GetFlags(System.Int32,System.UInt32[])">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.GetFlags(System.Int32,System.UInt32[])">
             <summary>
             Obtiene los flags de compatibilidad con los tiles de alrededor para saber qué tile tiene que mostrar.
             </summary>
@@ -817,7 +857,7 @@
             de arriba hacia abajo.</param>
             <returns>Devuelve los flags con los que debe dibujarse el tile.</returns>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.AddTileCompatibility(System.Int32,System.Int32,System.Boolean)">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.AddTileCompatibility(System.Int32,System.Int32,System.Boolean)">
             <summary>        
             Para tiles complejos, la compatibilidad permite a un tile adherirse a otro aunque no se trate
             del mismo tile.
@@ -830,24 +870,24 @@
             2) To => From        
             </param>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.Add(System.Func{Kriptok.Maps.Tiles.AutoTileFlagsEnum,Kriptok.Maps.Tiles.Map2DTileInfo})">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.Add(System.Func{Kriptok.Maps.Tiles.AutoTileFlagsEnum,Kriptok.Maps.Tiles.Map2DTileInfo})">
             <summary>
             Agrega un nuevo tile.
             </summary>
             <param name="newTile">Nuevo tile a agregar.</param>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.SetEmptyTile(System.Int32)">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.SetEmptyTile(System.Int32)">
             <summary>
             Establece el tile con el id indicado com un tile vacío. No "nulo", porque en ese
             caso no podría ser seleccionable para edición.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.SetLastTileEmpty">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.SetLastTileEmpty">
             <summary>
             Establece como tile vacío el último tile de la capa.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.Map2DTilesetLayer.AddBasicTiles(Kriptok.Drawing.FastBitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Kriptok.Maps.Tiles.TilesetLayer.AddBasicTiles(Kriptok.Drawing.FastBitmap,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Agrega una serie de "tiles básicos".
             </summary>
@@ -871,6 +911,87 @@
             <summary>
             Incrementa la animación e indica si se modificó.
             </summary>        
+        </member>
+        <member name="T:Kriptok.Maps.Tiles.Editor.MapEditorTilesetConfig">
+            <summary>
+            Configuraciones para el editor de mapas bidimensioanles.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.MapEditorTilesetConfig.PaletteTilesCount">
+            <summary>
+            Cantidad de Tiles que se pueden ver en la paleta de edición.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.MapEditorTilesetConfig.PaletteTilesScale">
+            <summary>
+            Escala a la cual se deben renderizar los Tiles en la paleta de edición.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Tiles.Editor.TileMapX">
+            <summary>
+            Clase a la que se deserializan los mapas de tiles generados con el editor.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.#ctor">
+            <summary>
+            Constructor necesario para poder deserializar desde XML.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.TileMapX.Width">
+            <summary>
+            Ancho del mapa en tiles.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.TileMapX.Height">
+            <summary>
+            Alto del mapa en tiles.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.TileMapX.InfiniteScroll">
+            <summary>
+            Indica si el mapa debe tener scroll infinito en vertical y horizontal.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.TileMapX.MapData">
+            <summary>
+            Base64 con los datos de un <see cref="T:System.Drawing.Bitmap"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Tiles.Editor.TileMapX.Data">
+            <summary>
+            Base64 con los datos crudos del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.Load">
+            <summary>
+            Genera un <see cref="T:Kriptok.Drawing.FastBitmap"/> con los colores correspondientes a los datos
+            del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.Load(System.String)">
+            <summary>
+            Carga un mapa desde un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.Load(System.Reflection.Assembly,System.String)">
+            <summary>
+            Carga un mapa desde un recurso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.Load(Kriptok.Common.Resource)">
+            <summary>
+            Carga un mapa desde un recurso.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Maps.Tiles.Editor.TileMapX.TileMapXTiles">
+            <summary>
+            Datos de los tiles del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.Editor.TileMapX.TileMapXTiles.#ctor">
+            <summary>
+            Constructor necesario para poder deserializar desde XML.
+            </summary>
         </member>
         <member name="M:Kriptok.Maps.Tiles.FastTileData.ClearFlagsForLayer(System.Int32)">
             <summary>
@@ -988,102 +1109,102 @@
             Transforma el tile en una textura.
             </summary>        
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.MapTileCollection.MapTiles">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.TileCollection.MapTiles">
             <summary>
             Todos los tiles del mapa.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.MapTileCollection.DifferentTiles">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.TileCollection.DifferentTiles">
             <summary>
             Tiles diferentes.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.Tileset">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.Tileset">
             <summary>
             <see cref="T:Kriptok.Maps.Tiles.Base.TilesetBase"/> asociado al mapa.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.differentTiles">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.differentTiles">
             <summary>
             Lista de todos los tiles diferentes que se están renderizando.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.animatedTiles">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.animatedTiles">
             <summary>
             Listado de los tiles animados.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.tileWidth">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.tileWidth">
             <summary>
             Ancho del tile.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.tileHeight">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.tileHeight">
             <summary>
             Alto del tile.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.InfiniteScroll">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.InfiniteScroll">
             <summary>
             Indica si se trata de un mapa con scroll infinito en los dos ejes.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.TileCount">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.TileCount">
             <summary>
             Tamaño del mapa en tiles.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Tiles.TiledMap.TileArray">
+        <member name="F:Kriptok.Maps.Tiles.TileMap.TileArray">
             <summary>
             Lista de todos los tiles del mapa en el momento actual.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.IsEmpty">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.IsEmpty">
             <summary>
             Indica si el mapa está vacío (todos sus tiles son null).
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.AllTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.AllTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
             <summary>
             No filtra tiles de ningún tipo.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.BaseTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.BaseTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
             <summary>
             Obtiene los tiles de la capa base.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.ViewTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.ViewTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
             <summary>
             Obtiene los tiles correspondientes a la capa de objeto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.OverlayTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.OverlayTilesFilter(Kriptok.Maps.Tiles.Map2DTileInfo)">
             <summary>
             Obtiene los tiles correspondientes a la capa de objeto.
             </summary>        
         </member>
-        <member name="P:Kriptok.Maps.Tiles.TiledMap.FullSize">
+        <member name="P:Kriptok.Maps.Tiles.TileMap.FullSize">
             <summary>
             Devuelve el tamaño total del mapa. Es decir: (cantidad de tiles) x (tamaño de tiles).
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Tiles.TiledMap.TileSize">
+        <member name="P:Kriptok.Maps.Tiles.TileMap.TileSize">
             <summary>
             Devuelve o establece el tamaño de los tiles para el mapa.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.GetTileArray(Kriptok.Drawing.FastBitmap,Kriptok.Maps.Tiles.Base.TilesetBase,System.Boolean,System.Func{Kriptok.Maps.Tiles.Map2DTileInfo,System.Boolean})">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.GetTileArray(Kriptok.Drawing.FastBitmap,Kriptok.Maps.Tiles.Base.TilesetBase,System.Boolean,System.Func{Kriptok.Maps.Tiles.Map2DTileInfo,System.Boolean})">
             <summary>
             Método que se encarga de armar el array de tiles para después dibujar punto por punto.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.ToFastBitmap">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.ToFastBitmap">
             <summary>
             Genera un <see cref="T:Kriptok.Drawing.FastBitmap"/> en base al mapa. Este método obviamente omite tiles animados.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.IsValid(System.UInt32,System.Drawing.Size,System.Int32,System.Int32,System.Func{System.UInt32})">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.IsValid(System.UInt32,System.Drawing.Size,System.Int32,System.Int32,System.Func{System.UInt32})">
             <summary>
             Verifica que al tratar de obtener el valor de una casilla cercana, esté dentro de los límites del mapa.
             </summary>
@@ -1096,12 +1217,12 @@
             En caso de ser inválidas (estar fuera de los límites del mapa, dados por el parámetro "size", devuelve
             el color indicado en el primer parámetro.</returns>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.CreateBySize(System.Drawing.Bitmap)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.CreateBySize(System.Drawing.Bitmap)">
             <summary>
             Crea un tile del tamaño correspondiente a las medidas del bitpap.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Tiles.TiledMap.GetTileFlags(System.Single,System.Single)">
+        <member name="M:Kriptok.Maps.Tiles.TileMap.GetTileFlags(System.Single,System.Single)">
             <summary>
             Obtiene los flags del tile que se encuentra en las coordenadas indicadas por parámetro.
             
@@ -1512,7 +1633,7 @@
             Inicializa una matriz en base a una matriz de celdas. 
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Grid.TiledMapGrid.From(Kriptok.Maps.Tiles.TiledMap)">
+        <member name="M:Kriptok.Maps.Grid.TiledMapGrid.From(Kriptok.Maps.Tiles.TileMap)">
             <summary>
             Obtiene una matriz de durezas del mapa.
             </summary>        
@@ -1558,7 +1679,7 @@
             Indica que la celda está libre y puede accederse.
             </summary>
         </member>
-        <member name="F:Kriptok.Maps.Grid.MapGridCellTypeEnum.Closed">
+        <member name="F:Kriptok.Maps.Grid.MapGridCellTypeEnum.Blocked">
             <summary>
             Indica que la celda no puede accederse.
             </summary>
@@ -1858,113 +1979,93 @@
             Esta clase debe implementar la interfaz <see cref="T:Kriptok.Maps.Base.IMapEditorObject"/>.
             </summary>
         </member>
-        <member name="T:Kriptok.Maps.Base.MapEditorObjectConfig`1">
+        <member name="T:Kriptok.Maps.Base.MapBaseX`1">
             <summary>
-            Representa un objeto que puede ser agregado en los editores de mapas.
-            </summary>
+            Clase base para confección de mapas que se guardan en formato Xml.
+            </summary>    
         </member>
-        <member name="M:Kriptok.Maps.Base.MapEditorObjectConfig`1.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Base.MapEditorObjectConfig"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Maps.Base.MapEditorObjectConfig">
-            <summary>
-            Representa un objeto que puede ser agregado en los editores de mapas.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Maps.Base.MapEditorObjectConfig.type">
-            <summary>
-            Tipo del objeto a agregar en el editor de mapas.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Base.MapEditorObjectConfig.#ctor(System.Type)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Base.MapEditorObjectConfig"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Maps.Base.MapConfigBase`1.#ctor">
+        <member name="M:Kriptok.Maps.Base.MapBaseX`1.#ctor">
             <summary>
             Constructor necesario para poder deserializar desde XML.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapConfigBase`1.FileName">
+        <member name="P:Kriptok.Maps.Base.MapBaseX`1.FileName">
             <summary>
             Nombre del archivo guardado, se utiliza más que nada para guardar los cambios.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Base.MapConfigBase`1.Save(System.String)">
+        <member name="M:Kriptok.Maps.Base.MapBaseX`1.Save(System.String)">
             <summary>
             Guarda el mapa como archivo.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Base.MapConfigBase`1.Load``1(System.String)">
+        <member name="M:Kriptok.Maps.Base.MapBaseX`1.Load``1(System.String)">
             <summary>
             Carga un mapa desde un archivo
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Base.MapConfigBase`1.LoadXml``1(System.String,System.String)">
+        <member name="M:Kriptok.Maps.Base.MapBaseX`1.LoadXml``1(System.String,System.String)">
             <summary>
             Carga un mapa desde un Xml.
             </summary>        
         </member>
-        <member name="M:Kriptok.Maps.Base.MapConfigBase`1.LoadAssembliesForMapEditor">
+        <member name="M:Kriptok.Maps.Base.MapBaseX`1.LoadAssembliesForMapEditor">
             <summary>
             Carga los ensamblados que se encuentren en la carpeta del proyecto al cual pertenece el mapa.
             </summary>        
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.X">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.X">
             <summary>
             Coordenada X donde se encuentra la cámara al momento del preview del mapa en el editor.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.Y">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.Y">
             <summary>
             Coordenada Y donde se encuentra la cámara al momento del preview del mapa en el editor.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.Height">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.Height">
             <summary>
             Altura de la cámara al momento del preview del mapa en el editor.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.Angle">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.Angle">
             <summary>
             Ángulo de la cámara al momento del preview del mapa en el editor.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.YShearing">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.YShearing">
             <summary>
             Distorción vertical de la cámara para simular ver hacia abajo o hacia arriba.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.DraftFile">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.DraftFile">
             <summary>
             Nombre del archivo "borrador" que se debe cargar en el editor como "fondo" de la edición
             para tomar de guía a la hora de construir el mapa encima.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.ResourceName">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.ResourceName">
             <summary>
             Indica el nombre de la clase que tiene la colección de texturas utilizadas por el mapa.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.ResourceClass">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.ResourceClass">
             <summary>
             Indica el nombre de la clase que tiene la colección de texturas utilizadas por el mapa.
             </summary>
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.WindowMode">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.WindowMode">
             <summary>
             Indica la resolución a utilizar en la vista previa del editor.
             </summary>        
         </member>
-        <member name="P:Kriptok.Maps.Base.MapEditorPreview.ResourceSet">
+        <member name="P:Kriptok.Maps.Base.MapEditorPreviewX.ResourceSet">
             <summary>
             Permite establecer u obtener el tipo de recursos a utilizar.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.Base.MapEditorPreview.GetResourceSet``1">
+        <member name="M:Kriptok.Maps.Base.MapEditorPreviewX.GetResourceSet``1">
             <summary>
             Obtiene la clase con los recursos necesarios para generar el mapa.
             </summary>
@@ -2123,72 +2224,6 @@
             encuentre consigo mismo. Por defecto puede utilizarse el Id del proceso..
             </summary>        
         </member>
-        <member name="T:Kriptok.Maps.Editor.MapEditorTilesetConfig">
-            <summary>
-            Configuraciones para el editor de mapas bidimensioanles.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Maps.Editor.MapEditorTilesetConfig.PaletteTilesCount">
-            <summary>
-            Cantidad de Tiles que se pueden ver en la paleta de edición.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Maps.Editor.MapEditorTilesetConfig.PaletteTilesScale">
-            <summary>
-            Escala a la cual se deben renderizar los Tiles en la paleta de edición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Editor.TiledMapConfig.#ctor">
-            <summary>
-            Constructor necesario para poder deserializar desde XML.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Maps.Editor.TiledMapConfig.Width">
-            <summary>
-            Ancho del mapa en tiles.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Maps.Editor.TiledMapConfig.Height">
-            <summary>
-            Alto del mapa en tiles.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Maps.Editor.TiledMapConfig.InfiniteScroll">
-            <summary>
-            Indica si el mapa debe tener scroll infinito en vertical y horizontal.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Maps.Editor.TiledMapConfig.MapData">
-            <summary>
-            Base64 con los datos de un <see cref="T:System.Drawing.Bitmap"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Maps.Editor.TiledMapConfig.Data">
-            <summary>
-            Base64 con los datos crudos del mapa.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Editor.TiledMapConfig.Load">
-            <summary>
-            Genera un <see cref="T:Kriptok.Drawing.FastBitmap"/> con los colores correspondientes a los datos
-            del mapa.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Maps.Editor.TiledMapConfig.Load(System.String)">
-            <summary>
-            Carga un mapa desde un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Maps.Editor.TiledMapConfig.Load(System.Reflection.Assembly,System.String)">
-            <summary>
-            Carga un mapa desde un recurso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Maps.Editor.TiledMapConfig.Load(Kriptok.Common.Resource)">
-            <summary>
-            Carga un mapa desde un recurso.
-            </summary>        
-        </member>
         <member name="M:Kriptok.Maps.MapObjectConfigArgs.Get``1(System.String)">
             <summary>
             Si se usa el tipo <see cref="T:System.String"/>, toma como valor por defecto <see cref="F:System.String.Empty"/>, por lo
@@ -2205,7 +2240,7 @@
             Objetos agregados al mapa.
             </summary>
         </member>
-        <member name="M:Kriptok.Maps.MapRegion.#ctor(Kriptok.Maps.Tiles.TiledMap)">
+        <member name="M:Kriptok.Maps.MapRegion.#ctor(Kriptok.Maps.Tiles.TileMap)">
             <summary>
             Obtiene una matriz de durezas del mapa.
             </summary>        
@@ -2549,7 +2584,7 @@
             Obtiene el promedio de la ubicación de un arreglo de vértices.
             </summary>  
         </member>
-        <member name="M:Kriptok.Drawing.Algebra.Vector2F.ClipX(System.Single,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Clip0X(System.Single,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Clippea contra los límites (X = 0) y (X = maxX) el vector indicado.
             </summary>
@@ -2563,6 +2598,11 @@
             <summary>
             Clippea contra los límites X = 0 y X = region.Width el vector indicado.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Clip0Y(System.Single,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Clippea contra los límites (Y = 0) y (Y = maxY) el vector indicado.
+            </summary>
         </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Intersection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
@@ -2920,6 +2960,12 @@
             Indica si los "límites" se superponen.
             </summary>        
         </member>
+        <member name="F:Kriptok.Drawing.BoundF2.Invalid">
+            <summary>
+            Declara un <see cref="T:Kriptok.Drawing.BoundF2"/> de tamaños inválidos. 
+            Cualquier bound válido, por defecto es mayor que este bound.
+            </summary>
+        </member>
         <member name="M:Kriptok.Drawing.BoundF2.Intersects(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
             Indica si el rectángulo formado por los vértices indicados por parámetro se intersecta con
@@ -2955,6 +3001,11 @@
             Indica si el rectángulo formado por los vértices indicados por parámetro se intersecta con
             el rectángulo actual.
             </summary>      
+        </member>
+        <member name="M:Kriptok.Drawing.BoundF2.Extend(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Extiende los límites actuales para incorporar los nuevos dos vértices indicados por parámetro.
+            </summary>        
         </member>
         <member name="T:Kriptok.Drawing.Bound2">
             <summary>
@@ -3312,16 +3363,6 @@
             Objeto utilizado para dibujar sobre el buffer.
             </summary>
         </member>
-        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.inverseRegionWidth">
-            <summary>
-            Utilizado para cálculos de rasterización.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.inverseRegionHeight">
-            <summary>
-            Utilizado para cálculos de rasterización.
-            </summary>
-        </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DMode">
             <summary>
             Clase base para entornos tridimensionales.
@@ -3336,6 +3377,61 @@
             <summary>
             Contexto de renderización para interfaces tridimensionales.
             </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode">
+            <summary>
+            Modo tridimencional con múltiples planos
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.inverseRegionWidth">
+            <summary>
+            Utilizado para cálculos de rasterización.        
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.inverseRegionHeight">
+            <summary>
+            Utilizado para cálculos de rasterización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.planes">
+            <summary>
+            Planos actualmente cargados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.#ctor(System.Drawing.Rectangle)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DPlanesMode"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.AddInfiniteGroundTexture(Kriptok.Common.Resource)">
+            <summary>
+            Agrega un plano con una textura repetida infintamente a la altura cero.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase">
+            <summary>
+            Representa un plano tridimencional utilizado en este modo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.#ctor(System.Int32)">
+            <summary>
+            Inicializa el plano a la altura indicada.
+            </summary>            
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.InnerScale">
+            <summary>
+            Escala a aplicar al plano al renderizar.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane">
+            <summary>
+            Representa un plano tridimencional con una simple textura.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane.#ctor(Kriptok.Common.Resource,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane"/>.
+            </summary>            
         </member>
         <member name="T:Kriptok.Modes.Full3D.Cameras.AcumulativeRotationCamera">
             <summary>
@@ -3423,6 +3519,27 @@
             <param name="location">Matriz obtenida con el método <see cref="M:Kriptok.Modes.Full3D.Cameras.Full3DCameraBase.GetTargetLocation3D"/>.</param>        
             <param name="rotationTransform">Matriz obtenida con el método <see cref="M:Kriptok.Modes.Full3D.Cameras.Full3DCameraBase.GetRotationTransform"/>.</param>        
         </member>
+        <member name="T:Kriptok.Modes.Full3D.Full3DModeBase">
+            <summary>
+            Clase base para entornos tridimensionales.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DModeBase.#ctor(System.Drawing.Rectangle)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DModeBase"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DModeBase.SetCamera``1(``0)">
+            <summary>
+            Permite establecer el proceso "cámara" o foco de
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DModeBase.GetTargetLocation2D">
+            <summary>
+            Permite personalizar la coordenada central que se debe utilizar para
+            renderizar.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DModeBase`2">
             <summary>
             Clase base para entornos tridimensionales.
@@ -3430,7 +3547,7 @@
         </member>
         <member name="M:Kriptok.Modes.Full3D.Full3DModeBase`2.#ctor(System.Drawing.Rectangle)">
             <summary>
-            Inicializa el modo 3D para la región indicada.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DModeBase`2"/>.
             </summary>        
         </member>
         <member name="M:Kriptok.Modes.Full3D.Full3DModeBase`2.NewContext(System.Drawing.Graphics,Kriptok.Drawing.Algebra.Matrix3x4F)">
@@ -3442,17 +3559,6 @@
             <summary>
             Renderiza el entorno tridimensional, así como los objetos que haya.
             </summary> 
-        </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DModeBase`2.SetCamera``1(``0)">
-            <summary>
-            Permite establecer el proceso "cámara" o foco de
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DModeBase`2.GetTargetLocation2D">
-            <summary>
-            Permite personalizar la coordenada central que se debe utilizar para
-            renderizar.
-            </summary>        
         </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DPanel">
             <summary>
@@ -5342,12 +5448,12 @@
             Controlador principal que se encarga de manejar los planos de scroll cuando se encuentra en modo Scroll 3D.
             </summary>
         </member>
-        <member name="T:Kriptok.Modes.Scroll.TiledScrollFixedMode">
+        <member name="T:Kriptok.Modes.Scroll.TileScrollFixedMode">
             <summary>
             Modo de Scroll que no puede ser rotado.
             </summary>
         </member>
-        <member name="F:Kriptok.Modes.Scroll.TiledScrollFixedMode.FixedScrollContext.outOfScreenChecker">
+        <member name="F:Kriptok.Modes.Scroll.TileScrollFixedMode.FixedScrollContext.outOfScreenChecker">
             <summary>
             Utilizado para evaluar si un objeto está fuera de la pantalla.
             </summary>
@@ -5392,23 +5498,23 @@
             Permite modificar la coordenada de la cual se va a tomar el color para renderizar el pixel.
             </summary>
         </member>
-        <member name="T:Kriptok.Modes.Scroll.TiledScrollModeBase">
+        <member name="T:Kriptok.Modes.Scroll.TileScrollModeBase">
             <summary>
             Representa un modo scroll construido en base a un mapa de tiles, que no acepta
             transformaciones de ningún tipo, pero renderiza mucho más rápido.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Scroll.TiledScrollModeBase.CreateMapGrid">
+        <member name="M:Kriptok.Modes.Scroll.TileScrollModeBase.CreateMapGrid">
             <summary>
             Crea una grilla de durezas con la información del mapa base.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Scroll.TiledScrollModeBase.GetMapFullSize">
+        <member name="M:Kriptok.Modes.Scroll.TileScrollModeBase.GetMapFullSize">
             <summary>
             Obtiene el tamaño total del mapa. Es decir, cantidad de tiles x tamaño de tile.
             </summary>        
         </member>
-        <member name="P:Kriptok.Modes.Scroll.TiledScrollModeBase.TileAnimatedSpeed">
+        <member name="P:Kriptok.Modes.Scroll.TileScrollModeBase.TileAnimatedSpeed">
             <summary>
             Velocidad a la cual se deben actualizar los tiles animados del mapa.
             </summary>
@@ -5676,6 +5782,12 @@
         <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.regionHeightF">
             <summary>
             Alto de la pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastXSubstraction">
+            <summary>
+            Valor utilizado para reacomodar la coordenada X en la pantalla cuando se traza un rayo para
+            intersectar con un plano.
             </summary>
         </member>
         <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastYSubstraction">
@@ -6206,6 +6318,11 @@
             Obtiene el tiempo transcurrido desde el último frame.
             </summary>        
         </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.RandF(Kriptok.Modes.Context.Base.IRenderContext,System.Single,System.Single)">
+            <summary>
+            Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
+            </summary>
+        </member>
         <member name="T:Kriptok.Modes.Context.Base.IProjector">
             <summary>
             Interfaz que debe implementarse con la forma de proyectar las coordenadas tridimensionales en 
@@ -6532,6 +6649,11 @@
             <summary>
             Transforma un vértice tridimensional a la perspectiva del contexto.
             </summary>
+        </member>
+        <member name="M:Kriptok.Modes.IBufferModeExtensions.Plotter.Sample">
+            <summary>
+            Obtiene el color que hay actualmente en la posición en la que se encuentra el <see cref="T:Kriptok.Modes.IBufferModeExtensions.Plotter"/>.
+            </summary>            
         </member>
         <member name="T:Kriptok.Modes.Ambient.Masks.GreenFilterColorMask">
             <summary>
@@ -7411,6 +7533,11 @@
             Produce un número aleatorio entre 0f y 1f.
             </summary>            
         </member>
+        <member name="M:Kriptok.Objects.Base.ItemBaseBase.Rand.NextF(System.Single,System.Single)">
+            <summary>
+            Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
+            </summary>
+        </member>
         <member name="M:Kriptok.Objects.Base.ItemBaseBase.Rand.Next(System.Int32,System.Int32)">
             <summary>
             Obtiene un número aleatorio entre los valores indicados por parámetro.
@@ -7923,6 +8050,18 @@
         <member name="M:Kriptok.Objects.Base.ObjectBase.Find.Others``1(System.Int32)">
             <summary>
             Devuelve todos los objetos vivos menos el indicado por parámetro.
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Objects.Base.ObjectBase.Scene">
+            <summary>
+            Funcionalidades para comunicarse con la escena actual.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Objects.Base.ObjectBase.Scene.SendMessage(System.Object)">
+            <summary>
+            Envía el menasje a la escena. El mensaje puede ser cualquier cosa.
+            Pero depende de la escena saber interpretarlo en la implementación del método
+            <see cref="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)"/>,
             </summary>            
         </member>
         <member name="T:Kriptok.Objects.Collisions.Base.ICollisionQuery">
@@ -8530,19 +8669,40 @@
             Inicia la escena.
             </summary>
         </member>
-        <member name="T:Kriptok.Scenes.SceneBase.SceneProcess">
+        <member name="M:Kriptok.Scenes.SceneBase.Message(System.Object)">
+            <summary>
+            Recibe un mensaje de algún objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)">
+            <summary>
+            Método que permite implementar el comportamiento de la escena
+            al recibir un mensaje de algún objeto del juego.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Scenes.SceneBase.SceneProcessBase">
             <summary>
             Proceso que se utiliza para manejar a la escena asincrónicamente.
             </summary>
         </member>
-        <member name="F:Kriptok.Scenes.SceneBase.SceneProcess.mainForm">
+        <member name="F:Kriptok.Scenes.SceneBase.SceneProcessBase.mainForm">
             <summary>
             Formulario principal del juego.
             </summary>
         </member>
-        <member name="F:Kriptok.Scenes.SceneBase.SceneProcess.scene">
+        <member name="F:Kriptok.Scenes.SceneBase.SceneProcessBase.scene">
             <summary>
             Actividad a la que pertenece.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Scenes.SceneBase.SceneRunProcess">
+            <summary>
+            Proceso que se utiliza para manejar la confección de la escena asincrónicamente.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Scenes.SceneBase.SceneMessageProcess">
+            <summary>
+            Proceso que se utiliza para manejar un mensaje que recibe la escena.
             </summary>
         </member>
         <member name="T:Kriptok.Scenes.SceneHandler">
@@ -8565,7 +8725,7 @@
             Proceso asincrónico relacionado a la escena.
             </summary>
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandler.#ctor(Kriptok.Forms.MainForm,Kriptok.Scenes.SceneBase,Kriptok.Scenes.SceneBase.SceneProcess)">
+        <member name="M:Kriptok.Scenes.SceneHandler.#ctor(Kriptok.Forms.MainForm,Kriptok.Scenes.SceneBase,Kriptok.Scenes.SceneBase.SceneProcessBase)">
             <summary>
             Constructor interno, para asegurar que no se pueda heredar la clase.
             </summary>
@@ -8600,11 +8760,6 @@
             </summary>        
         </member>
         <member name="M:Kriptok.Scenes.SceneHandler.StartFull3D``1(``0)">
-            <summary>
-            Inicializa un modo de Scroll con la "capa" indicada por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Scenes.SceneHandler.StartFull3D``1(Kriptok.Modes.Full3D.Full3DBufferedMode)">
             <summary>
             Inicializa un modo de Scroll con la "capa" indicada por parámetro.
             </summary>        
@@ -8714,7 +8869,7 @@
             Inicializa un modo de Scroll con la "capa" indicada por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartScroll(Kriptok.Scenes.SceneHandler,System.Drawing.Rectangle,Kriptok.Maps.Tiles.Editor.TiledMapData)">
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartScroll(Kriptok.Scenes.SceneHandler,System.Drawing.Rectangle,Kriptok.Maps.Tiles.TileMapInfo)">
             <summary>
             Establece el modo de renderización Scroll para la región con un mapa de tiles.
             </summary>  
@@ -8729,7 +8884,7 @@
             Inicializa un modo de Scroll tridimencional con la "capa" indicada por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartAxonometric``1(Kriptok.Scenes.SceneHandler,System.Drawing.Rectangle,Kriptok.Maps.Editor.TiledMapConfig)">
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartAxonometric``1(Kriptok.Scenes.SceneHandler,System.Drawing.Rectangle,Kriptok.Maps.Tiles.Editor.TileMapX)">
             <summary>
             Establece el modo de renderización Scroll para la región con un mapa de tiles.
             </summary>  
@@ -10703,6 +10858,12 @@
             indicado por parámetro (no incluído).
             </summary>
         </member>
+        <member name="M:Kriptok.Helpers.IntHelper.Iota(System.Int32,System.Int32)">
+            <summary>
+            Genera un arreglo de números secuenciales en el rango descripto por
+            los parámetros (no incluyendo al límite superior).
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "M:Kriptok.Helpers.IntHelper.BetweenCloseOpen(System.Int32,System.Int32,System.Int32)" -->
         <member name="T:Kriptok.Helpers.XmlHelper">
             <summary>
@@ -11531,6 +11692,31 @@
             Esta clase representa un color básico, no se ve afectado por la luz ambiental.
             </summary>
         </member>
+        <member name="T:Kriptok.Views.Shapes.Wireframe.FlatSphereView">
+            <summary>
+            Vista que representa una "esfera" con meridianos y paralelos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Wireframe.WireframeOctahedronView">
+            <summary>
+            Octaedro tridimensional sólo con lineas.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Wireframe.WireframeSphereView">
+            <summary>
+            Vista que representa una "esfera" con meridianos y paralelos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Wireframe.WireframePlaneView">
+            <summary>
+            Representa rectangulo tridimensional dividido en secciones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Wireframe.WireframePlaneView.#ctor(System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Wireframe.WireframePlaneView"/>
+            </summary>        
+        </member>
         <member name="F:Kriptok.Views.Shapes.MeshBuilderBase.instancedTextures">
             <summary>
             Texturas instanciadas para crear el modelo tridimencional.
@@ -11615,6 +11801,50 @@
             <summary>
             Activa o desactiva la incidencia de la luz sobre la textura.
             Ideal para pruebas no relacionadas a la performance.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Textured.TexturedSphereView">
+            <summary>
+            Vista que representa una "esfera" con meridianos y paralelos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Textured.PlotTexturedPolygonView">
+            <summary>
+            Representa un polígono tridimensional texturado.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView">
+            <summary>
+            Esta vista representa una montaña tridimensional con textura basado en una cuadrícula.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,System.Reflection.Assembly,System.String)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,Kriptok.Views.Shapes.TextureBuilder)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,Kriptok.Views.Shapes.TextureBuilder,System.Drawing.Size)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.IsConvex">
+            <summary>
+            Indica si la figura es convexa. Las figuras convexas se renderizan más rápido, ya que no necesitan
+            ordenar las caras u otra figuras que la componen antes de renderizarse en pantalla.
+            
+            Los terrenos son en principio no convexos. Puede ser que hay algún terreno convexo, pero en general
+            se infiere que no será el caso.
+            </summary>      
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.RemoveY0Faces">
+            <summary>
+            Remueve las caras que tiene Y = 0 en todas los vértices.
             </summary>
         </member>
         <member name="T:Kriptok.Views.Shapes.TexturedTriFace3DClippable">
@@ -11718,45 +11948,6 @@
         <member name="F:Kriptok.Views.Shapes.Vertices.Vertex3.Location">
             <summary>
             Punto base de las coordenadas, antes de transformar.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Textured.PlotTexturedPolygonView">
-            <summary>
-            Representa un polígono tridimensional texturado.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView">
-            <summary>
-            Esta vista representa una montaña tridimensional con textura basado en una cuadrícula.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,System.Reflection.Assembly,System.String)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,Kriptok.Views.Shapes.TextureBuilder)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.#ctor(Kriptok.Maps.Terrains.ITerrainData,Kriptok.Views.Shapes.TextureBuilder,System.Drawing.Size)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.IsConvex">
-            <summary>
-            Indica si la figura es convexa. Las figuras convexas se renderizan más rápido, ya que no necesitan
-            ordenar las caras u otra figuras que la componen antes de renderizarse en pantalla.
-            
-            Los terrenos son en principio no convexos. Puede ser que hay algún terreno convexo, pero en general
-            se infiere que no será el caso.
-            </summary>      
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Textured.TexturedTerrainView.RemoveY0Faces">
-            <summary>
-            Remueve las caras que tiene Y = 0 en todas los vértices.
             </summary>
         </member>
         <member name="F:Kriptok.Views.Shapes.Meshes.cache">
@@ -12607,16 +12798,6 @@
         <member name="M:Kriptok.Views.Shapes.TexturedTriFace3D.Render3DClipped(Kriptok.Modes.Context.Base.IRenderContext,Kriptok.Views.Shapes.IGdipTexture)">
             <summary>
             Renderiza la figura cuando esta debe ser "clippeada" contra el plano Z = <see cref="!:Vector3F.InvalidZ"/>.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Wireframe.WireframePlaneView">
-            <summary>
-            Representa rectangulo tridimensional dividido en secciones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Wireframe.WireframePlaneView.#ctor(System.Drawing.Color,System.Int32,System.Int32)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Wireframe.WireframePlaneView"/>
             </summary>        
         </member>
         <member name="M:Kriptok.Views.Shapes.WireframeSquareView.IsConvex">
@@ -14311,191 +14492,186 @@
             Esta celda es una "puerta".
             </summary>
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexConfig">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoMapX">
             <summary>
-            Representa un mapa 3D con paredes y dividido en sectores.
+            Representa un mapa 3D dividido en volúmenes convexos.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Maps.SdexConfig.fileName">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.#ctor">
             <summary>
-            Nombre del archivo donde se guardará el mapa.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexConfig"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
             
             Constructor necesario para poder deserializar desde XML.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.#ctor(System.String)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.#ctor(System.String)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexConfig"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
             
             Sólo debe ser utilizado por el editor de mapas 3D.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Serialize(System.Boolean)">
-            <summary>
-            Serializa el mapa a Xml.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Save(System.String)">
-            <summary>
-            Guarda el mapa en el archivo que se cargó.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Clone">
-            <summary>
-            Devuelve una copia del mapa.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Load(System.String)">
-            <summary>
-            Carga un mapa desde un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Load(System.Reflection.Assembly,System.String)">
-            <summary>
-            Carga un mapa desde un recurso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Load(System.String,System.String)">
-            <summary>
-            Carga un mapa desde un xml.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.Load(Kriptok.Z.Sdex.Maps.SdexConfig)">
-            <summary>
-            Carga propiedades extra en tiempo de ejecución después de parsear el Xml.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexConfig.Sectors">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapX.Sectors">
             <summary>
             Lista de sectores que componen el mapa tridimensional.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfig.AddSector(Kriptok.Z.Sdex.Maps.SdexSector)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Serialize(System.Boolean)">
+            <summary>
+            Serializa el mapa a Xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Save(System.String)">
+            <summary>
+            Guarda el mapa en el archivo que se cargó.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Clone">
+            <summary>
+            Devuelve una copia del mapa.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.String)">
+            <summary>
+            Carga un mapa desde un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.Reflection.Assembly,System.String)">
+            <summary>
+            Carga un mapa desde un recurso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.String,System.String)">
+            <summary>
+            Carga un mapa desde un xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(Kriptok.Z.Convos.Maps.ConvoMapX)">
+            <summary>
+            Carga propiedades extra en tiempo de ejecución después de parsear el Xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.AddSector(Kriptok.Z.Convos.Maps.ConvoSectorX)">
             <summary>
             Agrega un sector al mapa.
             </summary>        
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexConfigGrid">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoMapXGrid">
             <summary>
-            Herramienta utilizada para leer un mapa de tipo <see cref="T:Kriptok.Z.Sdex.Maps.SdexConfig"/>.
+            Herramienta utilizada para leer un mapa de tipo <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Maps.SdexConfigGrid.config">
+        <member name="F:Kriptok.Z.Convos.Maps.ConvoMapXGrid.config">
             <summary>
             Mapa que se está leyendo.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfigGrid.#ctor(Kriptok.Z.Sdex.Maps.SdexConfig)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapXGrid.#ctor(Kriptok.Z.Convos.Maps.ConvoMapX)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexConfigGrid"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapXGrid"/>.
             </summary>        
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexConfigGrid.Width">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Width">
             <summary>
             Cantidad de casilleros sobre el eje X.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexConfigGrid.Height">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Height">
             <summary>
             Cantidad de casilleros sobre el eje Y.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexConfigGrid.Depth">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Depth">
             <summary>
             Cantidad de casilleros sobre el eje Z.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexConfigGrid.Get(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Get(System.Int32,System.Int32,System.Int32)">
             <summary>
             Obtiene el elemento en la posición indicada.
             </summary>        
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexPartition">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionX">
             <summary>
             Partición tridimensional de un sector.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartition.Contains(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionX.Contains(System.Int32,System.Int32,System.Int32)">
             <summary>
             Indica si un casillero está contenido por la partición.
             </summary>        
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartition.Sector">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionX.Sector">
             <summary>
             Referencia al sector al que pertenece la partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartition.Update(Kriptok.Common.IGrid3DReader{System.Int32})">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionX.Update(Kriptok.Common.IGrid3DReader{System.Int32})">
             <summary>
             Calcula la metadata de los distintos lados de la partición.
             </summary>
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexPartitionPanel">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX">
             <summary>
             Representa cada sección de una pared de una partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.#ctor">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.#ctor">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexPartitionPanel"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX"/>.
             
             NOTA: Importante mantener aunque no se use para la serialización/deserialización.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.#ctor(System.Drawing.RectangleF)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.#ctor(System.Drawing.RectangleF)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexPartitionPanel"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX"/>.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.X">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.X">
             <summary>
             Coordenada X de la figura en el plano bidimensional.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.Y">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Y">
             <summary>
             Coordenada Y de la figura en el plano bidimensional.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.Width">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Width">
             <summary>
             Ancho de la figura en el plano bidimensional.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPanel.Height">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Height">
             <summary>
             Alto de la figura en el plano bidimensional.
             </summary>
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexPartitionPortal">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX">
             <summary>
             Representa cada porción rectangular de una partición que se trata de un portal
             a otra partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionPortal.#ctor">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.#ctor">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexPartitionPortal"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX"/>.
             
             NOTA: Importante mantener aunque no se use para la serialización/deserialización.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionPortal.#ctor(System.Int32,System.Drawing.RectangleF)">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.#ctor(System.Int32,System.Drawing.RectangleF)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexPartitionPortal"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX"/>.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPortal.PartitionToId">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.PartitionToId">
             <summary>
             Partición a la cual apunta el portal.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionPortal.Intersect">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.Intersect">
             <summary>
             Indica si el portal realmente debe realizar una "intersección" de secciones antes de
             renderizar la partición siguiente.
@@ -14504,184 +14680,128 @@
             realizar una intersección. De lo contrario, es necesario.
             </summary>
         </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexPartitionSide">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionSideX">
             <summary>
             Representa un lado de una partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionSide.#ctor">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.#ctor">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Sdex.Maps.SdexPartitionSide"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionSideX"/>.
             
             NOTA: Importante mantener aunque no se use para la serialización/deserialización.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionSide.Panels">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Panels">
             <summary>
             Lista de secciones rectangulares de paredes.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionSide.Portals">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Portals">
             <summary>
             Lista de secciones rectangulares que dan a otras secciones.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexPartitionSide.TextureId">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.TextureId">
             <summary>
             Id de la textura a utilizar. 0, para ninguna.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionSide.Update(System.Int32[0:,0:])">
+        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Update(System.Int32[0:,0:])">
             <summary>
             Actualiza la lista de portales y secciones de pared que se deben renderizar
             en la partición.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Maps.SdexPartitionSide.JustOnePortal">
-            <summary>
-            Indica si este lado tiene sólo un portal.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Sdex.Maps.SdexSector">
+        <member name="T:Kriptok.Z.Convos.Maps.ConvoSectorX">
             <summary>
             Representa una región tridimensional de un mapa.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexSector.Id">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Id">
             <summary>
             Id del sector.
             </summary>
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexSector.Partitions">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Partitions">
             <summary>
             Particiones que componen el sector.
             </summary>        
         </member>
-        <member name="P:Kriptok.Z.Sdex.Maps.SdexSector.Map">
+        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Map">
             <summary>
             Referencia al objeto principal del mapa.
             </summary>
         </member>
-        <member name="T:Kriptok.Z.Sdex.Modes.Full3D.Full3DSdxView">
+        <member name="T:Kriptok.Z.Convos.Modes.Full3DConvoMode">
             <summary>
-            Implementación de mapas Sdex para perspectiva full-3D.
+            Implementación de mapas diseñados con volúmenes convexos para perspectiva full-3D.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
-            <summary>
-            Aplica transformaciones correspondientes al estado actual de la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
-            <summary>
-            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Utiliza una textura para llenar una determinada región de la pantalla, con las
-            coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
-            <summary>
-            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Sdex.Modes.SdxRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.vertices">
+        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.vertices">
             <summary>
             Colección con todos los vértices del mapa.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.texset">
+        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.texset">
             <summary>
             Conjunto de texturas usadas en el mapa.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.partitions">
+        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.partitions">
             <summary>
             Particiones volumétricas del mapa.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.#ctor(Kriptok.Z.Sdex.Maps.SdexConfig,Kriptok.Maps.ITexset{`1})">
+        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.#ctor(Kriptok.Z.Convos.Maps.ConvoMapX,Kriptok.Maps.ITexset{`1})">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="!:SdxViewBase&lt;TVertex, TTexture&gt;"/>.
             </summary>                
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
+        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
             Encuentra un vértice en base a sus coordenadas.
             
             En este caso, sólo devuelvo un nuevo vértice tridimensional.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.Base.SdxViewBase`3.GetPanels">
+        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.GetPanels">
             <summary>
             Obtiene todos los paneles del mapa.
             </summary>        
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.SdxPartition`1.ownerView">
+        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.ownerView">
             <summary>
             Vista principal que contiene la partición.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.SdxPartition`1.Id">
+        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.Id">
             <summary>
             Id de la partición.
             </summary>
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.SdxPartition`1.Volume">
+        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.Volume">
             <summary>
             Volumen de la partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartition`1.#ctor(Kriptok.Z.Sdex.Views.Base.ISdxView{`0},Kriptok.Z.Sdex.Maps.SdexPartition)">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.#ctor(Kriptok.Z.Convos.Views.Base.IConvoMap{`0},Kriptok.Z.Convos.Maps.ConvoPartitionX)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="!:SdxPartition"/>.
+            Devuelve una nueva instancia de la clase <see cref="!:ConvoPartition"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartition`1.GetPanels">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.GetPanels">
             <summary>
             Obtiene todos los paneles de la partición.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartition`1.PostProcessing(Kriptok.Z.Sdex.Views.SdxPartition{`0}[])">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.PostProcessing(Kriptok.Z.Convos.Views.ConvoPartition{`0}[])">
             <summary>
             Genera los portales hacia las otras particiones y realiza otros post-procesamientos
             de la construcción del mapa.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartition`1.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
             Obtiene un vértice de la partición en base a sus coordenadas tridimensionales.
             
@@ -14689,31 +14809,24 @@
             para no tener que aplicar las transformaciones más de una vez a vértices compartidos.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartition`3.#ctor(Kriptok.Z.Sdex.Views.Base.SdxViewBase{`0,`1,`2},Kriptok.Z.Sdex.Maps.SdexPartition)">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`3.#ctor(Kriptok.Z.Convos.Views.Base.ConvoMapBase{`0,`1,`2},Kriptok.Z.Convos.Maps.ConvoPartitionX)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="!:SdxPartition"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartitionSide`1.GeneratePortals(Kriptok.Z.Sdex.Views.SdxPartition{`0}[])">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartitionSide`1.GeneratePortals(Kriptok.Z.Convos.Views.ConvoPartition{`0}[])">
             <summary>
             Genera los portales hacia las otras particiones.
             </summary>        
         </member>
-        <member name="M:Kriptok.Z.Sdex.Views.SdxPartitionSide`1.GetPanels">
+        <member name="M:Kriptok.Z.Convos.Views.ConvoPartitionSide`1.GetPanels">
             <summary>
             Devuelve todos los paneles que componen el lado.
             </summary>        
         </member>
-        <member name="F:Kriptok.Z.Sdex.Views.SdxPartitionSidePortal`1.isUniqueOnThisSide">
-            <summary>
-            Indica si es el único portal sobre ese lado de la partición.
-            Esto significa que puede renderizarse ocluyendo con un rectángulo en lugar
-            de con una figura más compleja.
-            </summary>
-        </member>
         <member name="T:Kriptok.Z.Surfaces.Extensions.SceneHandlerExtensions">
             <summary>
-            Funcionalidades extendidas para la clase <see cref="T:Kriptok.Core.ScreenRegion"/>.
+            Funcionalidades extendidas para la clase <see cref="T:Kriptok.Scenes.SceneHandler"/>.
             </summary>
         </member>
         <member name="T:Kriptok.Z.Surfaces.Maps.TileTexset">
@@ -14726,7 +14839,7 @@
             Tiene todas las texturas de los tiles.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Surfaces.Maps.TileTexset.#ctor(Kriptok.Maps.Tiles.TiledMap,Kriptok.Maps.Tiles.Base.TilesetBase,Kriptok.Views.Shapes.TextureOptions)">
+        <member name="M:Kriptok.Z.Surfaces.Maps.TileTexset.#ctor(Kriptok.Maps.Tiles.TileMap,Kriptok.Maps.Tiles.Base.TilesetBase,Kriptok.Views.Shapes.TextureOptions)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Surfaces.Maps.TileTexset"/>
             </summary>

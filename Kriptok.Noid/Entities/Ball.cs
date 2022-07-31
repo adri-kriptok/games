@@ -17,18 +17,16 @@ using System.Threading.Tasks;
 
 namespace Kriptok.Noid.Entities
 {
-    class Ball : ProcessBase<BallView>
+    class Ball : ProcessBase<IndexedSpriteView>
     {
         private const float initialAngle = -(float)(3 * Math.PI / 8);
+        private const float pi32 = (float)(Math.PI / 32);
         private const float pi60 = (float)(Math.PI / 60);
         private const float pi78 = (float)(7 * Math.PI / 8);
         private const float pi98 = (float)(9 * Math.PI / 8);
 
         private const float pi38 = (float)(3 * Math.PI / 8);
         private const float pi58 = (float)(5 * Math.PI / 8);
-
-        private const float pi118 = (float)(11 * Math.PI / 8);
-        private const float pi138 = (float)(13 * Math.PI / 8);
 
         private const float pi8 = (float)(Math.PI / 8);
         private const float pi158 = (float)(15 * Math.PI / 8);
@@ -42,27 +40,12 @@ namespace Kriptok.Noid.Entities
 
         private const float movementDelta = 1f / 16f;
 
-        /// <summary>
-        /// Indica si está en modo demo.
-        /// </summary>
-        private readonly bool demo = false;
-
         private readonly Racket racket;
 
         /// <summary>
         /// Indica si está agarrada a la paleta.
         /// </summary>
         private bool sticked = false;
-
-        ///// <summary>
-        ///// Velocidad acumulada.
-        ///// </summary>
-        //private float avelocidad;
-
-        // /// <summary>
-        // /// Velocidad de la bola.
-        // /// </summary>
-        // private float velocidad;
 
         /// <summary>
         /// Ángulo de movimiento.
@@ -72,18 +55,42 @@ namespace Kriptok.Noid.Entities
         /// <summary>
         /// Indica si la bola debe rebotar.
         /// </summary>
-        internal bool Rebota = false;
+        private bool bounces = true;
 
-        // /// <summary>
-        // /// Colisionador con ladrillos.
-        // /// </summary>
-        // private ISingleCollisionQuery<Brick> brickCollision;
+        /// <summary>
+        /// Velocidad a la que se desplaza la bola. Cuando se crean nuevas bolas, éstas
+        /// tienen que ir a la misma velocidad que las que las crea.
+        /// </summary>
+        private float currentSpeed = 400f / movementDelta;
 
-        public Ball(Racket racket, bool sticked, bool demo) : base(new BallView())
+        /// <summary>
+        /// Indica si en el próximo frame debe agregar dos bolas más.
+        /// </summary>
+        internal bool CreateBalls = false;
+
+        private Ball(Racket racket) : base(new IndexedSpriteView(typeof(Ball).Assembly, "Assets.Images.Ball.png", 2, 1))
         {
             this.racket = racket;
+        }
+
+        public Ball(Racket racket, bool sticked, bool demo) : this(racket)
+        {
             this.sticked = sticked;
-            this.demo = demo;
+            
+            // Grafico de la bola.
+            View.Graph = 0;
+        }
+
+        /// <summary>
+        /// Crea una bola en base a otra.
+        /// </summary>        
+        private Ball(Ball ball, float angleModifier) : this(ball.racket)
+        {
+            Location = ball.Location;
+            angulo0 = ball.angulo0 + angleModifier;
+            currentSpeed = ball.currentSpeed;
+            bounces = ball.bounces;
+            View.Graph = ball.View.Graph;
         }
 
         public override Vector3F GetRenderLocation()
@@ -97,25 +104,13 @@ namespace Kriptok.Noid.Entities
             return new Vector3F(rl.X, rl.Y - 8f, Location.Z);
         }
 
-        // protected override void OnStart(ProcessStartHandler h)
-        // {
-        //     base.OnStart(h);
-        //     h.CollisionType = Collision2DTypeEnum.Ellipse;
-        //     //this.brickCollision = h.GetCollision2D<Brick>();            
-        // }
-
         protected override void OnBegin()
         {
             Location.Z = 3;
-            // Grafico de la bola
-            View.Graph = 0;
 
             // Inicia variables propias del proceso
-            var speedIncrement = 4f / movementDelta;
-            var velocidad = 400f / movementDelta;
+            var speedIncrement = 4f / movementDelta;            
             var avelocidad = 0f;
-
-            Rebota = true;
 
             Loop(() =>
             {
@@ -138,16 +133,14 @@ namespace Kriptok.Noid.Entities
                     Location = GetStickedLocation();
 
                     // Si se pulsa la tecla espacio
-#if !DEBUG
+#if !DEBUG && !SHOWFPS
                     if (Input.Button03() || demo)  // Lanza la bola
                     {
 #endif
-                    angulo0 = Rand.Next(0, 1) == 0 ? angulo0 : MathHelper.PIF - angulo0;
-                    sticked = false;
-                    // x_resol=x*100;
-                    // y_resol=y*100;
-#if !DEBUG
-                }
+                        angulo0 = Rand.Next(0, 1) == 0 ? angulo0 : MathHelper.PIF - angulo0;
+                        sticked = false;                    
+#if !DEBUG && !SHOWFPS
+                    }
 #endif
                     Frame();
                 });
@@ -157,19 +150,16 @@ namespace Kriptok.Noid.Entities
                     // Obtengo los ladrillos que están actualmente vivos para validar colisiones.
                     var livingBricks = Find.All<Brick>().Where(p => p.Bounces).ToArray();
 
-                    //     if (estado==1)       // Multibola
-                    //         nbolas+=2;
-                    //         CLONE           // Crea dos bolas mas en otros angulos
-                    //             angulo0+=pi/32;
-                    //             CLONE
-                    //                 angulo0+=pi/32;
-                    //             }
-                    //         }
-                    //         estado=0;
-                    //     }
+                    // Multibola
+                    if (CreateBalls)       
+                    {
+                        Add(new Ball(this, -pi32));
+                        Add(new Ball(this, +pi32));                        
+                        CreateBalls = false;
+                    };
 
                     // En cada impresion de pantalla suma avelocidad con velocidad
-                    avelocidad = velocidad;
+                    avelocidad = currentSpeed;
 
                     // Comprueba la trayectoria y la colision con los ladrillos
                     while (avelocidad > 100)
@@ -267,39 +257,40 @@ namespace Kriptok.Noid.Entities
                             // Flag para saber si colisionó o no contra un ladrillo.
                             var hitFlag = false;
 
+                            // Utilizado para calcular intersecciones.
                             var p0 = Location.XY();
 
                             // Recorro los ladrillos encontrados.
                             foreach (var brick in bricks)
-                            {                              
+                            {
                                 // Me fijo si sigue collisionando con este ladrillo.
-                                if (Rebota || brick.Bounces)
-                                {                                   
+                                if (brick.Bounces && (bounces || !brick.CanBeDestroyed()))
+                                {
                                     var p1 = brick.Location.XY();
 
                                     // Lado de arriba.
                                     var rY00 = p1.Plus(-8, -4);
-                                    var rY01 = p1.Plus( 8, -4);
+                                    var rY01 = p1.Plus(8, -4);
 
                                     // Lado de abajo.
                                     var rY10 = p1.Plus(-8, 4);
-                                    var rY11 = p1.Plus( 8, 4);
+                                    var rY11 = p1.Plus(8, 4);
 
                                     var y0 = Vector2F.Intersection(p0, p1, rY00, rY01);
                                     var y1 = Vector2F.Intersection(p0, p1, rY10, rY11);
 #if DEBUG
                                     // Lado izquierdo.
                                     var rX00 = p1.Plus(-8, -4);
-                                    var rX01 = p1.Plus(-8,  4);
+                                    var rX01 = p1.Plus(-8, 4);
 
                                     // Lado derecho.
                                     var rX10 = p1.Plus(8, -4);
-                                    var rX11 = p1.Plus(8,  4);
+                                    var rX11 = p1.Plus(8, 4);
 
                                     var x0 = Vector2F.Intersection(p0, p1, rX00, rX01);
                                     var x1 = Vector2F.Intersection(p0, p1, rX10, rX11);
 
-                                    if(!x0.HasValue && !y0.HasValue && !x1.HasValue && !y1.HasValue)
+                                    if (!x0.HasValue && !y0.HasValue && !x1.HasValue && !y1.HasValue)
                                     {
                                         Debugger.Break();
                                     }
@@ -351,21 +342,7 @@ namespace Kriptok.Noid.Entities
                                             }
                                         }
 
-                                        //// if ((angulo0<pi/8) && (angulo0>-pi/8))
-                                        //// //if ((angulo0>pi*7/8) && (angulo0<pi*9/8))
-                                        //if (((angulo0 > -pi8) && (angulo0 < pi8)) ||
-                                        //    ((angulo0 < -pi78) && (angulo0 > -pi98)))
-                                        //{ 
-                                        //    angulo0= MathHelper.GetAngleF(-incX, incY);
-                                        //}
-
-                                        // if 
-                                        // {
-                                        //     angulo0= MathHelper.GetAngleF(-incX, incY);
-                                        // }
-
                                         // sound(s_metal,100,256);
-                                        // Cambia el angulo de manera vertical
                                     }
                                     else
                                     {
@@ -396,17 +373,6 @@ namespace Kriptok.Noid.Entities
                                             }
                                         }
 
-                                        // Ya rebotó verticalemente esta vez.
-                                        // collVertical = true;
-
-                                        //angulo0=fget_angle(0,0,incr_x,-incr_y)+rand(-4000,4000);
-                                        // if ((angulo0 < pi / 8) && (angulo0 > -pi / 8))
-                                        // {
-                                        //     angulo0 = fget_angle(0, 0, incr_x, -incr_y);
-                                        // }
-                                        // if ((angulo0 > pi * 7 / 8) && (angulo0 < pi * 9 / 8)) {
-                                        //     angulo0 = fget_angle(0, 0, incr_x, -incr_y);
-                                        // }
                                         // sound(s_metal, 100, 256);
                                     }
 
@@ -414,11 +380,16 @@ namespace Kriptok.Noid.Entities
                                     hitFlag = true;
                                     brick.Hit();
                                 }
+                                else if(brick.CanBeDestroyed())
+                                {
+                                    // Si no rebota, es porque es una "super-ball"
+                                    brick.Hit();
+                                }
                             }
 
                             if (hitFlag)
                             {
-                                velocidad = Math.Min(16000, velocidad + speedIncrement);
+                                currentSpeed = Math.Min(16000, currentSpeed + speedIncrement);
                                 break;
                             }
                         }
@@ -461,45 +432,59 @@ namespace Kriptok.Noid.Entities
                         //}
                     }
 
-                    racket.Location.X = Location.X;
-
                     Frame();
                     // Repite hasta que se salga de pantalla o en modo pegamento
                 }, () => Location.Y > 200f || sticked);
 
-                // if (NOT parado)     // Bola perdida
-                //     // Reinicia esta bola
-                //     velocidad=400;
-                //     angulo0=3*pi/8;
-                //     nbolas--;       // Resta uno al contador de bolas
-                //     if (nbolas>0)   // Si se tienen mas bolas se sale
-                //         BREAK;
-                //      } else {            // Quita una raqueta cuando es la ultima bola
-                //         fade_off();
-                //         fade_on();
-                //         camb_dir=1;
-                //         rebota=1;
-                //         graph=1;
-                //         id_raqueta.graph=3;
-                //         if(vidas>0)
-                //             signal(pequenio_r[vidas-1],s_kill);
-                //         }
-                //         signal(type pildora,s_kill);
-                //         if (NOT demo)   // Si no esta en modo demo quita una vida
-                //             vidas--;
-                //             if (vidas<0)    // Si no quedan vidas se acaba el juego
-                //                 fin_juego=1;
-                //                 BREAK;
-                //             }
-                //         }
-                //     }     
+                // -------------------------------------
+                // Bola perdida
+                // -------------------------------------
+                if (!sticked)
+                {
+                    // Reinicia esta bola
+                    // velocidad = 400;
+                    // angulo0 = 3 * pi / 8;
+                                        
+                    var ballCount = Find.All<Ball>().Count() - 1;       
+                    if (ballCount > 0)   // Si se tienen mas bolas se sale                       
+                    {
+                        Die();
+                        return;
+                    }
+                    else
+                    {
+                        // base.FadeOff();
+                        // base.FadeOn();
+                        // // Quita una raqueta cuando es la ultima bola
+                        // fade_off();
+                        // fade_on();
+                        // camb_dir=1;
+                        // rebota=1;
+                        // graph=1;
+                        // id_raqueta.graph=3;
+                        // if(vidas>0)
+                        // { 
+                        //     signal(pequenio_r[vidas-1],s_kill);
+                        // }
+                        // signal(type pildora,s_kill);
+                        // if (NOT demo)   // Si no esta en modo demo quita una vida
+                        // { 
+                        //     vidas--;
+                        //     if (vidas<0)    // Si no quedan vidas se acaba el juego
+                        //     { 
+                        //         fin_juego=1;
+                        //         BREAK;
+                        //     }
+                        // }
+                    }
+                }
                 Frame();
             });
         }
 
         private bool OnCollision(Brick[] livingBricks, out IEnumerable<Brick> bricks)
         {
-            var circle = GetCircle();
+            var circle = new Circle(Location.XY(), 3.75f);
 
             var list = new List<Brick>();
 
@@ -521,28 +506,20 @@ namespace Kriptok.Noid.Entities
                 bricks = list;
                 return true;
             }
-            //else
-            //{
-            //    //Trace.WriteLine($"{DateTime.Now.Millisecond:000} {list.Count}");
-            //    var loc = Location.XY();
-            //    bricks = new Brick[1] { list.OrderBy(p => MathHelper.GetDistanceF(p.Location.XY(), loc)).First() };
-            //    //bricks = list;
-            //    return true;
-            //}
         }
 
-        private Circle GetCircle()
-        {
-            // return new Circle(Location.XY(), 3.2f);
-            return new Circle(Location.XY(), 3.75f);
-        }
-    }
+        /// <summary>
+        /// Indica que agarró una píldora que genera múltiples bolas.
+        /// </summary>
+        internal void MultiBallPicked() => CreateBalls = true;
 
-    class BallView : IndexedSpriteView
-    {
-        public BallView() : base(new Resource(typeof(BallView).Assembly, "Assets.Images.Ball.png"), 1, 1)
+        /// <summary>
+        /// Convierte a la bola en una bola que no rebota.
+        /// </summary>
+        internal void SuperBallPicked()
         {
-            Add(typeof(BallView).Assembly, "Assets.Images.BallSuper.png", 1, 1);
+            bounces = false;
+            View.Graph = 1;
         }
     }
 }

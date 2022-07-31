@@ -37,7 +37,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
     <OutputPath>bin\Release-FPS\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;SHOWFPS</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,10 +48,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.16.37\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.16.47\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.16.33\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.16.40\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -99,6 +99,7 @@
     <EmbeddedResource Include="Assets\Levels\Level11.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level12.noidx" />
     <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include=".sdk\tools\TileMapEditor\TileMapEditor.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,7 +117,6 @@
     <EmbeddedResource Include="Assets\Images\Backs\Back3.png" />
     <EmbeddedResource Include="Assets\Images\Backs\Back4.png" />
     <EmbeddedResource Include="Assets\Images\Ball.png" />
-    <EmbeddedResource Include="Assets\Images\BallSuper.png" />
     <EmbeddedResource Include="Assets\Images\Blocks\Block1.png" />
     <EmbeddedResource Include="Assets\Images\Blocks\Block2.png" />
     <EmbeddedResource Include="Assets\Images\Blocks\Block3.png" />
@@ -133,11 +133,11 @@
     <EmbeddedResource Include="Assets\Images\PadNormal.png" />
     <EmbeddedResource Include="Assets\Images\PadSmall.png" />
     <EmbeddedResource Include="Assets\Images\Pills\B_Backwards.png" />
-    <EmbeddedResource Include="Assets\Images\Pills\D_MultiBall.png" />
-    <EmbeddedResource Include="Assets\Images\Pills\E_Extended.png" />
-    <EmbeddedResource Include="Assets\Images\Pills\G_Glue.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\D.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\E_Extend.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\C_ChangeBlocks.png" />
     <EmbeddedResource Include="Assets\Images\Pills\L_Laser.png" />
-    <EmbeddedResource Include="Assets\Images\Pills\M_ChangeBlocks.png" />
+    <EmbeddedResource Include="Assets\Images\Pills\M_MultiBall.png" />
     <EmbeddedResource Include="Assets\Images\Pills\P_Life.png" />
     <EmbeddedResource Include="Assets\Images\Pills\R_Reduce.png" />
     <EmbeddedResource Include="Assets\Images\Pills\S_Speed.png" />
@@ -155,20 +155,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.pdb" />
     <Content Include=".sdk\bin\Debug\Kriptok.xml" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.pdb" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
     <Content Include=".sdk\bin\Release\Kriptok.dll" />
     <Content Include=".sdk\bin\Release\Kriptok.xml" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.pdb" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.xml" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.xml" />
     <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.exe" />
-    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.pdb" />
+    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

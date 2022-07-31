@@ -127,6 +127,8 @@ namespace Kriptok.Noid.Entities
                 view.Graph++;
             }
         }
+
+        internal override bool CanBeDestroyed() => base.CanBeDestroyed() && view.Graph == 0;
     }
 
     class BrickSolid : Brick

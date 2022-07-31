@@ -10,6 +10,6 @@ set to=%cd%
  REM echo TO   : %to%   >> build.log
 
 copy "%from%\Kriptok.dll" "%to%\Kriptok.dll" /y
-copy "%from%\Kriptok.pdb" "%to%\Kriptok.pdb" /y
+REM copy "%from%\Kriptok.pdb" "%to%\Kriptok.pdb" /y
 copy "%from%\Kriptok.xml" "%to%\Kriptok.xml" /y
 
