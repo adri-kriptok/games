@@ -30,9 +30,9 @@ namespace Kriptok.Noid.Entities
 
         private const float pi8 = (float)(Math.PI / 8);
         private const float pi158 = (float)(15 * Math.PI / 8);
-        private const float mpi78 = -pi78;
-        private const float mpi98 = -pi98;
-        private const float mpi8 = -pi8;
+        // private const float mpi78 = -pi78;
+        // private const float mpi98 = -pi98;
+        // private const float mpi8 = -pi8;
         private const float mpi38 = -pi38;
         private const float mpi58 = -pi58;
 
@@ -41,6 +41,11 @@ namespace Kriptok.Noid.Entities
         private const float movementDelta = 1f / 16f;
 
         private readonly Racket racket;
+
+        /// <summary>
+        /// Indica si está en modo demo.
+        /// </summary>
+        private bool demo = false;
 
         /// <summary>
         /// Indica si está agarrada a la paleta.
@@ -75,6 +80,7 @@ namespace Kriptok.Noid.Entities
 
         public Ball(Racket racket, bool sticked, bool demo) : this(racket)
         {
+            this.demo = demo;
             this.sticked = sticked;
             
             // Grafico de la bola.
@@ -188,8 +194,8 @@ namespace Kriptok.Noid.Entities
 
                         // Toca la bola al ojo de la raqueta
                         if (newXY.Y >= 180f && newXY.Y <= 188f && incY > 0f &&
-                            (dist_raqueta > -18f - racket.tamanio_raqueta &&
-                             dist_raqueta < 18f + racket.tamanio_raqueta))
+                            (dist_raqueta > -18f - racket.currentSize &&
+                             dist_raqueta < 18f + racket.currentSize))
                         {
                             angulo0 = MathHelper.SimplifyAngle(MathHelper.GetAngleF(incX, -incY) + (dist_raqueta * pi60) * 0.5f);
 
@@ -222,11 +228,12 @@ namespace Kriptok.Noid.Entities
                             //     angulo0 = angulo0.Clamp(pi98, pi158);
                             // }
 
-                            // // Raqueta pegamento
-                            // if (id_raqueta.graph==5)
-                            //     parado=1;
-                            //     BREAK;
-                            // }
+                            // Raqueta pegamento
+                            if (racket.Sticky) 
+                            {                                
+                                sticked = true;
+                                break;                                
+                            }
 
                             // sound(s_raqueta,100,256);
                         }
@@ -482,6 +489,11 @@ namespace Kriptok.Noid.Entities
             });
         }
 
+        /// <summary>
+        /// Libera la bola si estaba pegada a la raqueta.
+        /// </summary>
+        internal void Release() => sticked = false;
+
         private bool OnCollision(Brick[] livingBricks, out IEnumerable<Brick> bricks)
         {
             var circle = new Circle(Location.XY(), 3.75f);
@@ -520,6 +532,14 @@ namespace Kriptok.Noid.Entities
         {
             bounces = false;
             View.Graph = 1;
+        }
+
+        /// <summary>
+        /// Reduce la velocidad de la bola.
+        /// </summary>
+        internal void DecreaseSpeedPicked()
+        {
+            currentSpeed = Math.Max(currentSpeed - 400, 400);
         }
     }
 }

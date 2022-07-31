@@ -1,5 +1,6 @@
 ﻿using Kriptok.Common;
 using Kriptok.Extensions;
+using Kriptok.Noid.Entities.Pills;
 using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Objects.Collisions.Queries;
@@ -21,7 +22,14 @@ namespace Kriptok.Noid.Entities
         /// </summary>
         public const int MaxSpeed = 8;
 
+        /// <summary>
+        /// Indica si está en modo demo.
+        /// </summary>
         private readonly bool demo;
+
+        /// <summary>
+        /// Bola por defecto a aplicar el "multi-ball".
+        /// </summary>
         private Ball ball;
 
         /// <summary>
@@ -32,15 +40,27 @@ namespace Kriptok.Noid.Entities
         /// <summary>
         /// Tamanio de la raqueta.
         /// </summary>
-        internal int tamanio_raqueta=4;
+        internal int currentSize=4;
 
-        private float incX = 0;               // Incremento x
+        /// <summary>
+        /// Indica si la raqueta tiene pegamento.
+        /// </summary>
+        internal bool Sticky { get; private set; } = false;
 
-        private bool fuego_preparado = true;      // Bandera. 1=Disparo disponible
-        private ISingleCollisionQuery<Pill> pillCollision;
+        /// <summary>
+        /// Indica si la raqueta puede disparar lasers.
+        /// </summary>
+        private bool laser = true;
 
-        // id2;                    // Identificador general
-        // id3;                    // Identificador de caracter general
+        /// <summary>
+        /// Indica si está listo para disparar un laser.
+        /// </summary>
+        private bool readyToFire = true;
+
+        /// <summary>
+        /// Control de colisiones con píldoras.
+        /// </summary>
+        private ISingleCollisionQuery<PillBase> pillCollision;
 
         public Racket(bool demo) : base(new RacketView())
         {
@@ -60,7 +80,7 @@ namespace Kriptok.Noid.Entities
         {
             base.OnStart(h);
             h.CollisionType = Collision2DTypeEnum.Rectangle;
-            this.pillCollision = h.GetCollision2D<Pill>();
+            this.pillCollision = h.GetCollision2D<PillBase>();
         }
 
         protected override void OnBegin()
@@ -74,6 +94,9 @@ namespace Kriptok.Noid.Entities
 
             // Espera si no hay bola
             While(() => ball == null, () => Frame());
+
+            // Incremento x.
+            var incX = 0f;              
 
             Loop(() =>
             {
@@ -127,53 +150,40 @@ namespace Kriptok.Noid.Entities
                 }
 
                 // Comprueba si se pulsa las teclas de disparo y se tiene la modalidad de disparo
-                if ((Input.Button03() || (demo && Rand.Next(0, 10) == 0)) && View.Graph == 4)
+                if ((Input.Button03() || (demo && Rand.Next(0, 15) == 0)) && laser)
                 {
                     // Si no ha disparado esta vez
-                    if (fuego_preparado)
+                    if (readyToFire)
                     {
-                        // laser(x-16,y-8);    // Dispara los lasers...
-                        // laser(x+16,y-8);
+                        // sound(s_fuego, 80, 400);  // Y realiza sonido
+
+                        // Dispara los lasers...
+                        Add(new Laser(Location.X - 16f, Location.Y - 8f));
+                        Add(new Laser(Location.X + 16f, Location.Y - 8f));
                         if (!demo)
                         {
                             // Y lo deja preparado para disparar de uno en uno
-                            fuego_preparado = false;
+                            readyToFire = false;
                         }
                     }
                 }
                 else
                 {
                     // Permite volver a disparar
-                    fuego_preparado = true;
+                    readyToFire = true;
                 }
 
                 //    // Comprueba cuando coges una p¡ldora de bonos                
-                if (pillCollision.OnCollision(out Pill pill))
+                if (pillCollision.OnCollision(out PillBase pill))
                 {
                     pill.Pick();                    
                 //        if (id2.size==100)                  // Comprueba que no se halla cogido antes
                 //            sound(s_pildora,80,256);
                 //            puntuacion+=50;                 // Suma puntos
                 //            switch (id2.graph);             // Comprueba que tipo de pildora es
-                //                CASE 200:                   // P¡ldora de extension
-                //                    if (tamanio_raqueta<8)   // Comprueba que extension tiene actualmente
-                //                        tamanio_raqueta+=4;
-                //                    }
-                //                    if (tamanio_raqueta==4)  // Coloca el grafico dependiendo del tamanio
-                //                        graph=3;
-                //                     } else {
-                //                        graph=4;
-                //                    }
-                //                    // Deja que la bola se mueva si es que estaba en modo pegamento
-                //                    id3=get_id(TYPE bola);
-                //                    While(() =>  (id3)
-                //                        id3.parado=0;
-                //                        id3=get_id(TYPE bola);
-                //                    }
-                //                }
+
                 //                CASE 201:               // P¡ldora pegamento
-                //                    tamanio_raqueta=4;   // Pone el tamanio en normal
-                //                    graph=5;            // Selecciona el grafico necesario
+
                 //                }
                 //                CASE 202:               // P¡ldora de disparo
                 //                    tamanio_raqueta=4;   // Pone el tamanio en normal
@@ -190,13 +200,8 @@ namespace Kriptok.Noid.Entities
                 //                        pequenio_r[vidas-1]=pequenia_raq(296,16+11*(vidas-1));
                 //                    };
                 //                }
-                //                CASE 204:               // P¡ldora de controles invertidos
-                //                    camb_dir=camb_dir*-1;
-                //                }
                 //                CASE 205:               // Reduce la raqueta
-                //                    if (tamanio_raqueta>0)   // Reduce el tamanio de la raqueta si se puede
-                //                        tamanio_raqueta-=4;
-                //                    }
+                //                 
                 //                    if (tamanio_raqueta==0)  // Selecciona el grafico necesario
                 //                        graph=2;
                 //                     } else {
@@ -219,42 +224,45 @@ namespace Kriptok.Noid.Entities
                 //                        }
                 //                        id3=get_id(TYPE bola);
                 //                    }
-                //                }
-                //                CASE 207:                   // P¡ldora de superbola
-                //                    rebota=rebota ^ 1;    // Quita el rebote con los ladrillos
-                //                    id3=get_id(TYPE bola);
-                //                    While(() =>  (id3)
-                //                        id3.graph=1+(1-rebota)*8;    // Cambia el grafico
-                //                        id3=get_id(TYPE bola);
-                //                    }
-                //                }
+                //                }             
                 //                
                 //                }
-
                 //            }
                 //        }
                 //        id2.estado=1;   // Quita ese bonus
                 }
 
                 // Si no esta en demo mueve la paleta
-                if (!demo) 
+                if (!demo)
                 {
-                    Location.X+=incX; 
-                }
-
-#if DEBUG || SHOWFPS                
-                Location.X = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
+                    Location.X += incX;
+#if DEBUG || SHOWFPS
+                    Location.X = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
 #endif
+                }
+                else
+                {
+                    // Tomo la X de la bola más cercana.
+                    var bX = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
+                    if (bX < Location.X)
+                    {
+                        Location.X -= Math.Min(4f, Location.X - bX);
+                    } 
+                    else if (bX > Location.X)
+                    {
+                        Location.X += Math.Min(4f, bX - Location.X);
+                    }
+                }
 
                 // Limites de la pantalla segun el tamanio
-                if (Location.X < 24f + tamanio_raqueta)
+                if (Location.X < 24f + currentSize)
                 {
-                    Location.X = 24f + tamanio_raqueta;
+                    Location.X = 24f + currentSize;
                     incX = 0f;
                 }
-                if (Location.X > 249f - tamanio_raqueta)
+                if (Location.X > 249f - currentSize)
                 {
-                    Location.X = 249f - tamanio_raqueta;
+                    Location.X = 249f - currentSize;
                     incX = 0f;
                 }
                 Frame();
@@ -262,12 +270,12 @@ namespace Kriptok.Noid.Entities
         }
 
         /// <summary>
-        /// Acción a realizar cuando se agarra una píldora violeta que invierte las direcciones del teclado.
+        /// Evento a disparar cuando se agarra una píldora violeta que invierte las direcciones del teclado.
         /// </summary>
-        internal void Backwards() => backwardsControl = backwardsControl * -1;        
+        internal void BackwardsPillPicked() => backwardsControl = backwardsControl * -1;
 
         /// <summary>
-        /// Indica que agarró una píldora que genera múltiples bolas.
+        /// Evento a disparar cuando agarró una píldora que genera múltiples bolas.
         /// </summary>
         internal void MultiBallPillPicked()
         {
@@ -279,6 +287,101 @@ namespace Kriptok.Noid.Entities
             if (ball != null)
             {
                 ball.MultiBallPicked();
+            }
+        }
+
+        /// <summary>
+        /// Evento a disparar cuando se come una píldora E.
+        /// </summary>
+        internal void ExtendRacketBallPillPicked()
+        {
+            // Comprueba que extension tiene actualmente
+            if (currentSize < 8)
+            {
+                currentSize += 4;
+                ReleaseBalls();
+                laser = false;
+
+                // Coloca el grafico dependiendo del tamanio
+                UpdateGraph();
+            }
+        }
+
+        /// <summary>
+        /// Libera las bolas, si estaba en modo "sticked".
+        /// </summary>
+        private void ReleaseBalls()
+        {
+            if (Sticky)
+            {
+                Find.All<Ball>().ForEach(b => b.Release());
+                Sticky = false;
+            }
+        }
+
+        /// <summary>
+        /// Evento a disparar cuando se come una píldora R.
+        /// </summary>
+        internal void ReduceRacketBallPillPicked()
+        {
+            // Comprueba que extension tiene actualmente
+            if (currentSize > 0)
+            {
+                currentSize -= 4;
+                ReleaseBalls();
+                laser = false;
+
+                // Coloca el grafico dependiendo del tamanio
+                UpdateGraph();
+            }
+        }
+
+        /// <summary>
+        /// Evento a disparar cuando se come una píldora S.
+        /// </summary>
+        internal void StickyRacketPillPicked()
+        {
+            // Pone el tamanio en normal
+            currentSize=4;   
+            Sticky = true;
+            laser = false;
+            
+            // Coloca el grafico dependiendo del tamanio
+            UpdateGraph();            
+        }
+
+        /// <summary>
+        /// Evento a disparar cuando se come una píldora S.
+        /// </summary>
+        internal void LaserPillPicked()
+        {
+            // Pone el tamanio en normal
+            currentSize = 4;
+            ReleaseBalls();
+            laser = true;
+
+            // Coloca el grafico dependiendo del tamanio
+            UpdateGraph();
+        }
+
+        private void UpdateGraph()
+        {
+            if (Sticky)
+            {
+                View.Graph = 3;
+            }
+            else if (laser)
+            {
+                View.Graph = 4;
+            }
+            else
+            {
+                switch (currentSize)
+                {
+                    case 0: View.Graph = 1; break;
+                    case 4: View.Graph = 0; break;
+                    case 8: View.Graph = 2; break;
+                }
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Noid.Entities.Pills;
+using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Views.Sprites;
 using System;
@@ -37,6 +38,11 @@ namespace Kriptok.Noid.Entities
             h.CollisionType = Collision2DTypeEnum.Rectangle;
         }
 
+        /// <summary>
+        /// Indica si el bloque puede ser golpeado (por un laser).
+        /// </summary>        
+        internal virtual bool CanBeHit() => true;
+
         internal static string GetBrickName(int type)
         {
             return $"Assets.Images.Blocks.Block{type}.png";
@@ -46,7 +52,7 @@ namespace Kriptok.Noid.Entities
         {
             if (addPill)
             {
-                Add(Pill.Create(Location, Rand.Next(0, 9)));
+                Add(PillBase.Create(Location, Rand.Next(0, 9)));
                 addPill = false;
             }
 
@@ -192,5 +198,7 @@ namespace Kriptok.Noid.Entities
         {
             this.change = true;
         }
+
+        internal override bool CanBeHit() => false;
     }
 }
