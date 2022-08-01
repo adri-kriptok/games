@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class MultiBallPill : PillBase
     {
-        internal MultiBallPill(Vector3F location, int index) : base(location, index)
+        internal MultiBallPill(Vector3F location) : base(location, "M_MultiBall.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().MultiBallPillPicked();
         }
     }

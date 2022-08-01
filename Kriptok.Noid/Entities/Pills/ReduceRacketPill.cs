@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class ReduceRacketPill : PillBase
     {
-        internal ReduceRacketPill(Vector3F location, int index) : base(location, index)
+        internal ReduceRacketPill(Vector3F location) : base(location, "R_ReduceRacket.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().ReduceRacketBallPillPicked();
         }
     }

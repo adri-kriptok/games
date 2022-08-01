@@ -81,6 +81,7 @@
     <Compile Include="Entities\Pills\PillBase.cs" />
     <Compile Include="Entities\Pills\ReduceRacketPill.cs" />
     <Compile Include="Entities\Pills\LaserRacketPill.cs" />
+    <Compile Include="Entities\Pills\LifePill.cs" />
     <Compile Include="Entities\Pills\StickyRacketPill.cs" />
     <Compile Include="Entities\Pills\ToughBallPill.cs" />
     <Compile Include="Entities\Racket.cs" />

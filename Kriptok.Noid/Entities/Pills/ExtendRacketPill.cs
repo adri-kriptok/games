@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class ExtendRacketPill : PillBase
     {
-        internal ExtendRacketPill(Vector3F location, int index) : base(location, index)
+        internal ExtendRacketPill(Vector3F location) : base(location, "E_ExtendRacket.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().ExtendRacketBallPillPicked();
         }
     }

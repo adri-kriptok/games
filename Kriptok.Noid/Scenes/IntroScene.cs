@@ -49,6 +49,7 @@ namespace Kriptok.Noid.Scenes
             else
             {
                 h.FadeOff();
+                Global.ResetValues();
                 h.Set(new LevelScene(Consts.FirstLevel, true));
             }
         }

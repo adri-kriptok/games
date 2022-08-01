@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class ToughBallPill : PillBase
     {
-        internal ToughBallPill(Vector3F location, int index) : base(location, index)
+        internal ToughBallPill(Vector3F location) : base(location, "T_SuperBall.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             foreach (var ball in Find.All<Ball>())
             {
                 ball.SuperBallPicked();

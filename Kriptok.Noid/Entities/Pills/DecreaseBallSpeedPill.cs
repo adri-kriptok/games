@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class DecreaseBallSpeedPill : PillBase
     {
-        internal DecreaseBallSpeedPill(Vector3F location, int index) : base(location, index)
+        internal DecreaseBallSpeedPill(Vector3F location) : base(location, "D_DecreaseSpeed.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             foreach (var ball in Find.All<Ball>())
             {
                 ball.DecreaseSpeedPicked();

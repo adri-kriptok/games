@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class BackwardsPill : PillBase
     {
-        internal BackwardsPill(Vector3F location, int index) : base(location, index)
+        internal BackwardsPill(Vector3F location) : base(location, "B_Backwards.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().BackwardsPillPicked();
         }
     }

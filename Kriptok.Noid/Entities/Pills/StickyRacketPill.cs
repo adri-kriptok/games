@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class StickyRacketPill : PillBase
     {
-        internal StickyRacketPill(Vector3F location, int index) : base(location, index)
+        internal StickyRacketPill(Vector3F location) : base(location, "S_StickyRacket.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().StickyRacketPillPicked();
         }
     }

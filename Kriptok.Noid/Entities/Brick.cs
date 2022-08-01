@@ -39,7 +39,7 @@ namespace Kriptok.Noid.Entities
         }
 
         /// <summary>
-        /// Indica si el bloque puede ser golpeado (por un laser).
+        /// Indica si el bloque puede ser golpeado.
         /// </summary>        
         internal virtual bool CanBeHit() => true;
 

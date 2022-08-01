@@ -50,7 +50,7 @@ namespace Kriptok.Noid.Entities
         /// <summary>
         /// Indica si la raqueta puede disparar lasers.
         /// </summary>
-        private bool laser = true;
+        private bool laser = false;
 
         /// <summary>
         /// Indica si está listo para disparar un laser.
@@ -66,7 +66,7 @@ namespace Kriptok.Noid.Entities
         {
             this.demo = demo;
 
-            // Coordenadas iniciales
+            // Coordenadas iniciales.
             Location.X = 140;
             Location.Y = 188;
         }
@@ -102,31 +102,29 @@ namespace Kriptok.Noid.Entities
             {
                 // El jugador controla la raqueta
                 if (!demo)
-                {
-                    // if (camb_dir == 1)
-                    // {
-                        // Comprueba la pulsacion de las teclas de los cursores
-                        if (Input.Left() && incX > -MaxSpeed)
+                {                    
+                    // Comprueba la pulsacion de las teclas de los cursores
+                    if (Input.Left() && incX > -MaxSpeed)
+                    {
+                        incX -= 4 * backwardsControl;  // Acelera
+                    }
+                    else if (Input.Right() && incX < MaxSpeed)
+                    {
+                        incX += 4 * backwardsControl;  // Acelera
+                    }
+                    else
+                    {
+                        // Ninguna tecla pulsada
+                        if (incX > 0)
                         {
-                            incX -= 4 * backwardsControl;  // Acelera
+                            incX -= 2 * backwardsControl;
                         }
-                        else if (Input.Right() && incX < MaxSpeed)
+                        else if (incX < 0)
                         {
-                            incX += 4 * backwardsControl;  // Acelera
+                            // Frena la raqueta
+                            incX += 2 * backwardsControl;
                         }
-                        else
-                        {
-                            // Ninguna tecla pulsada
-                            if (incX > 0)
-                            {
-                                incX -= 2 * backwardsControl;
-                            }
-                            else if (incX < 0)
-                            {
-                                // Frena la raqueta
-                                incX += 2 * backwardsControl;
-                            }
-                        }
+                    }
                 }
                 else 
                 {  
@@ -177,59 +175,6 @@ namespace Kriptok.Noid.Entities
                 if (pillCollision.OnCollision(out PillBase pill))
                 {
                     pill.Pick();                    
-                //        if (id2.size==100)                  // Comprueba que no se halla cogido antes
-                //            sound(s_pildora,80,256);
-                //            puntuacion+=50;                 // Suma puntos
-                //            switch (id2.graph);             // Comprueba que tipo de pildora es
-
-                //                CASE 201:               // P¡ldora pegamento
-
-                //                }
-                //                CASE 202:               // P¡ldora de disparo
-                //                    tamanio_raqueta=4;   // Pone el tamanio en normal
-                //                    graph=6;            // Selecciona el grafico necesario
-                //                    id3=get_id(TYPE bola);
-                //                    While(() =>  (id3)
-                //                        id3.parado=0;   // Quita el modo pegamento
-                //                        id3=get_id(TYPE bola);
-                //                    }
-                //                }
-                //                CASE 203:               // P¡ldora de vida extra
-                //                    if (vidas<3)        // Si se tienen menos de 3 vidas, crea una mas
-                //                        vidas++;
-                //                        pequenio_r[vidas-1]=pequenia_raq(296,16+11*(vidas-1));
-                //                    };
-                //                }
-                //                CASE 205:               // Reduce la raqueta
-                //                 
-                //                    if (tamanio_raqueta==0)  // Selecciona el grafico necesario
-                //                        graph=2;
-                //                     } else {
-                //                        graph=3;
-                //                    }
-                //                    id3=get_id(TYPE bola);
-                //                    While(() =>  (id3)
-                //                        id3.parado=0;       // Quita el modo pegamento si existiera
-                //                        id3=get_id(TYPE bola);
-                //                    }
-                //                }
-                //                CASE 206:               // P¡ldora de velocidad
-                //                    // Decrementa la velocidad de la bola si se puede
-                //                    id3=get_id(TYPE bola);
-                //                    While(() =>  (id3)
-                //                        if (id3.velocidad>800)
-                //                            id3.velocidad-=400;
-                //                         } else {
-                //                            id3.velocidad=400;
-                //                        }
-                //                        id3=get_id(TYPE bola);
-                //                    }
-                //                }             
-                //                
-                //                }
-                //            }
-                //        }
-                //        id2.estado=1;   // Quita ese bonus
                 }
 
                 // Si no esta en demo mueve la paleta

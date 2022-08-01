@@ -4,14 +4,12 @@ namespace Kriptok.Noid.Entities.Pills
 {
     internal class LaserRacketPill : PillBase
     {
-        internal LaserRacketPill(Vector3F location, int index) : base(location, index)
+        internal LaserRacketPill(Vector3F location) : base(location, "L_Laser.png")
         {
         }
 
         protected override void OnPick()
         {
-            base.OnPick();
-
             Find.First<Racket>().LaserPillPicked();
         }
     }

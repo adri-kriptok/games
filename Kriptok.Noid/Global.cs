@@ -19,7 +19,7 @@ namespace Kriptok.Noid
         /// <summary>
         /// Cantidad de vidas iniciales.
         /// </summary>
-        public const int InitialLives = 3;
+        public const int InitialLives = 1;
 
         /// <summary>
         /// Mayor cantidad de vidas que se pueden ver en pantalla.
@@ -45,5 +45,12 @@ namespace Kriptok.Noid
         /// Vidas que tiene el jugador actualmente.
         /// </summary>
         public static int Lives;
+
+        internal static void ResetValues()
+        {
+            // Reseteo la puntuación para el modo demo, o si estoy empezando a jugar.
+            Global.Score = 0;
+            Global.Lives = Consts.InitialLives;
+        }
     }
 }

@@ -9,6 +9,24 @@ using System.Windows.Forms;
 
 namespace Kriptok.Noid.Scenes
 {
+    public enum LevelSceneMessages
+    {
+        /// <summary>
+        /// Cuando no quedan más ladrillos.
+        /// </summary>
+        Win = 0,
+
+        /// <summary>
+        /// Cuando se perdió la bola.
+        /// </summary>
+        Lose = 1, 
+
+        /// <summary>
+        /// Actualiza la cantidad de vidas.
+        /// </summary>
+        UpdateLives = 2,
+    }
+
     public class LevelScene : SceneBase
     {
         /// <summary>
@@ -31,13 +49,6 @@ namespace Kriptok.Noid.Scenes
 
         public LevelScene(int level, bool demo)
         {
-            if (level == Consts.FirstLevel || demo)
-            {
-                // Reseteo la puntuación para el modo demo, o si estoy empezando a jugar.
-                Global.Score = 0;
-                Global.Lives = Consts.InitialLives;
-            }
-
             this.level = level;
             this.demo = demo;
         }
@@ -83,6 +94,7 @@ namespace Kriptok.Noid.Scenes
                 {
                     // Arranco el juego.
                     h.FadeOff();
+                    Global.ResetValues();
                     h.Set(new LevelScene(Consts.FirstLevel, false));
                 }
             }
@@ -102,7 +114,7 @@ namespace Kriptok.Noid.Scenes
         /// </summary>        
         private static bool IsPlaying(SceneHandler h)
         {
-            return h.FindAll<Brick>().Count(p => p.CanBeDestroyed()) > 0;
+            return h.FindAll<Brick>().Count(p => p.CanBeHit()) > 0;
         }
 
         private void LoadLevel(SceneHandler h)
@@ -130,6 +142,26 @@ namespace Kriptok.Noid.Scenes
             for (int i = 0; i < count; i++)
             {
                 lives[i] = h.Add(new Life(i));
+            }
+        }
+
+        protected override void OnMessage(SceneHandler h, object message)
+        {
+            base.OnMessage(h, message);
+
+            if (message is LevelSceneMessages msg)
+            {
+                switch (msg)
+                {
+                    case LevelSceneMessages.Win:
+                        break;
+                    case LevelSceneMessages.Lose:
+                        break;
+                    case LevelSceneMessages.UpdateLives:                        
+                        h.Kill<Life>(); // Mato todas las vidas.
+                        CreateLives(h); // Y las vuelvo a crear.
+                        break;
+                }
             }
         }
     }
