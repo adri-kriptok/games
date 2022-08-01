@@ -1,5 +1,5 @@
 ﻿using Kriptok.Core;
-using Kriptok.Snake.Processes;
+using Kriptok.Snake.Objects;
 using Kriptok.IO;
 using Kriptok.Scenes;
 using Kriptok.Views.Texts;
@@ -51,25 +51,7 @@ namespace Kriptok.Snake
 
                 // Crea la cabeza del gusano que maneja todo el cuerpo
                 h.Add(new SnakeHead());
-
-                Rand.Randomize();
-
-                h.Loop(() =>
-                {
-                    // Aleatoriamente se elige si se pone una manzana
-                    // o no y siempre si hay menos de 3 manzanas
-                    if (Global.Apples < 3 && Rand.Next(0, 32) == 0)
-                    {
-                        // Pone una manzana e incrementa el contador de las mismas
-                        var apple = h.Add(new Apple(Rand.Next(2, 38) * SnakeHead.Size + SnakeHead.HalfSize, 
-                            Rand.Next(4, 23) * SnakeHead.Size + SnakeHead.HalfSize));
-
-                        if (apple.IsAlive())
-                        {
-                            Global.Apples++;
-                        }
-                    }                    
-                });
+                h.Add(new AppleCreator());
             }
         }
     }

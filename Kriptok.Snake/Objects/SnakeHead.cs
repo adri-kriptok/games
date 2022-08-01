@@ -8,7 +8,7 @@ using Kriptok.Views.Sprites;
 using Kriptok.Objects.Collisions.Base;
 using Kriptok.Objects.Collisions.Queries;
 
-namespace Kriptok.Snake.Processes
+namespace Kriptok.Snake.Objects
 {
     /// <summary>               
     /// Maneja la cabeza del gusano.

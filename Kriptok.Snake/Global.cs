@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Snake.Processes
+namespace Kriptok.Snake.Objects
 {
     static class Global
     {

@@ -5,7 +5,7 @@ using System.Drawing;
 using Kriptok.Drawing;
 using Kriptok.Views.Sprites;
 
-namespace Kriptok.Snake.Processes
+namespace Kriptok.Snake.Objects
 {
     /// <summary>    
     /// Maneja los segmentos del cuerpo del gusano.
