@@ -1,4 +1,5 @@
-﻿using Kriptok.Maps.Tiles.Editor;
+﻿using Kriptok.Audio;
+using Kriptok.Maps.Tiles.Editor;
 using Kriptok.Noid.Entities;
 using Kriptok.Objects;
 using Kriptok.Scenes;
@@ -48,13 +49,13 @@ namespace Kriptok.Noid.Scenes
         private Ball ball;
 
         public LevelScene(int level, bool demo)
-        {
+        {            
             this.level = level;
             this.demo = demo;
         }
 
         protected override void Run(SceneHandler h)
-        {
+        {          
             if (demo)
             {
                 h.Add(h.ScreenRegion, new DemoText());

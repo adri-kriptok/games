@@ -153,7 +153,8 @@ namespace Kriptok.Noid.Entities
                     // Si no ha disparado esta vez
                     if (readyToFire)
                     {
-                        // sound(s_fuego, 80, 400);  // Y realiza sonido
+                        // Y realiza sonido.                        
+                         Audio.PlaySound(Sounds.s_fuego);
 
                         // Dispara los lasers...
                         Add(new Laser(Location.X - 16f, Location.Y - 8f));

@@ -1,4 +1,7 @@
-﻿using Kriptok.Extensions;
+﻿using Kriptok.Audio;
+using Kriptok.Audio.Midi;
+using Kriptok.Common;
+using Kriptok.Extensions;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -14,12 +17,12 @@ namespace Kriptok.Noid
         /// <summary>
         /// Nivel en el que iniciar.
         /// </summary>
-        public const int FirstLevel = 1;
+        public const int FirstLevel = 7;
 
         /// <summary>
         /// Cantidad de vidas iniciales.
         /// </summary>
-        public const int InitialLives = 1;
+        public const int InitialLives = 3;
 
         /// <summary>
         /// Mayor cantidad de vidas que se pueden ver en pantalla.
@@ -52,5 +55,25 @@ namespace Kriptok.Noid
             Global.Score = 0;
             Global.Lives = Consts.InitialLives;
         }
+    }
+
+    public static class Sounds
+    {
+        // internal static Resource s_golpe = new Resource(typeof(Sounds).Assembly, "BANDA.WAV");
+        internal static Resource s_golpe = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
+        internal static Resource s_pildora = new Resource(typeof(Sounds).Assembly, "FX34.WAV");
+        internal static Resource s_fuego = new Resource(typeof(Sounds).Assembly, "LASER.WAV");
+        internal static Resource s_metal = new Resource(typeof(Sounds).Assembly, "METAL10.WAV");
+        internal static Resource s_bordes = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV"); // "PASO9.WAV");
+        internal static Resource s_raqueta = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
+        
+        /// <summary>
+        /// Instrumento para reproducir notas cuando se golpea los ladrillos.
+        /// </summary>
+        internal static MidiInstrument TaikoDrum = new MidiInstrument(MidiInstrumentEnum.TaikoDrum, 0);
+
+        // internal static Resource s_banda = new Resource(typeof(Sounds).Assembly, "BANDA.WAV");
+        // internal static Resource s_billar = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
+        // internal static Resource s_raqueta = new Resource(typeof(Sounds).Assembly, "FX35.WAV");
     }
 }

@@ -4,6 +4,1104 @@
         <name>Kriptok</name>
     </assembly>
     <members>
+        <member name="T:Kriptok.Audio.Midi.MidiInstrument">
+            <summary>
+            Representa un instrumento Midi que toca notas en un canal determinado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Midi.MidiInstrument.#ctor(Kriptok.Audio.MidiInstrumentEnum,System.Byte)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Audio.Midi.MidiInstrument"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Midi.MidiInstrument.Get(System.Byte,Kriptok.Audio.MidiInstrumentEnum)">
+            <summary>
+            Obtiene una nueva instancia de MidiInstrument, sobreescribiendo la que hubiera en el canal indicado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Midi.MidiInstrument.Play(System.Byte,System.Byte)">
+            <summary>
+            Reproduce una nota con el instrumento.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Audio.Helpers.MidiHelper">
+            <summary>
+            Funcionalidades de ayuda para la reproducción de archivos "midi".
+            
+            Los archivos midi se reproducen con una aplicación extra, que corre en paralelo.
+            Esto se debe a que es la única forma de que la reproducción de midis tenga su propio control de volumen.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum">
+            <summary>
+            Tipos de mensaje que se le pueden enviar a la aplicación.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum.Finish">
+            <summary>
+            Finaliza la aplicación.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MaxFileName">
+            <summary>
+            Maxima longitud que puede tener el nombre de un archivo midi para ser reproducido.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.LoopingFlagMask">
+            <summary>
+            Máscara utilizada para separar en dos la longitud del nombre de archivo a reproducir, y la
+            propiedad que indica que la canción debe loopear.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MemoryMappedFileBaseName">
+            <summary>
+            Nombre base del "archivo mapeado a memoria" utilizado para reproducir archivos midi.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.memoryMappedFileName">
+            <summary>
+            Nombre del archivo mapeado a memoria para esta instancia.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.memoryMappedFile">
+            <summary>
+            Archivo mapeado en memoria utilizado para comunicarse entre procesos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.midiPlayerProcess">
+            <summary>
+            Proceso que reproduce los midis.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.midiPlayerThreadId">
+            <summary>
+            Id del thread del proceso que reproduce archivos midi.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Initialize(System.Boolean)">
+            <summary>
+            Compila un archivo ".exe" para reproducir midis en un proceso aparte. Esto es necesario
+            porque no se puede setear el volumen de reproducción de midis independientemente si 
+            está corriendo en el mismo proceso que el que reproduce los sonidos.
+            
+            https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.vbcodeprovider(v=vs.110).aspx
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.IsInitialized">
+            <summary>
+            Indica si se puede utilizar el sub-proceso que reproduce midis.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Kill">
+            <summary>
+            Libera los recursos relacionados a la reproducción de midis.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.SendMidiMessage(Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum,System.String,System.Int32)">
+            <summary>
+            Envía un mensaje al proceso reproductor de archivos midi.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Play(System.String,System.Boolean)">
+            <summary>
+            Indica al sub-proceso reproductor de archivos midi que empiece a reproducir un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Play(System.String,System.Double,System.Boolean)">
+            <summary>
+            Indica al sub-proceso reproductor de archivos midi que empiece a reproducir un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Stop">
+            <summary>
+            Detiene la reproducción remota de un archivo midi.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Finish">
+            <summary>
+            Detiene la reproducción remota de un archivo midi.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Pause">
+            <summary>
+            Pausa una canción que se está reproduciendo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Resume">
+            <summary>
+            Reanuda una canción que estaba pausada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.SetVolume(System.UInt32)">
+            <summary>
+            Reanuda una canción que estaba pausada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.NewMidiHandler(System.String)">
+            <summary>
+            Obtiene un nuevo controlador de mensajes midi para recibir mensajes.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter">
+            <summary>
+            Controlador de mensajes midi.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.memoryMappedFileName">
+            <summary>
+            Nombre del archivo mapeado a memoria por el que me van a pasar el nombre de las canciones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.SendMyMainThreadId(System.String)">
+            <summary>
+            Obtiene el número de thread, y se lo envía al proceso padre.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Read(System.Int32)">
+            <summary>
+            Lee del archivo de memoria un string de la longitud indicada.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Play(System.String,System.Boolean)">
+            <summary>
+            Reproduce un archivo midi.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.SetVolume(System.UInt32)">
+            <summary>
+            Establece el volumen de reproducción de archivos midi.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Pause">
+            <summary>
+            Detiene momentáneamente la reproducción de un archivo midi.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Resume">
+            <summary>
+            Retoma la reproducción de un archivo midi que había sido pausado momentáneamente.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Stop">
+            <summary>
+            Detiene la ejecución de un archivo midi y libera el recurso.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Finish">
+            <summary>
+            Finaliza el proceso de ejecución de midis.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySound(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.CheckStatus">
+            <summary>
+            Chequea si tiene que reproducir algún sonido encolado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearSounds">
+            <summary>
+            Limpia la lista de sonidos que haya almacenados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlayWave(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido, pero antes lo descarga del
+            ensamblado como un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySoundSync(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido de forma sincrónica.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearCache">
+            <summary>
+            Libera los sonidos de la memoria.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.Native.mciSendString(System.String,System.Text.StringBuilder,System.UInt32,System.IntPtr)">
+            <summary>
+            https://docs.microsoft.com/en-us/previous-versions/dd757161(v=vs.85)
+            https://msdn.microsoft.com/en-us/library/windows/desktop/dd743646(v=vs.85).aspx
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayMusic(System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Double)">
+            <summary>
+            
+            </summary>        
+            <param name="filePath"></param>
+            <param name="repeat"></param>
+            <param name="volume">Valor entre 0 y 1 representando la intensidad del volumen.</param>
+            <param name="from"></param>
+            <param name="to"></param>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.IsMidiFile(System.String,System.Boolean)">
+            <summary>
+            Indica, basándose en la extensión si se trata de un archivo ".mid". Este tipo de archivo, cuando
+            se baja desde recurso, se baja con extensión ".dat" (<seealso cref="M:Kriptok.Helpers.ResourcesHelper.ResolveId(Kriptok.Common.Resource)"/>).
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWave(System.String,System.Boolean,System.Double)">
+            <summary>
+            Reproduce un archivo de sonido con los parámetros indicados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.GetWaveDevice(System.String,System.Double)">
+            <summary>
+            Obtiene el id del dispositivo a reproducir.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWaveDevice(System.String,System.Boolean)">
+            <summary>
+            Reproduce un dispositivo indicado desde el principio.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.CheckError(System.Int32,System.String)">
+            <summary>
+            https://msdn.microsoft.com/en-us/library/aa228215(v=vs.60).aspx
+            </summary>
+            <param name="result"></param>
+            <param name="cmd">Comando ejecutado, necesario para lanzar la excepción.</param>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.CheckStatus">
+            <summary>
+            Este método es el que se encarga de chequear las instrucciones que llegaron al MidiHelper.
+            Ya que las funcionalidades de Midi sólo andan bien cuando las llama el formulario principal.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.StopAll(System.Boolean)">
+            <summary>
+            Detiene toda la reproducción de música.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.ResumeAll">
+            <summary>
+            Retoma la reproducción de música.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.PauseAll">
+            <summary>
+            Pausa toda la reproducicón de música.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NOERROR">
+            <summary>
+            Si tiene éxito en cargar el dispositivo.
+            </summary>
+            
+        </member>
+        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_BADDEVICEID">
+            <summary>
+            El ID del dispositivo fuera de rango
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NODRIVER">
+            <summary>
+            No hay dispositivo detectado.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NOMEM">
+            <summary>
+            Error Alojamiento de memoria.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_INVALPARAM">
+            <summary>
+            Parámetro invalido pasado.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Audio.MidiInstrumentEnum">
+            <summary>
+            Enumerado de instrumentos midi.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGrandPiano">
+            <summary>
+            Acoustic Grand Piano
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BrightAcousticPiano">
+            <summary>
+            Bright Acoustic Piano
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGrandPiano">
+            <summary>
+            Electric Grand Piano
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.HonkyTonkPiano">
+            <summary>
+            Honky-tonk Piano
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricPiano1">
+            <summary>
+            Electric Piano 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricPiano2">
+            <summary>
+            Electric Piano 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Harpsichord">
+            <summary>
+            Harpsichord
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Clavi">
+            <summary>
+            Clavi
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Celesta">
+            <summary>
+            Celesta
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Glockenspiel">
+            <summary>
+            Glockenspiel
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MusicBox">
+            <summary>
+            Music Box
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Vibraphone">
+            <summary>
+            Vibraphone
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Marimba">
+            <summary>
+            Marimba
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Xylophone">
+            <summary>
+            Xylophone
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TubularBells">
+            <summary>
+            Tubular Bells
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Dulcimer">
+            <summary>
+            Dulcimer
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.DrawbarOrgan">
+            <summary>
+            Drawbar Organ
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PercussiveOrgan">
+            <summary>
+            Percussive Organ
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.RockOrgan">
+            <summary>
+            Rock Organ
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ChurchOrgan">
+            <summary>
+            Church Organ
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ReedOrgan">
+            <summary>
+            Reed Organ
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Accordion">
+            <summary>
+            Accordion
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Harmonica">
+            <summary>
+            Harmonica
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TangoAccordion">
+            <summary>
+            Tango Accordion
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGuitarNylon">
+            <summary>
+            Acoustic Guitar (nylon)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGuitarSteel">
+            <summary>
+            Acoustic Guitar (steel)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarJazz">
+            <summary>
+            Electric Guitar (jazz)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarClean">
+            <summary>
+            Electric Guitar (clean)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarMuted">
+            <summary>
+            Electric Guitar (muted)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OverdrivenGuitar">
+            <summary>
+            Overdriven Guitar
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.DistortionGuitar">
+            <summary>
+            Distortion Guitar
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.GuitarHarmonics">
+            <summary>
+            Guitar harmonics
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticBass">
+            <summary>
+            Acoustic Bass
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricBassFinger">
+            <summary>
+            Electric Bass (finger)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricBassPick">
+            <summary>
+            Electric Bass (pick)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FretlessBass">
+            <summary>
+            Fretless Bass
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SlapBass1">
+            <summary>
+            Slap Bass 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SlapBass2">
+            <summary>
+            Slap Bass 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBass1">
+            <summary>
+            Synth Bass 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBass2">
+            <summary>
+            Synth Bass 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Violin">
+            <summary>
+            Violin
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Viola">
+            <summary>
+            Viola
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Cello">
+            <summary>
+            Cello
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Contrabass">
+            <summary>
+            Contrabass
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TremoloStrings">
+            <summary>
+            Tremolo Strings
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PizzicatoStrings">
+            <summary>
+            Pizzicato Strings
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OrchestralHarp">
+            <summary>
+            Orchestral Harp
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Timpani">
+            <summary>
+            Timpani
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.StringEnsemble1">
+            <summary>
+            String Ensemble 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.StringEnsemble2">
+            <summary>
+            String Ensemble 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthStrings1">
+            <summary>
+            SynthStrings 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthStrings2">
+            <summary>
+            SynthStrings 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ChoirAahs">
+            <summary>
+            Choir Aahs
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.VoiceOohs">
+            <summary>
+            Voice Oohs
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthVoice">
+            <summary>
+            Synth Voice
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OrchestraHit">
+            <summary>
+            Orchestra Hit
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Trumpet">
+            <summary>
+            Trumpet
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Trombone">
+            <summary>
+            Trombone
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Tuba">
+            <summary>
+            Tuba
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MutedTrumpet">
+            <summary>
+            Muted Trumpet
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FrenchHorn">
+            <summary>
+            French Horn
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BrassSection">
+            <summary>
+            Brass Section
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBrass1">
+            <summary>
+            SynthBrass 1
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBrass2">
+            <summary>
+            SynthBrass 2
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SopranoSax">
+            <summary>
+            Soprano Sax
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AltoSax">
+            <summary>
+            Alto Sax
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TenorSax">
+            <summary>
+            Tenor Sax
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BaritoneSax">
+            <summary>
+            Baritone Sax
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Oboe">
+            <summary>
+            Oboe
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.EnglishHorn">
+            <summary>
+            English Horn
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Bassoon">
+            <summary>
+            Bassoon
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Clarinet">
+            <summary>
+            Clarinet
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Piccolo">
+            <summary>
+            Piccolo
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Flute">
+            <summary>
+            Flute
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Recorder">
+            <summary>
+            Recorder
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PanFlute">
+            <summary>
+            Pan Flute
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BlownBottle">
+            <summary>
+            Blown Bottle
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shakuhachi">
+            <summary>
+            Shakuhachi
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Whistle">
+            <summary>
+            Whistle
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Ocarina">
+            <summary>
+            Ocarina
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead1Square">
+            <summary>
+            Lead 1 (square)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead2Sawtooth">
+            <summary>
+            Lead 2 (sawtooth)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead3Calliope">
+            <summary>
+            Lead 3 (calliope)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead4Chiff">
+            <summary>
+            Lead 4 (chiff)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead5Charang">
+            <summary>
+            Lead 5 (charang)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead6Voice">
+            <summary>
+            Lead 6 (voice)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead7Fifths">
+            <summary>
+            Lead 7 (fifths)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead8BassLead">
+            <summary>
+            Lead 8 (bass + lead)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad1NewAge">
+            <summary>
+            Pad 1 (new age)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad2Warm">
+            <summary>
+            Pad 2 (warm)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad3Polysynth">
+            <summary>
+            Pad 3 (polysynth)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad4Choir">
+            <summary>
+            Pad 4 (choir)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad5Bowed">
+            <summary>
+            Pad 5 (bowed)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad6Metallic">
+            <summary>
+            Pad 6 (metallic)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad7Halo">
+            <summary>
+            Pad 7 (halo)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad8Sweep">
+            <summary>
+            Pad 8 (sweep)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX1Rain">
+            <summary>
+            FX 1 (rain)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX2Soundtrack">
+            <summary>
+            FX 2 (soundtrack)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX3Crystal">
+            <summary>
+            FX 3 (crystal)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX4Atmosphere">
+            <summary>
+            FX 4 (atmosphere)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX5Brightness">
+            <summary>
+            FX 5 (brightness)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX6Goblins">
+            <summary>
+            FX 6 (goblins)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX7Echoes">
+            <summary>
+            FX 7 (echoes)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX8SciFi">
+            <summary>
+            FX 8 (sci-fi)
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Sitar">
+            <summary>
+            Sitar
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Banjo">
+            <summary>
+            Banjo
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shamisen">
+            <summary>
+            Shamisen
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Koto">
+            <summary>
+            Koto
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Kalimba">
+            <summary>
+            Kalimba
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BagPipe">
+            <summary>
+            Bag pipe
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Fiddle">
+            <summary>
+            Fiddle
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shanai">
+            <summary>
+            Shanai
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TinkleBell">
+            <summary>
+            Tinkle Bell
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Agogo">
+            <summary>
+            Agogo
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SteelDrums">
+            <summary>
+            Steel Drums
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Woodblock">
+            <summary>
+            Woodblock
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TaikoDrum">
+            <summary>
+            Taiko Drum
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MelodicTom">
+            <summary>
+            Melodic Tom
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthDrum">
+            <summary>
+            Synth Drum
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ReverseCymbal">
+            <summary>
+            Reverse Cymbal
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.GuitarFretNoise">
+            <summary>
+            Guitar Fret Noise
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BreathNoise">
+            <summary>
+            Breath Noise
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Seashore">
+            <summary>
+            Seashore
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BirdTweet">
+            <summary>
+            Bird Tweet
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TelephoneRing">
+            <summary>
+            Telephone Ring
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Helicopter">
+            <summary>
+            Helicopter
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Applause">
+            <summary>
+            Applause
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Gunshot">
+            <summary>
+            Gunshot
+            </summary>
+        </member>
+        <member name="T:Kriptok.Audio.MidiNotePlayer">
+            <summary>
+            https://stackoverflow.com/questions/40392382/midioutshortmsg-no-sound
+            </summary>
+        </member>
+        <member name="T:Kriptok.Audio.MidiNotePlayer.MidiOutCaps">
+            <summary>
+            Esta es la estructura de un dispositivo de salida midi.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wMid">
+            <summary>
+            ID del Fabricante.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wPid">
+            <summary>
+            ID del Producto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.vDriverVersion">
+            <summary>
+            Versión del driver.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.szPname">
+            <summary>
+            Nombre del Producto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wTechnology">
+            <summary>
+            Tipo de dispositivo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wVoices">
+            <summary>
+            Número de voces (Sólo para el sintetizador interno).
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wNotes">
+            <summary>
+            Máximo número de notas (Sólo para el sintetizador interno).
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wChannelMask">
+            <summary>
+            Número de canales Midi (Sólo para el sintetizador interno).
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.dwSupport">
+            <summary>
+            Controles extra permitidos (volumen, etc)
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutGetNumDevs">
+            <summary>
+            The midiOutGetNumDevs function retrieves the number of MIDI output devices present in the system.
+            </summary>
+            <returns></returns>        
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutGetDevCaps(System.Int32,Kriptok.Audio.MidiNotePlayer.MidiOutCaps@,System.UInt32)">
+            <summary>
+            Se utiliza para obtener el dispositivo de salida de Midi predeterminado.
+            </summary>
+            <param name="uDeviceID">identifica al dispositivo de salida midi (-1 es el default), 
+            y luego la cuenta empieza desde CERO para el resto.</param>
+            <param name="lpMidiOutCaps">es una estructura de tipo <see cref="T:Kriptok.Audio.MidiNotePlayer.MidiOutCaps"/>, declarado arriba, 
+            que va a guardar la información del dispositivo de salida Midi.</param>
+            <param name="cbMidiOutCaps">es el tamaño en bits de la estructura lbCaps.</param>        
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutShortMsg(System.Int32,System.Int32)">
+            <summary>        
+            Se utiliza para enviar mensajes de salida midi, tanto para reproducir notas, 
+            como para cambiar el instrumento, etcétera.
+            
+            https://docs.microsoft.com/en-us/windows/win32/api/mmeapi/nf-mmeapi-midioutshortmsg
+            </summary>        
+            <param name="handle">Es el código del dispositivo de salida midi, que devuelve midiOutOpen lphMidiOut.</param>
+            <param name="message">Mensaje enviado.</param>        
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutClose(System.Int32)">
+            <summary>
+            Se utiliza para cerrar el dispositivo de salida Midi.
+            </summary>
+            <param name="handle">Es el parámetro que devuelve midiOutOpen lphMidiOut</param>        
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.SetInstrument(Kriptok.Audio.MidiInstrumentEnum,System.Int32)">
+            <summary>
+            Establece el instrumento a reproducir en el canal indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.SetInstrument(System.Int32,System.Int32)">
+            <summary>
+            Establece el instrumento a reproducir en el canal indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.GetNote(System.Int32)">
+            <summary>
+            Obtiene la nota y la octava a la que pertenece la nota indicada.
+            
+            Oct#  C   C#  D   D#  E   F   F#  G   G#  A   A#  B
+             -1   0   1   2   3   4   5   6   7   8   9   10  11
+              0   12  13  14  15  16  17  18  19  20  21  22  23
+              1   24  25  26  27  28  29  30  31  32  33  34  35
+              2   36  37  38  39  40  41  42  43  44  45  46  47
+              3   48  49  50  51  52  53  54  55  56  57  58  59
+              4   60  61  62  63  64  65  66  67  68  69  70  71
+              5   72  73  74  75  76  77  78  79  80  81  82  83
+              6   84  85  86  87  88  89  90  91  92  93  94  95
+              7   96  97  98  99  100 101 102 103 104 105 106 107
+              8   108 109 110 111 112 113 114 115 116 117 118 119
+              9   120 121 122 123 124 125 126 127
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.GetPercussionInstruments">
+            <summary>
+            Obtiene una lista de los instrumentos de percusión.
+            
+            Recordar utilizar los índices a partir del 35
+            </summary>       
+        </member>
+        <member name="M:Kriptok.Audio.MidiNotePlayer.GetInstruments">
+            <summary>
+            https://softologyblog.wordpress.com/2009/09/30/controlling-midi-output-with-delphi/
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Audio.MciWaveHandler">
+            <summary>
+            Representa un controlador de sonido que envía una señal a Windows para reproducir el sonido.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MciWaveHandler.fileName">
+            <summary>
+            Nombre del archivo generado.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Audio.SoundPlayerHandler">
+            <summary>
+            Representa un controlador de un sonido en particular.
+            </summary>
+        </member>
         <member name="T:Kriptok.Core.ScreenRegion">
             <summary>
             Esta clase representa una región de la pantalla donde se pueden renderizar vistas.
@@ -8960,1084 +10058,6 @@
             <summary>
             Realiza una cantidad de llamados a <see cref="M:Kriptok.Scenes.ProcessHandler.Frame"/> indicada por parámetro.
             </summary>        
-        </member>
-        <member name="T:Kriptok.Audio.Helpers.MidiHelper">
-            <summary>
-            Funcionalidades de ayuda para la reproducción de archivos "midi".
-            
-            Los archivos midi se reproducen con una aplicación extra, que corre en paralelo.
-            Esto se debe a que es la única forma de que la reproducción de midis tenga su propio control de volumen.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum">
-            <summary>
-            Tipos de mensaje que se le pueden enviar a la aplicación.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum.Finish">
-            <summary>
-            Finaliza la aplicación.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MaxFileName">
-            <summary>
-            Maxima longitud que puede tener el nombre de un archivo midi para ser reproducido.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.LoopingFlagMask">
-            <summary>
-            Máscara utilizada para separar en dos la longitud del nombre de archivo a reproducir, y la
-            propiedad que indica que la canción debe loopear.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MemoryMappedFileBaseName">
-            <summary>
-            Nombre base del "archivo mapeado a memoria" utilizado para reproducir archivos midi.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.memoryMappedFileName">
-            <summary>
-            Nombre del archivo mapeado a memoria para esta instancia.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.memoryMappedFile">
-            <summary>
-            Archivo mapeado en memoria utilizado para comunicarse entre procesos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.midiPlayerProcess">
-            <summary>
-            Proceso que reproduce los midis.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.midiPlayerThreadId">
-            <summary>
-            Id del thread del proceso que reproduce archivos midi.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Initialize(System.Boolean)">
-            <summary>
-            Compila un archivo ".exe" para reproducir midis en un proceso aparte. Esto es necesario
-            porque no se puede setear el volumen de reproducción de midis independientemente si 
-            está corriendo en el mismo proceso que el que reproduce los sonidos.
-            
-            https://msdn.microsoft.com/en-us/library/microsoft.visualbasic.vbcodeprovider(v=vs.110).aspx
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.IsInitialized">
-            <summary>
-            Indica si se puede utilizar el sub-proceso que reproduce midis.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Kill">
-            <summary>
-            Libera los recursos relacionados a la reproducción de midis.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.SendMidiMessage(Kriptok.Audio.Helpers.MidiHelper.MidiMessageEnum,System.String,System.Int32)">
-            <summary>
-            Envía un mensaje al proceso reproductor de archivos midi.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Play(System.String,System.Boolean)">
-            <summary>
-            Indica al sub-proceso reproductor de archivos midi que empiece a reproducir un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Play(System.String,System.Double,System.Boolean)">
-            <summary>
-            Indica al sub-proceso reproductor de archivos midi que empiece a reproducir un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Stop">
-            <summary>
-            Detiene la reproducción remota de un archivo midi.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Finish">
-            <summary>
-            Detiene la reproducción remota de un archivo midi.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Pause">
-            <summary>
-            Pausa una canción que se está reproduciendo.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.Resume">
-            <summary>
-            Reanuda una canción que estaba pausada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.SetVolume(System.UInt32)">
-            <summary>
-            Reanuda una canción que estaba pausada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.NewMidiHandler(System.String)">
-            <summary>
-            Obtiene un nuevo controlador de mensajes midi para recibir mensajes.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter">
-            <summary>
-            Controlador de mensajes midi.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.memoryMappedFileName">
-            <summary>
-            Nombre del archivo mapeado a memoria por el que me van a pasar el nombre de las canciones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.SendMyMainThreadId(System.String)">
-            <summary>
-            Obtiene el número de thread, y se lo envía al proceso padre.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Read(System.Int32)">
-            <summary>
-            Lee del archivo de memoria un string de la longitud indicada.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Play(System.String,System.Boolean)">
-            <summary>
-            Reproduce un archivo midi.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.SetVolume(System.UInt32)">
-            <summary>
-            Establece el volumen de reproducción de archivos midi.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Pause">
-            <summary>
-            Detiene momentáneamente la reproducción de un archivo midi.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Resume">
-            <summary>
-            Retoma la reproducción de un archivo midi que había sido pausado momentáneamente.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Stop">
-            <summary>
-            Detiene la ejecución de un archivo midi y libera el recurso.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MidiHelper.MidiMessageFilter.Finish">
-            <summary>
-            Finaliza el proceso de ejecución de midis.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySound(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.CheckStatus">
-            <summary>
-            Chequea si tiene que reproducir algún sonido encolado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearSounds">
-            <summary>
-            Limpia la lista de sonidos que haya almacenados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlayWave(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido, pero antes lo descarga del
-            ensamblado como un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySoundSync(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearCache">
-            <summary>
-            Libera los sonidos de la memoria.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.Native.mciSendString(System.String,System.Text.StringBuilder,System.UInt32,System.IntPtr)">
-            <summary>
-            https://docs.microsoft.com/en-us/previous-versions/dd757161(v=vs.85)
-            https://msdn.microsoft.com/en-us/library/windows/desktop/dd743646(v=vs.85).aspx
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayMusic(System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Double)">
-            <summary>
-            
-            </summary>        
-            <param name="filePath"></param>
-            <param name="repeat"></param>
-            <param name="volume">Valor entre 0 y 1 representando la intensidad del volumen.</param>
-            <param name="from"></param>
-            <param name="to"></param>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.IsMidiFile(System.String,System.Boolean)">
-            <summary>
-            Indica, basándose en la extensión si se trata de un archivo ".mid". Este tipo de archivo, cuando
-            se baja desde recurso, se baja con extensión ".dat" (<seealso cref="M:Kriptok.Helpers.ResourcesHelper.ResolveId(Kriptok.Common.Resource)"/>).
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWave(System.String,System.Boolean,System.Double)">
-            <summary>
-            Reproduce un archivo de sonido con los parámetros indicados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.GetWaveDevice(System.String,System.Double)">
-            <summary>
-            Obtiene el id del dispositivo a reproducir.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWaveDevice(System.String,System.Boolean)">
-            <summary>
-            Reproduce un dispositivo indicado desde el principio.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.CheckError(System.Int32,System.String)">
-            <summary>
-            https://msdn.microsoft.com/en-us/library/aa228215(v=vs.60).aspx
-            </summary>
-            <param name="result"></param>
-            <param name="cmd">Comando ejecutado, necesario para lanzar la excepción.</param>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.CheckStatus">
-            <summary>
-            Este método es el que se encarga de chequear las instrucciones que llegaron al MidiHelper.
-            Ya que las funcionalidades de Midi sólo andan bien cuando las llama el formulario principal.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.StopAll(System.Boolean)">
-            <summary>
-            Detiene toda la reproducción de música.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.ResumeAll">
-            <summary>
-            Retoma la reproducción de música.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PauseAll">
-            <summary>
-            Pausa toda la reproducicón de música.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NOERROR">
-            <summary>
-            Si tiene éxito en cargar el dispositivo.
-            </summary>
-            
-        </member>
-        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_BADDEVICEID">
-            <summary>
-            El ID del dispositivo fuera de rango
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NODRIVER">
-            <summary>
-            No hay dispositivo detectado.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NOMEM">
-            <summary>
-            Error Alojamiento de memoria.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_INVALPARAM">
-            <summary>
-            Parámetro invalido pasado.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Audio.MidiInstrumentEnum">
-            <summary>
-            Enumerado de instrumentos midi.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGrandPiano">
-            <summary>
-            Acoustic Grand Piano
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BrightAcousticPiano">
-            <summary>
-            Bright Acoustic Piano
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGrandPiano">
-            <summary>
-            Electric Grand Piano
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.HonkyTonkPiano">
-            <summary>
-            Honky-tonk Piano
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricPiano1">
-            <summary>
-            Electric Piano 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricPiano2">
-            <summary>
-            Electric Piano 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Harpsichord">
-            <summary>
-            Harpsichord
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Clavi">
-            <summary>
-            Clavi
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Celesta">
-            <summary>
-            Celesta
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Glockenspiel">
-            <summary>
-            Glockenspiel
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MusicBox">
-            <summary>
-            Music Box
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Vibraphone">
-            <summary>
-            Vibraphone
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Marimba">
-            <summary>
-            Marimba
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Xylophone">
-            <summary>
-            Xylophone
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TubularBells">
-            <summary>
-            Tubular Bells
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Dulcimer">
-            <summary>
-            Dulcimer
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.DrawbarOrgan">
-            <summary>
-            Drawbar Organ
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PercussiveOrgan">
-            <summary>
-            Percussive Organ
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.RockOrgan">
-            <summary>
-            Rock Organ
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ChurchOrgan">
-            <summary>
-            Church Organ
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ReedOrgan">
-            <summary>
-            Reed Organ
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Accordion">
-            <summary>
-            Accordion
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Harmonica">
-            <summary>
-            Harmonica
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TangoAccordion">
-            <summary>
-            Tango Accordion
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGuitarNylon">
-            <summary>
-            Acoustic Guitar (nylon)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticGuitarSteel">
-            <summary>
-            Acoustic Guitar (steel)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarJazz">
-            <summary>
-            Electric Guitar (jazz)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarClean">
-            <summary>
-            Electric Guitar (clean)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricGuitarMuted">
-            <summary>
-            Electric Guitar (muted)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OverdrivenGuitar">
-            <summary>
-            Overdriven Guitar
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.DistortionGuitar">
-            <summary>
-            Distortion Guitar
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.GuitarHarmonics">
-            <summary>
-            Guitar harmonics
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AcousticBass">
-            <summary>
-            Acoustic Bass
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricBassFinger">
-            <summary>
-            Electric Bass (finger)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ElectricBassPick">
-            <summary>
-            Electric Bass (pick)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FretlessBass">
-            <summary>
-            Fretless Bass
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SlapBass1">
-            <summary>
-            Slap Bass 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SlapBass2">
-            <summary>
-            Slap Bass 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBass1">
-            <summary>
-            Synth Bass 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBass2">
-            <summary>
-            Synth Bass 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Violin">
-            <summary>
-            Violin
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Viola">
-            <summary>
-            Viola
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Cello">
-            <summary>
-            Cello
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Contrabass">
-            <summary>
-            Contrabass
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TremoloStrings">
-            <summary>
-            Tremolo Strings
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PizzicatoStrings">
-            <summary>
-            Pizzicato Strings
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OrchestralHarp">
-            <summary>
-            Orchestral Harp
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Timpani">
-            <summary>
-            Timpani
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.StringEnsemble1">
-            <summary>
-            String Ensemble 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.StringEnsemble2">
-            <summary>
-            String Ensemble 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthStrings1">
-            <summary>
-            SynthStrings 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthStrings2">
-            <summary>
-            SynthStrings 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ChoirAahs">
-            <summary>
-            Choir Aahs
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.VoiceOohs">
-            <summary>
-            Voice Oohs
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthVoice">
-            <summary>
-            Synth Voice
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.OrchestraHit">
-            <summary>
-            Orchestra Hit
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Trumpet">
-            <summary>
-            Trumpet
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Trombone">
-            <summary>
-            Trombone
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Tuba">
-            <summary>
-            Tuba
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MutedTrumpet">
-            <summary>
-            Muted Trumpet
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FrenchHorn">
-            <summary>
-            French Horn
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BrassSection">
-            <summary>
-            Brass Section
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBrass1">
-            <summary>
-            SynthBrass 1
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthBrass2">
-            <summary>
-            SynthBrass 2
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SopranoSax">
-            <summary>
-            Soprano Sax
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.AltoSax">
-            <summary>
-            Alto Sax
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TenorSax">
-            <summary>
-            Tenor Sax
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BaritoneSax">
-            <summary>
-            Baritone Sax
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Oboe">
-            <summary>
-            Oboe
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.EnglishHorn">
-            <summary>
-            English Horn
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Bassoon">
-            <summary>
-            Bassoon
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Clarinet">
-            <summary>
-            Clarinet
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Piccolo">
-            <summary>
-            Piccolo
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Flute">
-            <summary>
-            Flute
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Recorder">
-            <summary>
-            Recorder
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.PanFlute">
-            <summary>
-            Pan Flute
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BlownBottle">
-            <summary>
-            Blown Bottle
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shakuhachi">
-            <summary>
-            Shakuhachi
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Whistle">
-            <summary>
-            Whistle
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Ocarina">
-            <summary>
-            Ocarina
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead1Square">
-            <summary>
-            Lead 1 (square)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead2Sawtooth">
-            <summary>
-            Lead 2 (sawtooth)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead3Calliope">
-            <summary>
-            Lead 3 (calliope)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead4Chiff">
-            <summary>
-            Lead 4 (chiff)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead5Charang">
-            <summary>
-            Lead 5 (charang)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead6Voice">
-            <summary>
-            Lead 6 (voice)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead7Fifths">
-            <summary>
-            Lead 7 (fifths)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Lead8BassLead">
-            <summary>
-            Lead 8 (bass + lead)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad1NewAge">
-            <summary>
-            Pad 1 (new age)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad2Warm">
-            <summary>
-            Pad 2 (warm)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad3Polysynth">
-            <summary>
-            Pad 3 (polysynth)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad4Choir">
-            <summary>
-            Pad 4 (choir)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad5Bowed">
-            <summary>
-            Pad 5 (bowed)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad6Metallic">
-            <summary>
-            Pad 6 (metallic)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad7Halo">
-            <summary>
-            Pad 7 (halo)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Pad8Sweep">
-            <summary>
-            Pad 8 (sweep)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX1Rain">
-            <summary>
-            FX 1 (rain)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX2Soundtrack">
-            <summary>
-            FX 2 (soundtrack)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX3Crystal">
-            <summary>
-            FX 3 (crystal)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX4Atmosphere">
-            <summary>
-            FX 4 (atmosphere)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX5Brightness">
-            <summary>
-            FX 5 (brightness)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX6Goblins">
-            <summary>
-            FX 6 (goblins)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX7Echoes">
-            <summary>
-            FX 7 (echoes)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.FX8SciFi">
-            <summary>
-            FX 8 (sci-fi)
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Sitar">
-            <summary>
-            Sitar
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Banjo">
-            <summary>
-            Banjo
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shamisen">
-            <summary>
-            Shamisen
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Koto">
-            <summary>
-            Koto
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Kalimba">
-            <summary>
-            Kalimba
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BagPipe">
-            <summary>
-            Bag pipe
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Fiddle">
-            <summary>
-            Fiddle
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Shanai">
-            <summary>
-            Shanai
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TinkleBell">
-            <summary>
-            Tinkle Bell
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Agogo">
-            <summary>
-            Agogo
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SteelDrums">
-            <summary>
-            Steel Drums
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Woodblock">
-            <summary>
-            Woodblock
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TaikoDrum">
-            <summary>
-            Taiko Drum
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.MelodicTom">
-            <summary>
-            Melodic Tom
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.SynthDrum">
-            <summary>
-            Synth Drum
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.ReverseCymbal">
-            <summary>
-            Reverse Cymbal
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.GuitarFretNoise">
-            <summary>
-            Guitar Fret Noise
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BreathNoise">
-            <summary>
-            Breath Noise
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Seashore">
-            <summary>
-            Seashore
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.BirdTweet">
-            <summary>
-            Bird Tweet
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.TelephoneRing">
-            <summary>
-            Telephone Ring
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Helicopter">
-            <summary>
-            Helicopter
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Applause">
-            <summary>
-            Applause
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiInstrumentEnum.Gunshot">
-            <summary>
-            Gunshot
-            </summary>
-        </member>
-        <member name="T:Kriptok.Audio.MidiNotePlayer">
-            <summary>
-            https://stackoverflow.com/questions/40392382/midioutshortmsg-no-sound
-            </summary>
-        </member>
-        <member name="T:Kriptok.Audio.MidiNotePlayer.MidiOutCaps">
-            <summary>
-            Esta es la estructura de un dispositivo de salida midi.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wMid">
-            <summary>
-            ID del Fabricante.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wPid">
-            <summary>
-            ID del Producto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.vDriverVersion">
-            <summary>
-            Versión del driver.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.szPname">
-            <summary>
-            Nombre del Producto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wTechnology">
-            <summary>
-            Tipo de dispositivo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wVoices">
-            <summary>
-            Número de voces (Sólo para el sintetizador interno).
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wNotes">
-            <summary>
-            Máximo número de notas (Sólo para el sintetizador interno).
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.wChannelMask">
-            <summary>
-            Número de canales Midi (Sólo para el sintetizador interno).
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MidiNotePlayer.MidiOutCaps.dwSupport">
-            <summary>
-            Controles extra permitidos (volumen, etc)
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutGetNumDevs">
-            <summary>
-            The midiOutGetNumDevs function retrieves the number of MIDI output devices present in the system.
-            </summary>
-            <returns></returns>        
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutGetDevCaps(System.Int32,Kriptok.Audio.MidiNotePlayer.MidiOutCaps@,System.UInt32)">
-            <summary>
-            Se utiliza para obtener el dispositivo de salida de Midi predeterminado.
-            </summary>
-            <param name="uDeviceID">identifica al dispositivo de salida midi (-1 es el default), 
-            y luego la cuenta empieza desde CERO para el resto.</param>
-            <param name="lpMidiOutCaps">es una estructura de tipo <see cref="T:Kriptok.Audio.MidiNotePlayer.MidiOutCaps"/>, declarado arriba, 
-            que va a guardar la información del dispositivo de salida Midi.</param>
-            <param name="cbMidiOutCaps">es el tamaño en bits de la estructura lbCaps.</param>        
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutShortMsg(System.Int32,System.Int32)">
-            <summary>        
-            Se utiliza para enviar mensajes de salida midi, tanto para reproducir notas, 
-            como para cambiar el instrumento, etcétera.
-            
-            https://docs.microsoft.com/en-us/windows/win32/api/mmeapi/nf-mmeapi-midioutshortmsg
-            </summary>        
-            <param name="handle">Es el código del dispositivo de salida midi, que devuelve midiOutOpen lphMidiOut.</param>
-            <param name="message">Mensaje enviado.</param>        
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.midiOutClose(System.Int32)">
-            <summary>
-            Se utiliza para cerrar el dispositivo de salida Midi.
-            </summary>
-            <param name="handle">Es el parámetro que devuelve midiOutOpen lphMidiOut</param>        
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.SetInstrument(Kriptok.Audio.MidiInstrumentEnum,System.Int32)">
-            <summary>
-            Establece el instrumento a reproducir en el canal indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.SetInstrument(System.Int32,System.Int32)">
-            <summary>
-            Establece el instrumento a reproducir en el canal indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.GetNote(System.Int32)">
-            <summary>
-            Obtiene la nota y la octava a la que pertenece la nota indicada.
-            
-            Oct#  C   C#  D   D#  E   F   F#  G   G#  A   A#  B
-             -1   0   1   2   3   4   5   6   7   8   9   10  11
-              0   12  13  14  15  16  17  18  19  20  21  22  23
-              1   24  25  26  27  28  29  30  31  32  33  34  35
-              2   36  37  38  39  40  41  42  43  44  45  46  47
-              3   48  49  50  51  52  53  54  55  56  57  58  59
-              4   60  61  62  63  64  65  66  67  68  69  70  71
-              5   72  73  74  75  76  77  78  79  80  81  82  83
-              6   84  85  86  87  88  89  90  91  92  93  94  95
-              7   96  97  98  99  100 101 102 103 104 105 106 107
-              8   108 109 110 111 112 113 114 115 116 117 118 119
-              9   120 121 122 123 124 125 126 127
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.GetPercussionInstruments">
-            <summary>
-            Obtiene una lista de los instrumentos de percusión.
-            
-            Recordar utilizar los índices a partir del 35
-            </summary>       
-        </member>
-        <member name="M:Kriptok.Audio.MidiNotePlayer.GetInstruments">
-            <summary>
-            https://softologyblog.wordpress.com/2009/09/30/controlling-midi-output-with-delphi/
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Audio.MciWaveHandler">
-            <summary>
-            Representa un controlador de sonido que envía una señal a Windows para reproducir el sonido.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Audio.MciWaveHandler.fileName">
-            <summary>
-            Nombre del archivo generado.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Audio.SoundPlayerHandler">
-            <summary>
-            Representa un controlador de un sonido en particular.
-            </summary>
         </member>
         <member name="T:Kriptok.Common.FastList`1">
             <summary>

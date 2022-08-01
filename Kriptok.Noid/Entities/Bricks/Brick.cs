@@ -2,13 +2,8 @@
 using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Views.Sprites;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kriptok.Noid.Entities
 {
@@ -37,11 +32,6 @@ namespace Kriptok.Noid.Entities
             base.OnStart(h);
             h.CollisionType = Collision2DTypeEnum.Rectangle;
         }
-
-        /// <summary>
-        /// Indica si el bloque puede ser golpeado.
-        /// </summary>        
-        internal virtual bool CanBeHit() => true;
 
         internal static string GetBrickName(int type)
         {
@@ -81,6 +71,10 @@ namespace Kriptok.Noid.Entities
             {
                 return new BrickSolid(x, y);
             }
+            else if (type == 6)
+            {
+                return new MovingBrick(x, y);
+            }
 
             return new Brick(type, x, y);
         }
@@ -92,7 +86,9 @@ namespace Kriptok.Noid.Entities
         }
 
         internal virtual void Hit()
-        {
+        {            
+            Sounds.TaikoDrum.Play(90, 127);
+
             Drop();
 
             if (Rand.Next(0, 100) < 20)
@@ -110,95 +106,12 @@ namespace Kriptok.Noid.Entities
         internal virtual bool Bounces => !falling;
 
         internal virtual bool CanBeDestroyed() => Bounces;
-    }
-
-    class BrickWall : Brick
-    {
-        private readonly IndexedSpriteView view;
-
-        public BrickWall(int x, int y) 
-            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(8), 1, 3))
-        {
-            this.view = (IndexedSpriteView)View;
-        }
-
-        internal override void Hit()
-        {
-            if (view.Graph == 2)
-            {
-                Die();
-            }
-            else
-            {
-                view.Graph++;
-            }
-        }
-
-        internal override bool CanBeDestroyed() => base.CanBeDestroyed() && view.Graph == 0;
-    }
-
-    class BrickSolid : Brick
-    {
-        private readonly IndexedSpriteView view;
-        private bool flashing;
-        private bool change;
-
-        public BrickSolid(int x, int y)
-            : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(7), 1, 3))
-        {
-            this.view = (IndexedSpriteView)View;
-        }
 
         /// <summary>
-        /// Siempre rebota este tipo de ladrillos.
-        /// </summary>
-        internal override bool Bounces => true;
+        /// Indica si el bloque puede ser golpeado.
+        /// </summary>        
+        internal virtual bool CanBeHit() => !falling;
 
-        internal override RectangleF GetRect() => new RectangleF(Location.X - 7.75f, Location.Y - 3.75f, 15.5f, 7.5f);
-
-        protected override void OnFrame()
-        {
-            base.OnFrame();
-
-            if (change)
-            {
-                Add(new Brick(5, (int)Location.X, (int)Location.Y));
-                Die();
-                return;
-            }
-            else if (flashing)
-            {
-                if (view.Graph == 2)
-                {
-                    flashing = false;
-                    view.Graph--;
-                }
-                else
-                {
-                    view.Graph++;
-                }
-            }
-            else
-            {
-                if (view.Graph > 0)
-                {
-                    view.Graph--;
-                }                
-            }
-        }
-
-        internal override void Hit()
-        {
-            flashing = true;
-        }
-
-        internal override bool CanBeDestroyed() => false;
-
-        internal void Change()
-        {
-            this.change = true;
-        }
-
-        internal override bool CanBeHit() => false;
+        internal virtual bool CanBeHitByLasers() => !falling;
     }
 }

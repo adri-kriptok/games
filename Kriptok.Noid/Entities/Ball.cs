@@ -20,6 +20,10 @@ namespace Kriptok.Noid.Entities
     class Ball : ProcessBase<IndexedSpriteView>
     {
         private const float initialAngle = -(float)(3 * Math.PI / 8);
+        private const float modifier = 0.5f;
+        private const float speedModifier = 100f;
+        private const float movementDelta = 1f / 16f * modifier;
+
         private const float pi32 = (float)(Math.PI / 32);
         private const float pi60 = (float)(Math.PI / 60);
         private const float pi78 = (float)(7 * Math.PI / 8);
@@ -38,9 +42,7 @@ namespace Kriptok.Noid.Entities
 
         private static readonly float randomAngle = MathHelper.DegreesToRadians(4f);
 
-        private const float movementDelta = 1f / 16f;
-
-        private readonly Racket racket;
+        private readonly Racket racket;        
 
         /// <summary>
         /// Indica si está en modo demo.
@@ -168,7 +170,7 @@ namespace Kriptok.Noid.Entities
                     avelocidad = currentSpeed;
 
                     // Comprueba la trayectoria y la colision con los ladrillos
-                    while (avelocidad > 100)
+                    while (avelocidad > speedModifier)
                     {
                         var previewsLocation = Location.XY();
 
@@ -177,7 +179,7 @@ namespace Kriptok.Noid.Entities
 
                         var newXY = previewsLocation.Plus(incX, incY);
 
-                        avelocidad -= 100;
+                        avelocidad -= speedModifier;
 
 
                         //         ultima_x_resol=x_resol;
@@ -230,28 +232,29 @@ namespace Kriptok.Noid.Entities
 
                             // Raqueta pegamento
                             if (racket.Sticky) 
-                            {                                
+                            {
+                                angulo0 = initialAngle;
                                 sticked = true;
                                 break;                                
                             }
-
-                            // sound(s_raqueta,100,256);
+                            
+                            Audio.PlayWave(Sounds.s_raqueta);
                         }
 
                         // Colisiona con el lado horizontal del tablero
                         if (newXY.Y <= 12f && incY < 0f)
                         {
                             //angulo0=fget_angle(0,0,incr_x,-incr_y);
-                            angulo0 = MathHelper.GetAngleF(incX, -incY);
-                            //sound(s_raqueta, 80, 500);
+                            angulo0 = MathHelper.GetAngleF(incX, -incY);                            
+                            Audio.PlayWave(Sounds.s_bordes);
                         }
 
                         // Colisiona con los lados verticales de la pantalla
                         if ((newXY.X <= 12 && incX < 0f) || (newXY.X >= 260 && incX > 0f))
                         {
                             angulo0 = MathHelper.GetAngleF(-incX, incY);
-                            //angulo0 =fget_angle(0,0,-incr_x,incr_y);
-                            //sound(s_raqueta,80,600);
+                            //angulo0 =fget_angle(0,0,-incr_x,incr_y);                            
+                            Audio.PlayWave(Sounds.s_bordes);
                         }
 
                         // Actualiza las coordenadas reales
@@ -348,8 +351,6 @@ namespace Kriptok.Noid.Entities
                                                 angulo0 = pi78;
                                             }
                                         }
-
-                                        // sound(s_metal,100,256);
                                     }
                                     else
                                     {
@@ -379,19 +380,17 @@ namespace Kriptok.Noid.Entities
                                                 angulo0 = pi58;
                                             }
                                         }
-
-                                        // sound(s_metal, 100, 256);
                                     }
 
                                     // Indico que colisionó, y se lo informo al ladrillo.
                                     hitFlag = true;
                                     brick.Hit();
                                 }
-                                else if(brick.CanBeDestroyed())
+                                else if (brick.CanBeDestroyed())
                                 {
                                     // Si no rebota, es porque es una "super-ball"
                                     brick.Hit();
-                                }
+                                }                                
                             }
 
                             if (hitFlag)

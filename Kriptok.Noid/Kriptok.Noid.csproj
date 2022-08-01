@@ -48,13 +48,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.17.5\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.17.14\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.17.3\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.17.7\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.17.4\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.17.8\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,7 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Ball.cs" />
-    <Compile Include="Entities\Brick.cs" />
+    <Compile Include="Entities\Bricks\Brick.cs" />
+    <Compile Include="Entities\Bricks\BrickSolid.cs" />
+    <Compile Include="Entities\Bricks\BrickWall.cs" />
+    <Compile Include="Entities\Bricks\MovingBrick.cs" />
     <Compile Include="Entities\Laser.cs" />
     <Compile Include="Entities\Life.cs" />
     <Compile Include="Entities\Pills\BackwardsPill.cs" />
@@ -168,12 +171,22 @@
     <EmbeddedResource Include="Assets\Sounds\TUBO.WAV" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\PASO9.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\GOLPE.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\GOLPE10.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\LASER.WAV" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />
     <Content Include=".sdk\bin\Debug\Kriptok.xml" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
     <Content Include=".sdk\bin\Release\Kriptok.dll" />
     <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
     <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.xml" />

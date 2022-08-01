@@ -32,7 +32,7 @@ namespace Kriptok.Noid.Entities
         {
             if (brickCollision.OnCollision(out Brick brick))
             {
-                if (brick.CanBeHit())
+                if (brick.CanBeHitByLasers())
                 {
                     brick.Hit();
                     Die();
