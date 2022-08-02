@@ -81,6 +81,7 @@ namespace Kriptok.Noid.Entities
 
         internal void Drop()
         {
+            Global.Score += 5;
             falling = true;
             Location.Z = 10;
         }

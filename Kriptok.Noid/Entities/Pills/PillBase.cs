@@ -55,7 +55,11 @@ namespace Kriptok.Noid.Entities.Pills
 
         internal void Pick()
         {
-            picked = true;
+            if (!picked) 
+            {
+                picked = true;
+                Global.Score += 50;
+            }
         }
 
         public static PillBase Create(Vector3F location, int index)

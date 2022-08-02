@@ -16,6 +16,7 @@ namespace Kriptok.Noid.Entities
         {
             if (view.Graph == 2)
             {
+                Global.Score += 15;
                 Sounds.TaikoDrum.Play(90, 127);
                 Die();
             }
