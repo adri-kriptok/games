@@ -14,12 +14,13 @@ namespace Kriptok.Noid.Scenes
     {
         protected override void Run(SceneHandler h)
         {
+            // Arranca la música tecno.                        
+            h.PlayMusic(Assembly, "Music.Tecno.xm", true, 0, null);
+
             h.ScreenRegion.SetBackground(typeof(IntroScene).Assembly, "Assets.Images.TitleScreen.png");
             h.FadeOn();
 
-            var key = h.WaitForKeyPress();
-
-            if (key == Keys.Escape)
+            if (h.WaitOrKeyPress(5000) == Keys.Escape)
             {
                 h.FadeOff();
                 h.ScreenRegion.ClearBackground();
@@ -50,7 +51,7 @@ namespace Kriptok.Noid.Scenes
             {
                 h.FadeOff();
                 Global.ResetValues();
-                h.Set(new LevelScene(Consts.FirstLevel, true));
+                h.Set(new LevelScene(h.Rand(1, 12), true));
             }
         }
     }

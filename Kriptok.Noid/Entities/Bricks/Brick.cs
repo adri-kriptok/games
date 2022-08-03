@@ -1,9 +1,12 @@
 ﻿using Kriptok.Noid.Entities.Pills;
+using Kriptok.Noid.Scenes;
 using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Views.Sprites;
+using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 
 namespace Kriptok.Noid.Entities
 {
@@ -83,7 +86,8 @@ namespace Kriptok.Noid.Entities
         {
             Global.Score += 5;
             falling = true;
-            Location.Z = 10;
+            Location.Z = -10;
+            CheckLastBrick();
         }
 
         internal virtual void Hit()
@@ -94,9 +98,6 @@ namespace Kriptok.Noid.Entities
 
             if (Rand.Next(0, 100) < 20)
             {
-#if DEBUG
-                Trace.WriteLine("pill");
-#endif
                 addPill = true;
             }
         }
@@ -114,5 +115,20 @@ namespace Kriptok.Noid.Entities
         internal virtual bool CanBeHit() => !falling;
 
         internal virtual bool CanBeHitByLasers() => !falling;
+
+        /// <summary>
+        /// Chequea si es el último ladrillo.
+        /// </summary>
+        internal void CheckLastBrick()
+        {
+            var brickCount = Find.All<Brick>()                
+                .Where(p => !p.Equals(this))
+                .Where(p => p.CanBeHit()).Count();
+
+            if (brickCount == 0)
+            {
+                Scene.SendMessage(LevelSceneMessages.CheckBricks);
+            }
+        }
     }
 }

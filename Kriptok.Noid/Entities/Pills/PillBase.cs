@@ -18,7 +18,7 @@ namespace Kriptok.Noid.Entities.Pills
             : base(new SpriteView(typeof(PillBase).Assembly, $"Assets.Images.Pills.{imageName}"))
         {
             Location = location;
-            Location.Z = -10;
+            Location.Z = -20;
         }
 
         protected override void OnStart(ObjectStartHandler h)
@@ -32,6 +32,7 @@ namespace Kriptok.Noid.Entities.Pills
         {
             if (picked)
             {
+                Audio.PlayWave(Sounds.PillSound);
                 OnPick();
                 Die();
                 return;
@@ -41,9 +42,6 @@ namespace Kriptok.Noid.Entities.Pills
 
             if (Location.Y > 205)
             {
-#if DEBUG || SHOWFPS
-                OnPick();
-#endif
                 Die();
             }
         }

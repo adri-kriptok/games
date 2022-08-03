@@ -1,6 +1,7 @@
 ﻿using Kriptok.Common;
 using Kriptok.Extensions;
 using Kriptok.Noid.Entities.Pills;
+using Kriptok.Noid.Scenes;
 using Kriptok.Objects.Base;
 using Kriptok.Objects.Collisions;
 using Kriptok.Objects.Collisions.Queries;
@@ -15,12 +16,22 @@ using System.Windows.Forms;
 
 namespace Kriptok.Noid.Entities
 {
-    class Racket : ProcessBase<RacketView>
+    class Racket : ObjectBase<RacketView>
     {
         /// <summary>
         /// Máxima velocidad de movimiento.
         /// </summary>
-        public const int MaxSpeed = 8;
+        public const int MaxSpeed = 5;
+
+        /// <summary>
+        /// Velocidad de movimiento de la raqueta.
+        /// </summary>
+        private const float speed = 1f;
+
+        /// <summary>
+        /// Velocidad de des-aceleración de la raqueta.
+        /// </summary>
+        private const float aceleration = speed / 2f;
 
         /// <summary>
         /// Indica si está en modo demo.
@@ -62,6 +73,11 @@ namespace Kriptok.Noid.Entities
         /// </summary>
         private ISingleCollisionQuery<PillBase> pillCollision;
 
+        /// <summary>
+        /// Incremento X.
+        /// </summary>
+        private float incX = 0f;
+
         public Racket(bool demo) : base(new RacketView())
         {
             this.demo = demo;
@@ -76,143 +92,141 @@ namespace Kriptok.Noid.Entities
             this.ball = ball;
         }
 
-        protected override void OnStart(ProcessStartHandler h)
+        protected override void OnStart(ObjectStartHandler h)
         {
             base.OnStart(h);
+        
             h.CollisionType = Collision2DTypeEnum.Rectangle;
             this.pillCollision = h.GetCollision2D<PillBase>();
-        }
 
-        protected override void OnBegin()
-        {
             // Empieza con una raqueta normal
             View.Graph = 0;
 
             // Coordenadas iniciales
             Location.X = 140;
             Location.Y = 188;
+        }
 
+        protected override void OnFrame()
+        {
             // Espera si no hay bola
-            While(() => ball == null, () => Frame());
-
-            // Incremento x.
-            var incX = 0f;              
-
-            Loop(() =>
+            if (ball == null)
             {
-                // El jugador controla la raqueta
-                if (!demo)
-                {                    
-                    // Comprueba la pulsacion de las teclas de los cursores
-                    if (Input.Left() && incX > -MaxSpeed)
-                    {
-                        incX -= 4 * backwardsControl;  // Acelera
-                    }
-                    else if (Input.Right() && incX < MaxSpeed)
-                    {
-                        incX += 4 * backwardsControl;  // Acelera
-                    }
-                    else
-                    {
-                        // Ninguna tecla pulsada
-                        if (incX > 0)
-                        {
-                            incX -= 2 * backwardsControl;
-                        }
-                        else if (incX < 0)
-                        {
-                            // Frena la raqueta
-                            incX += 2 * backwardsControl;
-                        }
-                    }
-                }
-                else 
-                {  
-                    // El ordenador controla la raqueta (modo demo)
-                //        if ((x>7) && (x<310)) x=id_bola.x; }
-                //        if (scan_code!=0)     // El jugador toma el control de la raqueta
-                //            delete_text(all_text);          // Borra textos
-                //            signal(type texto_demo,s_kill); // Elimina el proceso que pone el texto explicativo
-                //            demo=0;                         // Quita el modo demo
-                //            nladrillos=0;                   // Reinicia variables
-                //            fase=-1;
-                //            vidas=3;
-                //            puntuacion=0;
-                //            write_int(1,310,180,2,&puntuacion); // Imprime puntuacion
-                //        }
-                //        if (puntuacion>200) // Si hace mas de 200 puntos cambia de fase (solo modo demo)
-                //            nladrillos=0;
-                //            fase=rand(-1,10);
-                //            puntuacion=0;
-                //        }
-                }
+                return;
+            }
 
-                // Comprueba si se pulsa las teclas de disparo y se tiene la modalidad de disparo
-                if ((Input.Button03() || (demo && Rand.Next(0, 15) == 0)) && laser)
+            // El jugador controla la raqueta
+            if (demo)
+            {
+                // El ordenador controla la raqueta (modo demo)
+                if ((Location.X > 7) && (Location.X < 310))
                 {
-                    // Si no ha disparado esta vez
-                    if (readyToFire)
-                    {
-                        // Y realiza sonido.                        
-                         Audio.PlaySound(Sounds.s_fuego);
+                    Location.X = ball.Location.X;
+                }
 
-                        // Dispara los lasers...
-                        Add(new Laser(Location.X - 16f, Location.Y - 8f));
-                        Add(new Laser(Location.X + 16f, Location.Y - 8f));
-                        if (!demo)
-                        {
-                            // Y lo deja preparado para disparar de uno en uno
-                            readyToFire = false;
-                        }
-                    }
+                if (Input.KeyPressed())
+                {
+                    Scene.SendMessage(LevelSceneMessages.StartGame);
+                    ball.Die();
+                    Die();
+                    return;
+                }
+            }
+            else
+            {
+                if (Input.Key(Keys.Escape))
+                {
+                    Scene.SendMessage(LevelSceneMessages.BackToIntro);
+                    ball.Die();
+                    Die();
+                    return;
+                }
+
+                // Comprueba la pulsacion de las teclas de los cursores
+                if (Input.Left() && incX > -MaxSpeed)
+                {
+                    incX -= speed * aceleration * backwardsControl;  // Acelera
+                }
+                else if (Input.Right() && incX < MaxSpeed)
+                {
+                    incX += speed * aceleration * backwardsControl;  // Acelera
                 }
                 else
                 {
-                    // Permite volver a disparar
-                    readyToFire = true;
-                }
-
-                //    // Comprueba cuando coges una p¡ldora de bonos                
-                if (pillCollision.OnCollision(out PillBase pill))
-                {
-                    pill.Pick();                    
-                }
-
-                // Si no esta en demo mueve la paleta
-                if (!demo)
-                {
-                    Location.X += incX;
-#if DEBUG || SHOWFPS
-                    Location.X = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
-#endif
-                }
-                else
-                {
-                    // Tomo la X de la bola más cercana.
-                    var bX = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
-                    if (bX < Location.X)
+                    // Ninguna tecla pulsada
+                    if (incX > 0)
                     {
-                        Location.X -= Math.Min(4f, Location.X - bX);
-                    } 
-                    else if (bX > Location.X)
+                        incX -= aceleration * backwardsControl;
+                    }
+                    else if (incX < 0)
                     {
-                        Location.X += Math.Min(4f, bX - Location.X);
+                        // Frena la raqueta
+                        incX += aceleration * backwardsControl;
                     }
                 }
+            }            
 
-                // Limites de la pantalla segun el tamanio
-                if (Location.X < 24f + currentSize)
+            // Comprueba si se pulsa las teclas de disparo y se tiene la modalidad de disparo
+            if (laser && ((demo && Rand.Next(0, 15) == 0) || Input.Button03()))
+            {
+                // Si no ha disparado esta vez
+                if (readyToFire)
                 {
-                    Location.X = 24f + currentSize;
-                    incX = 0f;
+                    // Y realiza sonido.                        
+                    Audio.PlaySound(Sounds.LaserSound);
+
+                    // Dispara los lasers...
+                    Add(new Laser(Location.X - 16f, Location.Y - 8f));
+                    Add(new Laser(Location.X + 16f, Location.Y - 8f));
+                    if (!demo)
+                    {
+                        // Y lo deja preparado para disparar de uno en uno
+                        readyToFire = false;
+                    }
                 }
-                if (Location.X > 249f - currentSize)
+            }
+            else
+            {
+                // Permite volver a disparar
+                readyToFire = true;
+            }
+
+            //    // Comprueba cuando coges una p¡ldora de bonos                
+            if (pillCollision.OnCollision(out PillBase pill))
+            {
+                pill.Pick();                    
+            }
+
+            // Si no esta en demo mueve la paleta
+            if (!demo)
+            {
+                Location.X += incX;
+            }
+            else
+            {
+                // Tomo la X de la bola más cercana.
+                var bX = Find.All<Ball>().OrderByDescending(p => p.Location.Y).FirstOrDefault().IfNotNull(b => b.Location.X);
+                if (bX < Location.X)
                 {
-                    Location.X = 249f - currentSize;
-                    incX = 0f;
+                    Location.X -= Math.Min(4f, Location.X - bX);
+                } 
+                else if (bX > Location.X)
+                {
+                    Location.X += Math.Min(4f, bX - Location.X);
                 }
-                Frame();
-            });
+            }
+
+            // Limites de la pantalla segun el tamanio
+            if (Location.X < 24f + currentSize)
+            {
+                Location.X = 24f + currentSize;
+                incX = 0f;
+            }
+            if (Location.X > 249f - currentSize)
+            {
+                Location.X = 249f - currentSize;
+                incX = 0f;
+            }                
         }
 
         /// <summary>

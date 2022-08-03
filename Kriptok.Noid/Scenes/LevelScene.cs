@@ -1,6 +1,7 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Maps.Tiles.Editor;
 using Kriptok.Noid.Entities;
+using Kriptok.Noid.Entities.Pills;
 using Kriptok.Objects;
 using Kriptok.Scenes;
 using Kriptok.Views;
@@ -13,9 +14,9 @@ namespace Kriptok.Noid.Scenes
     public enum LevelSceneMessages
     {
         /// <summary>
-        /// Cuando no quedan más ladrillos.
+        /// Checkea si no quedan más ladrillos.
         /// </summary>
-        Win = 0,
+        CheckBricks = 0,
 
         /// <summary>
         /// Cuando se perdió la bola.
@@ -23,9 +24,19 @@ namespace Kriptok.Noid.Scenes
         Lose = 1, 
 
         /// <summary>
-        /// Actualiza la cantidad de vidas.
+        /// Termina la demo y empieza el juego.
         /// </summary>
-        UpdateLives = 2,
+        StartGame = 3,
+
+        /// <summary>
+        /// Vuelve a la Intro del juego.
+        /// </summary>
+        BackToIntro = 4,
+
+        /// <summary>
+        /// Corta la demo y va a otro nivel.
+        /// </summary>
+        NextDemoLevel = 5,
     }
 
     public class LevelScene : SceneBase
@@ -40,22 +51,17 @@ namespace Kriptok.Noid.Scenes
         /// </summary>
         private readonly bool demo;
 
-        /// <summary>
-        /// Referencias a las vidas actuales.
-        /// </summary>
-        private readonly Life[] lives = new Life[Consts.MaxLivesOnScreen];
-
         private Racket racket;
         private Ball ball;
 
         public LevelScene(int level, bool demo)
         {            
             this.level = level;
-            this.demo = demo;
+            this.demo = demo;            
         }
 
         protected override void Run(SceneHandler h)
-        {          
+        {
             if (demo)
             {
                 h.Add(h.ScreenRegion, new DemoText());
@@ -69,10 +75,16 @@ namespace Kriptok.Noid.Scenes
                 bg.Blit(Assembly, $"Assets.Images.ScoreBoard.png", 273, 0);
             });
 
-            CreateLives(h);
-
             // Cargo el nivel.
             LoadLevel(h);
+            
+            // Arranco a jugar.
+            Play(h);
+        }
+
+        private void Play(SceneHandler h)
+        {
+            CreateLives(h);
 
             // Objetos principales.
             racket = h.Add(new Racket(demo));
@@ -80,42 +92,6 @@ namespace Kriptok.Noid.Scenes
 
             // Prendo la pantalla.
             h.FadeOn();
-
-            if (demo)
-            {
-                // Comprueba la pulsacion de escape
-                var key = h.WaitForKeyPress();
-                if (key == Keys.Escape)
-                {
-                    // Si esta en modo demo, sale del programa                
-                    h.FadeOff();
-                    h.Set(new IntroScene());
-                }
-                else
-                {
-                    // Arranco el juego.
-                    h.FadeOff();
-                    Global.ResetValues();
-                    h.Set(new LevelScene(Consts.FirstLevel, false));
-                }
-            }
-            else
-            {
-                // Espero hasta que no haya más ladrillos en pantalla.
-                h.WaitWhile(() => IsPlaying(h));
-
-                // Paso de nivel.
-                h.FadeOff();
-                h.Set(new LevelScene(level + 1, demo));
-            }
-        }
-
-        /// <summary>
-        /// Indica si está jugando.
-        /// </summary>        
-        private static bool IsPlaying(SceneHandler h)
-        {
-            return h.FindAll<Brick>().Count(p => p.CanBeHit()) > 0;
         }
 
         private void LoadLevel(SceneHandler h)
@@ -138,11 +114,11 @@ namespace Kriptok.Noid.Scenes
 
         private void CreateLives(SceneHandler h)
         {
-            var count = Math.Min(Consts.MaxLivesOnScreen, Global.Lives);
+            var count = Math.Min(Consts.MaxLivesOnScreen, Global.LifeCount);
 
             for (int i = 0; i < count; i++)
             {
-                lives[i] = h.Add(new Life(i));
+                Global.Lives[i] = h.Add(new Life(i));
             }
         }
 
@@ -154,13 +130,63 @@ namespace Kriptok.Noid.Scenes
             {
                 switch (msg)
                 {
-                    case LevelSceneMessages.Win:
+                    case LevelSceneMessages.CheckBricks:
+                        if (h.FindAll<Brick>().Count(p => p.CanBeHit()) <= 0)
+                        {
+                            // Paso de nivel.
+                            h.FadeOff();
+                            h.PlaySoundSync(Assembly, "Sounds.Up.wav");
+                            h.Set(new LevelScene(level + 1, demo));
+                        }                        
                         break;
                     case LevelSceneMessages.Lose:
+                        {
+                            h.PlaySound(Assembly, "Sounds.Down.wav");
+                            racket.Sleep();                            
+                            h.FadeOff();
+                            racket.Die();
+                            h.Kill<PillBase>();
+                            h.Kill<Life>();
+#if !DEBUG
+                            if (Global.LifeCount == 0) 
+                            {
+                                h.Set(new IntroScene());
+                            }
+                            else 
+                            {
+#else
+                                // Si no es debug, sigo jugando igual, aunque no tenga más vidas.
+                                Global.LifeCount -= 1;
+                                Play(h);
+#endif
+#if !DEBUG
+                            }
+#endif
+                            break;
+                        }
+                    case LevelSceneMessages.StartGame:
+                        if (demo)
+                        {
+                            // Arranco el juego.
+                            h.FadeOff();
+                            Global.ResetValues();
+                            h.Set(new LevelScene(Consts.FirstLevel, false));
+                        }
+                        else
+                        {
+                            throw new Exception("Este mensaje sólo debería enviarse desde el modo 'demo'.");
+                        }
                         break;
-                    case LevelSceneMessages.UpdateLives:                        
-                        h.Kill<Life>(); // Mato todas las vidas.
-                        CreateLives(h); // Y las vuelvo a crear.
+                    case LevelSceneMessages.NextDemoLevel:
+                        {
+                            h.FadeOff();
+                            Global.ResetValues();
+                            h.Set(new LevelScene(h.Rand(1, 12), true));
+                            break;
+                        }
+                    case LevelSceneMessages.BackToIntro:                         
+                        h.FadeOff();                            
+                        h.Set(new IntroScene());                        
                         break;
                 }
             }
@@ -169,6 +195,11 @@ namespace Kriptok.Noid.Scenes
 
     class DemoText : TextObject
     {
+        /// <summary>
+        /// Momento en que inició la demo.
+        /// </summary>
+        private readonly DateTime startedTime = DateTime.Now;
+
         private int counter = 1;
 
         protected internal DemoText()
@@ -186,6 +217,22 @@ namespace Kriptok.Noid.Scenes
             if (counter++ % 20 == 0)
             {
                 Location.Y = -Location.Y;
+            }
+
+            // Me fijo si tengo que terminar la demo.
+            if ((DateTime.Now - startedTime).TotalSeconds > 15)
+            {
+                // if (Rand.Next(1, 5) == 1)
+                // {
+
+                // Vuelvo a mostrar el título, como si fuera un arcade.
+                Scene.SendMessage(LevelSceneMessages.BackToIntro);
+                // }
+                // else
+                // {
+                //     Scene.SendMessage(LevelSceneMessages.NextDemoLevel);
+                // }
+                Die();
             }
         }
     }

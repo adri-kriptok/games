@@ -21,6 +21,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Kriptok.Sdk.Tools.DrawingToolEnum">
+            <summary>
+            Herramientas típicas de dibujo para editores gráficos.
+            </summary>
+        </member>
         <member name="F:Kriptok.Sdk.Tools.Extensions.GraphicsExtensions.markerBitmap">
             <summary>
             Marcador utilizado para dibjar la posición inicial del jugador en modo "preview".

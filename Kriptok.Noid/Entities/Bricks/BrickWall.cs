@@ -19,10 +19,11 @@ namespace Kriptok.Noid.Entities
                 Global.Score += 15;
                 Sounds.TaikoDrum.Play(90, 127);
                 Die();
+                CheckLastBrick();
             }
             else
             {
-                Audio.PlayWave(Sounds.s_bordes);
+                Audio.PlayWave(Sounds.BoundSound);
                 view.Graph++;
             }
         }

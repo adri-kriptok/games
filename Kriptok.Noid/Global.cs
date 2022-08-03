@@ -2,6 +2,7 @@
 using Kriptok.Audio.Midi;
 using Kriptok.Common;
 using Kriptok.Extensions;
+using Kriptok.Noid.Scenes;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Kriptok.Noid
         /// <summary>
         /// Nivel en el que iniciar.
         /// </summary>
-        public const int FirstLevel = 7;
+        public const int FirstLevel = 1;
 
         /// <summary>
         /// Cantidad de vidas iniciales.
@@ -47,33 +48,33 @@ namespace Kriptok.Noid
         /// <summary>
         /// Vidas que tiene el jugador actualmente.
         /// </summary>
-        public static int Lives;
+        public static int LifeCount;
+
+        /// <summary>
+        /// Referencias a las vidas actuales.
+        /// </summary>
+        internal static readonly Life[] Lives = new Life[Consts.MaxLivesOnScreen];
 
         internal static void ResetValues()
         {
             // Reseteo la puntuación para el modo demo, o si estoy empezando a jugar.
             Global.Score = 0;
-            Global.Lives = Consts.InitialLives;
+            Global.LifeCount = Consts.InitialLives;
         }
     }
 
     public static class Sounds
-    {
-        // internal static Resource s_golpe = new Resource(typeof(Sounds).Assembly, "BANDA.WAV");
-        internal static Resource s_golpe = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
-        internal static Resource s_pildora = new Resource(typeof(Sounds).Assembly, "FX34.WAV");
-        internal static Resource s_fuego = new Resource(typeof(Sounds).Assembly, "LASER.WAV");
-        internal static Resource s_metal = new Resource(typeof(Sounds).Assembly, "METAL10.WAV");
-        internal static Resource s_bordes = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV"); // "PASO9.WAV");
-        internal static Resource s_raqueta = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
-        
+    {        
+        internal static Resource PillSound = new Resource(typeof(Sounds).Assembly, "BUIU.WAV");
+        internal static Resource LaserSound = new Resource(typeof(Sounds).Assembly, "LASER.WAV");
+        internal static Resource MetalSound = new Resource(typeof(Sounds).Assembly, "METAL10.WAV");
+        internal static Resource BoundSound = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
+        internal static Resource RacketSound = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
+        // internal static Resource ReleaseBallSound = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
+
         /// <summary>
         /// Instrumento para reproducir notas cuando se golpea los ladrillos.
         /// </summary>
         internal static MidiInstrument TaikoDrum = new MidiInstrument(MidiInstrumentEnum.TaikoDrum, 0);
-
-        // internal static Resource s_banda = new Resource(typeof(Sounds).Assembly, "BANDA.WAV");
-        // internal static Resource s_billar = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
-        // internal static Resource s_raqueta = new Resource(typeof(Sounds).Assembly, "FX35.WAV");
     }
 }

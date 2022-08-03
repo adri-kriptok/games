@@ -1390,6 +1390,349 @@
             Lista de recursos que sí están accessibles en el ensamblado indicado.
             </summary>
         </member>
+        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.WriteStr(System.IO.MemoryMappedFiles.MemoryMappedFile,System.String)">
+            <summary>
+            Escribe un mensaje en la posición 0.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.ReadStr(System.IO.MemoryMappedFiles.MemoryMappedFile,System.Int32)">
+            <summary>
+            Lee un mensaje de texto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.WriteUInt(System.IO.MemoryMappedFiles.MemoryMappedFile,System.UInt32)">
+            <summary>
+            Escribe un mensaje en la posición 0.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.ReadInt(System.IO.MemoryMappedFiles.MemoryMappedFile)">
+            <summary>
+            Lee un valor de tipo <see cref="T:System.UInt32"/> del archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.RectangleExtensions.ToRectangleF(System.Drawing.Rectangle)">
+            <summary>
+            Transforma un <see cref="T:System.Drawing.Rectangle"/> en un <see cref="T:System.Drawing.RectangleF"/> con los mismos valores.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Extensions.StackExtensions">
+            <summary>
+            Extensiones para la clase <see cref="T:System.Collections.Generic.Stack`1"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Extensions.TypeExtensions">
+            <summary>
+            Lista de extensiones para la clase <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.TypeExtensions.Implements``1(System.Type)">
+            <summary>
+            Indica si la clase implementa la interfaz indicada.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Extensions.IListExtensions">
+            <summary>
+            Clase con métodos de extensión para la clase <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.IListExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Agrega todos los elementos indicados a la lista.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorDown(System.UInt32,System.UInt32)">
+            <summary>
+            Escala el valor como si fuera un color de coordenadas RGB.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorUp(System.UInt32,System.UInt32)">
+            <summary>
+            Escala el valor (lo hace más brillante) como si fuera un color de coordenadas RGB.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorDownAlpha(System.UInt32,System.UInt32)">
+            <summary>
+            Escala el valor hacia abajo (lo oscurece) manteniendo la transparencia.
+            </summary>                        
+        </member>
+        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorUpAlpha(System.UInt32,System.UInt32)">
+            <summary>
+            Escala el valor (lo hace más brillante) manteniendo la transparencia.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.UInt32Extensions.ToColor(System.UInt32)">
+            <summary>
+            Transforma un color almacenado en un <see cref="T:System.UInt32"/> en un <see cref="T:System.Drawing.Color"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.AssemblyExtensions.TryGetTypes(System.Reflection.Assembly)">
+            <summary>
+            Intenta obtener todas las clases de un ensamblado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.DoubleExtensions.ClampToByte(System.Double)">
+            <summary>
+            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.DoubleExtensions.Floor(System.Double)">
+            <summary>
+            Obtiene el "piso" del número de tipo <see cref="T:System.Single"/> indicado.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.LinearGradientBrushExtensions.SavingState(System.Drawing.Drawing2D.LinearGradientBrush,System.Action{System.Drawing.Drawing2D.LinearGradientBrush})">
+            <summary>
+            Este método lo que hace es realizar una copia de la matriz de transformación,
+            y volverla a guardar cuando se termine de utilizar la nueva transformación.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.ArrayExtensions.IsNullOrEmpty``1(``0[])">
+            <summary>
+            Indica si un vector no tiene elementos o bien la referencia es nula.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.ArrayExtensions.LengthOrDefault``1(``0[])">
+            <summary>
+            Indica la longitud de un vector, o 0 si este es null.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.ColorExtensions.Rotate(System.Drawing.Color,System.Single)">
+            <summary>
+            Rota la gama del color.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.ColorExtensions.MultiplyBy(System.Drawing.Color,System.Single)">
+            <summary>
+            Aplica un multiplicador (valor entre 0 y 1) al color, para calcular la opacidad real del color,
+            a todas las coordenadas, menos al Alpha.
+            </summary>        
+            <returns>Devuelve el color modificado.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.ColorExtensions.Plus(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Suma las coordenadas de color de dos colores, menos al Alpha, que toma la del color original.
+            </summary>        
+            <returns>Devuelve el color modificado.</returns>
+        </member>
+        <member name="T:Kriptok.Extensions.FloatExtensions">
+            <summary>
+            Funcionalidades extendidas del tipo <see cref="T:System.Single"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.FloatExtensions.Floor(System.Single)">
+            <summary>
+            Obtiene el "piso" del número de tipo <see cref="T:System.Single"/> indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.FloatExtensions.Ceiling(System.Single)">
+            <summary>
+            Obtiene el "techo" del número de tipo <see cref="T:System.Single"/> indicado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.FloatExtensions.ClampToByte(System.Single)">
+            <summary>
+            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.FloatExtensions.Round(System.Single)">
+            <summary>
+            Redondea un número al entero más ceracano.
+            </summary>
+            <param name="f">Número a redondear.</param>
+        </member>
+        <member name="M:Kriptok.Extensions.FloatExtensions.Round1(System.Single)">
+            <summary>
+            Redondea un valor de tipo flotante a un decimal.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Extensions.GraphicsExtensions.SolidBrush">
+            <summary>
+            Brush genérico para dibujar sombras sobre caras texturadas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Extensions.GraphicsExtensions.ComplexPen">
+            <summary>
+            Brush genérico para dibujar sombras sobre caras texturadas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Extensions.GraphicsExtensions.WirePen">
+            <summary>
+            Esta pluma se utiliza para dibujar figuras suaves como líneas y polígonos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.GraphicsExtensions.SetPixelatedProperties(System.Drawing.Graphics,System.Drawing.Drawing2D.PixelOffsetMode)">
+            <summary>
+            https://www.codeproject.com/Tips/66909/Rendering-fast-with-GDI-What-to-do-and-what-not-to        
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.GraphicsExtensions.UsingDefaultInterpolationMode(System.Drawing.Graphics,System.Action)">
+            <summary>
+            Establece temporalmente el modo de interpolación por defecto. Luego
+            vuelve a establecer el que estaba previamente.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.GraphicsExtensions.GetBounds(System.Drawing.Graphics)">
+            <summary>
+            Obtiene los límites visibles del objeto <see cref="T:System.Drawing.Graphics"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.GraphicsExtensions.DrawImage(System.Drawing.Graphics,System.Drawing.Image,System.Drawing.Imaging.ImageAttributes)">
+            <summary>
+            Dibuja la imagen en el objeto graphics indicado, utilizando los atributos indicados por parámero.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.GraphicsExtensions.DrawImage(System.Drawing.Graphics,System.Drawing.Image,System.Int32,System.Int32,System.Drawing.Imaging.ImageAttributes)">
+            <summary>
+            Dibuja la imagen en el objeto graphics indicado, utilizando los atributos indicados por parámero.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.IDictionaryExtensions.Resolve``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1})">
+            <summary>
+            Resolve utiliza el patrón doble check (antes y después de lockear).
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.FromBase64(System.String)">
+            <summary>
+            Decodifica el string de base 64.
+            </summary>
+            <param name="s">String a decodificar.</param>
+            <returns>Devuelve el string decodificado de base 64.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.ToBase64(System.String)">
+            <summary>
+            Codifica el string en base64.
+            </summary>
+            <param name="s">String a codificar.</param>
+            <returns>Devuelve el string codificado en base 64.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.ToInt(System.String)">
+            <summary>
+            Parsea un string a un tipo de dato entero, validando previamente que no sea null-
+            </summary>
+            <param name="s">String a parsear.</param>
+            <returns>Devuelve el valor del string parseado a int, o 0 si es null.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.ReplaceXmlCharacters(System.String)">
+            <summary>
+            Función que reemplaza en el contenido de un texto, los caracteres especiales de Xml.
+            </summary>
+            <param name="text">Texto a modificar.</param>
+            <returns>Devuelve la cadena de texto, válida para un Xml.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.ReSplit(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="str"></param>
+            <param name="regex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.PopLast(System.String)">
+            <summary>
+            Le quita el último caracter a una cadena.
+            </summary>
+            <param name="s">String a recortar.</param>        
+            <returns>Devuelve una cadena sin el último caracter.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.PopFirst(System.String)">
+            <summary>
+            Le quita el primer caracter a la cadena.
+            </summary>
+            <param name="s">String a recortar.</param>        
+            <returns>Devuelve una cadena sin el primer caracter.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.PopLast(System.String,System.Int32)">
+            <summary>
+            Le quita el último caracter a una cadena.
+            </summary>
+            <param name="s">String a recortar.</param>        
+            <param name="numberOfCaracters">Cantidad de caracteres a recortar.</param>
+            <returns>Devuelve una cadena sin el último caracter.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.PopFirst(System.String,System.Int32)">
+            <summary>
+            Le quita el primer caracter a la cadena.
+            </summary>
+            <param name="s">String a recortar.</param>        
+            <param name="numberOfCaracters">Cantidad de caracteres a recortar.</param>
+            <returns>Devuelve una cadena sin el primer caracter.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.StringExtensions.ToLowerOrEmpty(System.String)">
+            <summary>
+            Pasa un string a minúsculas o a uno vacío si el string es null.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Extensions.BitmapExtensions">
+            <summary>
+            Estas funcionalidades no deben ser utilizadas dentro del flujo de un juego, por su pobre performance.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.BitmapExtensions.ForEachPixel(System.Drawing.Bitmap,System.Action{System.Int32,System.Int32,System.Drawing.Color})">
+            <summary>
+            Ejecuta una acción sobre cada pixel del Bitmap. Esta funcionalidad es para edición de imágenes,
+            pero es sumamente lenta y no debe ser implementada dentro del flujo de un juego.
+            </summary>
+            <param name="img">Bitmap a rotar.</param>
+            <param name="action">Acción a realizar para las coordenadas X, Y.</param>
+        </member>
+        <member name="M:Kriptok.Extensions.BitmapExtensions.GetSortOrder(System.Drawing.Bitmap)">
+            <summary>
+            Obtiene el valor para ordenar texturas en editores de mapas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.IEnumerableExtensions.OrderByRandom``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Ordena un enumerado de forma aleatoria.
+            </summary>
+            <typeparam name="T">Tipo del enumerado.</typeparam>
+            <param name="enumerable">Objeto enumerado.</param>
+            <returns>Devuelve un nuevo enumerado ordenado aleatoriamente.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.IEnumerableExtensions.ToArray``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
+            <summary>
+            Transforma cualquier tipo de enumerable en un array.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.ImageExtensions.ToByteArray(System.Drawing.Image)">
+            <summary>
+            Convierte una imagen a un array de bytes de color.
+            Dependiendo del formato de pixels indicados, cada pixel
+            puede ocupar 3 o 4 elementos del array.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Extensions.ImageExtensions.ToUInt32Array(System.Drawing.Image)">
+            <summary>
+            Convierte una imagen a un array de bytes de color.
+            Dependiendo del formato de pixels indicados, cada pixel
+            puede ocupar 3 o 4 elementos del array.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.Int32Extensions.ClampToByte(System.Int32)">
+            <summary>
+            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.Int32Extensions.IsPowerOfTwo(System.Int32)">
+            <summary>
+            Indica si un número es potencia de 2.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.ObjectExtensions.In``1(``0,``0[])">
+            <summary>
+            Indica si el objeto se encuentra dentro de un arreglo de posibles valores.
+            </summary>
+            <typeparam name="TSourceType">Parámetro de tipo inferido.</typeparam>
+            <param name="obj">Objeto a evaluar.</param>
+            <param name="possibleValues">Arreglo de valores para evaluar.</param>
+            <returns>Devuelve "true" si el objeto se encuentra en el arreglo, y "false" de lo contrario.</returns>
+        </member>
+        <member name="M:Kriptok.Extensions.ObjectExtensions.IfNotNull``2(``0,System.Func{``0,``1})">
+            <summary>
+            Este método es poco performante.
+            
+            NO USAR EN ALGORITMOS QUE REQUIEREN CORRER DE FORMA OPTIMA.
+            </summary>        
+        </member>
         <member name="F:Kriptok.Forms.MsDosForm.components">
             <summary>
             Required designer variable.
@@ -9809,6 +10152,16 @@
              * etcétera.
             </summary>
         </member>
+        <member name="F:Kriptok.Scenes.SceneBase.processingMessageOn">
+            <summary>
+            Objeto utilizado para lockear mientras se procesa un mensaje.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Scenes.SceneBase.processingMessage">
+            <summary>
+            Variable que indica si se está procesando un mensaje.
+            </summary>
+        </member>
         <member name="F:Kriptok.Scenes.SceneBase.mainForm">
             <summary>
             Formulario principal del juego.
@@ -9848,6 +10201,11 @@
             <summary>
             Método que permite implementar el comportamiento de la escena
             al recibir un mensaje de algún objeto del juego.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Scenes.SceneBase.LockMessage(System.Action)">
+            <summary>
+            Lockea para indicar que se está empezando o terminando de procesar un mensaje.
             </summary>        
         </member>
         <member name="T:Kriptok.Scenes.SceneBase.SceneProcessBase">
@@ -10447,349 +10805,6 @@
             <param name="key"></param>
             <param name="resolution"></param>
             <returns></returns>
-        </member>
-        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.WriteStr(System.IO.MemoryMappedFiles.MemoryMappedFile,System.String)">
-            <summary>
-            Escribe un mensaje en la posición 0.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.ReadStr(System.IO.MemoryMappedFiles.MemoryMappedFile,System.Int32)">
-            <summary>
-            Lee un mensaje de texto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.WriteUInt(System.IO.MemoryMappedFiles.MemoryMappedFile,System.UInt32)">
-            <summary>
-            Escribe un mensaje en la posición 0.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.ReadInt(System.IO.MemoryMappedFiles.MemoryMappedFile)">
-            <summary>
-            Lee un valor de tipo <see cref="T:System.UInt32"/> del archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.RectangleExtensions.ToRectangleF(System.Drawing.Rectangle)">
-            <summary>
-            Transforma un <see cref="T:System.Drawing.Rectangle"/> en un <see cref="T:System.Drawing.RectangleF"/> con los mismos valores.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Extensions.StackExtensions">
-            <summary>
-            Extensiones para la clase <see cref="T:System.Collections.Generic.Stack`1"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Extensions.TypeExtensions">
-            <summary>
-            Lista de extensiones para la clase <see cref="T:System.Type"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.TypeExtensions.Implements``1(System.Type)">
-            <summary>
-            Indica si la clase implementa la interfaz indicada.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Extensions.IListExtensions">
-            <summary>
-            Clase con métodos de extensión para la clase <see cref="T:System.Collections.Generic.IList`1"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.IListExtensions.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Agrega todos los elementos indicados a la lista.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorDown(System.UInt32,System.UInt32)">
-            <summary>
-            Escala el valor como si fuera un color de coordenadas RGB.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorUp(System.UInt32,System.UInt32)">
-            <summary>
-            Escala el valor (lo hace más brillante) como si fuera un color de coordenadas RGB.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorDownAlpha(System.UInt32,System.UInt32)">
-            <summary>
-            Escala el valor hacia abajo (lo oscurece) manteniendo la transparencia.
-            </summary>                        
-        </member>
-        <member name="M:Kriptok.Extensions.UInt32Extensions.ScaleColorUpAlpha(System.UInt32,System.UInt32)">
-            <summary>
-            Escala el valor (lo hace más brillante) manteniendo la transparencia.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.UInt32Extensions.ToColor(System.UInt32)">
-            <summary>
-            Transforma un color almacenado en un <see cref="T:System.UInt32"/> en un <see cref="T:System.Drawing.Color"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.AssemblyExtensions.TryGetTypes(System.Reflection.Assembly)">
-            <summary>
-            Intenta obtener todas las clases de un ensamblado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.DoubleExtensions.ClampToByte(System.Double)">
-            <summary>
-            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.DoubleExtensions.Floor(System.Double)">
-            <summary>
-            Obtiene el "piso" del número de tipo <see cref="T:System.Single"/> indicado.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.LinearGradientBrushExtensions.SavingState(System.Drawing.Drawing2D.LinearGradientBrush,System.Action{System.Drawing.Drawing2D.LinearGradientBrush})">
-            <summary>
-            Este método lo que hace es realizar una copia de la matriz de transformación,
-            y volverla a guardar cuando se termine de utilizar la nueva transformación.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.ArrayExtensions.IsNullOrEmpty``1(``0[])">
-            <summary>
-            Indica si un vector no tiene elementos o bien la referencia es nula.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.ArrayExtensions.LengthOrDefault``1(``0[])">
-            <summary>
-            Indica la longitud de un vector, o 0 si este es null.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.ColorExtensions.Rotate(System.Drawing.Color,System.Single)">
-            <summary>
-            Rota la gama del color.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.ColorExtensions.MultiplyBy(System.Drawing.Color,System.Single)">
-            <summary>
-            Aplica un multiplicador (valor entre 0 y 1) al color, para calcular la opacidad real del color,
-            a todas las coordenadas, menos al Alpha.
-            </summary>        
-            <returns>Devuelve el color modificado.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.ColorExtensions.Plus(System.Drawing.Color,System.Drawing.Color)">
-            <summary>
-            Suma las coordenadas de color de dos colores, menos al Alpha, que toma la del color original.
-            </summary>        
-            <returns>Devuelve el color modificado.</returns>
-        </member>
-        <member name="T:Kriptok.Extensions.FloatExtensions">
-            <summary>
-            Funcionalidades extendidas del tipo <see cref="T:System.Single"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.FloatExtensions.Floor(System.Single)">
-            <summary>
-            Obtiene el "piso" del número de tipo <see cref="T:System.Single"/> indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.FloatExtensions.Ceiling(System.Single)">
-            <summary>
-            Obtiene el "techo" del número de tipo <see cref="T:System.Single"/> indicado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.FloatExtensions.ClampToByte(System.Single)">
-            <summary>
-            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.FloatExtensions.Round(System.Single)">
-            <summary>
-            Redondea un número al entero más ceracano.
-            </summary>
-            <param name="f">Número a redondear.</param>
-        </member>
-        <member name="M:Kriptok.Extensions.FloatExtensions.Round1(System.Single)">
-            <summary>
-            Redondea un valor de tipo flotante a un decimal.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Extensions.GraphicsExtensions.SolidBrush">
-            <summary>
-            Brush genérico para dibujar sombras sobre caras texturadas.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Extensions.GraphicsExtensions.ComplexPen">
-            <summary>
-            Brush genérico para dibujar sombras sobre caras texturadas.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Extensions.GraphicsExtensions.WirePen">
-            <summary>
-            Esta pluma se utiliza para dibujar figuras suaves como líneas y polígonos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.GraphicsExtensions.SetPixelatedProperties(System.Drawing.Graphics,System.Drawing.Drawing2D.PixelOffsetMode)">
-            <summary>
-            https://www.codeproject.com/Tips/66909/Rendering-fast-with-GDI-What-to-do-and-what-not-to        
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.GraphicsExtensions.UsingDefaultInterpolationMode(System.Drawing.Graphics,System.Action)">
-            <summary>
-            Establece temporalmente el modo de interpolación por defecto. Luego
-            vuelve a establecer el que estaba previamente.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.GraphicsExtensions.GetBounds(System.Drawing.Graphics)">
-            <summary>
-            Obtiene los límites visibles del objeto <see cref="T:System.Drawing.Graphics"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.GraphicsExtensions.DrawImage(System.Drawing.Graphics,System.Drawing.Image,System.Drawing.Imaging.ImageAttributes)">
-            <summary>
-            Dibuja la imagen en el objeto graphics indicado, utilizando los atributos indicados por parámero.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.GraphicsExtensions.DrawImage(System.Drawing.Graphics,System.Drawing.Image,System.Int32,System.Int32,System.Drawing.Imaging.ImageAttributes)">
-            <summary>
-            Dibuja la imagen en el objeto graphics indicado, utilizando los atributos indicados por parámero.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.IDictionaryExtensions.Resolve``2(System.Collections.Generic.IDictionary{``0,``1},``0,System.Func{``1})">
-            <summary>
-            Resolve utiliza el patrón doble check (antes y después de lockear).
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.FromBase64(System.String)">
-            <summary>
-            Decodifica el string de base 64.
-            </summary>
-            <param name="s">String a decodificar.</param>
-            <returns>Devuelve el string decodificado de base 64.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.ToBase64(System.String)">
-            <summary>
-            Codifica el string en base64.
-            </summary>
-            <param name="s">String a codificar.</param>
-            <returns>Devuelve el string codificado en base 64.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.ToInt(System.String)">
-            <summary>
-            Parsea un string a un tipo de dato entero, validando previamente que no sea null-
-            </summary>
-            <param name="s">String a parsear.</param>
-            <returns>Devuelve el valor del string parseado a int, o 0 si es null.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.ReplaceXmlCharacters(System.String)">
-            <summary>
-            Función que reemplaza en el contenido de un texto, los caracteres especiales de Xml.
-            </summary>
-            <param name="text">Texto a modificar.</param>
-            <returns>Devuelve la cadena de texto, válida para un Xml.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.ReSplit(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="str"></param>
-            <param name="regex"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.PopLast(System.String)">
-            <summary>
-            Le quita el último caracter a una cadena.
-            </summary>
-            <param name="s">String a recortar.</param>        
-            <returns>Devuelve una cadena sin el último caracter.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.PopFirst(System.String)">
-            <summary>
-            Le quita el primer caracter a la cadena.
-            </summary>
-            <param name="s">String a recortar.</param>        
-            <returns>Devuelve una cadena sin el primer caracter.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.PopLast(System.String,System.Int32)">
-            <summary>
-            Le quita el último caracter a una cadena.
-            </summary>
-            <param name="s">String a recortar.</param>        
-            <param name="numberOfCaracters">Cantidad de caracteres a recortar.</param>
-            <returns>Devuelve una cadena sin el último caracter.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.PopFirst(System.String,System.Int32)">
-            <summary>
-            Le quita el primer caracter a la cadena.
-            </summary>
-            <param name="s">String a recortar.</param>        
-            <param name="numberOfCaracters">Cantidad de caracteres a recortar.</param>
-            <returns>Devuelve una cadena sin el primer caracter.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.StringExtensions.ToLowerOrEmpty(System.String)">
-            <summary>
-            Pasa un string a minúsculas o a uno vacío si el string es null.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Extensions.BitmapExtensions">
-            <summary>
-            Estas funcionalidades no deben ser utilizadas dentro del flujo de un juego, por su pobre performance.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Extensions.BitmapExtensions.ForEachPixel(System.Drawing.Bitmap,System.Action{System.Int32,System.Int32,System.Drawing.Color})">
-            <summary>
-            Ejecuta una acción sobre cada pixel del Bitmap. Esta funcionalidad es para edición de imágenes,
-            pero es sumamente lenta y no debe ser implementada dentro del flujo de un juego.
-            </summary>
-            <param name="img">Bitmap a rotar.</param>
-            <param name="action">Acción a realizar para las coordenadas X, Y.</param>
-        </member>
-        <member name="M:Kriptok.Extensions.BitmapExtensions.GetSortOrder(System.Drawing.Bitmap)">
-            <summary>
-            Obtiene el valor para ordenar texturas en editores de mapas.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.IEnumerableExtensions.OrderByRandom``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
-            <summary>
-            Ordena un enumerado de forma aleatoria.
-            </summary>
-            <typeparam name="T">Tipo del enumerado.</typeparam>
-            <param name="enumerable">Objeto enumerado.</param>
-            <returns>Devuelve un nuevo enumerado ordenado aleatoriamente.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.IEnumerableExtensions.ToArray``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
-            <summary>
-            Transforma cualquier tipo de enumerable en un array.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.ImageExtensions.ToByteArray(System.Drawing.Image)">
-            <summary>
-            Convierte una imagen a un array de bytes de color.
-            Dependiendo del formato de pixels indicados, cada pixel
-            puede ocupar 3 o 4 elementos del array.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Extensions.ImageExtensions.ToUInt32Array(System.Drawing.Image)">
-            <summary>
-            Convierte una imagen a un array de bytes de color.
-            Dependiendo del formato de pixels indicados, cada pixel
-            puede ocupar 3 o 4 elementos del array.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.Int32Extensions.ClampToByte(System.Int32)">
-            <summary>
-            Clampea un valor a los valores máximos y mínimos de un <see cref="T:System.Byte"/> y además lo castea.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.Int32Extensions.IsPowerOfTwo(System.Int32)">
-            <summary>
-            Indica si un número es potencia de 2.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Extensions.ObjectExtensions.In``1(``0,``0[])">
-            <summary>
-            Indica si el objeto se encuentra dentro de un arreglo de posibles valores.
-            </summary>
-            <typeparam name="TSourceType">Parámetro de tipo inferido.</typeparam>
-            <param name="obj">Objeto a evaluar.</param>
-            <param name="possibleValues">Arreglo de valores para evaluar.</param>
-            <returns>Devuelve "true" si el objeto se encuentra en el arreglo, y "false" de lo contrario.</returns>
-        </member>
-        <member name="M:Kriptok.Extensions.ObjectExtensions.IfNotNull``2(``0,System.Func{``0,``1})">
-            <summary>
-            Este método es poco performante.
-            
-            NO USAR EN ALGORITMOS QUE REQUIEREN CORRER DE FORMA OPTIMA.
-            </summary>        
         </member>
         <member name="T:Kriptok.Helpers.DebugHelper">
             <summary>

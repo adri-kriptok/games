@@ -55,7 +55,7 @@ namespace Kriptok.Noid.Entities
 
         internal override void Hit()
         {
-            Audio.PlayWave(Sounds.s_metal);
+            Audio.PlayWave(Sounds.MetalSound);
             flashing = true;
         }
 

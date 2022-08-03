@@ -11,9 +11,11 @@ namespace Kriptok.Noid
         [STAThread]
         static void Main()
         {
-            Config.Load<BaseConfiguration>().Mute();
+#if DEBUG
+            //Config.Load<BaseConfiguration>().Mute();
+#endif
             Global.ResetValues();            
-            Engine.Start(new LevelScene(Consts.FirstLevel, true), s =>
+            Engine.Start(new IntroScene(), s =>
             {
                 s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200;

@@ -1,5 +1,7 @@
 ﻿using Kriptok.Drawing.Algebra;
+using Kriptok.Extensions;
 using Kriptok.Noid.Scenes;
+using System;
 
 namespace Kriptok.Noid.Entities.Pills
 {
@@ -11,8 +13,24 @@ namespace Kriptok.Noid.Entities.Pills
 
         protected override void OnPick()
         {
-            Global.Lives += 1;
-            Scene.SendMessage(LevelSceneMessages.UpdateLives);
+            Global.LifeCount += 1;
+           
+            // Genero vidas.
+            CreateLife();
+        }
+
+        private void CreateLife()
+        {
+            var count = Math.Min(Consts.MaxLivesOnScreen, Global.LifeCount);
+
+            for (int i = 0; i < count; i++)
+            {
+                if (Global.Lives[i] == null || !Global.Lives[i].IsAlive())
+                {
+                    Global.Lives[i] = Add(new Life(i));
+                    return;
+                }
+            }
         }
     }
 }

@@ -48,13 +48,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.17.14\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.17.17\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.17.7\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.17.10\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.17.8\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.17.11\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,6 +94,7 @@
     <Compile Include="Scenes\IntroScene.cs" />
     <Compile Include="Scenes\LevelScene.cs" />
     <Compile Include="Scenes\NoidTileset.cs" />
+    <EmbeddedResource Include="Assets\Sounds\BILLAR0.WAV" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,7 +117,8 @@
     <EmbeddedResource Include="Assets\Levels\Level11.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level12.noidx" />
     <None Include=".sdk\bin\lib-selector.bat" />
-    <None Include=".sdk\tools\TileMapEditor\TileMapEditor.exe.config" />
+    <None Include=".sdk\tools\TileMapEditor.exe.config" />
+    <EmbeddedResource Include="Assets\Music\Tecno.xm" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,19 +163,10 @@
     <EmbeddedResource Include="Assets\Images\Pills\T_SuperBall.png" />
     <EmbeddedResource Include="Assets\Images\ScoreBoard.png" />
     <EmbeddedResource Include="Assets\Images\TitleScreen.png" />
-    <EmbeddedResource Include="Assets\Sounds\BANDA.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\BILLAR0.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\CAIDA7.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\DISPARO5.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\FX34.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\FX35.WAV" />
     <EmbeddedResource Include="Assets\Sounds\METAL10.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\TUBO.WAV" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Sounds\PASO9.WAV" />
     <EmbeddedResource Include="Assets\Sounds\GOLPE.WAV" />
-    <EmbeddedResource Include="Assets\Sounds\GOLPE10.WAV" />
     <EmbeddedResource Include="Assets\Sounds\LASER.WAV" />
   </ItemGroup>
   <ItemGroup>
@@ -185,14 +178,14 @@
     <Content Include=".sdk\bin\Release\Kriptok.xml" />
     <Content Include=".sdk\tools\Kriptok.dll" />
     <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.xml" />
     <Content Include=".sdk\tools\Kriptok.xml" />
     <Content Include=".sdk\tools\MidiNoteTester.exe" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.Sdk.Tools.xml" />
-    <Content Include=".sdk\tools\TileMapEditor\Kriptok.xml" />
-    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.exe" />
-    <Content Include=".sdk\tools\TileMapEditor\TileMapEditor.xml" />
+    <Content Include=".sdk\tools\TileMapEditor.exe" />
+    <Content Include=".sdk\tools\TileMapEditor.xml" />
+    <EmbeddedResource Include="Assets\Sounds\Down.wav" />
+    <EmbeddedResource Include="Assets\Sounds\Up.wav" />
+    <EmbeddedResource Include="Assets\Sounds\BUIU.WAV" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
