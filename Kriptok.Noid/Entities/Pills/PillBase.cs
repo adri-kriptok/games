@@ -1,6 +1,6 @@
 ﻿using Kriptok.Drawing.Algebra;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
 using Kriptok.Views.Sprites;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kriptok.Noid.Entities.Pills
 {
-    abstract class PillBase : ObjectBase<SpriteView>
+    abstract class PillBase : EntityBase<SpriteView>
     {
         private bool picked = false;
 

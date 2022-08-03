@@ -5,9 +5,9 @@ using Kriptok.Drawing.Shapes;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
 using Kriptok.Noid.Scenes;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
-using Kriptok.Objects.Collisions.Queries;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
+using Kriptok.Entities.Collisions.Queries;
 using Kriptok.Views.Sprites;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Kriptok.Noid.Entities
 {
-    class Ball : ObjectBase<IndexedSpriteView>
+    class Ball : EntityBase<IndexedSpriteView>
     {
         /// <summary>
         /// Ángulo inicial.

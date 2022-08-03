@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.18.1\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.18.4\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.18.1\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.18.2\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,15 +57,15 @@
     <Compile Include="Global.cs" />
     <Compile Include="Scenes\PlayScene.cs" />
     <Compile Include="Scenes\TitleScene.cs" />
-    <Compile Include="Objects\Asteroid.cs" />
+    <Compile Include="Entities\Asteroid.cs" />
     <Compile Include="Helpers.cs" />
-    <Compile Include="Objects\HyperSpace.cs" />
-    <Compile Include="Objects\Piece.cs" />
+    <Compile Include="Entities\HyperSpace.cs" />
+    <Compile Include="Entities\Piece.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects\Live.cs" />
-    <Compile Include="Objects\Ship.cs" />
-    <Compile Include="Objects\Shot.cs" />
+    <Compile Include="Entities\Live.cs" />
+    <Compile Include="Entities\Ship.cs" />
+    <Compile Include="Entities\Shot.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

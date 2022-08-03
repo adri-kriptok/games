@@ -1,15 +1,15 @@
 ﻿using Kriptok.Scenes;
-using Kriptok.Pong.Objects;
+using Kriptok.Pong.Entities;
 using Kriptok.IO;
 using Kriptok.Core;
-using Kriptok.Objects.Base;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Texts;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Kriptok.Views;
 using Kriptok.Extensions;
-using Kriptok.Objects;
+using Kriptok.Entities;
 
 namespace Kriptok.Pong
 {
@@ -52,7 +52,7 @@ namespace Kriptok.Pong
                 h.Add(new Ball(leftRacket, rightRacket));
             }
 
-            private ITextObject AddText(SceneHandler h, Racket racket)
+            private ITextEntity AddText(SceneHandler h, Racket racket)
             {
                 var x = racket.Location.X.Round();
 
@@ -67,12 +67,12 @@ namespace Kriptok.Pong
                     .SetAlign(align, ShapeVerticalAlignEnum.Top);                
             }
 
-            private class TextKiller : ObjectBase
+            private class TextKiller : EntityBase
             {
-                private readonly ITextObject textObject;
+                private readonly ITextEntity textObject;
                 private int counter = 0;
 
-                public TextKiller(ITextObject textObject)
+                public TextKiller(ITextEntity textObject)
                 {
                     this.textObject = textObject;
                 }

@@ -1,11 +1,11 @@
-﻿using Kriptok.Objects.Collisions;
-using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Collisions;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Primitives;
 using System.Drawing;
 using Kriptok.Drawing;
 using Kriptok.Views.Sprites;
 
-namespace Kriptok.Snake.Objects
+namespace Kriptok.Snake.Entities
 {
     /// <summary>    
     /// Maneja los segmentos del cuerpo del gusano.

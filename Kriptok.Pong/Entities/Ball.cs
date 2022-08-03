@@ -1,10 +1,10 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Base;
 using Kriptok.Views.Sprites;
 using System;
 
-namespace Kriptok.Pong.Objects
+namespace Kriptok.Pong.Entities
 {
-    class Ball : ObjectBase
+    class Ball : EntityBase
     {
         private const int minY = 8;
         private const int maxY = 192;

@@ -1,5 +1,5 @@
 ﻿using Kriptok.Core;
-using Kriptok.Snake.Objects;
+using Kriptok.Snake.Entities;
 using Kriptok.IO;
 using Kriptok.Scenes;
 using Kriptok.Views.Texts;

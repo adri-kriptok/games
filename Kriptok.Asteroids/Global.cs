@@ -1,4 +1,4 @@
-﻿using Kriptok.Asteroids.Objects;
+﻿using Kriptok.Asteroids.Entities;
 using Kriptok.Helpers;
 using Kriptok.Views.Texts;
 using System.Drawing;

@@ -1,17 +1,17 @@
-﻿using Kriptok.Objects.Collisions;
-using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Collisions;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Primitives;
 using System.Drawing;
 using Kriptok.Views.Sprites;
-using Kriptok.Objects.Collisions.Base;
-using Kriptok.Objects.Collisions.Queries;
+using Kriptok.Entities.Collisions.Base;
+using Kriptok.Entities.Collisions.Queries;
 
-namespace Kriptok.Snake.Objects
+namespace Kriptok.Snake.Entities
 {
     /// <summary>    
     /// Maneja los gráficos de las manzanas.
     /// </summary>
-    class Apple : ObjectBase
+    class Apple : EntityBase
     {
         private ISingleCollisionQuery<SnakeSegment> segmentColl;
 

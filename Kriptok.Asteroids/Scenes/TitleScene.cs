@@ -1,7 +1,7 @@
 ﻿using Kriptok.Helpers;
 using Kriptok.IO;
-using Kriptok.Objects;
-using Kriptok.Objects.Base;
+using Kriptok.Entities;
+using Kriptok.Entities.Base;
 using Kriptok.Scenes;
 using Kriptok.Views;
 using Kriptok.Views.Shapes;
@@ -81,7 +81,7 @@ namespace Kriptok.Asteroids
         }
     }
 
-    public class Title : ObjectBase<WireframeTextView>
+    public class Title : EntityBase<WireframeTextView>
     {
         private float angle = 0f;
 
@@ -124,7 +124,7 @@ namespace Kriptok.Asteroids
         }
     }
 
-    public class PressKeyMessage : TextObject
+    public class PressKeyMessage : TextEntity
     {
         private int counter = 0;
         private bool visible = true;

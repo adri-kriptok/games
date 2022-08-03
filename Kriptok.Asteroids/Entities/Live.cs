@@ -1,12 +1,12 @@
 ﻿using Kriptok.Helpers;
-using Kriptok.Objects.Base;
+using Kriptok.Entities.Base;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
     /// <summary>
     /// Nave pequeña utilizada para representar las vidas del jugador.
     /// </summary>
-    class Live : ObjectBase<ShipView>
+    class Live : EntityBase<ShipView>
     {
         public Live(float x) : base(new ShipView())
         {

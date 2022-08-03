@@ -1,6 +1,6 @@
 ﻿using Kriptok.Scenes;
 using Kriptok.Extensions;
-using Kriptok.Asteroids.Objects;
+using Kriptok.Asteroids.Entities;
 using Kriptok.IO;
 using System.Drawing;
 using System.Windows.Forms;

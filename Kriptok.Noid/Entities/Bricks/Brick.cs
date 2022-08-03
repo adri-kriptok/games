@@ -1,7 +1,7 @@
 ﻿using Kriptok.Noid.Entities.Pills;
 using Kriptok.Noid.Scenes;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
 using Kriptok.Views.Sprites;
 using System;
 using System.Diagnostics;
@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Kriptok.Noid.Entities
 {
-    class Brick : ObjectBase<ISpriteView>
+    class Brick : EntityBase<ISpriteView>
     {
         private bool falling = false;
 
@@ -64,7 +64,7 @@ namespace Kriptok.Noid.Entities
 
         internal virtual RectangleF GetRect() => new RectangleF(Location.X - 8f, Location.Y - 4f, 16f, 8f);
 
-        internal static ObjectBase Create(int type, int x, int y)
+        internal static EntityBase Create(int type, int x, int y)
         {
             if (type == 8)
             {
@@ -128,6 +128,17 @@ namespace Kriptok.Noid.Entities
             if (brickCount == 0)
             {
                 Scene.SendMessage(LevelSceneMessages.CheckBricks);
+            }
+        }
+
+        /// <summary>
+        /// Mata el objeto si ya no está en juego.
+        /// </summary>
+        internal void KillIfFalling()
+        {
+            if (falling)
+            {
+                Die();
             }
         }
     }

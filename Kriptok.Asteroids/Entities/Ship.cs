@@ -1,16 +1,16 @@
 ﻿using Kriptok.Drawing.Algebra;
 using Kriptok.Helpers;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
 using Kriptok.Views.Primitives;
 using Kriptok.Views.Shapes;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
-    class Ship : ObjectBase<ShipView>
+    class Ship : EntityBase<ShipView>
     {
         /// <summary>
         /// Indica si puede disparar o no.

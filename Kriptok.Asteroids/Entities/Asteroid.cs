@@ -1,9 +1,9 @@
 ﻿using Kriptok.Drawing.Algebra;
 using Kriptok.Helpers;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
-using Kriptok.Objects.Collisions.Base;
-using Kriptok.Objects.Collisions.Queries;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
+using Kriptok.Entities.Collisions.Base;
+using Kriptok.Entities.Collisions.Queries;
 using Kriptok.Views.Primitives;
 using Kriptok.Views.Shapes;
 using System;
@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
-    class Asteroid : ObjectBase
+    class Asteroid : EntityBase
     {
         /// <summary>
         /// Velocidad de los asteroides

@@ -1,4 +1,4 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Base;
 using System;
 using Kriptok.Views.Primitives;
 using Kriptok.Helpers;
@@ -7,9 +7,9 @@ using System.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Scenes;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
-    class Piece : ObjectBase<PolygonView>
+    class Piece : EntityBase<PolygonView>
     {
         /// <summary>
         /// Angulo aleatorio.        

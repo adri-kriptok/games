@@ -1,16 +1,16 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Base;
 using System.Drawing;
 using Kriptok.Views.Primitives;
-using Kriptok.Objects.Collisions;
+using Kriptok.Entities.Collisions;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Scenes;
-using Kriptok.Objects.Queries;
-using Kriptok.Objects.Queries.Base;
+using Kriptok.Entities.Queries;
+using Kriptok.Entities.Queries.Base;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
-    class Shot : ObjectBase<RectangleView>
+    class Shot : EntityBase<RectangleView>
     {
         private IQuery<bool> outOfScreen;
 

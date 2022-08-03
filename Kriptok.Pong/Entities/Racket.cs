@@ -1,12 +1,12 @@
-﻿using Kriptok.Objects;
-using Kriptok.Objects.Base;
+﻿using Kriptok.Entities;
+using Kriptok.Entities.Base;
 using Kriptok.Views;
 using Kriptok.Views.Sprites;
 using System.Windows.Forms;
 
-namespace Kriptok.Pong.Objects
+namespace Kriptok.Pong.Entities
 {
-    internal class Racket : ObjectBase
+    internal class Racket : EntityBase
     {
         internal const int Height = 32;
 

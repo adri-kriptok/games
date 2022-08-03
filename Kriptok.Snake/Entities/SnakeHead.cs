@@ -1,14 +1,14 @@
-﻿using Kriptok.Objects.Collisions;
+﻿using Kriptok.Entities.Collisions;
 using Kriptok.IO;
-using Kriptok.Objects.Base;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Primitives;
 using System.Drawing;
 using System.Windows.Forms;
 using Kriptok.Views.Sprites;
-using Kriptok.Objects.Collisions.Base;
-using Kriptok.Objects.Collisions.Queries;
+using Kriptok.Entities.Collisions.Base;
+using Kriptok.Entities.Collisions.Queries;
 
-namespace Kriptok.Snake.Objects
+namespace Kriptok.Snake.Entities
 {
     /// <summary>               
     /// Maneja la cabeza del gusano.

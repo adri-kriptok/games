@@ -33,7 +33,7 @@ namespace Kriptok.Noid
 
     public static class Global
     {
-        public static SuperFont Font = new SuperFont(new Font("Arial", 7), Color.White, Color.CornflowerBlue)
+        public static SuperFont Font = new SuperFont(new Font("Arial", 7), Color.Cyan, Color.White)
             .SetShadow(1, 1, Color.Black.SetAlpha(192));
 
         public static SuperFont CreditsFont = new SuperFont(new Font("Arial", 10, FontStyle.Bold), Color.LightGoldenrodYellow)

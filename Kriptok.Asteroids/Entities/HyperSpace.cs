@@ -1,12 +1,12 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Base;
 using System.Drawing;
 using Kriptok.Views.Primitives;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 
-namespace Kriptok.Asteroids.Objects
+namespace Kriptok.Asteroids.Entities
 {
-    public class HyperSpace : ObjectBase<EllipseView>
+    public class HyperSpace : EntityBase<EllipseView>
     {
         public HyperSpace(Vector3F location) : base(new EllipseView(46, 46, null, Color.White, 3f))
         {

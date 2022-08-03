@@ -2,7 +2,8 @@
 using Kriptok.Maps.Tiles.Editor;
 using Kriptok.Noid.Entities;
 using Kriptok.Noid.Entities.Pills;
-using Kriptok.Objects;
+using Kriptok.Entities;
+using Kriptok.Extensions;
 using Kriptok.Scenes;
 using Kriptok.Views;
 using System;
@@ -142,11 +143,12 @@ namespace Kriptok.Noid.Scenes
                     case LevelSceneMessages.Lose:
                         {
                             h.PlaySound(Assembly, "Sounds.Down.wav");
-                            racket.Sleep();                            
+                            racket.Sleep();
                             h.FadeOff();
                             racket.Die();
                             h.Kill<PillBase>();
                             h.Kill<Life>();
+                            h.FindAll<Brick>().ForEach(b => b.KillIfFalling());                            
 #if !DEBUG
                             if (Global.LifeCount == 0) 
                             {
@@ -156,7 +158,7 @@ namespace Kriptok.Noid.Scenes
                             {
 #endif
                                 // Si no es debug, sigo jugando igual, aunque no tenga más vidas.
-                                Global.LifeCount -= 1;
+                                Global.LifeCount = Math.Max(0, Global.LifeCount - 1);
                                 Play(h);
 #if !DEBUG
                             }
@@ -192,7 +194,7 @@ namespace Kriptok.Noid.Scenes
         }
     }
 
-    class DemoText : TextObject
+    class DemoText : TextEntity
     {
         /// <summary>
         /// Momento en que inició la demo.

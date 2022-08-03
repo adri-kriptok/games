@@ -2,9 +2,9 @@
 using Kriptok.Extensions;
 using Kriptok.Noid.Entities.Pills;
 using Kriptok.Noid.Scenes;
-using Kriptok.Objects.Base;
-using Kriptok.Objects.Collisions;
-using Kriptok.Objects.Collisions.Queries;
+using Kriptok.Entities.Base;
+using Kriptok.Entities.Collisions;
+using Kriptok.Entities.Collisions.Queries;
 using Kriptok.Views.Sprites;
 using Kriptok.Views.Sprites.Base;
 using System;
@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Kriptok.Noid.Entities
 {
-    class Racket : ObjectBase<RacketView>
+    class Racket : EntityBase<RacketView>
     {
         /// <summary>
         /// Máxima velocidad de movimiento.

@@ -39,10 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.18.1\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.18.4\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.18.1\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.18.2\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\Apple.cs" />
+    <Compile Include="Entities\Apple.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Objects\AppleCreator.cs" />
-    <Compile Include="Objects\SnakeHead.cs" />
-    <Compile Include="Objects\SnakeSegment.cs" />
+    <Compile Include="Entities\AppleCreator.cs" />
+    <Compile Include="Entities\SnakeHead.cs" />
+    <Compile Include="Entities\SnakeSegment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,13 +1,13 @@
-﻿using Kriptok.Objects.Base;
+﻿using Kriptok.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Snake.Objects
+namespace Kriptok.Snake.Entities
 {
-    class AppleCreator : ObjectBase
+    class AppleCreator : EntityBase
     {
         protected override void OnFrame()
         {
