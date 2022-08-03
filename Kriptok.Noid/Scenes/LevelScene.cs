@@ -154,11 +154,10 @@ namespace Kriptok.Noid.Scenes
                             }
                             else 
                             {
-#else
+#endif
                                 // Si no es debug, sigo jugando igual, aunque no tenga más vidas.
                                 Global.LifeCount -= 1;
                                 Play(h);
-#endif
 #if !DEBUG
                             }
 #endif
