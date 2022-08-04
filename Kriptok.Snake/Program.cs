@@ -40,13 +40,9 @@ namespace Kriptok.Snake
                 // Pone los textos de la puntuaci¢n y de los records
                 h.Write(superFont, 9, 12, () => $"Puntos: {Global.Score}").LeftMiddle();
                 h.Write(superFont, 312, 12, () => $"Record: {Global.Record}").RightMiddle();
-
 #if DEBUG
-                var config = Config.Load<BaseConfiguration>();
-                config.SoundOn = false;
-                config.MusicOn = false;
+                Config.Load<BaseConfiguration>().Mute();                
 #endif
-
                 h.PlayMusic(Assembly, "Animal.mid");
 
                 // Crea la cabeza del gusano que maneja todo el cuerpo
