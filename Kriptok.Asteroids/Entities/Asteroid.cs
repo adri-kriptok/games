@@ -157,13 +157,12 @@ namespace Kriptok.Asteroids.Entities
                 int len = (6 - graph);
                 var vertices = len * 5;
 
-                var random = new Random();
                 var angle = 0f;
                 var angleInc = MathHelper.TwoPIF / vertices;
 
                 for (int i = 0; i < vertices; i++, angle += angleInc)
                 {
-                    var lenF = 10f * len - 2.5f + 7.5f * (float)random.NextDouble();
+                    var lenF = 10f * len - 2.5f + Rand.NextF(0, 7.5f);
 
                     list.Add(new PointF()
                     {

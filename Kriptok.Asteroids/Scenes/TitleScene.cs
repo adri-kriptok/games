@@ -31,8 +31,8 @@ namespace Kriptok.Asteroids
                 for (var i = 0; i <= 499; i++)
                 {
                     bg.Plot(
-                        h.Rand(0, h.ScreenRegion.Size.Width - 1),
-                        h.Rand(0, h.ScreenRegion.Size.Height - 1), Color.White);
+                        Rand.Next(0, h.ScreenRegion.Size.Width - 1),
+                        Rand.Next(0, h.ScreenRegion.Size.Height - 1), Color.White);
                 }
             });
 

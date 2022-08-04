@@ -53,7 +53,6 @@ namespace Kriptok.Noid.Scenes
         private readonly bool demo;
 
         private Racket racket;
-        private Ball ball;
 
         public LevelScene(int level, bool demo)
         {            
@@ -89,8 +88,8 @@ namespace Kriptok.Noid.Scenes
 
             // Objetos principales.
             racket = h.Add(new Racket(demo));
-            racket.SetBall(ball = h.Add(new Ball(racket, true, demo)));
-
+            racket.SetBall(h.Add(new Ball(racket, true, demo)));
+            
             // Prendo la pantalla.
             h.FadeOn();
         }
@@ -182,7 +181,7 @@ namespace Kriptok.Noid.Scenes
                         {
                             h.FadeOff();
                             Global.ResetValues();
-                            h.Set(new LevelScene(h.Rand(1, 12), true));
+                            h.Set(new LevelScene(Rand.Next(1, 12), true));
                             break;
                         }
                     case LevelSceneMessages.BackToIntro:                         

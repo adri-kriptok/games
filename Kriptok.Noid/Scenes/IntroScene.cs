@@ -51,7 +51,7 @@ namespace Kriptok.Noid.Scenes
             {
                 h.FadeOff();
                 Global.ResetValues();
-                h.Set(new LevelScene(h.Rand(1, 12), true));
+                h.Set(new LevelScene(Rand.Next(1, 12), true));
             }
         }
     }
