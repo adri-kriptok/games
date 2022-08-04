@@ -13,7 +13,7 @@ namespace Kriptok.Snake.Entities
     /// <summary>               
     /// Maneja la cabeza del gusano.
     /// </summary>
-    public class SnakeHead : ProcessBase
+    public class SnakeHead : EntityBase
     {
         private int ix;
         private int iy;
@@ -36,84 +36,78 @@ namespace Kriptok.Snake.Entities
             lastKey = Keys.Right;
         }
 
-        protected override void OnStart(ProcessStartHandler h)
+        protected override void OnStart(ObjectStartHandler h)
         {
             base.OnStart(h);
+            
             h.CollisionType = Collision2DTypeEnum.Radius;
             appleCollision = h.GetCollision2D<Apple>();
             segmentCollision = h.GetCollision2D<SnakeSegment>();
-        }
 
-        protected override void OnBegin()
-        {            
             // Y se crea un cuerpo del gusano que crea a los otros
             son = Add(new SnakeSegment(128, 1));
+        }
 
-            Loop(() =>
+        protected override void OnFrame()
+        {
+            // Comprueba las teclas de los cursores y cambia los incrementos
+            if (Input.Right() && lastKey != Keys.Left)
             {
-                // Comprueba las teclas de los cursores y cambia los incrementos
-                if (Input.Right() && lastKey != Keys.Left)
-                {
-                    ix = Size; iy = 0;
-                    lastKey = Keys.Right;
-                }
-                else if (Input.Left() && lastKey != Keys.Right)
-                {
-                    ix = -Size; iy = 0;
-                    lastKey = Keys.Left;
-                }
-                else if (Input.Down() && lastKey != Keys.Up)
-                {
-                    ix = 0; iy = Size;
-                    lastKey = Keys.Down;
-                }
-                else if (Input.Up() && lastKey != Keys.Down)
-                {
-                    ix = 0; iy = -Size;
-                    lastKey = Keys.Up;
-                }
+                ix = Size; iy = 0;
+                lastKey = Keys.Right;
+            }
+            else if (Input.Left() && lastKey != Keys.Right)
+            {
+                ix = -Size; iy = 0;
+                lastKey = Keys.Left;
+            }
+            else if (Input.Down() && lastKey != Keys.Up)
+            {
+                ix = 0; iy = Size;
+                lastKey = Keys.Down;
+            }
+            else if (Input.Up() && lastKey != Keys.Down)
+            {
+                ix = 0; iy = -Size;
+                lastKey = Keys.Up;
+            }
 
-                Frame();
+            son.SetXY(Location.X, Location.Y);
 
-                son.SetXY(Location.X, Location.Y);
+            if (appleCollision.OnCollision(out Apple apple))
+            {
+                // Elimina esa manzana
+                apple.Die();
 
-                if (appleCollision.OnCollision(out Apple apple))
-                {
-                    // Elimina esa manzana
-                    apple.Die();
+                Global.Apples--;          // Decrementa el contador de manzanas
+                Global.SnakeLength += 4;  // Incrementa la cola del gusano
+                Global.Score += 10;       // Suma 10 puntos a la puntuaci¢n                    
 
-                    Global.Apples--;          // Decrementa el contador de manzanas
-                    Global.SnakeLength += 4;  // Incrementa la cola del gusano
-                    Global.Score += 10;       // Suma 10 puntos a la puntuaci¢n                    
+                Audio.PlaySound(Assembly, "Resources.Item2.wav");
+            }
 
-                    Audio.PlaySound(Assembly, "Resources.Item2.wav");
-                }
+            // Mueve al gusano en la direccion deseada
+            Location.X = Location.X + ix;
+            Location.Y = Location.Y + iy;
 
-                // Mueve al gusano en la direccion deseada
-                Location.X = Location.X + ix;
-                Location.Y = Location.Y + iy;
+            if (!InLimits() || segmentCollision.OnCollision())
+            {
+                Audio.PlaySoundSync(Assembly, "Resources.Down.wav");
 
-                if (!InLimits() || segmentCollision.OnCollision())
-                {
-                    Audio.PlaySoundSync(Assembly, "Resources.Down.wav");
+                // Comprueba si se ha superado el record y lo actualiza                    
+                Global.Record = MaxScore.CheckAndSave(Global.Score);
 
-                    // Comprueba si se ha superado el record y lo actualiza                    
-                    Global.Record = MaxScore.CheckAndSave(Global.Score);
+                // Reinicia las variable de puntos y longitud de cola
+                Global.Score = 0;
+                Global.SnakeLength = 8;
 
-                    // Reinicia las variable de puntos y longitud de cola
-                    Global.Score = 0;
-                    Global.SnakeLength = 8;
+                // Elimina todos los segmentos del gusano.
+                son.Remove();
 
-                    // Elimina todos los segmentos del gusano.
-                    son.Remove();
-
-                    Scene.SendMessage("Reset");
-                    Die();
-                    return;
-                }
-
-                Frame();                
-            });
+                Scene.SendMessage("Reset");
+                Die();
+                return;
+            }
         }
 
         private bool InLimits()

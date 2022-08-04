@@ -21,7 +21,7 @@ namespace Kriptok.Snake
                 s.FullScreen = false;    
                 s.Mode = WindowSizeEnum.M320x200;
                 s.Title = "Snake | Kriptok";
-                s.TimerInterval = 28;
+                s.TimerInterval = 45;
                 s.ExtractMidiPlayer();
             });
         }
