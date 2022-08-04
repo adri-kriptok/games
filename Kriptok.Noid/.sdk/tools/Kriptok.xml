@@ -9043,14 +9043,6 @@
             Los dos se consideran incluidos en el rango posible.
             </summary>            
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.Reset">
-            <summary>
-            Inicializa el generador de números aleatorios general tomando 0 como seed.
-            
-            Utilizar este método cuando se requiera que el comportamiento del juego parezca random, pero 
-            siempre se comporte de la misma manera.
-            </summary>
-        </member>
         <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.Randomize">
             <summary>
             Inicializa el generador de números aleatorios general tomando como seed el <see cref="!:DateTime.Now.Ticks"/>.
@@ -10364,6 +10356,11 @@
             <summary>
             Espera hasta que se presione una tecla, y devuelve su valor.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.Randomize(System.Int32)">
+            <summary>
+            Inicializa el generador de números aleatorios.
+            </summary>
         </member>
         <member name="M:Kriptok.Scenes.SceneHandler.FadeOn(System.Byte)">
             <summary>

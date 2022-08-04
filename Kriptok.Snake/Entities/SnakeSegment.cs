@@ -79,8 +79,7 @@ namespace Kriptok.Snake.Entities
                 son.Remove();
             }
 
-            Location.X = -20f;
-            Location.Y = -20f;
+            Die();
         }
     }
 

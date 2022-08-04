@@ -49,6 +49,23 @@ namespace Kriptok.Snake
                 h.Add(new SnakeHead());
                 h.Add(new AppleCreator());
             }
+
+            protected override void OnMessage(SceneHandler h, object message)
+            {
+                base.OnMessage(h, message);
+
+                if ((string)message == "Reset")
+                {
+                    // Apago la pantalla.
+                    h.FadeOff();
+
+                    // Vuelvo a iniciar la pantalla.
+                    h.FadeOn();
+
+                    // Crea el nuevo gusano.
+                    h.Add(new SnakeHead());
+                }
+            }
         }
     }
 }

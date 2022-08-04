@@ -27,18 +27,13 @@ namespace Kriptok.Snake.Entities
 
         public SnakeHead() : base(new SpriteView(typeof(SnakeHead).Assembly, "Red.png"))
         {
-            Init();
-        }
-
-        private void Init()
-        {
             Location.X = Size + HalfSize;
             Location.Y = 11 * Size + HalfSize;
 
             this.ix = Size;
             this.iy = 0;
 
-            lastKey = Keys.Right;            
+            lastKey = Keys.Right;
         }
 
         protected override void OnStart(ProcessStartHandler h)
@@ -112,14 +107,9 @@ namespace Kriptok.Snake.Entities
                     // Elimina todos los segmentos del gusano.
                     son.Remove();
 
-                    // Apago la pantalla.
-                    FadeOff(32);
-
-                    // Resetea el gusano.
-                    Init();
-
-                    // Vuelvo a iniciar la pantalla.
-                    FadeOn(32);
+                    Scene.SendMessage("Reset");
+                    Die();
+                    return;
                 }
 
                 Frame();                

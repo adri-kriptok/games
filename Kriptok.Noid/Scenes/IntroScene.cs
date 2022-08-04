@@ -15,7 +15,7 @@ namespace Kriptok.Noid.Scenes
         protected override void Run(SceneHandler h)
         {
             // Arranca la música tecno.                        
-            h.PlayMusic(Assembly, "Music.Tecno.xm", true, 0, null);
+            h.PlayMusic(Assembly, "Music.Tecno.xm", true, 0, null);            
 
             h.ScreenRegion.SetBackground(typeof(IntroScene).Assembly, "Assets.Images.TitleScreen.png");
             h.FadeOn();
