@@ -21,7 +21,7 @@ namespace Kriptok.Noid.Entities.Pills
             Location.Z = -20;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 

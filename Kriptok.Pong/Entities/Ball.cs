@@ -29,7 +29,7 @@ namespace Kriptok.Pong.Entities
             this.rightRacket = rightRachet;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             Location.X = h.RegionSize.Width / 2;
             Location.Y = h.RegionSize.Height / 2;

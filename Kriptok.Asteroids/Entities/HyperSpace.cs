@@ -13,7 +13,7 @@ namespace Kriptok.Asteroids.Entities
             Location = location;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
             

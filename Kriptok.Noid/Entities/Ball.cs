@@ -48,7 +48,7 @@ namespace Kriptok.Noid.Entities
         private const float pi58 = (float)(5 * Math.PI / 8);
 
         private const float pi8 = (float)(Math.PI / 8);
-        private const float pi158 = (float)(15 * Math.PI / 8);        
+        private const float pi158 = (float)(15 * Math.PI / 8);
         private const float mpi38 = -pi38;
         private const float mpi58 = -pi58;
 
@@ -57,7 +57,7 @@ namespace Kriptok.Noid.Entities
         /// <summary>
         /// Raqueta/jugador.
         /// </summary>
-        private readonly Racket racket;        
+        private readonly Racket racket;
 
         /// <summary>
         /// Indica si está en modo demo.
@@ -105,7 +105,7 @@ namespace Kriptok.Noid.Entities
         {
             this.demo = demo;
             this.sticked = sticked;
-            
+
             // Grafico de la bola.
             View.Graph = 0;
         }
@@ -136,7 +136,8 @@ namespace Kriptok.Noid.Entities
             return new Vector3F(rl.X, rl.Y - 8f, Location.Z);
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 

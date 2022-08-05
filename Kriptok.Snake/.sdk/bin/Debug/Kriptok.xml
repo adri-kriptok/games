@@ -1102,7 +1102,7 @@
             Representa un controlador de un sonido en particular.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.Base.ComponentBase">
+        <member name="T:Kriptok.Core.ComponentBase">
             <summary>
             Component base provee acceso a funcionalidades comunes del sistema.
             </summary>
@@ -1110,1500 +1110,50 @@
             Component base provee acceso a funcionalidades comunes del sistema.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.Base.ComponentBase.Rand">
+        <member name="T:Kriptok.Core.ComponentBase.Rand">
             <summary>
             Acceso a funcionalidades de generación de números aleatorios.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ComponentBase.Rand.NextF">
+        <member name="M:Kriptok.Core.ComponentBase.Rand.NextF">
             <summary>
             Produce un número aleatorio entre 0f y 1f.
             </summary>            
         </member>
-        <member name="M:Kriptok.Entities.Base.ComponentBase.Rand.NextF(System.Single,System.Single)">
+        <member name="M:Kriptok.Core.ComponentBase.Rand.NextF(System.Single,System.Single)">
             <summary>
             Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ComponentBase.Rand.Next(System.Int32,System.Int32)">
+        <member name="M:Kriptok.Core.ComponentBase.Rand.Next(System.Int32,System.Int32)">
             <summary>
             Obtiene un número aleatorio entre los valores indicados por parámetro.
             
             Los dos se consideran incluidos en el rango posible.
             </summary>            
         </member>
-        <member name="M:Kriptok.Entities.Base.ComponentBase.Rand.Randomize">
+        <member name="M:Kriptok.Core.ComponentBase.Rand.Randomize">
             <summary>
             Inicializa el generador de números aleatorios general tomando como seed el <see cref="!:DateTime.Now.Ticks"/>.
             
             Utilizar este método cuando se requiere que la aplicación se comporte realmente de forma aleatoria.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.Base.ComponentBase.Sys">
+        <member name="T:Kriptok.Core.ComponentBase.Sys">
             <summary>
             Funcionalidades de sistemas.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Base.ComponentBase.Sys.lastFrameTime">
+        <member name="F:Kriptok.Core.ComponentBase.Sys.lastFrameTime">
             <summary>
             Último momento en que se tomó el tiempo. Utilizado para calcular el tiempo entre frame y frame.
             </summary>
         </member>
-        <member name="P:Kriptok.Entities.Base.ComponentBase.Sys.TimeDelta">
+        <member name="P:Kriptok.Core.ComponentBase.Sys.TimeDelta">
             <summary>
             Indica el porcentaje de tiempo que pasó entre frame y frame.
             Se utiliza para generar una 
             </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Base.ObjectStartHandler">
-            <summary>
-            Este objeto permite customizar propiedades del objeto que sólo
-            son posibles de establecer al iniciar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ObjectStartHandler.obj">
-            <summary>
-            Objeto que se va a inicializar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ObjectStartHandler.Region">
-            <summary>
-            Región de renderización del objeto.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Base.ObjectStartHandler.RegionSize">
-            <summary>
-            Obtiene el tamaño de la región de pantalla a la que pertenece el objeto.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Base.ObjectStartHandler.CollisionType">
-            <summary>
-            Establece el tipo de caja de colisión 2D a aplicar para este objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCustomHitbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
-            <summary>
-            Establece una caja de colisión custom para este objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
-            <summary>
-            Establece una caja de colisión custom para mapas de tipo <see cref="!:MapRegion"/> para este objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision2D``1">
-            <summary>
-            Le indica al sistema que debe detectar colisiones entre este objeto, y un 
-            objeto específico.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision2D(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
-            de objetos indicados por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollisions2D``1">
-            <summary>
-            Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
-            instancias de otro tipo de objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision3D``1">
-            <summary>
-            Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
-            de objetos indicados por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollisions3D``1">
-            <summary>
-            Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
-            instancias de otro tipo de objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DVertex">
-            <summary>
-            Establece que el objeto colisionará sólo como un punto en el espacio.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DObjectSphere">
-            <summary>
-            Establece una caja de colisión esférica alrededor de la ubicación del objeto.
-            
-            El radio de la esfera es el radio del objeto.
-            
-            Si el radio es 0, funciona igual que <see cref="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DVertex"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DViewAABB">
-            <summary>
-            Establece el tipo de colisión "Axis Aligned Bounding Boxes" para este objeto.
-            
-            El volumen de colisión está definido por la vista que lo representa.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetOutOfScreenQuery">
-            <summary>
-            Obtiene una consulta que evalúa si el objeto ya no se encuentra en la pantalla.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetMouseScrollLocationQuery">
-            <summary>
-            Obtiene una consulta que permite conocer la posición del mouse proyectada para la región.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Base.ItemBase.Audio">
-            <summary>
-            Agrupamiento de funciones de audio (sonido y música).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary> 
-            <param name="resource">Recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySoundSync(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.StopMusic">
-            <summary>
-            Detiene la música que esté sonando en ese momento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Int32,System.Int32,System.Double)">
-            <summary>
-            Reproduce un segmento de la canción indicada según los parámetros.
-            
-            Esta forma de reproducción no puede repetirse en continuado.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra la música.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>             
-            <param name="from">Indica desde qué punto debe empezar a reproducirse.</param>
-            <param name="to">Indica hasta qué punto debe reproducirse.</param>
-            <param name="volume">Volumen de reproducción.</param>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Double)">
-            <summary>
-            Reproduce la música indicada según los parámetros.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra la música.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-            <param name="loop">Indica si se reproduce en loop.</param>
-            <param name="volume">Volumen de reproducción.</param>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterX(System.Int32)">
-            <summary>
-            Centra el mouse horizontalmente en la pantalla.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterY(System.Int32)">
-            <summary>
-            Centra el mouse horizontalmente en la pantalla.
-            </summary>            
-        </member>
-        <member name="P:Kriptok.Entities.Base.ItemBaseBase.Assembly">
-            <summary>
-            Obtiene el ensamblado en el que se encuentra definida esta clase.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button01">
-            <summary>
-            Tecla:            
-            SNES:        
-            Playstation: Triángulo
-            XBOX:        
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.AnalogDirection(Kriptok.Drawing.Algebra.Vector2F@)">
-            <summary>
-            Obtiene la dirección en coordenadas cartesianas del control analógico del joystick.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button02">
-            <summary>
-            Tecla: 2         
-            SNES:        
-            Playstation: O (o "X" en la playstation japonesa).
-            XBOX:        
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button03">
-            <summary>
-            Tecla:       Espacio
-            SNES:        B
-            Playstation: X (o "O" en la playstation japonesa).
-            XBOX:        A
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button04">
-            <summary>
-            Tecla:       Shift            
-            SNES:        X
-            Playstation: Cuadrado
-            XBOX:        Y                        
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L1">
-            <summary>
-            Tecla:              Q
-            SNES:               L
-            Playstation / XBOX: L1            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R1">
-            <summary>
-            Tecla:              E
-            SNES:               R
-            Playstation / XBOX: R1            
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L2">
-            <summary>
-            Tecla:              1           
-            Playstation / XBOX: L2
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R2">
-            <summary>
-            Tecla:              3            
-            Playstation / XBOX: R2     
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Escape">
-            <summary>
-            Indica si está presionada la tecla de "Esc".
-            </summary>            
-        </member>
-        <member name="T:Kriptok.Entities.Base.Process2Base`1">
-            <summary>
-            Objeto básico del juego, pero con comportamiento asincrónico.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.Process2Base`1.#ctor(`0)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Base.Process2Base">
-            <summary>
-            Objeto básico del juego, pero con comportamiento asincrónico.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.Process2Base.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.Process2Base"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.Process2Base.#ctor(Kriptok.Views.Base.IView)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.Process2Base"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.Process2Base.OnBegin(Kriptok.Scenes.ProcessHandler)">
-            <summary>
-            Método para definir el comportamiento del proceso.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Base.ProcessBase`1">
-            <summary>
-            Objeto básico del juego, pero con comportamiento asincrónico.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase`1.#ctor(`0)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Base.ProcessBase">
-            <summary>
-            Objeto básico del juego, pero con comportamiento asincrónico.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ProcessBase.EmptyArray">
-            <summary>
-            Array vacío de procesos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ProcessBase.cancellationTaskToken">
-            <summary>
-            Token de cancelación de flujo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ProcessBase.myThread">
-            <summary>
-            Puntero al thread en el que corre el proceso.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.#ctor(Kriptok.Views.Base.IView)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ProcessBase.ReadyToFrameFlag">
-            <summary>
-            Indica si el proceso está "listo para renderizar", es decir, que ha encontrado un frame en el código.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.Frame">
-            <summary>
-            Este método genera una "espera" hasta que el proceso es renderizado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeOff(System.Byte)">
-            <summary>
-            Oscurece la pantalla a negro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeTo(System.Drawing.Color,System.Byte)">
-            <summary>
-            Oscurece la pantalla al color indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeOn(System.Byte)">
-            <summary>
-            Vuelve a aclarar la pantalla.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeFrom(System.Drawing.Color,System.Byte)">
-            <summary>
-            Vuelve a aclarar la pantalla desde el color indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.ProcessStartHandler)">
-            <summary>
-            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.ObjectStartHandler)">
-            <summary>
-            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.OnBegin">
-            <summary>
-            Define el comportamiento del proceso como un thread independiente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.OnFrame">
-            <summary>
-            Este método se ejecuta en cada frame de la aplicación, mientras el objeto esté vivo.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.ReadyToRender">
-            <summary>
-            Indica si el objeto está listo para renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.TriggerFrame">
-            <summary>
-            Indica si el objeto está listo para renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.Sync(System.Action,System.Boolean)">
-            <summary>
-            Congela/duerme a todos los procesos activos, menos al actual, y ejecuta una acción. Cuando la acción termina,
-            descongela/despierta a los procesos que había dormido.
-            </summary>        
-            <param name="action">Acción a ejecutar mientras los procesos están dormidos.</param>
-            <param name="force">Indica si al momento de "despertar" a los procesos, debe también despertar a 
-            procesos que tal vez ya se encontraban dormidos, y/o que no habían sido dormidos por este proceso en particular.</param>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.IsDisposed">
-            <summary>
-            Indica si el elemento ha sido completamente destruido.
-            </summary>  
-        </member>
-        <member name="T:Kriptok.Entities.Base.EntityBase`1">
-            <summary>
-            Clase base de todos los objetos que forman parte de un juego.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase`1.#ctor(`0)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Base.EntityBase`1.View">
-            <summary>
-            Obtiene la vista asociada al objeto.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Base.EntityBase">
-            <summary>
-            Clase base de todos los objetos que forman parte de un juego.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Id">
-            <summary>
-            Id único del objeto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.alive">
-            <summary>
-            Indica si el proceso está vivo.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.#ctor(Kriptok.Views.Base.IView)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Region">
-            <summary>
-            Accede al controlador central de la pantalla.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Add``1(``0)">
-            <summary>
-            Agrega un objeto al juego y lo devuelve.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetLocation2D">
-            <summary>
-            Obtiene la ubicación bidimensional de renderización.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetRotationAngle2D">
-            <summary>
-            Obtiene el ángulo de rotación para vistas bidimensionales.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetRenderLocation">
-            <summary>
-            Obtiene la ubicación tridimensional de renderización del objeto.
-            
-            Este método permite customizar la ubicación del objeto al momento de renderizar.
-            
-            Ideal cuando la posición del objeto depende de otro objeto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Location">
-            <summary>
-            Dependiendo del sistema de coordenadas que utiliza el proceso, la coordenada Z puede representar
-            profundidad (interfaces tridimensionales), o prioridad (interfaces planas).
-            
-            De cualquier manera, cuanto menor sea Z, más cerca de la cámara se dibujará el proceso.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Radius">
-            <summary>
-            Utilizado para determina collisiones de tipo <see cref="F:Kriptok.Entities.Collisions.Collision2DTypeEnum.Radius"/> en 2 y 3 dimensiones.
-            Es de tipo <see cref="T:System.UInt16"/> para que sea fácil de castear a int, pero al mismo tiempo no 
-            soporte valores negativos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Angle">
-            <summary>
-            Ángulos del proceso, utilizados para renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.DrawPriority">
-            <summary>
-            Esta propiedad puede fácilmente ser reemplazada en la mayoría de los casos por la coordenada Z.
-            Ya que esta coordenada será utilizada para calcular el orden de los sprites a representar en todas
-            las interfaces. Sin embargo, en el caso de que ambas "Z" sean iguales, es imposible saber qué 
-            proceso tiene prioridad sobre cuál. Por tanto, se creó esta nueva prioridad.
-            
-            La mayoría de las veces, es suficiente con que sea 0. Sólo casos muy particulares pueden requerir
-            de utilizarla para un ordenamiento extra.
-            
-            A diferencia de la coordenada Z, que es menor cuanto más cerca está de la cámara, esta propiedad
-            funciona al revés. Cuanto más grande sea, más "cerca" se encontrará el sprite de la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Advance2D(System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada sobre el plano XY en el ángulo que está mirando.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Advance3D(System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada el espacio tridimensional en el ángulo que está mirando.
-            </summary>    
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Strafe2D(System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada en el plano XY a 90° del ángulo en que está mirando.
-            </summary>           
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Strafe3D(System.Single,System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada en el espacio a 90° del ángulo en que está mirando.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.XAdvance2D(System.Single,System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada sobre el plano XY en el ángulo indicado.
-            </summary>    
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.XAdvance3D(System.Single,System.Single,System.Single)">
-            <summary>
-            Mueve el objeto la distancia indicada en el espacio 3D, en los ángulos indicados.
-            </summary>   
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Asleep">
-            <summary>
-            Indica si el proceso debe continuar moviéndose, se puede utilizar por ejemplo,
-            para pausar el juego.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Sleep">
-            <summary>
-            Duerme a un objeto. Se lo puede despertar con <see cref="M:Kriptok.Entities.Base.EntityBase.Wakeup"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Sleep(System.Boolean)">
-            <summary>
-            Intenta dormir a un objeto, indicando en el resultado si fue exitoso o no.
-            </summary>
-            <param name="force">Indica si debe forzar a dormir a un objeto. Por defecto, si un objeto ya
-            está dormido, lo ignora. Este parámetro hace que se fuerce a intentar dormirlo aunque ya esté dormido
-            y que la función devuelva <see cref="!:true"/> siempre.</param>
-            <returns>Devuelve <see cref="!:true"/> si pudo dormir al objeto y <see cref="!:false"/> de lo contrario.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Wakeup">
-            <summary>
-            Despierta a un objeto dormido con <see cref="M:Kriptok.Entities.Base.EntityBase.Sleep(System.Boolean)"/>.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Base.EntityBase.View">
-            <summary>
-            Propiedad que indica el gráfico que debe renderizar asociado a este proceso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.DistX(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Calcula la distancia sobre el eje X hasta el objeto indicado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.DistY(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Calcula la distancia sobre el eje Y hasta el objeto indicado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetAngle2D(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Obtiene el ángulo en dirección al objeto indicado sobre el eje Z.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetDistance2D(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Obtiene la distancia en dirección al objeto indicado sobre el plano XY.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetDistance3D(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Obtiene la distancia en dirección al objeto indicado sobre el plano XY.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.LookAt3D(System.Single,System.Single,System.Single)">
-            <summary>
-            Este método orienta la dirección del objeto en tres dimensiones hacia la ubicación indicada.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.LookAt3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Este método orienta la dirección del objeto en tres dimensiones hacia la ubicación indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.SetHitbox2D(Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase)">
-            <summary>
-            Establece la nueva caja de colisión, liberando de memoria la anterior, si la tuviese.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
-            <summary>
-            Establece una caja de colisión custom para mapas de tipo <see cref="T:Kriptok.Maps.MapRegion"/> para este objeto.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Hitbox2D">
-            <summary>
-            Caja de colisión bidimensional para este objeto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.EntityBase.Hitbox3D">
-            <summary>
-            Caja de colisión tridimencional para este objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Radius2DCollision``1">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Radius3DCollision``1">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollision``1(System.Func{``0,System.Int32})">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Radius2DCollisions``1">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Radius3DCollisions``1">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollisions``1(System.Func{``0,System.Int32})">
-            <summary>
-            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
-            a una distancia menor a la suma de sus radios.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.IsAlive">
-            <summary>
-            Indica si el objeto aún está "vivo".
-            
-            Es decir, si tiene comportamiento y debe ser renderizado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetDirection">
-            <summary>
-            Obtiene la dirección del objeto sobre el plano XY.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart">
-            <summary>
-            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart(Kriptok.Entities.Base.ObjectStartHandler)">
-            <summary>
-            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.OnFrame">
-            <summary>
-            Este método se ejecuta en cada frame de la aplicación, mientras el objeto esté vivo.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.ReadyToRender">
-            <summary>
-            Indica si el objeto está listo para renderizar.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.TriggerFrame">
-            <summary>
-            Indica si el objeto está listo para renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetIdentifier">
-            <summary>
-            Obtiene un texto para identificar al objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.GetOccupiedGridCells(Kriptok.Drawing.Vector2I)">
-            <summary>
-            Para objetos que deben moverse por un mapa tipo "grilla" (estrategia, rol, etcétera), este método
-            permite, dada la ubicación del objeto (en la grilla) indicada por parámetro, este método
-            permite implementar la ocupación de múltiples celdas y casillas simplemente devolviendo una lista
-            de las casillas ocupadas.        
-            </summary>        
-            <param name="coordinates">Las coordenadas que devuelve el metodo <see cref="!:GetTileCoords"></see></param>
-            <returns>Devuelve una liasta de los casilleros que ocupa el objeto dentro del mapa.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Die">
-            <summary>
-            Indica al objeto que deja de formar parte de la operatoria del juego
-            y que debería liberarse de memoria.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.IsDisposed">
-            <summary>
-            Mata el objeto, libera los recursos, e
-            indica si el elemento ha sido completamente destruido.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Base.EntityBase.Find">
-            <summary>
-            Funcionalidades de búsqueda de objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Find.First``1">
-            <summary>
-            Busca el primer objeto vivo del tipo indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Find.All``1">
-            <summary>
-            Devuelve todos los objetos vivos del tipo indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Find.All">
-            <summary>
-            Devuelve todos los objetos vivos alrededor.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Find.Others(System.Int32)">
-            <summary>
-            Devuelve todos los objetos vivos menos el indicado por parámetro.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Find.Others``1(System.Int32)">
-            <summary>
-            Devuelve todos los objetos vivos menos el indicado por parámetro.
-            </summary>            
-        </member>
-        <member name="T:Kriptok.Entities.Base.EntityBase.Scene">
-            <summary>
-            Funcionalidades para comunicarse con la escena actual.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.Scene.SendMessage(System.Object)">
-            <summary>
-            Envía el menasje a la escena. El mensaje puede ser cualquier cosa.
-            Pero depende de la escena saber interpretarlo en la implementación del método
-            <see cref="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)"/>,
-            </summary>            
-        </member>
-        <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
-            <summary>
-            Consulta de colisiones entre un objeto y un tipo de objetos.
-            </summary>    
-        </member>
-        <member name="T:Kriptok.Entities.Queries.MouseScrollLocationQuery">
-            <summary>
-            Consulta para obtener las coordenadas del mouse en el plano de scroll.
-            
-            Sólo funciona para modos de pantalla determinados.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.OutOfScreenQuery">
-            <summary>
-            Consulta para descubrir si el objeto se encuentra fuera de la pantalla.
-            
-            Sólo funciona para modos de pantalla determinados.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallStatusEnum">
-            <summary>
-            Estados posibles del objeto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.None">
-            <summary>
-            No se está moviendo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Jumping">
-            <summary>
-            Está saltando, moviéndose hacia arriba.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Falling">
-            <summary>
-            Está cayendo, moviéndose hacia abajo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallHandlerY">
-            <summary>
-            Controlador de salto para entornos tipo screen/scroll en que los objetos se muevan 
-            sobre el plano XY.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallHandlerZ">
-            <summary>
-            Controlador de salto para entornos tipo tridimensionales en que los objetos "salten" sobre el eje Z.    
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.Gravity">
-            <summary>
-            Constante de aceleración gravitatoria.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.inverseGravity">
-            <summary>
-            Inversa de la gravedad.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.halfGravity">
-            <summary>
-            Variable precalculada.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialHeight">
-            <summary>
-            Altura a partir de la cual se empezó a calcular el salto/caída.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialSpeed">
-            <summary>
-            Aceleración al comienzo del movimiento.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.timer">
-            <summary>
-            Tiempo acumulado del salto/caída.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.JumpFallHandlerBase.Status">
-            <summary>
-            Estado en el que se encuentra actualmente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartJump(System.Single,System.Single)">
-            <summary>
-            Inicia un salto con la aceleración indicada por parámetro.
-            
-            Como este método puede ser utilizado para un "double jump", no valida que se
-            encuentre en un estado válido.
-            
-            Esa validación debe realizare previamente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single)">
-            <summary>
-            Inicia una caída desde la altura inicial hasta la altura del piso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single,System.Single)">
-            <summary>
-            Inicia una caída desde la altura inicial hasta la altura del piso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.IncTimer(System.Single,System.Single,System.Single,System.Single@)">
-            <summary>
-            Incrementa el tiempo y devuelve el valor de la altura.
-            </summary>        
-            <param name="t">Tiempo a incrementar.</param>
-            <param name="floorHeight">Altura del "piso" cuando se está cayendo.</param>
-            <param name="ceilingHeight">Altura del "techo" cuando se está saltando.</param>
-            <param name="newHeight">Resultado de la función.</param>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.OverCeiling(System.Single,System.Single)">
-            <summary>
-            Indica si la altura del objeto es superior a la del techo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.UnderFloor(System.Single,System.Single)">
-            <summary>
-            Indica si la altura del objeto es inferior a la altura del piso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.GetModifier(System.Single,System.Single)">
-            <summary>
-            Obtiene el modificar de altura en base a la velocidad inicial y a la aceleración.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Base.ICollisionQuery">
-            <summary>
-            Consulta de colisiones entre un objeto y un tipo de objetos.
-            </summary>    
-        </member>
-        <member name="P:Kriptok.Entities.Collisions.Base.ICollisionQuery.RegionId">
-            <summary>
-            Id de región a la que pertenece el objeto que realiza la consulta.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.GetCandidatesHashCode">
-            <summary>
-            Devuelve un código identificatorio para agrupar candidatos a colisiones.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.GetCandidates(Kriptok.Entities.Base.EntityBase[])">
-            <summary>
-            Obtiene los candidatos para evaluar colisiones.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.Clear">
-            <summary>
-            Limpia los resultados para que no se pasen de un frame al otro.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Result">
-            <summary>
-            Obtiene el resultado de la última colisión evaluada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Filter(Kriptok.Entities.Base.EntityBase[])">
-            <summary>
-            Filtra la lista de objetos con la cual se debe evaluar colisiones.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Clear">
-            <summary>
-            Limpia los resultados.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Base.HitboxBase.owner">
-            <summary>
-            Obejto al que pertenece esta caja de colisión.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.OwnerId">
-            <summary>
-            Obtiene el identificador del objeto para que no se registren colisiones contra sí mismo.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.RegionId">
-            <summary>
-            Obtiene el Id de región del objeto, para sólo evaluar colisiones con objetos de la misma región.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.IsAlive">
-            <summary>
-            Indica si el objeto propietario de esta caja de colisión está vivo.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.Location">
-            <summary>
-            Obtiene la última ubicación del objeto para chequear la colisión.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionsWith``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Obtiene una lista de objetos con los que colisiona este objeto.
-            </summary>      
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionWith``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Obtiene el primer objeto que encuentre que esté colisionando con este objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionWith(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Indica si está colisionando con el objeto indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.StartCollisionDetection">
-            <summary>
-            Permite ejecutar código antes de iniciar el análisis de intersección de cajas de colisión.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Queries.IObjectCollisionQuery">
-            <summary>
-            Consulta que sólo evalúa colisión con un objeto en particular.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.IObjectCollisionQuery.OnCollision">
-            <summary>
-            Indica si se detectó la colisión.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.to">
-            <summary>
-            Objeto específico con el cual se debe evaluar la colisión.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.GetCandidatesHashCode">
-            <summary>
-            No especifico nada, ya que la resolución 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.Filter(Kriptok.Entities.Base.EntityBase[])">
-            <summary>
-            No filtro nada, ya que no es necesario, ya se tiene una referncia al objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.Resolve(Kriptok.Entities.Base.EntityBase[])">
-            <summary>
-            No uso los objetos indicados por parámetro.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Queries.IMultipleCollisionQuery`1">
-            <summary>
-            Tipo de colisión que sólo retorna el primer resultado encontrado.
-            </summary>    
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1">
-            <summary>
-            Tipo de colisión que sólo retorna el primer resultado encontrado.
-            </summary>    
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1.OnCollision(`0@)">
-            <summary>
-            Método utilizado para detectar la colisión del objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1.OnCollision">
-            <summary>
-            Método utilizado para detectar la colisión del objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionsWith``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Médoto sobreescrito para agregar el llamado a <see cref="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionWith``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Médoto sobreescrito para agregar el llamado a <see cref="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionWith(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Indica si está colisionando con el objeto indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetLocation2D">
-            <summary>
-            Obtiene la ubicación bidimensional de la vista.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection">
-            <summary>
-            Permite liberar los recursos utilizados para la detección de colisiones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.Collide(Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase)">
-            <summary>
-            Resuelve la colisión entre dos objetos, el propietario del hitbox, y el
-            indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.CheckToPixel(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Resuelve la colisión entre este tipo de caja de cólisión y un punto en el espacio bidimensional.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.Dispose">
-            <summary>
-            Libera los recursos utilizados.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.matrix">
-            <summary>
-            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.polygon">
-            <summary>
-            Polígono para intersectar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.rectangle">
-            <summary>
-            Rectángulo para intersectar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.Kriptok#Entities#Collisions#Coll2D#ICircleCollisionContext#GetMatrix">
-            <summary>
-            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase">
-            <summary>
-            Caja de colisión que realiza la validación en dos etapas.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.CheckToRegion(Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext)">
-            <summary>
-            Sólo por motivos de debug.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext">
-            <summary>
-            Contexto de intersección de regiones con dos chequeos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.view">
-            <summary>
-            Vista a renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.size">
-            <summary>
-            Tamaño actual del elpise a renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.ellipse">
-            <summary>
-            Elipse utilizada para detectar colisiones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.GetEllipse">
-            <summary>
-            Obtiene el elipse para renderizarlo.
-            </summary>            
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DPath.SecondCheckPath">
-            <summary>
-            Indica que la caja de colisión es un rectángulo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.matrix">
-            <summary>
-            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetCollisionRectangle">
-            <summary>
-            Obtiene el rectángulo de colisión del la vista.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisible(System.Drawing.Region,System.Drawing.Drawing2D.Matrix)">
-            <summary>
-            En principio sólo valida la visibilidad del rectángulo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisible(System.Drawing.Region)">
-            <summary>
-            Indica si la figura es visible en la región indicada por parámetro.
-            
-            En principio, sólo se chequea el rectángulo que funciona como "Bounding-Box".
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisibleRectangle(System.Drawing.Region)">
-            <summary>
-            Indica si la "Bounding-Box" de la vista está visible en la región indicada por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetMatrix">
-            <summary>
-            Obtiene o crea y devuelve la matriz de transformación de esta vista.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetBounds">
-            <summary>
-            Obtiene los límites (AABB) de la figura.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext">
-            <summary>
-            Representa las propiedades de colisión de un objeto bidimensional.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext.rectangle">
-            <summary>
-            Rectángulo que envuelve el área de colisión.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext.bounds">
-            <summary>
-            Límites calculados de la región de colisión.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.DrawOn(System.Drawing.Graphics)">
-            <summary>
-            Dibuja el contorno de la caja de colisión.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckBase">
-            <summary>
-            Clase base para el segundo chequeo que se realiza con figuras más complejas que un rectángulo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckNone">
-            <summary>
-            Indica que no debe realizar ningún segundo chequeo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckRectangle">
-            <summary>
-            Indica que la caja de colisión es un rectángulo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckSprite">
-            <summary>
-            Esta caja de colisión para sprites sólo deriva el comportamiento a la verdadera caja de colisión
-            generada para ese sprite.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SpriteSecondCheckNone">
-            <summary>
-            Indica que no debe realizar ningún segundo chequeo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll2D.SpriteSecondCheckRectangle">
-            <summary>
-            Indica que la caja de colisión es un rectángulo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D">
-            <summary>
-            Caja de colisiones tridimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices">
-            <summary>
-            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices(System.Collections.Generic.IEnumerable{Kriptok.Drawing.Algebra.Vector3F})">
-            <summary>
-            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetNormals">
-            <summary>
-            Obtiene tres direcciones de rotación (los primeros tres vectores),
-            para reorientar las figuras en la detección de colisiones.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.BoundingBoxNormals">
-            <summary>
-            Objeto con tres direcciones sobre las cuales se pueden rotar las figuras
-            para calcular colisiones.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.Collision3DShape">
-            <summary>
-            Datos utilizados para el cálculo de intersección de una figura 3D con rotación y escalamiento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.VolumeContains(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Indica si el volumen descripto por la figura contiene el vértice indicado por parámetro.
-            Para esto debe realizar transformaciones de coordenadas.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.DeTransformVector(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma y devuelve el vértice indicado por parámetro al sistema de coordenadas del volumen.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.TransformVolume(Kriptok.Drawing.Shapes.Volume)">
-            <summary>
-            Transforma un volumen utilizando la matriz de transformación de la figura.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.GetCollision3DType">
-            <summary>
-            Obtiene el tipo de colisión para graficarla.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.Collide(Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase)">
-            <summary>
-            Resuelve la colisión entre dos objetos, el propietario del hitbox, y el
-            indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToPoint(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
-            un punto en el espacio tridimencional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToSphere(Kriptok.Drawing.Shapes.Sphere)">
-            <summary>
-            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
-            una esfera tridimencional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToVolume(Kriptok.Drawing.Shapes.Volume)">
-            <summary>
-            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
-            un volumen.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToShape(Kriptok.Entities.Collisions.Coll3D.Collision3DShape)">
-            <summary>
-            Indica cómo resolver una colisión cuando se recibe una figura rotada y escalada.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShapeMultiple">
-            <summary>
-            Tipo de colisión por volumen, pero toma en cuenta las rotaciones aplicadas a la figura.
-            Generando así una caja de colisión más estrecha y estricta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DSphere.mySphere">
-            <summary>
-            Devuelve la esfera representada por la ubicación y radio del objeot.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DSphere.CheckToSphere(Kriptok.Drawing.Shapes.Sphere)">
-            <summary>
-            Colisión esfera/esfera.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShape">
-            <summary>
-            Tipo de colisión por volumen, pero toma en cuenta las rotaciones aplicadas a la figura.
-            Generando así una caja de colisión más estrecha y estricta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShape.currentShape">
-            <summary>
-            Volumen calculado para este frame.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DVolume">
-            <summary>
-            Tipo de colisión por volumen. Recomendada para figuras que ocupen todo el espacio del
-            volumen y no tengan rotaciones.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DVolume.currentVolume">
-            <summary>
-            Volumen calculado para este frame.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Coll3D.IBoundCollision">
-            <summary>
-            Esta interfaz indica que se puede evaluar una colisión en tres dimensiones, utilizando
-            los límites de las figuras tridimencionales.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Collision2DHelper">
-            <summary>
-            Agrupa todas las funcionalidades necesarias para chequear collisiones entre objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision2DHelper.Collide(Kriptok.Drawing.Shapes.Circle,System.Drawing.RectangleF)">
-            <summary>
-            Devuelve si las figuras indicadas por parámetro se superponen.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Collision3DTypeEnum">
-            <summary>
-            Tipo de caja de colisión 3D. Utilizado para mostrar la caja de colisión gráficamente.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Collisions.Collision3DHelper">
-            <summary>
-            Agrupa todas las funcionalidades necesarias para chequear collisiones entre objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.SphereVolumeCollision(Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Sphere)">
-            <summary>
-            Indica si hay una intersección entre un volumen y una esfera en tres dimensiones.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.GetEllipsoidVolume(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Drawing.Shapes.Sphere)">
-            <summary>
-            Transforma la esfera en un elipsoide para evaluar intersección con volumenes alineados a los ejes.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.EllipsoidVolumeCollision(Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume)">
-            <summary>
-            Indica si hay una intersección entre un volumen y un elipsoide de tres dimensiones definido por un volumen.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.ShapeVolumeCollision(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume)">
-            <summary>
-            Detecta la colisión entre una figura, y un volumen.
-            </summary>
-            <param name="shape">Figura rotada/escalada a colisionar.</param>
-            <param name="volume">Volumen a colisionar.</param>
-            <param name="shapeVolume">Volumen de la figura.</param>
-            <param name="shapeCalculatedVolume">Volumen calculado de la figura.</param>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.CollisionShapeShape(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Entities.Collisions.Coll3D.Collision3DShape)">
-            <summary>
-            Detecta la intersección entre dos figuras, realizando varios cambios de coordenadas.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Entities.Collisions.Collision2DTypeEnum.Point">
-            <summary>
-            Un único vertice en dos dimensiones.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.SpriteAnimation">
-            <summary>
-            Este objeto utiliza un <see cref="T:Kriptok.Views.Sprites.IndexedSpriteView"/> para representar una animación.
-            
-            Itera por todas las imágenes de la vista y luego muere.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Debug.ScrollCustomizer">
-            <summary>
-            Este proceso puede ser utilizado por cualquier aplicación. Su objetivo es el de permitir modificar 
-            la perspectiva del espacio tridimensional (o Mode7), y loggea las configuraciones actuales, de forma
-            de poder utilizarlo temporalmente hasta encontrar la perspectiva deseada.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Debug.LightSourceRotator">
-            <summary>
-            Esta es una clase de prueba que hacer rotar la luz ambiental para verificar cómo afecta la luz
-            dependiendo de dónde se encuentre.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Debug.LineOfSight">
-            <summary>
-            Este objeto se utiliza para analizar la visión de un proceso sobre otro/s.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Debug.LineOfSight.#ctor(Kriptok.Entities.Base.EntityBase,Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Debug.LineOfSight"/>.
-            </summary>
-            <param name="from">Proceso de origen (propietario de la linea de visión).</param>
-            <param name="to">Proceso destino u objetivo.</param>
-        </member>
-        <member name="M:Kriptok.Entities.Debug.LineOfSight.IsInSight(Kriptok.Entities.Base.EntityBase)">
-            <summary>
-            Indica si un objeto determinado está dentro del rango de visión del objeto propietario.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Debug.LinesOfSight">
-            <summary>
-            Esta clase indica gráficamente hacia dónde se encuentra mirando el personaje.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Debug.LinesOfSight.#ctor(Kriptok.Entities.Base.EntityBase,System.Single)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Debug.LinesOfSight"/>.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Entities.Debug.MapGridMarker">
-            <summary>
-            Este objeto se utiliza para marcar el lugar donde se encuentra un objeto dentro de una cuadrícula
-            en una situación que puede ser confusa (un mapa de Mode7, por ejemplo).
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.BasicObject">
-            <summary>
-            Este objeto puede ser utilizado como decorado, u otros objetos que no 
-            requieren un comportamiendo complejo o no interactuan con otros objetos.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.DistanceTo`1">
-            <summary>
-            Esta clase representa una relación de distancia entre un objeto y otro.
-            </summary>    
-        </member>
-        <member name="P:Kriptok.Entities.DistanceTo`1.Object">
-            <summary>
-            Objeto hasta el cuál se está midiendo la distancia.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.DistanceTo`1.Distance">
-            <summary>
-            Distancia hasta el objeto referenciado.
-            </summary>        
         </member>
         <member name="T:Kriptok.Core.ScreenRegion">
             <summary>
@@ -10135,6 +8685,1456 @@
             Indica si el rectángulo indicado por parámetro se encuentra fuera de la pantalla.
             </summary>
         </member>
+        <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
+            <summary>
+            Consulta de colisiones entre un objeto y un tipo de objetos.
+            </summary>    
+        </member>
+        <member name="T:Kriptok.Entities.Queries.MouseScrollLocationQuery">
+            <summary>
+            Consulta para obtener las coordenadas del mouse en el plano de scroll.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.OutOfScreenQuery">
+            <summary>
+            Consulta para descubrir si el objeto se encuentra fuera de la pantalla.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallStatusEnum">
+            <summary>
+            Estados posibles del objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.None">
+            <summary>
+            No se está moviendo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Jumping">
+            <summary>
+            Está saltando, moviéndose hacia arriba.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Falling">
+            <summary>
+            Está cayendo, moviéndose hacia abajo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallHandlerY">
+            <summary>
+            Controlador de salto para entornos tipo screen/scroll en que los objetos se muevan 
+            sobre el plano XY.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallHandlerZ">
+            <summary>
+            Controlador de salto para entornos tipo tridimensionales en que los objetos "salten" sobre el eje Z.    
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.Gravity">
+            <summary>
+            Constante de aceleración gravitatoria.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.inverseGravity">
+            <summary>
+            Inversa de la gravedad.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.halfGravity">
+            <summary>
+            Variable precalculada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialHeight">
+            <summary>
+            Altura a partir de la cual se empezó a calcular el salto/caída.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialSpeed">
+            <summary>
+            Aceleración al comienzo del movimiento.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.timer">
+            <summary>
+            Tiempo acumulado del salto/caída.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.JumpFallHandlerBase.Status">
+            <summary>
+            Estado en el que se encuentra actualmente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartJump(System.Single,System.Single)">
+            <summary>
+            Inicia un salto con la aceleración indicada por parámetro.
+            
+            Como este método puede ser utilizado para un "double jump", no valida que se
+            encuentre en un estado válido.
+            
+            Esa validación debe realizare previamente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single)">
+            <summary>
+            Inicia una caída desde la altura inicial hasta la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single,System.Single)">
+            <summary>
+            Inicia una caída desde la altura inicial hasta la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.IncTimer(System.Single,System.Single,System.Single,System.Single@)">
+            <summary>
+            Incrementa el tiempo y devuelve el valor de la altura.
+            </summary>        
+            <param name="t">Tiempo a incrementar.</param>
+            <param name="floorHeight">Altura del "piso" cuando se está cayendo.</param>
+            <param name="ceilingHeight">Altura del "techo" cuando se está saltando.</param>
+            <param name="newHeight">Resultado de la función.</param>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.OverCeiling(System.Single,System.Single)">
+            <summary>
+            Indica si la altura del objeto es superior a la del techo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.UnderFloor(System.Single,System.Single)">
+            <summary>
+            Indica si la altura del objeto es inferior a la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.GetModifier(System.Single,System.Single)">
+            <summary>
+            Obtiene el modificar de altura en base a la velocidad inicial y a la aceleración.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Base.EntityStartHandler">
+            <summary>
+            Este objeto permite customizar propiedades del objeto que sólo
+            son posibles de establecer al iniciar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityStartHandler.obj">
+            <summary>
+            Objeto que se va a inicializar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityStartHandler.Region">
+            <summary>
+            Región de renderización del objeto.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.EntityStartHandler.RegionSize">
+            <summary>
+            Obtiene el tamaño de la región de pantalla a la que pertenece el objeto.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.EntityStartHandler.CollisionType">
+            <summary>
+            Establece el tipo de caja de colisión 2D a aplicar para este objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCustomHitbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
+            <summary>
+            Establece una caja de colisión custom para este objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
+            <summary>
+            Establece una caja de colisión custom para mapas de tipo <see cref="!:MapRegion"/> para este objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision2D``1">
+            <summary>
+            Le indica al sistema que debe detectar colisiones entre este objeto, y un 
+            objeto específico.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision2D(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
+            de objetos indicados por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollisions2D``1">
+            <summary>
+            Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
+            instancias de otro tipo de objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision3D``1">
+            <summary>
+            Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
+            de objetos indicados por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollisions3D``1">
+            <summary>
+            Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
+            instancias de otro tipo de objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DVertex">
+            <summary>
+            Establece que el objeto colisionará sólo como un punto en el espacio.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DObjectSphere">
+            <summary>
+            Establece una caja de colisión esférica alrededor de la ubicación del objeto.
+            
+            El radio de la esfera es el radio del objeto.
+            
+            Si el radio es 0, funciona igual que <see cref="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DVertex"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DViewAABB">
+            <summary>
+            Establece el tipo de colisión "Axis Aligned Bounding Boxes" para este objeto.
+            
+            El volumen de colisión está definido por la vista que lo representa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetOutOfScreenQuery">
+            <summary>
+            Obtiene una consulta que evalúa si el objeto ya no se encuentra en la pantalla.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetMouseScrollLocationQuery">
+            <summary>
+            Obtiene una consulta que permite conocer la posición del mouse proyectada para la región.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Base.ItemBase.Audio">
+            <summary>
+            Agrupamiento de funciones de audio (sonido y música).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param>
+            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary> 
+            <param name="resource">Recurso a reproducir.</param>
+            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySoundSync(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce un sonido de forma sincrónica.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param> 
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.StopMusic">
+            <summary>
+            Detiene la música que esté sonando en ese momento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Reproduce un segmento de la canción indicada según los parámetros.
+            
+            Esta forma de reproducción no puede repetirse en continuado.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra la música.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param>             
+            <param name="from">Indica desde qué punto debe empezar a reproducirse.</param>
+            <param name="to">Indica hasta qué punto debe reproducirse.</param>
+            <param name="volume">Volumen de reproducción.</param>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Double)">
+            <summary>
+            Reproduce la música indicada según los parámetros.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra la música.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param> 
+            <param name="loop">Indica si se reproduce en loop.</param>
+            <param name="volume">Volumen de reproducción.</param>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterX(System.Int32)">
+            <summary>
+            Centra el mouse horizontalmente en la pantalla.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterY(System.Int32)">
+            <summary>
+            Centra el mouse horizontalmente en la pantalla.
+            </summary>            
+        </member>
+        <member name="P:Kriptok.Entities.Base.ItemBaseBase.Assembly">
+            <summary>
+            Obtiene el ensamblado en el que se encuentra definida esta clase.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button01">
+            <summary>
+            Tecla:            
+            SNES:        
+            Playstation: Triángulo
+            XBOX:        
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.AnalogDirection(Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Obtiene la dirección en coordenadas cartesianas del control analógico del joystick.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button02">
+            <summary>
+            Tecla: 2         
+            SNES:        
+            Playstation: O (o "X" en la playstation japonesa).
+            XBOX:        
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button03">
+            <summary>
+            Tecla:       Espacio
+            SNES:        B
+            Playstation: X (o "O" en la playstation japonesa).
+            XBOX:        A
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button04">
+            <summary>
+            Tecla:       Shift            
+            SNES:        X
+            Playstation: Cuadrado
+            XBOX:        Y                        
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L1">
+            <summary>
+            Tecla:              Q
+            SNES:               L
+            Playstation / XBOX: L1            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R1">
+            <summary>
+            Tecla:              E
+            SNES:               R
+            Playstation / XBOX: R1            
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L2">
+            <summary>
+            Tecla:              1           
+            Playstation / XBOX: L2
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R2">
+            <summary>
+            Tecla:              3            
+            Playstation / XBOX: R2     
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Escape">
+            <summary>
+            Indica si está presionada la tecla de "Esc".
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Entities.Base.Process2Base`1">
+            <summary>
+            Objeto básico del juego, pero con comportamiento asincrónico.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.Process2Base`1.#ctor(`0)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Base.Process2Base">
+            <summary>
+            Objeto básico del juego, pero con comportamiento asincrónico.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.Process2Base.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.Process2Base"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.Process2Base.#ctor(Kriptok.Views.Base.IView)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.Process2Base"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.Process2Base.OnBegin(Kriptok.Scenes.ProcessHandler)">
+            <summary>
+            Método para definir el comportamiento del proceso.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Base.ProcessBase`1">
+            <summary>
+            Objeto básico del juego, pero con comportamiento asincrónico.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase`1.#ctor(`0)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Base.ProcessBase">
+            <summary>
+            Objeto básico del juego, pero con comportamiento asincrónico.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ProcessBase.EmptyArray">
+            <summary>
+            Array vacío de procesos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ProcessBase.cancellationTaskToken">
+            <summary>
+            Token de cancelación de flujo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ProcessBase.myThread">
+            <summary>
+            Puntero al thread en el que corre el proceso.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.#ctor(Kriptok.Views.Base.IView)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.ProcessBase"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ProcessBase.ReadyToFrameFlag">
+            <summary>
+            Indica si el proceso está "listo para renderizar", es decir, que ha encontrado un frame en el código.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.Frame">
+            <summary>
+            Este método genera una "espera" hasta que el proceso es renderizado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeOff(System.Byte)">
+            <summary>
+            Oscurece la pantalla a negro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeTo(System.Drawing.Color,System.Byte)">
+            <summary>
+            Oscurece la pantalla al color indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeOn(System.Byte)">
+            <summary>
+            Vuelve a aclarar la pantalla.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.FadeFrom(System.Drawing.Color,System.Byte)">
+            <summary>
+            Vuelve a aclarar la pantalla desde el color indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.ProcessStartHandler)">
+            <summary>
+            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.EntityStartHandler)">
+            <summary>
+            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.OnBegin">
+            <summary>
+            Define el comportamiento del proceso como un thread independiente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.OnFrame">
+            <summary>
+            Este método se ejecuta en cada frame de la aplicación, mientras el objeto esté vivo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.ReadyToRender">
+            <summary>
+            Indica si el objeto está listo para renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.TriggerFrame">
+            <summary>
+            Indica si el objeto está listo para renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.Sync(System.Action,System.Boolean)">
+            <summary>
+            Congela/duerme a todos los procesos activos, menos al actual, y ejecuta una acción. Cuando la acción termina,
+            descongela/despierta a los procesos que había dormido.
+            </summary>        
+            <param name="action">Acción a ejecutar mientras los procesos están dormidos.</param>
+            <param name="force">Indica si al momento de "despertar" a los procesos, debe también despertar a 
+            procesos que tal vez ya se encontraban dormidos, y/o que no habían sido dormidos por este proceso en particular.</param>
+        </member>
+        <member name="M:Kriptok.Entities.Base.ProcessBase.IsDisposed">
+            <summary>
+            Indica si el elemento ha sido completamente destruido.
+            </summary>  
+        </member>
+        <member name="T:Kriptok.Entities.Base.EntityBase`1">
+            <summary>
+            Clase base de todos los objetos que forman parte de un juego.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase`1.#ctor(`0)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.EntityBase`1.View">
+            <summary>
+            Obtiene la vista asociada al objeto.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Base.EntityBase">
+            <summary>
+            Clase base de todos los objetos que forman parte de un juego.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Id">
+            <summary>
+            Id único del objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.alive">
+            <summary>
+            Indica si el proceso está vivo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.#ctor(Kriptok.Views.Base.IView)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Base.EntityBase"/>.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Region">
+            <summary>
+            Accede al controlador central de la pantalla.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Add``1(``0)">
+            <summary>
+            Agrega un objeto al juego y lo devuelve.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetLocation2D">
+            <summary>
+            Obtiene la ubicación bidimensional de renderización.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetRotationAngle2D">
+            <summary>
+            Obtiene el ángulo de rotación para vistas bidimensionales.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetRenderLocation">
+            <summary>
+            Obtiene la ubicación tridimensional de renderización del objeto.
+            
+            Este método permite customizar la ubicación del objeto al momento de renderizar.
+            
+            Ideal cuando la posición del objeto depende de otro objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Location">
+            <summary>
+            Dependiendo del sistema de coordenadas que utiliza el proceso, la coordenada Z puede representar
+            profundidad (interfaces tridimensionales), o prioridad (interfaces planas).
+            
+            De cualquier manera, cuanto menor sea Z, más cerca de la cámara se dibujará el proceso.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Radius">
+            <summary>
+            Utilizado para determina collisiones de tipo <see cref="F:Kriptok.Entities.Collisions.Collision2DTypeEnum.Radius"/> en 2 y 3 dimensiones.
+            Es de tipo <see cref="T:System.UInt16"/> para que sea fácil de castear a int, pero al mismo tiempo no 
+            soporte valores negativos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Angle">
+            <summary>
+            Ángulos del proceso, utilizados para renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.DrawPriority">
+            <summary>
+            Esta propiedad puede fácilmente ser reemplazada en la mayoría de los casos por la coordenada Z.
+            Ya que esta coordenada será utilizada para calcular el orden de los sprites a representar en todas
+            las interfaces. Sin embargo, en el caso de que ambas "Z" sean iguales, es imposible saber qué 
+            proceso tiene prioridad sobre cuál. Por tanto, se creó esta nueva prioridad.
+            
+            La mayoría de las veces, es suficiente con que sea 0. Sólo casos muy particulares pueden requerir
+            de utilizarla para un ordenamiento extra.
+            
+            A diferencia de la coordenada Z, que es menor cuanto más cerca está de la cámara, esta propiedad
+            funciona al revés. Cuanto más grande sea, más "cerca" se encontrará el sprite de la cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Advance2D(System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada sobre el plano XY en el ángulo que está mirando.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Advance3D(System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada el espacio tridimensional en el ángulo que está mirando.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Strafe2D(System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada en el plano XY a 90° del ángulo en que está mirando.
+            </summary>           
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Strafe3D(System.Single,System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada en el espacio a 90° del ángulo en que está mirando.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.XAdvance2D(System.Single,System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada sobre el plano XY en el ángulo indicado.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.XAdvance3D(System.Single,System.Single,System.Single)">
+            <summary>
+            Mueve el objeto la distancia indicada en el espacio 3D, en los ángulos indicados.
+            </summary>   
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Asleep">
+            <summary>
+            Indica si el proceso debe continuar moviéndose, se puede utilizar por ejemplo,
+            para pausar el juego.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Sleep">
+            <summary>
+            Duerme a un objeto. Se lo puede despertar con <see cref="M:Kriptok.Entities.Base.EntityBase.Wakeup"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Sleep(System.Boolean)">
+            <summary>
+            Intenta dormir a un objeto, indicando en el resultado si fue exitoso o no.
+            </summary>
+            <param name="force">Indica si debe forzar a dormir a un objeto. Por defecto, si un objeto ya
+            está dormido, lo ignora. Este parámetro hace que se fuerce a intentar dormirlo aunque ya esté dormido
+            y que la función devuelva <see cref="!:true"/> siempre.</param>
+            <returns>Devuelve <see cref="!:true"/> si pudo dormir al objeto y <see cref="!:false"/> de lo contrario.</returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Wakeup">
+            <summary>
+            Despierta a un objeto dormido con <see cref="M:Kriptok.Entities.Base.EntityBase.Sleep(System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.EntityBase.View">
+            <summary>
+            Propiedad que indica el gráfico que debe renderizar asociado a este proceso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.DistX(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Calcula la distancia sobre el eje X hasta el objeto indicado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.DistY(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Calcula la distancia sobre el eje Y hasta el objeto indicado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetAngle2D(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Obtiene el ángulo en dirección al objeto indicado sobre el eje Z.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetDistance2D(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Obtiene la distancia en dirección al objeto indicado sobre el plano XY.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetDistance3D(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Obtiene la distancia en dirección al objeto indicado sobre el plano XY.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.LookAt3D(System.Single,System.Single,System.Single)">
+            <summary>
+            Este método orienta la dirección del objeto en tres dimensiones hacia la ubicación indicada.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.LookAt3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Este método orienta la dirección del objeto en tres dimensiones hacia la ubicación indicada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.SetHitbox2D(Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase)">
+            <summary>
+            Establece la nueva caja de colisión, liberando de memoria la anterior, si la tuviese.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
+            <summary>
+            Establece una caja de colisión custom para mapas de tipo <see cref="T:Kriptok.Maps.MapRegion"/> para este objeto.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Hitbox2D">
+            <summary>
+            Caja de colisión bidimensional para este objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityBase.Hitbox3D">
+            <summary>
+            Caja de colisión tridimencional para este objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Radius2DCollision``1">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Radius3DCollision``1">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollision``1(System.Func{``0,System.Int32})">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Radius2DCollisions``1">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Radius3DCollisions``1">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollisions``1(System.Func{``0,System.Int32})">
+            <summary>
+            Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
+            a una distancia menor a la suma de sus radios.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.IsAlive">
+            <summary>
+            Indica si el objeto aún está "vivo".
+            
+            Es decir, si tiene comportamiento y debe ser renderizado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetDirection">
+            <summary>
+            Obtiene la dirección del objeto sobre el plano XY.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart">
+            <summary>
+            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart(Kriptok.Entities.Base.EntityStartHandler)">
+            <summary>
+            Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.OnFrame">
+            <summary>
+            Este método se ejecuta en cada frame de la aplicación, mientras el objeto esté vivo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.ReadyToRender">
+            <summary>
+            Indica si el objeto está listo para renderizar.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.TriggerFrame">
+            <summary>
+            Indica si el objeto está listo para renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetIdentifier">
+            <summary>
+            Obtiene un texto para identificar al objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.GetOccupiedGridCells(Kriptok.Drawing.Vector2I)">
+            <summary>
+            Para objetos que deben moverse por un mapa tipo "grilla" (estrategia, rol, etcétera), este método
+            permite, dada la ubicación del objeto (en la grilla) indicada por parámetro, este método
+            permite implementar la ocupación de múltiples celdas y casillas simplemente devolviendo una lista
+            de las casillas ocupadas.        
+            </summary>        
+            <param name="coordinates">Las coordenadas que devuelve el metodo <see cref="!:GetTileCoords"></see></param>
+            <returns>Devuelve una liasta de los casilleros que ocupa el objeto dentro del mapa.</returns>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Die">
+            <summary>
+            Indica al objeto que deja de formar parte de la operatoria del juego
+            y que debería liberarse de memoria.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.IsDisposed">
+            <summary>
+            Mata el objeto, libera los recursos, e
+            indica si el elemento ha sido completamente destruido.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Base.EntityBase.Find">
+            <summary>
+            Funcionalidades de búsqueda de objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Find.First``1">
+            <summary>
+            Busca el primer objeto vivo del tipo indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Find.All``1">
+            <summary>
+            Devuelve todos los objetos vivos del tipo indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Find.All">
+            <summary>
+            Devuelve todos los objetos vivos alrededor.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Find.Others(System.Int32)">
+            <summary>
+            Devuelve todos los objetos vivos menos el indicado por parámetro.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Find.Others``1(System.Int32)">
+            <summary>
+            Devuelve todos los objetos vivos menos el indicado por parámetro.
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Entities.Base.EntityBase.Scene">
+            <summary>
+            Funcionalidades para comunicarse con la escena actual.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Base.EntityBase.Scene.SendMessage(System.Object)">
+            <summary>
+            Envía el menasje a la escena. El mensaje puede ser cualquier cosa.
+            Pero depende de la escena saber interpretarlo en la implementación del método
+            <see cref="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)"/>,
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Base.ICollisionQuery">
+            <summary>
+            Consulta de colisiones entre un objeto y un tipo de objetos.
+            </summary>    
+        </member>
+        <member name="P:Kriptok.Entities.Collisions.Base.ICollisionQuery.RegionId">
+            <summary>
+            Id de región a la que pertenece el objeto que realiza la consulta.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.GetCandidatesHashCode">
+            <summary>
+            Devuelve un código identificatorio para agrupar candidatos a colisiones.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.GetCandidates(Kriptok.Entities.Base.EntityBase[])">
+            <summary>
+            Obtiene los candidatos para evaluar colisiones.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.ICollisionQuery.Clear">
+            <summary>
+            Limpia los resultados para que no se pasen de un frame al otro.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Result">
+            <summary>
+            Obtiene el resultado de la última colisión evaluada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Filter(Kriptok.Entities.Base.EntityBase[])">
+            <summary>
+            Filtra la lista de objetos con la cual se debe evaluar colisiones.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.CollisionQueryBase`1.Clear">
+            <summary>
+            Limpia los resultados.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Base.HitboxBase.owner">
+            <summary>
+            Obejto al que pertenece esta caja de colisión.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.OwnerId">
+            <summary>
+            Obtiene el identificador del objeto para que no se registren colisiones contra sí mismo.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.RegionId">
+            <summary>
+            Obtiene el Id de región del objeto, para sólo evaluar colisiones con objetos de la misma región.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.IsAlive">
+            <summary>
+            Indica si el objeto propietario de esta caja de colisión está vivo.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Entities.Collisions.Base.HitboxBase.Location">
+            <summary>
+            Obtiene la última ubicación del objeto para chequear la colisión.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionsWith``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Obtiene una lista de objetos con los que colisiona este objeto.
+            </summary>      
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionWith``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Obtiene el primer objeto que encuentre que esté colisionando con este objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.GetCollisionWith(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Indica si está colisionando con el objeto indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Base.HitboxBase.StartCollisionDetection">
+            <summary>
+            Permite ejecutar código antes de iniciar el análisis de intersección de cajas de colisión.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Queries.IObjectCollisionQuery">
+            <summary>
+            Consulta que sólo evalúa colisión con un objeto en particular.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.IObjectCollisionQuery.OnCollision">
+            <summary>
+            Indica si se detectó la colisión.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.to">
+            <summary>
+            Objeto específico con el cual se debe evaluar la colisión.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.GetCandidatesHashCode">
+            <summary>
+            No especifico nada, ya que la resolución 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.Filter(Kriptok.Entities.Base.EntityBase[])">
+            <summary>
+            No filtro nada, ya que no es necesario, ya se tiene una referncia al objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.CollisionQueryObject.Resolve(Kriptok.Entities.Base.EntityBase[])">
+            <summary>
+            No uso los objetos indicados por parámetro.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Queries.IMultipleCollisionQuery`1">
+            <summary>
+            Tipo de colisión que sólo retorna el primer resultado encontrado.
+            </summary>    
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1">
+            <summary>
+            Tipo de colisión que sólo retorna el primer resultado encontrado.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1.OnCollision(`0@)">
+            <summary>
+            Método utilizado para detectar la colisión del objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Queries.ISingleCollisionQuery`1.OnCollision">
+            <summary>
+            Método utilizado para detectar la colisión del objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionsWith``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Médoto sobreescrito para agregar el llamado a <see cref="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionWith``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Médoto sobreescrito para agregar el llamado a <see cref="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetCollisionWith(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Indica si está colisionando con el objeto indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.GetLocation2D">
+            <summary>
+            Obtiene la ubicación bidimensional de la vista.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.EndCollisionDetection">
+            <summary>
+            Permite liberar los recursos utilizados para la detección de colisiones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.Collide(Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase)">
+            <summary>
+            Resuelve la colisión entre dos objetos, el propietario del hitbox, y el
+            indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.CheckToPixel(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Resuelve la colisión entre este tipo de caja de cólisión y un punto en el espacio bidimensional.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase.Dispose">
+            <summary>
+            Libera los recursos utilizados.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.matrix">
+            <summary>
+            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.polygon">
+            <summary>
+            Polígono para intersectar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.rectangle">
+            <summary>
+            Rectángulo para intersectar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DCircle.Kriptok#Entities#Collisions#Coll2D#ICircleCollisionContext#GetMatrix">
+            <summary>
+            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase">
+            <summary>
+            Caja de colisión que realiza la validación en dos etapas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.CheckToRegion(Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext)">
+            <summary>
+            Sólo por motivos de debug.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext">
+            <summary>
+            Contexto de intersección de regiones con dos chequeos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.view">
+            <summary>
+            Vista a renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.size">
+            <summary>
+            Tamaño actual del elpise a renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.ellipse">
+            <summary>
+            Elipse utilizada para detectar colisiones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.GetEllipse">
+            <summary>
+            Obtiene el elipse para renderizarlo.
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DPath.SecondCheckPath">
+            <summary>
+            Indica que la caja de colisión es un rectángulo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.matrix">
+            <summary>
+            Matriz de transformación para colisiones con vistas de GDI+, se genera sólo si es necesaria.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetCollisionRectangle">
+            <summary>
+            Obtiene el rectángulo de colisión del la vista.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisible(System.Drawing.Region,System.Drawing.Drawing2D.Matrix)">
+            <summary>
+            En principio sólo valida la visibilidad del rectángulo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisible(System.Drawing.Region)">
+            <summary>
+            Indica si la figura es visible en la región indicada por parámetro.
+            
+            En principio, sólo se chequea el rectángulo que funciona como "Bounding-Box".
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.IsVisibleRectangle(System.Drawing.Region)">
+            <summary>
+            Indica si la "Bounding-Box" de la vista está visible en la región indicada por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetMatrix">
+            <summary>
+            Obtiene o crea y devuelve la matriz de transformación de esta vista.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.GetBounds">
+            <summary>
+            Obtiene los límites (AABB) de la figura.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext">
+            <summary>
+            Representa las propiedades de colisión de un objeto bidimensional.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext.rectangle">
+            <summary>
+            Rectángulo que envuelve el área de colisión.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.RegionCollisionContext.bounds">
+            <summary>
+            Límites calculados de la región de colisión.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.DrawOn(System.Drawing.Graphics)">
+            <summary>
+            Dibuja el contorno de la caja de colisión.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckBase">
+            <summary>
+            Clase base para el segundo chequeo que se realiza con figuras más complejas que un rectángulo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckNone">
+            <summary>
+            Indica que no debe realizar ningún segundo chequeo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckRectangle">
+            <summary>
+            Indica que la caja de colisión es un rectángulo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckSprite">
+            <summary>
+            Esta caja de colisión para sprites sólo deriva el comportamiento a la verdadera caja de colisión
+            generada para ese sprite.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SpriteSecondCheckNone">
+            <summary>
+            Indica que no debe realizar ningún segundo chequeo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll2D.SpriteSecondCheckRectangle">
+            <summary>
+            Indica que la caja de colisión es un rectángulo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D">
+            <summary>
+            Caja de colisiones tridimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices">
+            <summary>
+            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices(System.Collections.Generic.IEnumerable{Kriptok.Drawing.Algebra.Vector3F})">
+            <summary>
+            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetNormals">
+            <summary>
+            Obtiene tres direcciones de rotación (los primeros tres vectores),
+            para reorientar las figuras en la detección de colisiones.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.BoundingBoxNormals">
+            <summary>
+            Objeto con tres direcciones sobre las cuales se pueden rotar las figuras
+            para calcular colisiones.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.Collision3DShape">
+            <summary>
+            Datos utilizados para el cálculo de intersección de una figura 3D con rotación y escalamiento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.VolumeContains(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Indica si el volumen descripto por la figura contiene el vértice indicado por parámetro.
+            Para esto debe realizar transformaciones de coordenadas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.DeTransformVector(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma y devuelve el vértice indicado por parámetro al sistema de coordenadas del volumen.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.TransformVolume(Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Transforma un volumen utilizando la matriz de transformación de la figura.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.GetCollision3DType">
+            <summary>
+            Obtiene el tipo de colisión para graficarla.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.Collide(Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase)">
+            <summary>
+            Resuelve la colisión entre dos objetos, el propietario del hitbox, y el
+            indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToPoint(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
+            un punto en el espacio tridimencional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToSphere(Kriptok.Drawing.Shapes.Sphere)">
+            <summary>
+            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
+            una esfera tridimencional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToVolume(Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Indica cómo resolver una colisión cuando la que es pasada por parámetro es
+            un volumen.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.CheckToShape(Kriptok.Entities.Collisions.Coll3D.Collision3DShape)">
+            <summary>
+            Indica cómo resolver una colisión cuando se recibe una figura rotada y escalada.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShapeMultiple">
+            <summary>
+            Tipo de colisión por volumen, pero toma en cuenta las rotaciones aplicadas a la figura.
+            Generando así una caja de colisión más estrecha y estricta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DSphere.mySphere">
+            <summary>
+            Devuelve la esfera representada por la ubicación y radio del objeot.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DSphere.CheckToSphere(Kriptok.Drawing.Shapes.Sphere)">
+            <summary>
+            Colisión esfera/esfera.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShape">
+            <summary>
+            Tipo de colisión por volumen, pero toma en cuenta las rotaciones aplicadas a la figura.
+            Generando así una caja de colisión más estrecha y estricta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DShape.currentShape">
+            <summary>
+            Volumen calculado para este frame.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.Hitbox3DVolume">
+            <summary>
+            Tipo de colisión por volumen. Recomendada para figuras que ocupen todo el espacio del
+            volumen y no tengan rotaciones.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Coll3D.Hitbox3DVolume.currentVolume">
+            <summary>
+            Volumen calculado para este frame.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Coll3D.IBoundCollision">
+            <summary>
+            Esta interfaz indica que se puede evaluar una colisión en tres dimensiones, utilizando
+            los límites de las figuras tridimencionales.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Collision2DHelper">
+            <summary>
+            Agrupa todas las funcionalidades necesarias para chequear collisiones entre objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision2DHelper.Collide(Kriptok.Drawing.Shapes.Circle,System.Drawing.RectangleF)">
+            <summary>
+            Devuelve si las figuras indicadas por parámetro se superponen.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Collision3DTypeEnum">
+            <summary>
+            Tipo de caja de colisión 3D. Utilizado para mostrar la caja de colisión gráficamente.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Collisions.Collision3DHelper">
+            <summary>
+            Agrupa todas las funcionalidades necesarias para chequear collisiones entre objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.SphereVolumeCollision(Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Sphere)">
+            <summary>
+            Indica si hay una intersección entre un volumen y una esfera en tres dimensiones.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.GetEllipsoidVolume(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Drawing.Shapes.Sphere)">
+            <summary>
+            Transforma la esfera en un elipsoide para evaluar intersección con volumenes alineados a los ejes.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.EllipsoidVolumeCollision(Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Indica si hay una intersección entre un volumen y un elipsoide de tres dimensiones definido por un volumen.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.ShapeVolumeCollision(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Detecta la colisión entre una figura, y un volumen.
+            </summary>
+            <param name="shape">Figura rotada/escalada a colisionar.</param>
+            <param name="volume">Volumen a colisionar.</param>
+            <param name="shapeVolume">Volumen de la figura.</param>
+            <param name="shapeCalculatedVolume">Volumen calculado de la figura.</param>        
+        </member>
+        <member name="M:Kriptok.Entities.Collisions.Collision3DHelper.CollisionShapeShape(Kriptok.Entities.Collisions.Coll3D.Collision3DShape,Kriptok.Entities.Collisions.Coll3D.Collision3DShape)">
+            <summary>
+            Detecta la intersección entre dos figuras, realizando varios cambios de coordenadas.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Entities.Collisions.Collision2DTypeEnum.Point">
+            <summary>
+            Un único vertice en dos dimensiones.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.SpriteAnimation">
+            <summary>
+            Este objeto utiliza un <see cref="T:Kriptok.Views.Sprites.IndexedSpriteView"/> para representar una animación.
+            
+            Itera por todas las imágenes de la vista y luego muere.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Debug.ScrollCustomizer">
+            <summary>
+            Este proceso puede ser utilizado por cualquier aplicación. Su objetivo es el de permitir modificar 
+            la perspectiva del espacio tridimensional (o Mode7), y loggea las configuraciones actuales, de forma
+            de poder utilizarlo temporalmente hasta encontrar la perspectiva deseada.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Debug.LightSourceRotator">
+            <summary>
+            Esta es una clase de prueba que hacer rotar la luz ambiental para verificar cómo afecta la luz
+            dependiendo de dónde se encuentre.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Debug.LineOfSight">
+            <summary>
+            Este objeto se utiliza para analizar la visión de un proceso sobre otro/s.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Debug.LineOfSight.#ctor(Kriptok.Entities.Base.EntityBase,Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Debug.LineOfSight"/>.
+            </summary>
+            <param name="from">Proceso de origen (propietario de la linea de visión).</param>
+            <param name="to">Proceso destino u objetivo.</param>
+        </member>
+        <member name="M:Kriptok.Entities.Debug.LineOfSight.IsInSight(Kriptok.Entities.Base.EntityBase)">
+            <summary>
+            Indica si un objeto determinado está dentro del rango de visión del objeto propietario.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Debug.LinesOfSight">
+            <summary>
+            Esta clase indica gráficamente hacia dónde se encuentra mirando el personaje.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Debug.LinesOfSight.#ctor(Kriptok.Entities.Base.EntityBase,System.Single)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Debug.LinesOfSight"/>.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Debug.MapGridMarker">
+            <summary>
+            Este objeto se utiliza para marcar el lugar donde se encuentra un objeto dentro de una cuadrícula
+            en una situación que puede ser confusa (un mapa de Mode7, por ejemplo).
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.BasicObject">
+            <summary>
+            Este objeto puede ser utilizado como decorado, u otros objetos que no 
+            requieren un comportamiendo complejo o no interactuan con otros objetos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.DistanceTo`1">
+            <summary>
+            Esta clase representa una relación de distancia entre un objeto y otro.
+            </summary>    
+        </member>
+        <member name="P:Kriptok.Entities.DistanceTo`1.Object">
+            <summary>
+            Objeto hasta el cuál se está midiendo la distancia.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.DistanceTo`1.Distance">
+            <summary>
+            Distancia hasta el objeto referenciado.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Scenes.SceneBase">
             <summary>    
             Las escenas representan cada "instancia" de un juego.
@@ -10360,11 +10360,6 @@
             Espera hasta que se presione una tecla, y devuelve su valor.
             </summary>        
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandler.Randomize(System.Int32)">
-            <summary>
-            Inicializa el generador de números aleatorios.
-            </summary>
-        </member>
         <member name="M:Kriptok.Scenes.SceneHandler.FadeOn(System.Byte)">
             <summary>
             Enciende la pantalla.
@@ -10571,13 +10566,6 @@
             <summary>
             Obtiene una referencia a la región de la pantalla completa.
             </summary>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.Rand(System.Int32,System.Int32)">
-            <summary>
-            Obtiene un número aleatorio entre los valores indicados por parámetro.
-            
-            Los dos se consideran incluidos en el rango posible.
-            </summary>    
         </member>
         <member name="M:Kriptok.Scenes.FrameHandler.Key(System.Windows.Forms.Keys)">
             <summary>

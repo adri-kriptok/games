@@ -95,7 +95,7 @@ namespace Kriptok.Asteroids
             Angle.X = 0.5f;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
@@ -134,7 +134,7 @@ namespace Kriptok.Asteroids
             SetAlign(ShapeAlignEnum.Center, ShapeVerticalAlignEnum.Middle);
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 

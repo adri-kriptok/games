@@ -35,7 +35,7 @@ namespace Kriptok.Asteroids.Entities
             View.ScaleY = 1.25f;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);        
             h.CollisionType = Collision2DTypeEnum.Auto;

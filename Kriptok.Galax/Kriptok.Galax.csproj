@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C45894BE-1303-4367-9902-C3254FCF182C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Kriptok.Games.Galax</RootNamespace>
+    <AssemblyName>Galax</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
+    <OutputPath>bin\Release-FPS\</OutputPath>
+    <DefineConstants>TRACE;SHOWFPS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.0.18.10\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Sdk.0.18.8\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\EnemyGroup.cs" />
+    <Compile Include="Scenes\CreditsScene.cs" />
+    <Compile Include="Scenes\GameLevelScene.cs" />
+    <Compile Include="Scenes\TitleScene.cs" />
+    <Compile Include="Entities\Enemy3.cs" />
+    <Compile Include="Entities\Enemy2.cs" />
+    <Compile Include="Entities\Enemy1.cs" />
+    <Compile Include="Entities\EnemyShot1.cs" />
+    <Compile Include="Entities\EnemyShot0.cs" />
+    <Compile Include="Entities\Explosion.cs" />
+    <Compile Include="Entities\EnemyShotBase.cs" />
+    <Compile Include="Entities\EnemyBase.cs" />
+    <Compile Include="Entities\PlayerMisile.cs" />
+    <Compile Include="Entities\PlayerShip.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\BUIU.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\FX1.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\LASER.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\LASER2.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\LASER3.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\TitleScreen.png" />
+    <EmbeddedResource Include="Assets\Credits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Level.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Music\BattleEnd2.mid" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\PlayerShip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Explosion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\EnemyShot0.png" />
+    <EmbeddedResource Include="Assets\Images\EnemyShot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\PlayerShot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Enemy1.png" />
+    <EmbeddedResource Include="Assets\Images\Enemy2.png" />
+    <EmbeddedResource Include="Assets\Images\Enemy3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

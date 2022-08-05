@@ -25,7 +25,7 @@ namespace Kriptok.Snake.Entities
             Location.Y = -20;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
         

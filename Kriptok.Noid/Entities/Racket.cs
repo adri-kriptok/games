@@ -92,7 +92,7 @@ namespace Kriptok.Noid.Entities
             this.ball = ball;
         }
 
-        protected override void OnStart(ObjectStartHandler h)
+        protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
         

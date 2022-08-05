@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Pong", "Kriptok.Pon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Snake", "Kriptok.Snake\Kriptok.Snake.csproj", "{FC8EFA96-77EC-4538-8543-42785C9A721C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Galax", "Kriptok.Galax\Kriptok.Galax.csproj", "{C45894BE-1303-4367-9902-C3254FCF182C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,20 +35,26 @@ Global
 		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
-		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
-		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{686D5DF5-8850-486D-96E3-F32B70F9D6DC}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
-		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{C45894BE-1303-4367-9902-C3254FCF182C}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

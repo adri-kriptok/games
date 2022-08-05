@@ -1102,6 +1102,59 @@
             Representa un controlador de un sonido en particular.
             </summary>
         </member>
+        <member name="T:Kriptok.Core.ComponentBase">
+            <summary>
+            Component base provee acceso a funcionalidades comunes del sistema.
+            </summary>
+            <summary>
+            Component base provee acceso a funcionalidades comunes del sistema.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Core.ComponentBase.Rand">
+            <summary>
+            Acceso a funcionalidades de generación de números aleatorios.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.ComponentBase.Rand.NextF">
+            <summary>
+            Produce un número aleatorio entre 0f y 1f.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Core.ComponentBase.Rand.NextF(System.Single,System.Single)">
+            <summary>
+            Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.ComponentBase.Rand.Next(System.Int32,System.Int32)">
+            <summary>
+            Obtiene un número aleatorio entre los valores indicados por parámetro.
+            
+            Los dos se consideran incluidos en el rango posible.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Core.ComponentBase.Rand.Randomize">
+            <summary>
+            Inicializa el generador de números aleatorios general tomando como seed el <see cref="!:DateTime.Now.Ticks"/>.
+            
+            Utilizar este método cuando se requiere que la aplicación se comporte realmente de forma aleatoria.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Core.ComponentBase.Sys">
+            <summary>
+            Funcionalidades de sistemas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Core.ComponentBase.Sys.lastFrameTime">
+            <summary>
+            Último momento en que se tomó el tiempo. Utilizado para calcular el tiempo entre frame y frame.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Core.ComponentBase.Sys.TimeDelta">
+            <summary>
+            Indica el porcentaje de tiempo que pasó entre frame y frame.
+            Se utiliza para generar una 
+            </summary>
+        </member>
         <member name="T:Kriptok.Core.ScreenRegion">
             <summary>
             Esta clase representa una región de la pantalla donde se pueden renderizar vistas.
@@ -7811,16 +7864,6 @@
             el plano Z = <see cref="F:Kriptok.Drawing.Algebra.Vector3F.InvalidZ"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.GetElapsedTime(Kriptok.Modes.Context.Base.IRenderContext)">
-            <summary>
-            Obtiene el tiempo transcurrido desde el último frame.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.RandF(Kriptok.Modes.Context.Base.IRenderContext,System.Single,System.Single)">
-            <summary>
-            Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
-            </summary>
-        </member>
         <member name="T:Kriptok.Modes.Context.Base.IProjector">
             <summary>
             Interfaz que debe implementarse con la forma de proyectar las coordenadas tridimensionales en 
@@ -8771,99 +8814,99 @@
             Obtiene el modificar de altura en base a la velocidad inicial y a la aceleración.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.Base.ObjectStartHandler">
+        <member name="T:Kriptok.Entities.Base.EntityStartHandler">
             <summary>
             Este objeto permite customizar propiedades del objeto que sólo
             son posibles de establecer al iniciar.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Base.ObjectStartHandler.obj">
+        <member name="F:Kriptok.Entities.Base.EntityStartHandler.obj">
             <summary>
             Objeto que se va a inicializar.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Base.ObjectStartHandler.Region">
+        <member name="F:Kriptok.Entities.Base.EntityStartHandler.Region">
             <summary>
             Región de renderización del objeto.
             </summary>
         </member>
-        <member name="P:Kriptok.Entities.Base.ObjectStartHandler.RegionSize">
+        <member name="P:Kriptok.Entities.Base.EntityStartHandler.RegionSize">
             <summary>
             Obtiene el tamaño de la región de pantalla a la que pertenece el objeto.
             </summary>
         </member>
-        <member name="P:Kriptok.Entities.Base.ObjectStartHandler.CollisionType">
+        <member name="P:Kriptok.Entities.Base.EntityStartHandler.CollisionType">
             <summary>
             Establece el tipo de caja de colisión 2D a aplicar para este objeto.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCustomHitbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCustomHitbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
             <summary>
             Establece una caja de colisión custom para este objeto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCustomMapbox2D(System.Action{System.Drawing.Drawing2D.GraphicsPath})">
             <summary>
             Establece una caja de colisión custom para mapas de tipo <see cref="!:MapRegion"/> para este objeto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision2D``1">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision2D``1">
             <summary>
             Le indica al sistema que debe detectar colisiones entre este objeto, y un 
             objeto específico.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision2D(Kriptok.Entities.Base.EntityBase)">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision2D(Kriptok.Entities.Base.EntityBase)">
             <summary>
             Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
             de objetos indicados por parámetro.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollisions2D``1">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollisions2D``1">
             <summary>
             Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
             instancias de otro tipo de objetos.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollision3D``1">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollision3D``1">
             <summary>
             Le indica al sistema que debe detectar colisiones entre este objeto, y el tipo
             de objetos indicados por parámetro.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetCollisions3D``1">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetCollisions3D``1">
             <summary>
             Le indica al sistema que debe detectar colisiones entre este objeto, múltiples
             instancias de otro tipo de objetos.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DVertex">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DVertex">
             <summary>
             Establece que el objeto colisionará sólo como un punto en el espacio.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DObjectSphere">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DObjectSphere">
             <summary>
             Establece una caja de colisión esférica alrededor de la ubicación del objeto.
             
             El radio de la esfera es el radio del objeto.
             
-            Si el radio es 0, funciona igual que <see cref="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DVertex"/>.
+            Si el radio es 0, funciona igual que <see cref="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DVertex"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.SetCollision3DViewAABB">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.SetCollision3DViewAABB">
             <summary>
             Establece el tipo de colisión "Axis Aligned Bounding Boxes" para este objeto.
             
             El volumen de colisión está definido por la vista que lo representa.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetOutOfScreenQuery">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetOutOfScreenQuery">
             <summary>
             Obtiene una consulta que evalúa si el objeto ya no se encuentra en la pantalla.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ObjectStartHandler.GetMouseScrollLocationQuery">
+        <member name="M:Kriptok.Entities.Base.EntityStartHandler.GetMouseScrollLocationQuery">
             <summary>
             Obtiene una consulta que permite conocer la posición del mouse proyectada para la región.
             </summary>        
@@ -8932,22 +8975,6 @@
             <summary>
             Centra el mouse horizontalmente en la pantalla.
             </summary>            
-        </member>
-        <member name="T:Kriptok.Entities.Base.ItemBase.Sys">
-            <summary>
-            Funcionalidades de sistemas.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.Base.ItemBase.Sys.lastFrameTime">
-            <summary>
-            Último momento en que se tomó el tiempo. Utilizado para calcular el tiempo entre frame y frame.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Base.ItemBase.Sys.TimeDelta">
-            <summary>
-            Indica el porcentaje de tiempo que pasó entre frame y frame.
-            Se utiliza para generar una 
-            </summary>
         </member>
         <member name="P:Kriptok.Entities.Base.ItemBaseBase.Assembly">
             <summary>
@@ -9025,38 +9052,6 @@
             <summary>
             Indica si está presionada la tecla de "Esc".
             </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.NextF">
-            <summary>
-            Produce un número aleatorio entre 0f y 1f.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.NextF(System.Single,System.Single)">
-            <summary>
-            Obtiene un número aleatorio de punto flotante entre los valores indicados por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.Next(System.Int32,System.Int32)">
-            <summary>
-            Obtiene un número aleatorio entre los valores indicados por parámetro.
-            
-            Los dos se consideran incluidos en el rango posible.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.Reset">
-            <summary>
-            Inicializa el generador de números aleatorios general tomando 0 como seed.
-            
-            Utilizar este método cuando se requiera que el comportamiento del juego parezca random, pero 
-            siempre se comporte de la misma manera.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Rand.Randomize">
-            <summary>
-            Inicializa el generador de números aleatorios general tomando como seed el <see cref="!:DateTime.Now.Ticks"/>.
-            
-            Utilizar este método cuando se requiere que la aplicación se comporte realmente de forma aleatoria.
-            </summary>
         </member>
         <member name="T:Kriptok.Entities.Base.Process2Base`1">
             <summary>
@@ -9163,7 +9158,7 @@
             Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.ObjectStartHandler)">
+        <member name="M:Kriptok.Entities.Base.ProcessBase.OnStart(Kriptok.Entities.Base.EntityStartHandler)">
             <summary>
             Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
             </summary>
@@ -9473,7 +9468,7 @@
             Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart(Kriptok.Entities.Base.ObjectStartHandler)">
+        <member name="M:Kriptok.Entities.Base.EntityBase.OnStart(Kriptok.Entities.Base.EntityStartHandler)">
             <summary>
             Este método se ejecuta cuando un ítem es agregado a la lista de procesos vivos.
             </summary>
@@ -10571,13 +10566,6 @@
             <summary>
             Obtiene una referencia a la región de la pantalla completa.
             </summary>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.Rand(System.Int32,System.Int32)">
-            <summary>
-            Obtiene un número aleatorio entre los valores indicados por parámetro.
-            
-            Los dos se consideran incluidos en el rango posible.
-            </summary>    
         </member>
         <member name="M:Kriptok.Scenes.FrameHandler.Key(System.Windows.Forms.Keys)">
             <summary>
