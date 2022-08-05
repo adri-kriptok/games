@@ -17,6 +17,7 @@ namespace Snake
         [STAThread]
         static void Main()
         {
+
             Engine.Start(new GameScene(), s =>
             {
                 s.FullScreen = false;    
