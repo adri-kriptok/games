@@ -6,7 +6,7 @@ using Kriptok.Views.Sprites;
 using Kriptok.Entities.Collisions.Base;
 using Kriptok.Entities.Collisions.Queries;
 
-namespace Kriptok.Snake.Entities
+namespace Snake.Entities
 {
     /// <summary>    
     /// Maneja los gráficos de las manzanas.

@@ -2,7 +2,7 @@
 using Kriptok.Audio.Midi;
 using Kriptok.Common;
 using Kriptok.Extensions;
-using Kriptok.Noid.Scenes;
+using Noid.Scenes;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Noid
+namespace Noid
 {
     static class Consts
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Asteroids
+namespace Asteroids
 {
     public static class Helpers
     {

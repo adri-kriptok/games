@@ -4,7 +4,7 @@ using Kriptok.Entities.Queries;
 using Kriptok.Entities.Queries.Base;
 using Kriptok.Views.Sprites;
 
-namespace Kriptok.Galax
+namespace Galax
 {
     public class PlayerMisile : EntityBase<IndexedSpriteView>
     {

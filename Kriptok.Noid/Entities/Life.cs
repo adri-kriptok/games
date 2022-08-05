@@ -1,7 +1,7 @@
 ﻿using Kriptok.Entities.Base;
 using Kriptok.Views.Sprites;
 
-namespace Kriptok.Noid.Scenes
+namespace Noid.Scenes
 {
     internal class Life : EntityBase
     {        

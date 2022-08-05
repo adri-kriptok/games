@@ -2,7 +2,7 @@
 using Kriptok.Views.Sprites;
 using System;
 
-namespace Kriptok.Pong.Entities
+namespace Pong.Entities
 {
     class Ball : EntityBase
     {

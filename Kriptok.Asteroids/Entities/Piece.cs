@@ -7,7 +7,7 @@ using System.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Scenes;
 
-namespace Kriptok.Asteroids.Entities
+namespace Asteroids.Entities
 {
     class Piece : EntityBase<PolygonView>
     {

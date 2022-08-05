@@ -4,7 +4,7 @@ using Kriptok.Views;
 using Kriptok.Views.Sprites;
 using System.Windows.Forms;
 
-namespace Kriptok.Pong.Entities
+namespace Pong.Entities
 {
     internal class Racket : EntityBase
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Snake.Entities
+namespace Snake.Entities
 {
     class AppleCreator : EntityBase
     {

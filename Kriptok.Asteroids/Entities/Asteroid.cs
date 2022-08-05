@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Kriptok.Asteroids.Entities
+namespace Asteroids.Entities
 {
     class Asteroid : EntityBase
     {

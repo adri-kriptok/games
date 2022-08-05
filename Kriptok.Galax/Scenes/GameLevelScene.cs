@@ -1,11 +1,11 @@
 ﻿using Kriptok.Scenes;
-using Kriptok.Galax.Entities;
+using Galax.Entities;
 using Kriptok.IO;
 using Kriptok.Views.Texts;
 using System;
 using System.Drawing;
 
-namespace Kriptok.Galax.Scenes
+namespace Galax.Scenes
 {
     enum LevelMessagesEnum
     {

@@ -1,5 +1,5 @@
 ﻿using Kriptok.Scenes;
-using Kriptok.Pong.Entities;
+using Pong.Entities;
 using Kriptok.IO;
 using Kriptok.Core;
 using Kriptok.Entities.Base;
@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using Kriptok.Views;
 using Kriptok.Extensions;
 using Kriptok.Entities;
+using Kriptok;
 
-namespace Kriptok.Pong
+namespace Pong
 {
     static class Program
     {

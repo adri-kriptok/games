@@ -1,9 +1,9 @@
-﻿using Kriptok.Asteroids.Entities;
+﻿using Asteroids.Entities;
 using Kriptok.Helpers;
 using Kriptok.Views.Texts;
 using System.Drawing;
 
-namespace Kriptok.Asteroids
+namespace Asteroids
 {
     static class Global
     {

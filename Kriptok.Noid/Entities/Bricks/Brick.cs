@@ -1,5 +1,5 @@
-﻿using Kriptok.Noid.Entities.Pills;
-using Kriptok.Noid.Scenes;
+﻿using Noid.Entities.Pills;
+using Noid.Scenes;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Views.Sprites;
@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     class Brick : EntityBase<ISpriteView>
     {

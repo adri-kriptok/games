@@ -1,7 +1,7 @@
 ﻿using Kriptok.Common;
 using Kriptok.Extensions;
-using Kriptok.Noid.Entities.Pills;
-using Kriptok.Noid.Scenes;
+using Noid.Entities.Pills;
+using Noid.Scenes;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Entities.Collisions.Queries;
@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     class Racket : EntityBase<RacketView>
     {

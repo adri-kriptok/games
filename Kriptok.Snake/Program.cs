@@ -1,12 +1,13 @@
 ﻿using Kriptok.Core;
-using Kriptok.Snake.Entities;
+using Snake.Entities;
 using Kriptok.IO;
 using Kriptok.Scenes;
 using Kriptok.Views.Texts;
 using System;
 using System.Drawing;
+using Kriptok;
 
-namespace Kriptok.Snake
+namespace Snake
 {
     static class Program
     {

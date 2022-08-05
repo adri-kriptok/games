@@ -1,7 +1,7 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Maps.Tiles.Editor;
-using Kriptok.Noid.Entities;
-using Kriptok.Noid.Entities.Pills;
+using Noid.Entities;
+using Noid.Entities.Pills;
 using Kriptok.Entities;
 using Kriptok.Extensions;
 using Kriptok.Scenes;
@@ -10,7 +10,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Kriptok.Noid.Scenes
+namespace Noid.Scenes
 {
     public enum LevelSceneMessages
     {

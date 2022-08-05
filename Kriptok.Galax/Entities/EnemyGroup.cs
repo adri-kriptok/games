@@ -1,12 +1,12 @@
 ﻿using Kriptok.Entities.Base;
-using Kriptok.Galax.Scenes;
+using Galax.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Galax.Entities
+namespace Galax.Entities
 {
     /// <summary>
     /// Controlador de la flota de enemigos.

@@ -2,7 +2,7 @@
 using Kriptok.Views.Sprites;
 using System.Drawing;
 
-namespace Kriptok.Galax
+namespace Galax
 {
     public class Explosion : EntityBase<SpriteView>
     {

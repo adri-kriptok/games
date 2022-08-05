@@ -1,7 +1,7 @@
 ﻿using Kriptok.Views.Sprites;
 using System;
 
-namespace Kriptok.Galax.Entities
+namespace Galax.Entities
 {
     class Enemy3 : EnemyBase<SpriteView>
     {

@@ -1,6 +1,6 @@
 ﻿using Kriptok.Drawing.Algebra;
 
-namespace Kriptok.Noid.Entities.Pills
+namespace Noid.Entities.Pills
 {
     internal class DecreaseBallSpeedPill : PillBase
     {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     internal class Laser : EntityBase<SpriteView>
     {

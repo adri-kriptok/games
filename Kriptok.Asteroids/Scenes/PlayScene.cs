@@ -1,12 +1,12 @@
 ﻿using Kriptok.Scenes;
 using Kriptok.Extensions;
-using Kriptok.Asteroids.Entities;
+using Asteroids.Entities;
 using Kriptok.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System;
 
-namespace Kriptok.Asteroids
+namespace Asteroids
 {
     /// <summary>
     /// Mensajes que puede entender esta actividad.

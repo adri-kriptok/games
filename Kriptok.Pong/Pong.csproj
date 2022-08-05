@@ -7,7 +7,7 @@
     <ProjectGuid>{686D5DF5-8850-486D-96E3-F32B70F9D6DC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kriptok.Pong</RootNamespace>
+    <RootNamespace>Pong</RootNamespace>
     <AssemblyName>Pong</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -38,7 +38,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Kriptok.Pong.Program</StartupObject>
+    <StartupObject>Pong.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
     <OutputPath>bin\Release-FPS\</OutputPath>

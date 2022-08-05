@@ -2,7 +2,7 @@
 using Kriptok.IO;
 using System.Windows.Forms;
 
-namespace Kriptok.Galax.Scenes
+namespace Galax.Scenes
 {
     /// <summary>
     /// Actividad que pone el título en pantalla.

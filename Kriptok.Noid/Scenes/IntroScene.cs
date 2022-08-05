@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kriptok.Noid.Scenes
+namespace Noid.Scenes
 {
     public class IntroScene : SceneBase
     {

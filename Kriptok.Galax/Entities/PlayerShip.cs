@@ -1,12 +1,12 @@
 ﻿using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Entities.Collisions.Queries;
-using Kriptok.Galax.Entities;
-using Kriptok.Galax.Scenes;
+using Galax.Entities;
+using Galax.Scenes;
 using Kriptok.Views.Sprites;
 using System.Windows.Forms;
 
-namespace Kriptok.Galax
+namespace Galax
 {
     public class PlayerShip : EntityBase<SpriteView>
     {

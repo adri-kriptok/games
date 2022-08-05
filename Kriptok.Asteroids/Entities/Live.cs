@@ -1,7 +1,7 @@
 ﻿using Kriptok.Helpers;
 using Kriptok.Entities.Base;
 
-namespace Kriptok.Asteroids.Entities
+namespace Asteroids.Entities
 {
     /// <summary>
     /// Nave pequeña utilizada para representar las vidas del jugador.

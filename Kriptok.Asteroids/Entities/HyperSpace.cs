@@ -4,7 +4,7 @@ using Kriptok.Views.Primitives;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 
-namespace Kriptok.Asteroids.Entities
+namespace Asteroids.Entities
 {
     public class HyperSpace : EntityBase<EllipseView>
     {

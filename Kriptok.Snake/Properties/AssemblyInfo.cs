@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kriptok.Snake")]
+[assembly: AssemblyTitle("Snake")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kriptok Entretenimiento")]
-[assembly: AssemblyProduct("Kriptok.Snake")]
+[assembly: AssemblyProduct("Snake")]
 [assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

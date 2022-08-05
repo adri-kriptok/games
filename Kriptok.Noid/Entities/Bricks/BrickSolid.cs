@@ -1,7 +1,7 @@
 ﻿using Kriptok.Views.Sprites;
 using System.Drawing;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     class BrickSolid : Brick
     {

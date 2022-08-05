@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kriptok.Asteroids.Properties {
+namespace Asteroids.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

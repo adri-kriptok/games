@@ -8,7 +8,7 @@ using Kriptok.Scenes;
 using Kriptok.Entities.Queries;
 using Kriptok.Entities.Queries.Base;
 
-namespace Kriptok.Asteroids.Entities
+namespace Asteroids.Entities
 {
     class Shot : EntityBase<RectangleView>
     {

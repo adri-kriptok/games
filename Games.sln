@@ -8,15 +8,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Noid", "Kriptok.Noid\Kriptok.Noid.csproj", "{07E34974-8982-469E-BFE8-9C302B3B5E3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noid", "Kriptok.Noid\Noid.csproj", "{07E34974-8982-469E-BFE8-9C302B3B5E3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Asteroids", "Kriptok.Asteroids\Kriptok.Asteroids.csproj", "{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asteroids", "Kriptok.Asteroids\Asteroids.csproj", "{0FD13EEA-ECEB-4DB2-AF02-A41A1F4A7F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Pong", "Kriptok.Pong\Kriptok.Pong.csproj", "{686D5DF5-8850-486D-96E3-F32B70F9D6DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "Kriptok.Pong\Pong.csproj", "{686D5DF5-8850-486D-96E3-F32B70F9D6DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Snake", "Kriptok.Snake\Kriptok.Snake.csproj", "{FC8EFA96-77EC-4538-8543-42785C9A721C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Kriptok.Snake\Snake.csproj", "{FC8EFA96-77EC-4538-8543-42785C9A721C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Galax", "Kriptok.Galax\Kriptok.Galax.csproj", "{C45894BE-1303-4367-9902-C3254FCF182C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galax", "Kriptok.Galax\Galax.csproj", "{C45894BE-1303-4367-9902-C3254FCF182C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

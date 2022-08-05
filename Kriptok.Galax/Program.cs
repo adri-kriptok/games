@@ -1,9 +1,10 @@
-﻿using Kriptok.Galax.Scenes;
+﻿using Galax.Scenes;
+using Kriptok;
 using Kriptok.Core;
 using Kriptok.Entities.Base;
 using System;
 
-namespace Kriptok.Galax
+namespace Galax
 {
     static class Program
     {

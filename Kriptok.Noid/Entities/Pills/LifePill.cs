@@ -1,9 +1,9 @@
 ﻿using Kriptok.Drawing.Algebra;
 using Kriptok.Extensions;
-using Kriptok.Noid.Scenes;
+using Noid.Scenes;
 using System;
 
-namespace Kriptok.Noid.Entities.Pills
+namespace Noid.Entities.Pills
 {
     internal class LifePill : PillBase
     {

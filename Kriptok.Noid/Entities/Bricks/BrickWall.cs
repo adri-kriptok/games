@@ -1,6 +1,6 @@
 ﻿using Kriptok.Views.Sprites;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     class BrickWall : Brick
     {

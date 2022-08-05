@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{07E34974-8982-469E-BFE8-9C302B3B5E3B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Kriptok.Noid</RootNamespace>
+    <RootNamespace>Noid</RootNamespace>
     <AssemblyName>Noid</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Kriptok.Noid.Program</StartupObject>
+    <StartupObject>Noid.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
     <OutputPath>bin\Release-FPS\</OutputPath>
@@ -103,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Assets\Levels\Level01.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level02.noidx" />

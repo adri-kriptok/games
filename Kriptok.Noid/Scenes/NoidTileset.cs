@@ -3,7 +3,7 @@ using Kriptok.Helpers;
 using Kriptok.Maps.Tiles.Base;
 using Kriptok.Maps.Tiles.Editor;
 
-namespace Kriptok.Noid.Scenes
+namespace Noid.Scenes
 {
     public class NoidTileset : Tileset4Base
     {

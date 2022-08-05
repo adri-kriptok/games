@@ -1,10 +1,11 @@
-﻿using Kriptok.Audio;
+﻿using Kriptok;
+using Kriptok.Audio;
 using Kriptok.Core;
 using Kriptok.IO;
-using Kriptok.Noid.Scenes;
+using Noid.Scenes;
 using System;
 
-namespace Kriptok.Noid
+namespace Noid
 {
     static class Program
     {

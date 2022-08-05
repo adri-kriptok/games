@@ -1,6 +1,6 @@
 ﻿using Kriptok.Views.Sprites;
 
-namespace Kriptok.Galax.Entities
+namespace Galax.Entities
 {
     public class EnemyShot0 : EnemyShotBase<IndexedSpriteView>
     {

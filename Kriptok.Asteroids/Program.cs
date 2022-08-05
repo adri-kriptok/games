@@ -1,7 +1,8 @@
-﻿using Kriptok.Core;
+﻿using Kriptok;
+using Kriptok.Core;
 using System;
 
-namespace Kriptok.Asteroids
+namespace Asteroids
 {
     static class Program
     {

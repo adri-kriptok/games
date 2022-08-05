@@ -4,7 +4,7 @@ using Kriptok.Drawing.Algebra;
 using Kriptok.Drawing.Shapes;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
-using Kriptok.Noid.Scenes;
+using Noid.Scenes;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Entities.Collisions.Queries;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Noid.Entities
+namespace Noid.Entities
 {
     class Ball : EntityBase<IndexedSpriteView>
     {

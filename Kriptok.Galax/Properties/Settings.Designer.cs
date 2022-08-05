@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kriptok.Galax.Properties {
+namespace Galax.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

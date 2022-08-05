@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kriptok.Noid")]
+[assembly: AssemblyTitle("Noid")]
 [assembly: AssemblyDescription("Arcanoid / Breakout")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kriptok Entretenimiento")]
-[assembly: AssemblyProduct("Kriptok.Noid")]
+[assembly: AssemblyProduct("Noid")]
 [assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

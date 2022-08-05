@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Galax.Scenes
+namespace Galax.Scenes
 {
     class CreditsScene : SceneBase
     {

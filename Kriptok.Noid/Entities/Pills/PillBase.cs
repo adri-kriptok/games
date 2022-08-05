@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Noid.Entities.Pills
+namespace Noid.Entities.Pills
 {
     abstract class PillBase : EntityBase<SpriteView>
     {

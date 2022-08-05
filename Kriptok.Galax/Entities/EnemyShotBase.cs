@@ -8,7 +8,7 @@ using Kriptok.Entities.Queries.Base;
 using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 
-namespace Kriptok.Galax
+namespace Galax
 {
     public abstract class EnemyShotBase<T> : EnemyShotBase
         where T : ISpriteView
