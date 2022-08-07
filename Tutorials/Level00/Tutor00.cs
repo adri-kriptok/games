@@ -41,15 +41,25 @@ namespace Tutorials.Level00
 
                 h.Add(new Ship());
 
-                var maxX = h.ScreenRegion.Size.Width - 100;
+                h.Add(new AsteroidCreator(h.ScreenRegion.Size.Width - 100));
+            }
+        }
 
-                h.Loop(() =>
+        internal class AsteroidCreator : EntityBase
+        {
+            private readonly int maxX;
+
+            public AsteroidCreator(int maxX)
+            {
+                this.maxX = maxX;
+            }            
+
+            protected override void OnFrame()
+            {
+                if (Rand.Next(1, 10) > 7)
                 {
-                    if (Rand.Next(1, 10) > 7)
-                    {
-                        h.Add(new Asteroid(Rand.Next(100, maxX), Rand.Next(-3, 3), Rand.NextF(0.5f, 1f)));
-                    }
-                });
+                    Add(new Asteroid(Rand.Next(100, maxX), Rand.Next(-3, 3), Rand.NextF(0.5f, 1f)));
+                }
             }
         }
 
@@ -213,5 +223,5 @@ namespace Tutorials.Level00
                 }
             }
         }
-    }    
+    }
 }

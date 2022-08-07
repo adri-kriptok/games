@@ -34,7 +34,7 @@
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Tutorials.Level00.Tutor01</StartupObject>
+    <StartupObject>Tutorials.Level00.Tutor00</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
