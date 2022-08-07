@@ -1,4 +1,6 @@
-﻿using Kriptok.Drawing;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
+using Kriptok.Drawing;
 using Kriptok.Helpers;
 using Kriptok.Scenes;
 using System;
@@ -15,7 +17,10 @@ namespace Noid.Scenes
         protected override void Run(SceneHandler h)
         {
             // Arranca la música tecno.                        
-            h.PlayMusic(Assembly, "Music.Tecno.xm", true, 0, null);            
+            h.PlayMusic(new PlayMusicOptions(DivResources.Music("Tecno.xm"))
+            {
+                Loop = true
+            });                
 
             h.ScreenRegion.SetBackground(typeof(IntroScene).Assembly, "Assets.Images.TitleScreen.png");
             h.FadeOn();

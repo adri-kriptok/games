@@ -48,13 +48,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.18.10\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.18.16\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Div.0.18.16\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.18.8\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.18.16\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.18.8\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.18.16\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -117,7 +120,6 @@
     <EmbeddedResource Include="Assets\Levels\Level10.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level11.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level12.noidx" />
-    <EmbeddedResource Include="Assets\Music\Tecno.xm" />
     <None Include=".sdk\bin\lib-selector.bat" />
     <None Include=".sdk\tools\TileMapEditor.exe.config" />
     <None Include="packages.config" />

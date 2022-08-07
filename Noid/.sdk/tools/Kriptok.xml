@@ -3575,6 +3575,291 @@
             el tileset, o creado en un proyecto de juego, y ser agregado al mapa desde el editor.
             </summary>
         </member>
+        <member name="F:Kriptok.Maps.Gfps.GfpsMapGenerator`1.ViewGrid">
+            <summary>
+            Mapa de paneles de la grilla.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Gfps.IGfpsOperableCell">
+            <summary>
+            Indica que esta celda tiene una reacción cuando se presiona una tecla.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Gfps.GfpsDoorCell">
+            <summary>
+            Esta celda es una "puerta".
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoMapX">
+            <summary>
+            Representa un mapa 3D dividido en volúmenes convexos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoMapX"/>.
+            
+            Constructor necesario para poder deserializar desde XML.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.#ctor(System.String)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoMapX"/>.
+            
+            Sólo debe ser utilizado por el editor de mapas 3D.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoMapX.Sectors">
+            <summary>
+            Lista de sectores que componen el mapa tridimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Serialize(System.Boolean)">
+            <summary>
+            Serializa el mapa a Xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Save(System.String)">
+            <summary>
+            Guarda el mapa en el archivo que se cargó.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Clone">
+            <summary>
+            Devuelve una copia del mapa.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Load(System.String)">
+            <summary>
+            Carga un mapa desde un archivo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Load(System.Reflection.Assembly,System.String)">
+            <summary>
+            Carga un mapa desde un recurso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Load(System.String,System.String)">
+            <summary>
+            Carga un mapa desde un xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.Load(Kriptok.Maps.Convos.ConvoMapX)">
+            <summary>
+            Carga propiedades extra en tiempo de ejecución después de parsear el Xml.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapX.AddSector(Kriptok.Maps.Convos.ConvoSectorX)">
+            <summary>
+            Agrega un sector al mapa.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoMapXGrid">
+            <summary>
+            Herramienta utilizada para leer un mapa de tipo <see cref="T:Kriptok.Maps.Convos.ConvoMapX"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Maps.Convos.ConvoMapXGrid.config">
+            <summary>
+            Mapa que se está leyendo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapXGrid.#ctor(Kriptok.Maps.Convos.ConvoMapX)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoMapXGrid"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoMapXGrid.Width">
+            <summary>
+            Cantidad de casilleros sobre el eje X.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoMapXGrid.Height">
+            <summary>
+            Cantidad de casilleros sobre el eje Y.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoMapXGrid.Depth">
+            <summary>
+            Cantidad de casilleros sobre el eje Z.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoMapXGrid.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Obtiene el elemento en la posición indicada.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoPartitionX">
+            <summary>
+            Partición tridimensional de un sector.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionX.Contains(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Indica si un casillero está contenido por la partición.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionX.Sector">
+            <summary>
+            Referencia al sector al que pertenece la partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionX.Update(Kriptok.Common.IGrid3DReader{System.Int32})">
+            <summary>
+            Calcula la metadata de los distintos lados de la partición.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoPartitionPanelX">
+            <summary>
+            Representa cada sección de una pared de una partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionPanelX.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoPartitionPanelX"/>.
+            
+            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionPanelX.#ctor(System.Drawing.RectangleF)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoPartitionPanelX"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPanelX.X">
+            <summary>
+            Coordenada X de la figura en el plano bidimensional.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPanelX.Y">
+            <summary>
+            Coordenada Y de la figura en el plano bidimensional.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPanelX.Width">
+            <summary>
+            Ancho de la figura en el plano bidimensional.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPanelX.Height">
+            <summary>
+            Alto de la figura en el plano bidimensional.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoPartitionPortalX">
+            <summary>
+            Representa cada porción rectangular de una partición que se trata de un portal
+            a otra partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionPortalX.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoPartitionPortalX"/>.
+            
+            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionPortalX.#ctor(System.Int32,System.Drawing.RectangleF)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoPartitionPortalX"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPortalX.PartitionToId">
+            <summary>
+            Partición a la cual apunta el portal.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionPortalX.Intersect">
+            <summary>
+            Indica si el portal realmente debe realizar una "intersección" de secciones antes de
+            renderizar la partición siguiente.
+            
+            La lógica es que si el portal inverso tiene las mismas dimensiones no es necesario
+            realizar una intersección. De lo contrario, es necesario.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoPartitionSideX">
+            <summary>
+            Representa un lado de una partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionSideX.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.Convos.ConvoPartitionSideX"/>.
+            
+            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionSideX.Panels">
+            <summary>
+            Lista de secciones rectangulares de paredes.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionSideX.Portals">
+            <summary>
+            Lista de secciones rectangulares que dan a otras secciones.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoPartitionSideX.TextureId">
+            <summary>
+            Id de la textura a utilizar. 0, para ninguna.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.Convos.ConvoPartitionSideX.Update(System.Int32[0:,0:])">
+            <summary>
+            Actualiza la lista de portales y secciones de pared que se deben renderizar
+            en la partición.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Maps.Convos.ConvoSectorX">
+            <summary>
+            Representa una región tridimensional de un mapa.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoSectorX.Id">
+            <summary>
+            Id del sector.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoSectorX.Partitions">
+            <summary>
+            Particiones que componen el sector.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Maps.Convos.ConvoSectorX.Map">
+            <summary>
+            Referencia al objeto principal del mapa.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Maps.TileMapTexset">
+            <summary>
+            Representa un conjunto de texturas extraídas/generadas en base a un mapa de tiles.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Maps.TileMapTexset.tiles">
+            <summary>
+            Tiene todas las texturas de los tiles.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.TileMapTexset.#ctor(Kriptok.Maps.Tiles.TileMap,Kriptok.Maps.Tiles.Base.TilesetBase,Kriptok.Views.Shapes.TextureOptions)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Maps.TileMapTexset"/>
+            </summary>
+            <param name="tiledMap">Mapa del cual se requiere generar un listado de texturas.</param>
+            <param name="tileSet">Tileset en base al cual se construyen las texturas, en caso de tener
+            que crear una nueva.</param>
+            <param name="options">Opciones por defecto para la generación de texturas.</param>
+        </member>
+        <member name="P:Kriptok.Maps.TileMapTexset.AnimatedTiles">
+            <summary>
+            Obtiene todos los tiles animados del set.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Maps.TileMapTexset.Texture(Kriptok.Maps.Tiles.Base.ITile)">
+            <summary>
+            Obtiene la textura para el tile indicado por parámetro.
+            </summary>        
+        </member>
         <member name="F:Kriptok.Maps.PathFindTypeEnum._4_Way">
             <summary>
             Sólo se mueve en ángulos rectos.
@@ -4894,6 +5179,921 @@
             Objeto utilizado para dibujar sobre el buffer.
             </summary>
         </member>
+        <member name="T:Kriptok.Modes.Context.Queries.IMouseLocationContext">
+            <summary>
+            Indica que la región puede obtener y devolver las coordenadas del mouse en el plano.
+            
+            Sólo funciona en determinados modos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Queries.IMouseLocationContext.GetMouseLocation">
+            <summary>
+            Obtiene la ubicación del mouse proyectado al modo de renderización correspondiente.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Queries.IOutOfScreenContext">
+            <summary>
+            Esta interfaz es implementada por modos de pantalla que permiten evaluar si determinados tipos de
+            vista se encuentran fuera de la pantalla.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Queries.IOutOfScreenContext.OutOfRegion(Kriptok.Drawing.Bound2)">
+            <summary>
+            Indica si el rectángulo indicado por parámetro se encuentra fuera de la pantalla.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.ITranslatableRenderContext">
+            <summary>
+            Indica que se trata de un contexto que para ubicar figuras tridimencionales, traslada el centro de la pantalla,
+            en lugar de usar perspectiva.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.Render3DContextBase">
+            <summary>
+            Contexto base de renderización para interfaces tridimensionales.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.HalfWidthFov">
+            <summary>
+            Campo precalculado para aplicar "field of view".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.regionHeightF">
+            <summary>
+            Alto de la pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastXSubstraction">
+            <summary>
+            Valor utilizado para reacomodar la coordenada X en la pantalla cuando se traza un rayo para
+            intersectar con un plano.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastYSubstraction">
+            <summary>
+            Valor utilizado para reacomodar la coordenada Y en la pantalla cuando se traza un rayo para
+            intersectar con un plano.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.currentRenderingDistance">
+            <summary>
+            Almacena el valor de la distancia hasta la cámara (en entornos tridimensicnales)
+            a la cual se está renderizando actualmente.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.fog">
+            <summary>
+            Indica si no se está utilizando un efecto de neblina.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.spriteScaleMultiplier">
+            <summary>
+            Multiplicador de escala para sprites y otras vistas bidimensionales.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.FieldOfView">
+            <summary>
+            Valor inverso del field of view, utilizado para cálculos de raycasting.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.InverseFov">
+            <summary>
+            Valor inverso del field of view, utilizado para cálculos de raycasting.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.noFog">
+            <summary>
+            Indica si para este frame no hay efectos de neblina.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetTransform">
+            <summary>
+            Obtiene la matriz de transformación de la cámara, para figuras tridimensionales.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform(System.Single,System.Single,System.Single)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform_XYZ_ZX(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            
+            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform_X0Z_ZX(System.Single,System.Single)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            
+            Se considera la coordenada Y = 0f, por defecto.
+            
+            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetAmbientColorFilter">
+            <summary>
+            Filtro de color heredado de las configuraciones de la región.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.AngleZDegrees">
+            <summary>
+            Valor en grados del ángulo Z de la cámara.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Context.Base.Render3DContextBase.CenterX">
+            <summary>
+            Coordenada X del centro de la pantalla (es virtual ya que en la clase derivada se 
+            recalcula en base al Y-Shearing).
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Context.Base.Render3DContextBase.CenterY">
+            <summary>
+            Coordenada Y del centro de la pantalla (es virtual ya que en la clase derivada se 
+            recalcula en base al Y-Shearing).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.SetDistance(System.Single)">
+            <summary>
+            Establece la distancia de renderización que se estará utilizando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.SetNoDistance">
+            <summary>
+            Establece una distancia precalculada para que parezca que no se aplica perspectiva al renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetCalculatedScale">
+            <summary>
+            Calcula la escala a la que se debe escalar un gráfico dada su distancia hasta la cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
+            <summary>
+            Aplica transformaciones correspondientes al estado actual de la cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.NoFog">
+            <summary>
+            Indica si no debe aplicar filtros de color según neblina.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetTextureFog">
+            <summary>
+            Obtiene el valor actual de la incidencia de la neblina para
+            objetos tridimensionales texturados.        
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetFullFogDistance">
+            <summary>
+            Obtiene la distancia a partir de la cual la transformación de color 
+            por distancia (neblina, por ejemplo) renderiza un polígono completamente 
+            opacado por el efecto.
+            
+            Puede utilizarse para realizar polygon culling, de ser necesario.
+            </summary>     
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
+            <summary>
+            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetRayX(System.Int32)">
+            <summary>
+            Obtiene la coordenada X para la columna indicada de un "rayo" en procesos de RayCasting.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetRayY(System.Int32)">
+            <summary>
+            Obtiene la coordenada Y para la fila indicada de un "rayo" en procesos de RayCasting.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
+            <summary>
+            Esta interfaz es tridimensional, por lo que se valida utilizando <see cref="M:Kriptok.Views.Shapes.Base.IVisible.IsVisible3D(Kriptok.Modes.Context.Base.IProjector,Kriptok.Drawing.BoundF2)"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
+            <summary>
+            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IPseudo3DRenderContext">
+            <summary>
+            Este contexto agrega la posibilidad de utilizar texturas de tipo GDIP
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IPseudo3DRenderContext.FillHorizontal(System.Int32,System.Int32,System.Int32,System.Action)">
+            <summary>
+            Aplica transformaciones de color correspondiente a la renderización
+            de líneas horizontales texturadas.
+            </summary>  
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IPseudo3DRenderContext.FillVertical(System.Int32,System.Int32,System.Int32,System.Action)">
+            <summary>
+            Aplica transformaciones de color correspondiente a la renderización
+            de líneas verticales texturadas.
+            </summary>  
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IRenderBufferContext">
+            <summary>
+            Este contexto se utiliza para cargar el buffer de los renderizables
+            a, bueno... a renderizar...
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContext.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma un vértice tridimensional a la perspectiva del contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContextExtensions.GetRegionBounds(Kriptok.Modes.Context.Base.IRenderBufferContext)">
+            <summary>
+            Obtiene los límites de la región en la que se va a renderizar.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.Render2DContextBase">
+            <summary>
+            Clase utilizada para unificar comportamientos entre los modos de Screen y Scroll.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
+            <summary>
+            Esta interfaz es tridimensional, por lo que se valida utilizando <see cref="M:Kriptok.Views.Shapes.Base.IVisible.IsVisible3D(Kriptok.Modes.Context.Base.IProjector,Kriptok.Drawing.BoundF2)"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
+            <summary>
+            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
+            <summary>
+            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.RenderContextBase">
+            <summary>
+            Contexto de renderización del frame.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.#ctor(System.Drawing.Graphics,Kriptok.Core.ScreenRegion)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Context.Base.RenderContextBase"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Modes.Context.Base.RenderContextBase.Graphics">
+            <summary>
+            Lienzo donde se renderizan las vistas.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Context.Base.RenderContextBase.Region">
+            <summary>
+            Región de la pantalla donde se está renderizando.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.RenderContextBase.CalculatedLightSource">
+            <summary>
+            Foco de luz calculado en base al ángulo de cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
+            <summary>
+            Aplica transformaciones correspondientes al estado actual de la cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetVertexPriority(Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad de un vértice tridimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por dos puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por tres puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
+            (no necesariamente sobre el mismo plano).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.UpdateLightSource(Kriptok.Drawing.Algebra.Matrix3x4F)">
+            <summary>
+            Actualiza la fuente de la luz ambiental. La lógica es la siguiente:
+            
+            En un framework común, a los gráficos poligonales se le aplicarían dos transformaciones.
+              1) Rotación/Escalamiento/etc.
+                 * * * * Cálculo de incidencia de luz sobre las caras * * * *
+              2) Transformaciones de la cámara.
+              
+            En mi caso, todas las transformaciones se aplican juntas, por tanto, al momento de calcular la
+            incidencia de la luz, también tendría que aplicar las transformaciones de la cámara al vector
+            que indica el origen de la luz.
+              * * * * Adapto la incidencia de la luz a la cámara * * * *
+              2) Aplico todas las transformaciones al polígono.
+              * * * * Cálculo de incidencia de luz sobre las caras * * * *
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma un vértice tridimensional a la perspectiva del contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
+            <summary>
+            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Utiliza una textura para llenar una determinada región de la pantalla, con las
+            coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint)">
+            <summary>
+            Utiliza una textura para llenar una determinada región de la pantalla, con las
+            coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.FilterVisible``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Recibe una lista de objetos, y determina si vale la pena evaluar su prioridad basado en su visibilidad.        
+            </summary>        
+            <typeparam name="T">Tipo de vistas a renderizar.</typeparam>
+            <param name="views">Lista de vistas a renderizar.</param>        
+            <returns>Devuelve la lista de vistas a renderizar que son visibles en el contexto indicado.</returns>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
+            <summary>
+            Evalúa si una figura es visible actualmente, para saber si debe agregarla al buffer de renderización.
+            </summary>   
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
+            <summary>
+            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.ScrollRenderContextBase">
+            <summary>
+            Contexto base de renderización de modos bidimensionales con scroll.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Sin">
+            <summary>
+            Seno del ángulo Z de la cámara.
+            Utilizado para no recalcular cada vez que sea necesario.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Cos">
+            <summary>
+            Coseno del ángulo Z de la cámara.
+            Utilizado para no recalcular cada vez que sea necesario.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.transform">
+            <summary>
+            Matriz de transformación de la cámara.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Rotation">
+            <summary>
+            Ángulo de rotación de la cámara para el renderizado.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.CameraLocation">
+            <summary>
+            Ubicación del objeto en base al cual se renderiza el plano de scroll.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.UsingMatrix(System.Action{System.Drawing.Drawing2D.Matrix})">
+            <summary>
+            Permite ejecutar una porción de código transformando la
+            <see cref="T:Kriptok.Drawing.Algebra.Matrix2x3F"/> en una <see cref="T:System.Drawing.Drawing2D.Matrix"/> y liberándola después.
+            </summary> 
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma un vértice tridimensional a la perspectiva del contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.CustomTransform(Kriptok.Drawing.Algebra.Matrix2x3F)">
+            <summary>
+            Permite aplicar transformaciones extra al momento de renderizar.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.TranslateWithTransformations(System.Drawing.Drawing2D.Matrix,System.Single,System.Single)">
+            <summary>
+            Traslada la matriz al centro para transformarla.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.TransformWithTransformations(System.Drawing.Graphics)">
+            <summary>
+            Transformaciones sobre el objeto "Graphics".
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IRenderContext">
+            <summary>
+            Contexto actual de renderización.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Context.Base.IRenderContext.Graphics">
+            <summary>
+            Lienzo donde se renderizan las vistas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.GetAngleToCamera2D(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
+            <summary>
+            Obtiene el ángulo desde la cámara, para vistas de tipo <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.FillPolygon(System.UInt32,System.Drawing.PointF[])">
+            <summary>
+            Renderiza el polígono con el material indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.UsingSolidBrush(System.UInt32,System.Action{System.Drawing.SolidBrush})">
+            <summary>
+            Abre un contexto para la utilización de una brocha de color sólido.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
+            <summary>
+            Aplica transformaciones correspondientes al estado actual de la cámara.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.GetLightIncidence(Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene la incidencia de la luz ambiental calculada en base a los
+            vértices tridimencionales indicados por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(System.Drawing.PointF[],System.Action)">
+            <summary>
+            Aplica transformaciones de color correspondiente a la renderización
+            de polígonos texturados.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Utiliza una textura para llenar una determinada región de la pantalla, con las
+            coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint)">
+            <summary>
+            Utiliza una textura para llenar una determinada región de la pantalla, con las
+            coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
+            <summary>
+            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IRenderContext3D">
+            <summary>
+            Contexto actual de renderización.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContext3D.SetDistance(System.Single)">
+            <summary>
+            Establece la distancia de renderización que se estará utilizando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.RenderAxis(Kriptok.Modes.Context.Base.IRenderContext,System.Single)">
+            <summary>
+            Renderiza el eje de coordenadas para tener 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.Project3D(Kriptok.Modes.Context.Base.IRenderContext,Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Proyecta un vector tridimensional a las dos dimensiones de la pantalla.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.ProjectEdge(Kriptok.Modes.Context.Base.IRenderContext,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Proyecta un segmento definido por dos vértices contra la pantalla. Y los recorta contra
+            el plano Z = <see cref="F:Kriptok.Drawing.Algebra.Vector3F.InvalidZ"/>.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IProjector">
+            <summary>
+            Interfaz que debe implementarse con la forma de proyectar las coordenadas tridimensionales en 
+            el plano bidimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectP(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:System.Drawing.PointF"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectV(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:Kriptok.Drawing.Algebra.Vector3F"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectV(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
+            <summary>
+            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:Kriptok.Drawing.Algebra.Vector3F"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetVertexPriority(Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad de un vértice tridimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por dos puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por tres puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
+            (no necesariamente sobre el mismo plano).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
+            <summary>
+            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.FilterVisible``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Recibe una lista de objetos, y determina si vale la pena evaluar su prioridad basado en su visibilidad.        
+            </summary>        
+            <typeparam name="T">Tipo de vistas a renderizar.</typeparam>
+            <param name="views">Lista de vistas a renderizar.</param>        
+            <returns>Devuelve la lista de vistas a renderizar que son visibles en el contexto indicado.</returns>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.IProjector.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
+            <summary>
+            Indica si un objeto pasado por parámetro es visible para el contexto.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Context.Base.IProjectorExtensions">
+            <summary>
+            Funcionalidades extendidas del proyector.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.AxonometricModeTiledContext">
+            <summary> 
+            Contexto de renderización de modo scroll Axonométrico sin transformciones.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.AxonometricRenderContext">
+            <summary>
+            Contexto de renderización de modo scroll axonométrico general.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.scroll">
+            <summary>
+            Región de pantalla sobre la que se está renderizando.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.cameraCoords">
+            <summary>
+            Coordenadas calculadas de dónde se encuentra la cámara.
+            Lo utilizan las <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.cameraZ">
+            <summary>
+            Altura de la cámara. Guardada para realizar cálculos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.ProjectTransformed(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
+            <summary>
+            Este método sólo tiene sentido para vistas bidimensionales y para
+            la perspectiva isométrica.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por dos puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por tres puntos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
+            <summary>
+            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
+            (no necesariamente sobre el mismo plano).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.Full3DRenderContextBase`2">
+            <summary>
+            Contexto de renderización para interfaces tridimensionales.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.owner">
+            <summary>
+            Objeto al cual pertenece el contexto de renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.cameraAngle">
+            <summary>
+            Indica el ángulo de la cámara para la renderización de imágenes direccionales
+            como <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.inverseMatrix3D">
+            <summary>
+            Matriz inversa de tranformación.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.transform">
+            <summary>
+            Matriz de transformaciones. Utilizada para ahorrar recálculos al momento de dibujar vistas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.DeTransform_XYZ_ZX(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            
+            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.DeTransform_X0Z_ZX(System.Single,System.Single)">
+            <summary>
+            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
+            
+            Se considera la coordenada Y = 0f, por defecto.
+            
+            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma un vértice tridimensional a la perspectiva del contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetCameraLocation">
+            <summary>
+            Obtiene la ubicación calculada de la cámara en el espacio tridimensional.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetRotationAngleInDegrees(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene el ángulo de rotación para sprites y otras figuras planas.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.ScreenProjector">
+            <summary>
+            Este proyector arma una perspectiva simple que no genera errores de renderización (por tener polígonos detrás
+            de la cámara), pero tampoco crea una perspectiva realista.
+            
+            De hecho, a larga distancia, puede generar errores de renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.ScreenProjector.translateX">
+            <summary>
+            IMPORTANTE: no hacer que sea READ-ONLY porque sino no se puede establecer el Translate.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.ScreenProjector.translateY">
+            <summary>
+            IMPORTANTE: no hacer que sea READ-ONLY porque sino no se puede establecer el Translate.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenProjector.RenderShapes(Kriptok.Modes.Context.Base.ITranslatableRenderContext,Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Método generado para reutilizar código.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Context.Scroll3DRenderContext">
+            <summary>
+            Contexto de renderización de modos scroll.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetScrollCoords(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Calcula las coordenadas de Scroll manteniendo la coordenada Z.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.ScrollRenderContext">
+            <summary>
+            Contexto de renderización de modos scroll.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.ScrollRenderContext.projector">
+            <summary>
+            IMPORTANTE: no hacer que sea READ-ONLY porque sino no se puede establecer el Translate.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetScrollCoords(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Calcula las coordenadas de Scroll manteniendo la coordenada Z.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Context.ScreenRenderContext">
+            <summary>
+            Contexto de renderización de toda la pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Context.ScreenRenderContext.projector">
+            <summary>
+            El projector no puede estar como "sólo lectura" aunque se cree en el constructor,
+            ya que se trata de una estructura, no de un objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene las coordenadas de renderización del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
+            <summary>
+            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
+            <summary>
+            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
+            
+            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
+            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
+            <summary>
+            Obtiene una matriz de transformación para la figura indicada por parámetro.
+            Utiliza el patrón Double-Dispatch.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Transforma un vértice tridimensional a la perspectiva del contexto.
+            </summary>
+        </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DMode">
             <summary>
             Clase base para entornos tridimensionales.
@@ -4944,15 +6144,20 @@
             Representa un plano tridimencional utilizado en este modo.
             </summary>
         </member>
+        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.InverseScale">
+            <summary>
+            Escala a aplicar al plano al renderizar.
+            </summary>
+        </member>
         <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.#ctor(System.Int32)">
             <summary>
             Inicializa el plano a la altura indicada.
             </summary>            
         </member>
-        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.InnerScale">
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.GetRelativeLocation(Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
-            Escala a aplicar al plano al renderizar.
-            </summary>
+            Obtiene la ubicación de la cámara relativa al tamaño de la textura y la escala.
+            </summary>            
         </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane">
             <summary>
@@ -5116,6 +6321,113 @@
             
             Se asume que los vértices han sido correctamente transformados al espacio
             tridimensional previamente.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Full3D.Convos.Full3DConvoMode">
+            <summary>
+            Implementación de mapas diseñados con volúmenes convexos para perspectiva full-3D.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.vertices">
+            <summary>
+            Colección con todos los vértices del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.texset">
+            <summary>
+            Conjunto de texturas usadas en el mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.partitions">
+            <summary>
+            Particiones volumétricas del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.#ctor(Kriptok.Maps.Convos.ConvoMapX,Kriptok.Maps.ITexset{`1})">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="!:SdxViewBase&lt;TVertex, TTexture&gt;"/>.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Encuentra un vértice en base a sus coordenadas.
+            
+            En este caso, sólo devuelvo un nuevo vértice tridimensional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase`3.GetPanels">
+            <summary>
+            Obtiene todos los paneles del mapa.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.ownerView">
+            <summary>
+            Vista principal que contiene la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.Id">
+            <summary>
+            Id de la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.Volume">
+            <summary>
+            Volumen de la partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.#ctor(Kriptok.Modes.Full3D.Convos.Base.IConvoMap{`0},Kriptok.Maps.Convos.ConvoPartitionX)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="!:ConvoPartition"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.GetPanels">
+            <summary>
+            Obtiene todos los paneles de la partición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.PostProcessing(Kriptok.Modes.Full3D.Convos.ConvoPartition{`0}[])">
+            <summary>
+            Genera los portales hacia las otras particiones y realiza otros post-procesamientos
+            de la construcción del mapa.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartition`1.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Obtiene un vértice de la partición en base a sus coordenadas tridimensionales.
+            
+            Esto permite almacenar los vértices en una colección que permita su reutilización
+            para no tener que aplicar las transformaciones más de una vez a vértices compartidos.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartition`3.#ctor(Kriptok.Modes.Full3D.Convos.Base.ConvoMapBase{`0,`1,`2},Kriptok.Maps.Convos.ConvoPartitionX)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="!:SdxPartition"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartitionSide`1.GeneratePortals(Kriptok.Modes.Full3D.Convos.ConvoPartition{`0}[])">
+            <summary>
+            Genera los portales hacia las otras particiones.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Convos.ConvoPartitionSide`1.GetPanels">
+            <summary>
+            Devuelve todos los paneles que componen el lado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DSurface`1.RenderOn(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable})">
+            <summary>
+            Renderiza las vistas recibidas por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DSurface`1.GetMaxDrawingDistance(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext)">
+            <summary>
+            Obtiene la distancia a partir de la cual se ignoran todas las vistas a renderizar.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Full3D.Full3DSurface`1.AddSurface(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable})">
+            <summary>
+            Este método agrega las vistas relacionadas al terreno a
+            la lista de vistas por renderizar.
             </summary>        
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.GaroudShading.PlaneSample3">
@@ -6515,6 +7827,261 @@
             para que existiesen distintas implementaciones Gdip y Plot.
             </summary>        
         </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer">
+            <summary>
+            Representa un Z-Buffer unidimensional.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.length">
+            <summary>
+            Longitud del buffer. Generalmente, el ancho de la pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.bBuffer">
+            <summary>
+            Arreglo para controlar qué cantidad de la pantalla está cubierta por paredes.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.zBuffer">
+            <summary>
+            Profundidad de cada z perteneciente a las paredes del buffer.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.zBufferMax">
+            <summary>
+            Buffer de coordenadas Z que se utiliza para limpiar el <see cref="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.zBuffer"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.pBuffer">
+            <summary>
+            Paneles que ocupan cada elemento del buffer.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.differentPanels">
+            <summary>
+            Listado de los "diferentes paneles" a renderizar por frame.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.#ctor(System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer"/>.
+            </summary>
+            <param name="length">Longitud del buffer. Generalmente, el ancho de la pantalla.</param>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.Clear">
+            <summary>
+            Limpia el buffer para volver a empezar a chequear profundidad.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.FullyChecked">
+            <summary>
+            Checkea los casilleros indicados, y además indica si se terminó de completar el array.
+            </summary>               
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.Add(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapperBase)">
+            <summary>
+            Agrega un panel al buffer.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsCBuffer.MaxZ">
+            <summary>
+            Obtiene la máxima coordenada Z registrada en el buffer.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapper`1">
+            <summary>
+            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
+            y su posterior renderización.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapperBase">
+            <summary>
+            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
+            y su posterior renderización.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapperBase.GetMaxDistance">
+            <summary>
+            Obtiene la distancia a la cámara del punto mas cercano del polígono tridimencional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapperBase.GetMinDistance">
+            <summary>
+            Obtiene la distancia a la cámara del punto mas lejano del polígono tridimencional.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelWrapperBase.GetPriority">
+            <summary>
+            Obtiene la prioridad de renderización de la vista.
+            
+            Se utiliza el valor "más lejano" del polígono, para que ocluya los sprites
+            de los objetos.
+            </summary> 
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsPlotPanelWrapper">
+            <summary>
+            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
+            y su posterior renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.renderMap">
+            <summary>
+            Arreglo bidimensional que indica qué tile ya se leyó para renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.mapGridWidth">
+            <summary>
+            Ancho del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.mapGridHeight">
+            <summary>
+            Alto del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.mapGridWidthF">
+            <summary>
+            Ancho del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.mapGridHeightF">
+            <summary>
+            Alto del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.viewGrid">
+            <summary>
+            Grilla de celdas generadas para la renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.regionWidth">
+            <summary>
+            Ancho de la region donde se renderiza.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.regionHeight">
+            <summary>
+            Ancho de la region donde se renderiza.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.FloorBound">
+            <summary>
+            Subregión de la pantalla donde se debe renderizar "piso".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.CeilingBound">
+            <summary>
+            Subregión de la pantalla donde se debe renderizar "techo".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.vertices">
+            <summary>
+            Colección con todos los vértices generados cuando se arma mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.cBuffer">
+            <summary>
+            Buffer utilizado para determinar qué parades dibujar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.MaxZ">
+            <summary>
+            Obtiene la minima prioridad a tomar en cuenta para renderizar.
+            </summary>              
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GfpsViewBuffer`1.GetViews(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Views.Base.IRenderizable[],System.Boolean,System.Boolean)">
+            <summary>
+            Obtiene todas las vistas para renderizar en la región.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsViewMode">
+            <summary>
+            Genera una vista basada en un mapa de tipo Ray-Casting
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsViewMode.mapGrid">
+            <summary>
+            Alto/ancho invertido del tamaño del mapa de tiles.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsViewMode.#ctor(System.Drawing.Rectangle,Kriptok.Maps.Gfps.GfpsCell[][],Kriptok.Maps.Grid.TiledMapGrid,System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsViewMode"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewMode">
+            <summary>
+            Genera una vista basada en un mapa de tipo Ray-Casting
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewMode.#ctor(System.Drawing.Rectangle,Kriptok.Maps.Gfps.GfpsCell[][],Kriptok.Maps.Grid.TiledMapGrid,System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewMode"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewMode.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+            <summary>
+            Crea una brocha para renderizar el piso o techo.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewModeY0">
+            <summary>
+            Genera una vista basada en un mapa de tipo Ray-Casting, pero con un ángulo de cámara fijo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.IGfpsPanel.GetWrapper">
+            <summary> 
+            Obtiene un wrapper para este panel.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsDoubleSidePanel">
+            <summary>
+            Representa un panel que depende de un estado para "opacar" o no lo que hay detrás.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsMiddleTilePanel">
+            <summary>
+            Representa a los paneles que se renderizan por la mitad del tile.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsPanel.Id">
+            <summary>
+            Id único del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.GdipGfpsPanel.GetWrapper">
+            <summary>
+            Obtiene un wrapper para esta vista.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.GfpsPanelRenderer">
+            <summary>
+            Esta vista se utiliza para renderizar paneles que podrían o no aparecer
+            más de una vez en la lista de vistas, por estar parcialmente ocluídos por otro panel.
+            
+            Ej: un panel marco de puerta, cuando la puerta está casi abierta.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsDoubleSidePanel">
+            <summary>
+            Representa un panel que depende de un estado para "opacar" o no lo que hay detrás.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsMiddleTilePanel">
+            <summary>
+            Representa a los paneles que se renderizan por la mitad del tile.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsPanel.Id">
+            <summary>
+            Id único del objeto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsPanel.GetWrapper">
+            <summary>
+            Obtiene un wrapper para este panel.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Modes.Pseudo3D.PlotTexturedHorizontalTriView">
             <summary>
             Esta clase algún día se podría definir como abstracta y eliminar el <see cref="!:PlotTexturedHorizontalTriView.Render(Graphics, ScreenRegion)"/>
@@ -7314,883 +8881,6 @@
             Obtiene la distancia a la cual se está renderizando cada línea.        
             </summary>
         </member>
-        <member name="T:Kriptok.Modes.Context.Base.ITranslatableRenderContext">
-            <summary>
-            Indica que se trata de un contexto que para ubicar figuras tridimencionales, traslada el centro de la pantalla,
-            en lugar de usar perspectiva.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.Render3DContextBase">
-            <summary>
-            Contexto base de renderización para interfaces tridimensionales.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.HalfWidthFov">
-            <summary>
-            Campo precalculado para aplicar "field of view".
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.regionHeightF">
-            <summary>
-            Alto de la pantalla.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastXSubstraction">
-            <summary>
-            Valor utilizado para reacomodar la coordenada X en la pantalla cuando se traza un rayo para
-            intersectar con un plano.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.rayCastYSubstraction">
-            <summary>
-            Valor utilizado para reacomodar la coordenada Y en la pantalla cuando se traza un rayo para
-            intersectar con un plano.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.currentRenderingDistance">
-            <summary>
-            Almacena el valor de la distancia hasta la cámara (en entornos tridimensicnales)
-            a la cual se está renderizando actualmente.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.fog">
-            <summary>
-            Indica si no se está utilizando un efecto de neblina.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.spriteScaleMultiplier">
-            <summary>
-            Multiplicador de escala para sprites y otras vistas bidimensionales.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.FieldOfView">
-            <summary>
-            Valor inverso del field of view, utilizado para cálculos de raycasting.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.InverseFov">
-            <summary>
-            Valor inverso del field of view, utilizado para cálculos de raycasting.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.noFog">
-            <summary>
-            Indica si para este frame no hay efectos de neblina.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetTransform">
-            <summary>
-            Obtiene la matriz de transformación de la cámara, para figuras tridimensionales.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform(System.Single,System.Single,System.Single)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform_XYZ_ZX(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            
-            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.DeTransform_X0Z_ZX(System.Single,System.Single)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            
-            Se considera la coordenada Y = 0f, por defecto.
-            
-            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetAmbientColorFilter">
-            <summary>
-            Filtro de color heredado de las configuraciones de la región.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.AngleZDegrees">
-            <summary>
-            Valor en grados del ángulo Z de la cámara.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Context.Base.Render3DContextBase.CenterX">
-            <summary>
-            Coordenada X del centro de la pantalla (es virtual ya que en la clase derivada se 
-            recalcula en base al Y-Shearing).
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Context.Base.Render3DContextBase.CenterY">
-            <summary>
-            Coordenada Y del centro de la pantalla (es virtual ya que en la clase derivada se 
-            recalcula en base al Y-Shearing).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.SetDistance(System.Single)">
-            <summary>
-            Establece la distancia de renderización que se estará utilizando.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.SetNoDistance">
-            <summary>
-            Establece una distancia precalculada para que parezca que no se aplica perspectiva al renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetCalculatedScale">
-            <summary>
-            Calcula la escala a la que se debe escalar un gráfico dada su distancia hasta la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
-            <summary>
-            Aplica transformaciones correspondientes al estado actual de la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.NoFog">
-            <summary>
-            Indica si no debe aplicar filtros de color según neblina.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetTextureFog">
-            <summary>
-            Obtiene el valor actual de la incidencia de la neblina para
-            objetos tridimensionales texturados.        
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetFullFogDistance">
-            <summary>
-            Obtiene la distancia a partir de la cual la transformación de color 
-            por distancia (neblina, por ejemplo) renderiza un polígono completamente 
-            opacado por el efecto.
-            
-            Puede utilizarse para realizar polygon culling, de ser necesario.
-            </summary>     
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
-            <summary>
-            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetRayX(System.Int32)">
-            <summary>
-            Obtiene la coordenada X para la columna indicada de un "rayo" en procesos de RayCasting.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetRayY(System.Int32)">
-            <summary>
-            Obtiene la coordenada Y para la fila indicada de un "rayo" en procesos de RayCasting.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
-            <summary>
-            Esta interfaz es tridimensional, por lo que se valida utilizando <see cref="M:Kriptok.Views.Shapes.Base.IVisible.IsVisible3D(Kriptok.Modes.Context.Base.IProjector,Kriptok.Drawing.BoundF2)"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
-            <summary>
-            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IPseudo3DRenderContext">
-            <summary>
-            Este contexto agrega la posibilidad de utilizar texturas de tipo GDIP
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IPseudo3DRenderContext.FillHorizontal(System.Int32,System.Int32,System.Int32,System.Action)">
-            <summary>
-            Aplica transformaciones de color correspondiente a la renderización
-            de líneas horizontales texturadas.
-            </summary>  
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IPseudo3DRenderContext.FillVertical(System.Int32,System.Int32,System.Int32,System.Action)">
-            <summary>
-            Aplica transformaciones de color correspondiente a la renderización
-            de líneas verticales texturadas.
-            </summary>  
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IRenderBufferContext">
-            <summary>
-            Este contexto se utiliza para cargar el buffer de los renderizables
-            a, bueno... a renderizar...
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContext.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderBufferContextExtensions.GetRegionBounds(Kriptok.Modes.Context.Base.IRenderBufferContext)">
-            <summary>
-            Obtiene los límites de la región en la que se va a renderizar.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.Render2DContextBase">
-            <summary>
-            Clase utilizada para unificar comportamientos entre los modos de Screen y Scroll.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
-            <summary>
-            Esta interfaz es tridimensional, por lo que se valida utilizando <see cref="M:Kriptok.Views.Shapes.Base.IVisible.IsVisible3D(Kriptok.Modes.Context.Base.IProjector,Kriptok.Drawing.BoundF2)"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
-            <summary>
-            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.Render2DContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
-            <summary>
-            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.RenderContextBase">
-            <summary>
-            Contexto de renderización del frame.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.#ctor(System.Drawing.Graphics,Kriptok.Core.ScreenRegion)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Context.Base.RenderContextBase"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Modes.Context.Base.RenderContextBase.Graphics">
-            <summary>
-            Lienzo donde se renderizan las vistas.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Context.Base.RenderContextBase.Region">
-            <summary>
-            Región de la pantalla donde se está renderizando.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.RenderContextBase.CalculatedLightSource">
-            <summary>
-            Foco de luz calculado en base al ángulo de cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
-            <summary>
-            Aplica transformaciones correspondientes al estado actual de la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetVertexPriority(Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad de un vértice tridimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por dos puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por tres puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
-            (no necesariamente sobre el mismo plano).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.UpdateLightSource(Kriptok.Drawing.Algebra.Matrix3x4F)">
-            <summary>
-            Actualiza la fuente de la luz ambiental. La lógica es la siguiente:
-            
-            En un framework común, a los gráficos poligonales se le aplicarían dos transformaciones.
-              1) Rotación/Escalamiento/etc.
-                 * * * * Cálculo de incidencia de luz sobre las caras * * * *
-              2) Transformaciones de la cámara.
-              
-            En mi caso, todas las transformaciones se aplican juntas, por tanto, al momento de calcular la
-            incidencia de la luz, también tendría que aplicar las transformaciones de la cámara al vector
-            que indica el origen de la luz.
-              * * * * Adapto la incidencia de la luz a la cámara * * * *
-              2) Aplico todas las transformaciones al polígono.
-              * * * * Cálculo de incidencia de luz sobre las caras * * * *
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
-            <summary>
-            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Utiliza una textura para llenar una determinada región de la pantalla, con las
-            coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint)">
-            <summary>
-            Utiliza una textura para llenar una determinada región de la pantalla, con las
-            coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.FilterVisible``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Recibe una lista de objetos, y determina si vale la pena evaluar su prioridad basado en su visibilidad.        
-            </summary>        
-            <typeparam name="T">Tipo de vistas a renderizar.</typeparam>
-            <param name="views">Lista de vistas a renderizar.</param>        
-            <returns>Devuelve la lista de vistas a renderizar que son visibles en el contexto indicado.</returns>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
-            <summary>
-            Evalúa si una figura es visible actualmente, para saber si debe agregarla al buffer de renderización.
-            </summary>   
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.RenderContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
-            <summary>
-            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.ScrollRenderContextBase">
-            <summary>
-            Contexto base de renderización de modos bidimensionales con scroll.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Sin">
-            <summary>
-            Seno del ángulo Z de la cámara.
-            Utilizado para no recalcular cada vez que sea necesario.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Cos">
-            <summary>
-            Coseno del ángulo Z de la cámara.
-            Utilizado para no recalcular cada vez que sea necesario.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.transform">
-            <summary>
-            Matriz de transformación de la cámara.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Rotation">
-            <summary>
-            Ángulo de rotación de la cámara para el renderizado.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Base.ScrollRenderContextBase.CameraLocation">
-            <summary>
-            Ubicación del objeto en base al cual se renderiza el plano de scroll.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.UsingMatrix(System.Action{System.Drawing.Drawing2D.Matrix})">
-            <summary>
-            Permite ejecutar una porción de código transformando la
-            <see cref="T:Kriptok.Drawing.Algebra.Matrix2x3F"/> en una <see cref="T:System.Drawing.Drawing2D.Matrix"/> y liberándola después.
-            </summary> 
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.CustomTransform(Kriptok.Drawing.Algebra.Matrix2x3F)">
-            <summary>
-            Permite aplicar transformaciones extra al momento de renderizar.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.TranslateWithTransformations(System.Drawing.Drawing2D.Matrix,System.Single,System.Single)">
-            <summary>
-            Traslada la matriz al centro para transformarla.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.ScrollRenderContextBase.TransformWithTransformations(System.Drawing.Graphics)">
-            <summary>
-            Transformaciones sobre el objeto "Graphics".
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IRenderContext">
-            <summary>
-            Contexto actual de renderización.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Context.Base.IRenderContext.Graphics">
-            <summary>
-            Lienzo donde se renderizan las vistas.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.GetAngleToCamera2D(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
-            <summary>
-            Obtiene el ángulo desde la cámara, para vistas de tipo <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.FillPolygon(System.UInt32,System.Drawing.PointF[])">
-            <summary>
-            Renderiza el polígono con el material indicado.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.UsingSolidBrush(System.UInt32,System.Action{System.Drawing.SolidBrush})">
-            <summary>
-            Abre un contexto para la utilización de una brocha de color sólido.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.ApplyTransformations(Kriptok.Views.Gdip.FlipEnum)">
-            <summary>
-            Aplica transformaciones correspondientes al estado actual de la cámara.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.GetLightIncidence(Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene la incidencia de la luz ambiental calculada en base a los
-            vértices tridimencionales indicados por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(System.Drawing.PointF[],System.Action)">
-            <summary>
-            Aplica transformaciones de color correspondiente a la renderización
-            de polígonos texturados.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Utiliza una textura para llenar una determinada región de la pantalla, con las
-            coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.Fill(Kriptok.Views.Shapes.IGdipTexture,System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint,Kriptok.Views.Shapes.TextureMappingPoint)">
-            <summary>
-            Utiliza una textura para llenar una determinada región de la pantalla, con las
-            coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
-            <summary>
-            Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IRenderContext3D">
-            <summary>
-            Contexto actual de renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContext3D.SetDistance(System.Single)">
-            <summary>
-            Establece la distancia de renderización que se estará utilizando.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.RenderAxis(Kriptok.Modes.Context.Base.IRenderContext,System.Single)">
-            <summary>
-            Renderiza el eje de coordenadas para tener 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.Project3D(Kriptok.Modes.Context.Base.IRenderContext,Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Proyecta un vector tridimensional a las dos dimensiones de la pantalla.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IRenderContextExtensions.ProjectEdge(Kriptok.Modes.Context.Base.IRenderContext,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
-            <summary>
-            Proyecta un segmento definido por dos vértices contra la pantalla. Y los recorta contra
-            el plano Z = <see cref="F:Kriptok.Drawing.Algebra.Vector3F.InvalidZ"/>.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IProjector">
-            <summary>
-            Interfaz que debe implementarse con la forma de proyectar las coordenadas tridimensionales en 
-            el plano bidimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectP(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:System.Drawing.PointF"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectV(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:Kriptok.Drawing.Algebra.Vector3F"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.ProjectV(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
-            <summary>
-            Proyecta un vector tridimensional contra la pantalla en un <see cref="T:Kriptok.Drawing.Algebra.Vector3F"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetVertexPriority(Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad de un vértice tridimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por dos puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por tres puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
-            (no necesariamente sobre el mismo plano).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.TransformVertices(Kriptok.Views.Shapes.VertexCollection)">
-            <summary>
-            Aplica las transformacinoes correspondientes a los vértices indicados por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.FilterVisible``1(System.Collections.Generic.IEnumerable{``0})">
-            <summary>
-            Recibe una lista de objetos, y determina si vale la pena evaluar su prioridad basado en su visibilidad.        
-            </summary>        
-            <typeparam name="T">Tipo de vistas a renderizar.</typeparam>
-            <param name="views">Lista de vistas a renderizar.</param>        
-            <returns>Devuelve la lista de vistas a renderizar que son visibles en el contexto indicado.</returns>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Base.IProjector.IsVisible(Kriptok.Views.Shapes.Base.IVisible,Kriptok.Drawing.BoundF2)">
-            <summary>
-            Indica si un objeto pasado por parámetro es visible para el contexto.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Context.Base.IProjectorExtensions">
-            <summary>
-            Funcionalidades extendidas del proyector.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.AxonometricModeTiledContext">
-            <summary> 
-            Contexto de renderización de modo scroll Axonométrico sin transformciones.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.AxonometricRenderContext">
-            <summary>
-            Contexto de renderización de modo scroll axonométrico general.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.scroll">
-            <summary>
-            Región de pantalla sobre la que se está renderizando.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.cameraCoords">
-            <summary>
-            Coordenadas calculadas de dónde se encuentra la cámara.
-            Lo utilizan las <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.AxonometricRenderContext.cameraZ">
-            <summary>
-            Altura de la cámara. Guardada para realizar cálculos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.ProjectTransformed(Kriptok.Drawing.Algebra.Vector2F,System.Single)">
-            <summary>
-            Este método sólo tiene sentido para vistas bidimensionales y para
-            la perspectiva isométrica.
-            </summary>    
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetLinePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por dos puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por tres puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetFacePriority(Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase,Kriptok.Views.Shapes.Base.VertexBase)">
-            <summary>
-            Obtiene la prioridad para dibujar la figura definida por cuatro puntos 
-            (no necesariamente sobre el mismo plano).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.AxonometricRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.Full3DRenderContextBase`2">
-            <summary>
-            Contexto de renderización para interfaces tridimensionales.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.owner">
-            <summary>
-            Objeto al cual pertenece el contexto de renderización.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.cameraAngle">
-            <summary>
-            Indica el ángulo de la cámara para la renderización de imágenes direccionales
-            como <see cref="T:Kriptok.Views.Sprites.DirectionalSpriteView"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.inverseMatrix3D">
-            <summary>
-            Matriz inversa de tranformación.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.Full3DRenderContextBase`2.transform">
-            <summary>
-            Matriz de transformaciones. Utilizada para ahorrar recálculos al momento de dibujar vistas.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.DeTransform_XYZ_ZX(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            
-            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.DeTransform_X0Z_ZX(System.Single,System.Single)">
-            <summary>
-            Realiza la operación inversa de la transformación de la cámara para obtener el vector original.
-            
-            Se considera la coordenada Y = 0f, por defecto.
-            
-            Sólo devuelve, sin embargo, las coordenadas (Z, X), en ese orden.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetCameraLocation">
-            <summary>
-            Obtiene la ubicación calculada de la cámara en el espacio tridimensional.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Full3DRenderContextBase`2.GetRotationAngleInDegrees(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene el ángulo de rotación para sprites y otras figuras planas.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.ScreenProjector">
-            <summary>
-            Este proyector arma una perspectiva simple que no genera errores de renderización (por tener polígonos detrás
-            de la cámara), pero tampoco crea una perspectiva realista.
-            
-            De hecho, a larga distancia, puede generar errores de renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenProjector.RenderShapes(Kriptok.Modes.Context.Base.ITranslatableRenderContext,Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Método generado para reutilizar código.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Context.Scroll3DRenderContext">
-            <summary>
-            Contexto de renderización de modos scroll.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetScrollCoords(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Calcula las coordenadas de Scroll manteniendo la coordenada Z.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.Scroll3DRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.ScrollRenderContext">
-            <summary>
-            Contexto de renderización de modos scroll.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetScrollCoords(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Calcula las coordenadas de Scroll manteniendo la coordenada Z.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScrollRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Context.ScreenRenderContext">
-            <summary>
-            Contexto de renderización de toda la pantalla.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Context.ScreenRenderContext.projector">
-            <summary>
-            El projector no puede estar como "sólo lectura" aunque se cree en el constructor,
-            ya que se trata de una estructura, no de un objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene las coordenadas de renderización del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Render(Kriptok.Views.Base.GdipViewBase)">
-            <summary>
-            Renderiza una vista de Gdip. Utilizando el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Render(Kriptok.Views.Shapes.GdipShapeView)">
-            <summary>
-            Renderiza una forma de Gdip. Utilizando el patrón Double-Dispatch.
-            
-            Para las figuras que heredan de <see cref="T:Kriptok.Views.Shapes.GdipShapeView"/> debería utilizarse en lugar
-            de <see cref="M:Kriptok.Modes.Context.Base.IRenderContext.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.GetShapeTranform(Kriptok.Views.Shapes.Base.FastShapeViewBase)">
-            <summary>
-            Obtiene una matriz de transformación para la figura indicada por parámetro.
-            Utiliza el patrón Double-Dispatch.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Context.ScreenRenderContext.Transform3D(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Transforma un vértice tridimensional a la perspectiva del contexto.
-            </summary>
-        </member>
         <member name="M:Kriptok.Modes.IBufferModeExtensions.Plotter.Sample">
             <summary>
             Obtiene el color que hay actualmente en la posición en la que se encuentra el <see cref="T:Kriptok.Modes.IBufferModeExtensions.Plotter"/>.
@@ -8662,27 +9352,255 @@
             Vértices de la vista que se transformarán, ya que la vista en sí no tiene un "Owner".
             </summary>
         </member>
-        <member name="T:Kriptok.Queries.Queries.IMouseLocationContext">
+        <member name="T:Kriptok.Modes.Surfaces.DecoratedScrollableTiledViewBase`2">
             <summary>
-            Indica que la región puede obtener y devolver las coordenadas del mouse en el plano.
+            Representa una clase particular de terreno que además tiene una capa de objetos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.DecoratedScrollableTiledViewBase`2.ForEachDecoration(System.Action{`1})">
+            <summary>
+            Permite operar sobre las decoraciones creadas para esta vista.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.DecoratedScrollableTiledViewBase`2.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
+            </summary>
+            <param name="context">Contexto de renderización.</param>
+            <param name="renderizables">Lista de objetos a renderizar. Agregar a
+            esta lista lo que se desee renderizar.</param>
+            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.ScrollableTexturedViewBase`1">
+            <summary>
+            Esta vista es base para terrenos infinitos que no se cargan al mismo tiempo,
+            sino que utilizan un proceso "cámara" para saber cuándo se debe renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTexturedViewBase`1.applyTextureIncrement">
+            <summary>
+            Indica si tiene que aplicar incremento de textura.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTexturedViewBase`1.Texture">
+            <summary>
+            Textura para dibujar las caras.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTexturedViewBase`1.textureWidth">
+            <summary>
+            Ancho de la textura, guardado para hacer cálculos rápidos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTexturedViewBase`1.textureHeight">
+            <summary>
+            Alto de la textura, guardado para hacer cálculos rápidos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.tiles">
+            <summary>
+            Array con todos los tiles del mapa. Desde acá se samplean las texturas para renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.animatedTiles">
+            <summary>
+            Array sólo con los tiles animados (sin repetidos).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.UpdateTile(`0,System.Int32,System.Int32)">
+            <summary>
+            Actualiza un tile en base a las coordenadas del tile representado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.NewFace(Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex)">
+            <summary>
+            Implemento el método para transoformar <see cref="M:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.NewFace(Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex)"/>
+            en <see cref="M:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.NewTile(Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex)"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.NewTile(Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex,Kriptok.Modes.Surfaces.SurfaceVertex)">
+            <summary>
+            Devuelve un nuevo tile delimitado por los vértices indicados por parámetro.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.TileGetter">
+            <summary>
+            Objeto utilizado para obtener los tiles del mapa.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1.TileGetter.TileGetterPow2">
+            <summary>
+            Versión optimizada para mapas con tamaño potencia de 2.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Surfaces.ScrollableViewArgs.SquareShape">
+            <summary>
+            Indica si debe generar el terreno de forma rectangular.
             
-            Sólo funciona en determinados modos.
+            Por defecto, es circular.
             </summary>
         </member>
-        <member name="M:Kriptok.Queries.Queries.IMouseLocationContext.GetMouseLocation">
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
-            Obtiene la ubicación del mouse proyectado al modo de renderización correspondiente.
+            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
+            </summary>
+            <param name="context">Contexto de renderización.</param>
+            <param name="renderizables">Lista de objetos a renderizar. Agregar a
+            esta lista lo que se desee renderizar.</param>
+            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase.GetAllViews">
+            <summary>
+            Obtiene todas las sub-vistas generadas para esta vista.
+            
+            Permite personalizar el comportamiento y el orden de renderización.
             </summary>
         </member>
-        <member name="T:Kriptok.Queries.Queries.IOutOfScreenContext">
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase.GetTerrainHeight(Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
-            Esta interfaz es implementada por modos de pantalla que permiten evaluar si determinados tipos de
-            vista se encuentran fuera de la pantalla.
+            Obtiene la altura del terreno en el punto indicado.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.ScrollableViewBase`1.Swapped">
+            <summary>
+            Indica si la vista ha sido swappeada por completo. Por ejemplo, para utilizar un plano
+            como cielo poligonal.
             </summary>
         </member>
-        <member name="M:Kriptok.Queries.Queries.IOutOfScreenContext.OutOfRegion(Kriptok.Drawing.Bound2)">
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.GetAllViews">
             <summary>
-            Indica si el rectángulo indicado por parámetro se encuentra fuera de la pantalla.
+            Obtiene todas las sub-vistas generadas para esta vista.
+            
+            Permite personalizar el comportamiento y el orden de renderización.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.UpdateViews(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Permite customizar los límites de renderización del terreno.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.UpdateViews(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Permite customizar los límites de renderización del terreno.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
+            </summary>
+            <param name="context">Contexto de renderización.</param>
+            <param name="renderizables">Lista de objetos a renderizar. Agregar a
+            esta lista lo que se desee renderizar.</param>
+            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.OnFrame(Kriptok.Modes.Context.Base.IRenderBufferContext)">
+            <summary>
+            Permite realizar acciones particulares antes de renderizar.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.UpdateVertices(Kriptok.Modes.Context.Base.IRenderBufferContext,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Actualiza todos los vértices de las vistas, en base 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.GetVisibleFaces(Kriptok.Modes.Context.Base.IRenderBufferContext)">
+            <summary>
+            Obtiene las vistas que van a renderizarse 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.AddVertex``1(``0)">
+            <summary>
+            Agrega un vértice a la lista 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.AddView(System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},`0)">
+            <summary>
+            Agrega un polígono a la lista de renderización. 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.GetTerrainHeight(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Calcula la altura de un vértice en el mapa de terreno.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableViewBase`1.HasToFlip(System.Int32,System.Int32)">
+            <summary>
+            Indica si al renderizar el tile que se encuentra en las coordenadas indicadas por parámetro,
+            se deben invertir los vértices horizontalmente.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableFlatLiquidView.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
+            </summary>
+            <param name="context">Contexto de renderización.</param>
+            <param name="renderizables">Lista de objetos a renderizar. Agregar a
+            esta lista lo que se desee renderizar.</param>
+            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.ScrollableTexturedLiquidView.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
+            </summary>
+            <param name="context">Contexto de renderización.</param>
+            <param name="renderizables">Lista de objetos a renderizar. Agregar a
+            esta lista lo que se desee renderizar.</param>
+            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
+        </member>
+        <member name="P:Kriptok.Modes.Surfaces.TexturedScrollableViewArgs.TextureIncrement">
+            <summary>
+            Incremento de la textura sobre los polígonos.
+            Si es cero, se calcula automáticamente.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.ScrollableTiledView">
+            <summary>
+            Implementación rápida y básica de la clase <see cref="T:Kriptok.Modes.Surfaces.ScrollableTiledViewBase`1"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.DecoratedTileView`2">
+            <summary>
+            Representa un tile normal con una vista en el medio.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Surfaces.DecoratedTileView`2.Decoration">
+            <summary>
+            Referencia a la decoración que está sobre el tile.
+            
+            Por ahora no tiene una utilidad definida.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.DecoratedTileView`2.GetMidPoint">
+            <summary>
+            Obtiene la ubicación de la decoración del tile.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.DecorationViewBase`2">
+            <summary>
+            Representa una decoración en el mapa de tiles.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Surfaces.DecorationViewBase`2.Tile">
+            <summary>
+            Referencia al tile sobre el que está la decoración.
+            
+            Por ahora no tiene una utilidad definida.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Surfaces.DecorationViewBase`2.GetLocation">
+            <summary>
+            Obtiene la ubicación actual de la decoración del tile.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Surfaces.SurfaceTileView">
+            <summary>
+            Tile base para terrenos poligonales basados en casilleros.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Surfaces.SurfaceTileView.Visible">
+            <summary>
+            Esta propiedad empieza en <see cref="!:false"/>, para que sólo se marque como "visible"
+            cuando se vaya a renderizar.
             </summary>
         </member>
         <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
@@ -10114,6 +11032,69 @@
             en una situación que puede ser confusa (un mapa de Mode7, por ejemplo).
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.Gfps.Base.GfpsEntityBase.PostMoved">
+            <summary>
+            Se ejecuta después de moverse.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Gfps.GfpsDoorStateEnum">
+            <summary>
+            Lista los estados que puede adoptar una puerta.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Gfps.GfpsDoor">
+            <summary>
+            Este objeto controla el funcionamiento de una puerta.
+            
+            La puerta no es necesariamente la vista.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.amount">
+            <summary>
+            Velocidad de movimiento de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.animationIndex">
+            <summary>
+            Número entre 0 y 1 que representa qué tan cerrada/abierta está la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.Status">
+            <summary>
+            Estado actual de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.v0">
+            <summary>
+            Ubicación original del primer vértice que compone el panel de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.v1">
+            <summary>
+            Ubicación original del segundo vértice que compone el panel de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.V0">
+            <summary>
+            Primer vértice bidimensional que sirve de pivote para los vértices de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.V1">
+            <summary>
+            Segundo vértice bidimensional que sirve de pivote para los vértices de la puerta.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.diff">
+            <summary>
+            Diferencia entre los dos vectores. Utilizada como referencia para mover
+            los paneles.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Gfps.GfpsDoor.gridLocation">
+            <summary>
+            Coordenadas de la puerta, dentro de la cuadrícula del mapa.
+            </summary>
+        </member>
         <member name="T:Kriptok.Entities.BasicObject">
             <summary>
             Este objeto puede ser utilizado como decorado, u otros objetos que no 
@@ -10598,10 +11579,10 @@
             Constructor interno, para asegurar que no se pueda heredar la clase.
             </summary>
         </member>
-        <member name="M:Kriptok.Scenes.ProcessHandler.Frame(System.Int32)">
+        <member name="T:Kriptok.Scenes.SceneHandlerSurfaceExtensions">
             <summary>
-            Realiza una cantidad de llamados a <see cref="M:Kriptok.Scenes.ProcessHandler.Frame"/> indicada por parámetro.
-            </summary>        
+            Funcionalidades extendidas para la clase <see cref="T:Kriptok.Scenes.SceneHandler"/>.
+            </summary>
         </member>
         <member name="T:Kriptok.Common.FastList`1">
             <summary>
@@ -11148,6 +12129,11 @@
             Calcula la distancia bidimensional entre dos puntos.
             </summary>
         </member>
+        <member name="M:Kriptok.Helpers.MathHelper.Sign0PositiveF(System.Single)">
+            <summary>
+            Obtiene el signo del valor, pero tomando el cero como positivo.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.MathHelper.SinF(System.Double)">
             <summary>
             
@@ -11254,6 +12240,12 @@
         <member name="M:Kriptok.Helpers.MathHelper.SignedMax(System.Single,System.Single)">
             <summary>
             Obtiene el valor que se encuentra más lejos del 0 en la recta numérica,
+            independientemente de su signo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Helpers.MathHelper.SignedMin(System.Single,System.Single)">
+            <summary>
+            Obtiene el valor que se encuentra más cerca del 0 en la recta numérica,
             independientemente de su signo.
             </summary>        
         </member>
@@ -14323,972 +15315,6 @@
             Extrae el reproductor de música Midi.
             </summary>
         </member>
-        <member name="M:Kriptok.Z.Gfps.Entities.Base.GfpsEntityBase.PostMoved">
-            <summary>
-            Se ejecuta después de moverse.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Entities.GfpsDoorStateEnum">
-            <summary>
-            Lista los estados que puede adoptar una puerta.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Entities.GfpsDoor">
-            <summary>
-            Este objeto controla el funcionamiento de una puerta.
-            
-            La puerta no es necesariamente la vista.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.amount">
-            <summary>
-            Velocidad de movimiento de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.animationIndex">
-            <summary>
-            Número entre 0 y 1 que representa qué tan cerrada/abierta está la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.Status">
-            <summary>
-            Estado actual de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.v0">
-            <summary>
-            Ubicación original del primer vértice que compone el panel de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.v1">
-            <summary>
-            Ubicación original del segundo vértice que compone el panel de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.V0">
-            <summary>
-            Primer vértice bidimensional que sirve de pivote para los vértices de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.V1">
-            <summary>
-            Segundo vértice bidimensional que sirve de pivote para los vértices de la puerta.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.diff">
-            <summary>
-            Diferencia entre los dos vectores. Utilizada como referencia para mover
-            los paneles.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Entities.GfpsDoor.gridLocation">
-            <summary>
-            Coordenadas de la puerta, dentro de la cuadrícula del mapa.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Modes.GfpsCBuffer">
-            <summary>
-            Representa un Z-Buffer unidimensional.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.length">
-            <summary>
-            Longitud del buffer. Generalmente, el ancho de la pantalla.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.bBuffer">
-            <summary>
-            Arreglo para controlar qué cantidad de la pantalla está cubierta por paredes.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.zBuffer">
-            <summary>
-            Profundidad de cada z perteneciente a las paredes del buffer.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.zBufferMax">
-            <summary>
-            Buffer de coordenadas Z que se utiliza para limpiar el <see cref="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.zBuffer"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.pBuffer">
-            <summary>
-            Paneles que ocupan cada elemento del buffer.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsCBuffer.differentPanels">
-            <summary>
-            Listado de los "diferentes paneles" a renderizar por frame.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsCBuffer.#ctor(System.Int32)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Gfps.Modes.GfpsCBuffer"/>.
-            </summary>
-            <param name="length">Longitud del buffer. Generalmente, el ancho de la pantalla.</param>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsCBuffer.Clear">
-            <summary>
-            Limpia el buffer para volver a empezar a chequear profundidad.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsCBuffer.FullyChecked">
-            <summary>
-            Checkea los casilleros indicados, y además indica si se terminó de completar el array.
-            </summary>               
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsCBuffer.Add(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,Kriptok.Z.Gfps.Views.GfpsPanelWrapperBase)">
-            <summary>
-            Agrega un panel al buffer.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsCBuffer.MaxZ">
-            <summary>
-            Obtiene la máxima coordenada Z registrada en el buffer.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.renderMap">
-            <summary>
-            Arreglo bidimensional que indica qué tile ya se leyó para renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.mapGridWidth">
-            <summary>
-            Ancho del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.mapGridHeight">
-            <summary>
-            Alto del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.mapGridWidthF">
-            <summary>
-            Ancho del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.mapGridHeightF">
-            <summary>
-            Alto del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.viewGrid">
-            <summary>
-            Grilla de celdas generadas para la renderización.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.regionWidth">
-            <summary>
-            Ancho de la region donde se renderiza.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.regionHeight">
-            <summary>
-            Ancho de la region donde se renderiza.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.FloorBound">
-            <summary>
-            Subregión de la pantalla donde se debe renderizar "piso".
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.CeilingBound">
-            <summary>
-            Subregión de la pantalla donde se debe renderizar "techo".
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.vertices">
-            <summary>
-            Colección con todos los vértices generados cuando se arma mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.cBuffer">
-            <summary>
-            Buffer utilizado para determinar qué parades dibujar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.MaxZ">
-            <summary>
-            Obtiene la minima prioridad a tomar en cuenta para renderizar.
-            </summary>              
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GfpsViewBuffer`1.GetViews(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Views.Base.IRenderizable[],System.Boolean,System.Boolean)">
-            <summary>
-            Obtiene todas las vistas para renderizar en la región.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Modes.GdipGfpsViewMode">
-            <summary>
-            Genera una vista basada en un mapa de tipo Ray-Casting
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Modes.GdipGfpsViewMode.mapGrid">
-            <summary>
-            Alto/ancho invertido del tamaño del mapa de tiles.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.GdipGfpsViewMode.#ctor(System.Drawing.Rectangle,Kriptok.Z.Gfps.Maps.GfpsCell[][],Kriptok.Maps.Grid.TiledMapGrid,System.Int32,System.Int32)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Gfps.Modes.GdipGfpsViewMode"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Modes.PlotGfpsViewMode">
-            <summary>
-            Genera una vista basada en un mapa de tipo Ray-Casting
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.PlotGfpsViewMode.#ctor(System.Drawing.Rectangle,Kriptok.Z.Gfps.Maps.GfpsCell[][],Kriptok.Maps.Grid.TiledMapGrid,System.Int32,System.Int32)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Gfps.Modes.PlotGfpsViewMode"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Modes.PlotGfpsViewMode.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
-            <summary>
-            Crea una brocha para renderizar el piso o techo.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Modes.PlotGfpsViewModeY0">
-            <summary>
-            Genera una vista basada en un mapa de tipo Ray-Casting, pero con un ángulo de cámara fijo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.GfpsPanelWrapper`1">
-            <summary>
-            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
-            y su posterior renderización.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.GfpsPanelWrapperBase">
-            <summary>
-            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
-            y su posterior renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.GfpsPanelWrapperBase.GetMaxDistance">
-            <summary>
-            Obtiene la distancia a la cámara del punto mas cercano del polígono tridimencional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.GfpsPanelWrapperBase.GetMinDistance">
-            <summary>
-            Obtiene la distancia a la cámara del punto mas lejano del polígono tridimencional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.GfpsPanelWrapperBase.GetPriority">
-            <summary>
-            Obtiene la prioridad de renderización de la vista.
-            
-            Se utiliza el valor "más lejano" del polígono, para que ocluya los sprites
-            de los objetos.
-            </summary> 
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.GfpsPlotPanelWrapper">
-            <summary>
-            Representa un panel genérico que se encarga de controlar la visiblidad de los paneles,
-            y su posterior renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.Base.IGfpsPanel.GetWrapper">
-            <summary> 
-            Obtiene un wrapper para este panel.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.Gdip.GdipGfpsDoubleSidePanel">
-            <summary>
-            Representa un panel que depende de un estado para "opacar" o no lo que hay detrás.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.Gdip.GdipGfpsMiddleTilePanel">
-            <summary>
-            Representa a los paneles que se renderizan por la mitad del tile.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Views.Gdip.GdipGfpsPanel.Id">
-            <summary>
-            Id único del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.Gdip.GdipGfpsPanel.GetWrapper">
-            <summary>
-            Obtiene un wrapper para esta vista.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.GfpsPanelRenderer">
-            <summary>
-            Esta vista se utiliza para renderizar paneles que podrían o no aparecer
-            más de una vez en la lista de vistas, por estar parcialmente ocluídos por otro panel.
-            
-            Ej: un panel marco de puerta, cuando la puerta está casi abierta.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.Plot.PlotGfpsDoubleSidePanel">
-            <summary>
-            Representa un panel que depende de un estado para "opacar" o no lo que hay detrás.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Views.Plot.PlotGfpsMiddleTilePanel">
-            <summary>
-            Representa a los paneles que se renderizan por la mitad del tile.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Views.Plot.PlotGfpsPanel.Id">
-            <summary>
-            Id único del objeto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Gfps.Views.Plot.PlotGfpsPanel.GetWrapper">
-            <summary>
-            Obtiene un wrapper para este panel.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Z.Gfps.Maps.GfpsMapGenerator`1.ViewGrid">
-            <summary>
-            Mapa de paneles de la grilla.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Maps.Base.IGfpsOperableCell">
-            <summary>
-            Indica que esta celda tiene una reacción cuando se presiona una tecla.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Gfps.Maps.GfpsDoorCell">
-            <summary>
-            Esta celda es una "puerta".
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoMapX">
-            <summary>
-            Representa un mapa 3D dividido en volúmenes convexos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
-            
-            Constructor necesario para poder deserializar desde XML.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.#ctor(System.String)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
-            
-            Sólo debe ser utilizado por el editor de mapas 3D.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapX.Sectors">
-            <summary>
-            Lista de sectores que componen el mapa tridimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Serialize(System.Boolean)">
-            <summary>
-            Serializa el mapa a Xml.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Save(System.String)">
-            <summary>
-            Guarda el mapa en el archivo que se cargó.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Clone">
-            <summary>
-            Devuelve una copia del mapa.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.String)">
-            <summary>
-            Carga un mapa desde un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.Reflection.Assembly,System.String)">
-            <summary>
-            Carga un mapa desde un recurso.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(System.String,System.String)">
-            <summary>
-            Carga un mapa desde un xml.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.Load(Kriptok.Z.Convos.Maps.ConvoMapX)">
-            <summary>
-            Carga propiedades extra en tiempo de ejecución después de parsear el Xml.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapX.AddSector(Kriptok.Z.Convos.Maps.ConvoSectorX)">
-            <summary>
-            Agrega un sector al mapa.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoMapXGrid">
-            <summary>
-            Herramienta utilizada para leer un mapa de tipo <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapX"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Maps.ConvoMapXGrid.config">
-            <summary>
-            Mapa que se está leyendo.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapXGrid.#ctor(Kriptok.Z.Convos.Maps.ConvoMapX)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoMapXGrid"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Width">
-            <summary>
-            Cantidad de casilleros sobre el eje X.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Height">
-            <summary>
-            Cantidad de casilleros sobre el eje Y.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Depth">
-            <summary>
-            Cantidad de casilleros sobre el eje Z.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoMapXGrid.Get(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Obtiene el elemento en la posición indicada.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionX">
-            <summary>
-            Partición tridimensional de un sector.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionX.Contains(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Indica si un casillero está contenido por la partición.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionX.Sector">
-            <summary>
-            Referencia al sector al que pertenece la partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionX.Update(Kriptok.Common.IGrid3DReader{System.Int32})">
-            <summary>
-            Calcula la metadata de los distintos lados de la partición.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX">
-            <summary>
-            Representa cada sección de una pared de una partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX"/>.
-            
-            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.#ctor(System.Drawing.RectangleF)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX"/>.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.X">
-            <summary>
-            Coordenada X de la figura en el plano bidimensional.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Y">
-            <summary>
-            Coordenada Y de la figura en el plano bidimensional.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Width">
-            <summary>
-            Ancho de la figura en el plano bidimensional.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPanelX.Height">
-            <summary>
-            Alto de la figura en el plano bidimensional.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX">
-            <summary>
-            Representa cada porción rectangular de una partición que se trata de un portal
-            a otra partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX"/>.
-            
-            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.#ctor(System.Int32,System.Drawing.RectangleF)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX"/>.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.PartitionToId">
-            <summary>
-            Partición a la cual apunta el portal.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionPortalX.Intersect">
-            <summary>
-            Indica si el portal realmente debe realizar una "intersección" de secciones antes de
-            renderizar la partición siguiente.
-            
-            La lógica es que si el portal inverso tiene las mismas dimensiones no es necesario
-            realizar una intersección. De lo contrario, es necesario.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoPartitionSideX">
-            <summary>
-            Representa un lado de una partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.#ctor">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Convos.Maps.ConvoPartitionSideX"/>.
-            
-            NOTA: Importante mantener aunque no se use para la serialización/deserialización.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Panels">
-            <summary>
-            Lista de secciones rectangulares de paredes.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Portals">
-            <summary>
-            Lista de secciones rectangulares que dan a otras secciones.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.TextureId">
-            <summary>
-            Id de la textura a utilizar. 0, para ninguna.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Maps.ConvoPartitionSideX.Update(System.Int32[0:,0:])">
-            <summary>
-            Actualiza la lista de portales y secciones de pared que se deben renderizar
-            en la partición.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Convos.Maps.ConvoSectorX">
-            <summary>
-            Representa una región tridimensional de un mapa.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Id">
-            <summary>
-            Id del sector.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Partitions">
-            <summary>
-            Particiones que componen el sector.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Z.Convos.Maps.ConvoSectorX.Map">
-            <summary>
-            Referencia al objeto principal del mapa.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Convos.Modes.Full3DConvoMode">
-            <summary>
-            Implementación de mapas diseñados con volúmenes convexos para perspectiva full-3D.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.vertices">
-            <summary>
-            Colección con todos los vértices del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.texset">
-            <summary>
-            Conjunto de texturas usadas en el mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.partitions">
-            <summary>
-            Particiones volumétricas del mapa.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.#ctor(Kriptok.Z.Convos.Maps.ConvoMapX,Kriptok.Maps.ITexset{`1})">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="!:SdxViewBase&lt;TVertex, TTexture&gt;"/>.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Encuentra un vértice en base a sus coordenadas.
-            
-            En este caso, sólo devuelvo un nuevo vértice tridimensional.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.Base.ConvoMapBase`3.GetPanels">
-            <summary>
-            Obtiene todos los paneles del mapa.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.ownerView">
-            <summary>
-            Vista principal que contiene la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.Id">
-            <summary>
-            Id de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Convos.Views.ConvoPartition`1.Volume">
-            <summary>
-            Volumen de la partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.#ctor(Kriptok.Z.Convos.Views.Base.IConvoMap{`0},Kriptok.Z.Convos.Maps.ConvoPartitionX)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="!:ConvoPartition"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.GetPanels">
-            <summary>
-            Obtiene todos los paneles de la partición.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.PostProcessing(Kriptok.Z.Convos.Views.ConvoPartition{`0}[])">
-            <summary>
-            Genera los portales hacia las otras particiones y realiza otros post-procesamientos
-            de la construcción del mapa.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`1.FindVertex(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene un vértice de la partición en base a sus coordenadas tridimensionales.
-            
-            Esto permite almacenar los vértices en una colección que permita su reutilización
-            para no tener que aplicar las transformaciones más de una vez a vértices compartidos.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartition`3.#ctor(Kriptok.Z.Convos.Views.Base.ConvoMapBase{`0,`1,`2},Kriptok.Z.Convos.Maps.ConvoPartitionX)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="!:SdxPartition"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartitionSide`1.GeneratePortals(Kriptok.Z.Convos.Views.ConvoPartition{`0}[])">
-            <summary>
-            Genera los portales hacia las otras particiones.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Convos.Views.ConvoPartitionSide`1.GetPanels">
-            <summary>
-            Devuelve todos los paneles que componen el lado.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Extensions.SceneHandlerExtensions">
-            <summary>
-            Funcionalidades extendidas para la clase <see cref="T:Kriptok.Scenes.SceneHandler"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Maps.TileTexset">
-            <summary>
-            Representa un conjunto de texturas extraídas/generadas en base a un mapa de tiles.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Maps.TileTexset.tiles">
-            <summary>
-            Tiene todas las texturas de los tiles.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Maps.TileTexset.#ctor(Kriptok.Maps.Tiles.TileMap,Kriptok.Maps.Tiles.Base.TilesetBase,Kriptok.Views.Shapes.TextureOptions)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Z.Surfaces.Maps.TileTexset"/>
-            </summary>
-            <param name="tiledMap">Mapa del cual se requiere generar un listado de texturas.</param>
-            <param name="tileSet">Tileset en base al cual se construyen las texturas, en caso de tener
-            que crear una nueva.</param>
-            <param name="options">Opciones por defecto para la generación de texturas.</param>
-        </member>
-        <member name="P:Kriptok.Z.Surfaces.Maps.TileTexset.AnimatedTiles">
-            <summary>
-            Obtiene todos los tiles animados del set.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Maps.TileTexset.Texture(Kriptok.Maps.Tiles.Base.ITile)">
-            <summary>
-            Obtiene la textura para el tile indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Modes.Full3DSurface`1.RenderOn(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable})">
-            <summary>
-            Renderiza las vistas recibidas por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Modes.Full3DSurface`1.GetMaxDrawingDistance(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext)">
-            <summary>
-            Obtiene la distancia a partir de la cual se ignoran todas las vistas a renderizar.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Modes.Full3DSurface`1.AddSurface(Kriptok.Modes.Full3D.Full3DMode.Full3DRenderContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable})">
-            <summary>
-            Este método agrega las vistas relacionadas al terreno a
-            la lista de vistas por renderizar.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Base.DecoratedScrollableTiledViewBase`2">
-            <summary>
-            Representa una clase particular de terreno que además tiene una capa de objetos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.DecoratedScrollableTiledViewBase`2.ForEachDecoration(System.Action{`1})">
-            <summary>
-            Permite operar sobre las decoraciones creadas para esta vista.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.DecoratedScrollableTiledViewBase`2.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
-            </summary>
-            <param name="context">Contexto de renderización.</param>
-            <param name="renderizables">Lista de objetos a renderizar. Agregar a
-            esta lista lo que se desee renderizar.</param>
-            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Base.ScrollableTexturedViewBase`1">
-            <summary>
-            Esta vista es base para terrenos infinitos que no se cargan al mismo tiempo,
-            sino que utilizan un proceso "cámara" para saber cuándo se debe renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTexturedViewBase`1.applyTextureIncrement">
-            <summary>
-            Indica si tiene que aplicar incremento de textura.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTexturedViewBase`1.Texture">
-            <summary>
-            Textura para dibujar las caras.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTexturedViewBase`1.textureWidth">
-            <summary>
-            Ancho de la textura, guardado para hacer cálculos rápidos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTexturedViewBase`1.textureHeight">
-            <summary>
-            Alto de la textura, guardado para hacer cálculos rápidos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.tiles">
-            <summary>
-            Array con todos los tiles del mapa. Desde acá se samplean las texturas para renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.animatedTiles">
-            <summary>
-            Array sólo con los tiles animados (sin repetidos).
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.UpdateTile(`0,System.Int32,System.Int32)">
-            <summary>
-            Actualiza un tile en base a las coordenadas del tile representado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.NewFace(Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex)">
-            <summary>
-            Implemento el método para transoformar <see cref="M:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.NewFace(Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex)"/>
-            en <see cref="M:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.NewTile(Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex)"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.NewTile(Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex,Kriptok.Z.Surfaces.Views.Shapes.SurfaceVertex)">
-            <summary>
-            Devuelve un nuevo tile delimitado por los vértices indicados por parámetro.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.TileGetter">
-            <summary>
-            Objeto utilizado para obtener los tiles del mapa.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1.TileGetter.TileGetterPow2">
-            <summary>
-            Versión optimizada para mapas con tamaño potencia de 2.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Surfaces.Views.Base.ScrollableViewArgs.SquareShape">
-            <summary>
-            Indica si debe generar el terreno de forma rectangular.
-            
-            Por defecto, es circular.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
-            </summary>
-            <param name="context">Contexto de renderización.</param>
-            <param name="renderizables">Lista de objetos a renderizar. Agregar a
-            esta lista lo que se desee renderizar.</param>
-            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase.GetAllViews">
-            <summary>
-            Obtiene todas las sub-vistas generadas para esta vista.
-            
-            Permite personalizar el comportamiento y el orden de renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase.GetTerrainHeight(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la altura del terreno en el punto indicado.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.Swapped">
-            <summary>
-            Indica si la vista ha sido swappeada por completo. Por ejemplo, para utilizar un plano
-            como cielo poligonal.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.GetAllViews">
-            <summary>
-            Obtiene todas las sub-vistas generadas para esta vista.
-            
-            Permite personalizar el comportamiento y el orden de renderización.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.UpdateViews(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Permite customizar los límites de renderización del terreno.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.UpdateViews(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Permite customizar los límites de renderización del terreno.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
-            </summary>
-            <param name="context">Contexto de renderización.</param>
-            <param name="renderizables">Lista de objetos a renderizar. Agregar a
-            esta lista lo que se desee renderizar.</param>
-            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.OnFrame(Kriptok.Modes.Context.Base.IRenderBufferContext)">
-            <summary>
-            Permite realizar acciones particulares antes de renderizar.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.UpdateVertices(Kriptok.Modes.Context.Base.IRenderBufferContext,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Actualiza todos los vértices de las vistas, en base 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.GetVisibleFaces(Kriptok.Modes.Context.Base.IRenderBufferContext)">
-            <summary>
-            Obtiene las vistas que van a renderizarse 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.AddVertex``1(``0)">
-            <summary>
-            Agrega un vértice a la lista 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.AddView(System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},`0)">
-            <summary>
-            Agrega un polígono a la lista de renderización. 
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.GetTerrainHeight(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Calcula la altura de un vértice en el mapa de terreno.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Base.ScrollableViewBase`1.HasToFlip(System.Int32,System.Int32)">
-            <summary>
-            Indica si al renderizar el tile que se encuentra en las coordenadas indicadas por parámetro,
-            se deben invertir los vértices horizontalmente.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.ScrollableFlatLiquidView.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
-            </summary>
-            <param name="context">Contexto de renderización.</param>
-            <param name="renderizables">Lista de objetos a renderizar. Agregar a
-            esta lista lo que se desee renderizar.</param>
-            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.ScrollableTexturedLiquidView.AddTo(Kriptok.Modes.Context.Base.IRenderBufferContext,System.Collections.Generic.IList{Kriptok.Views.Base.IRenderizable},Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Agrega todas las sub-vistas de la vista principal al contexto de renderización.
-            </summary>
-            <param name="context">Contexto de renderización.</param>
-            <param name="renderizables">Lista de objetos a renderizar. Agregar a
-            esta lista lo que se desee renderizar.</param>
-            <param name="location">La ubicación bidimensional del objetivo de la cámara.</param>
-        </member>
-        <member name="P:Kriptok.Z.Surfaces.Views.TexturedScrollableViewArgs.TextureIncrement">
-            <summary>
-            Incremento de la textura sobre los polígonos.
-            Si es cero, se calcula automáticamente.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.ScrollableTiledView">
-            <summary>
-            Implementación rápida y básica de la clase <see cref="T:Kriptok.Z.Surfaces.Views.Base.ScrollableTiledViewBase`1"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Shapes.DecoratedTileView`2">
-            <summary>
-            Representa un tile normal con una vista en el medio.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Surfaces.Views.Shapes.DecoratedTileView`2.Decoration">
-            <summary>
-            Referencia a la decoración que está sobre el tile.
-            
-            Por ahora no tiene una utilidad definida.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Shapes.DecoratedTileView`2.GetMidPoint">
-            <summary>
-            Obtiene la ubicación de la decoración del tile.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Shapes.DecorationViewBase`2">
-            <summary>
-            Representa una decoración en el mapa de tiles.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Z.Surfaces.Views.Shapes.DecorationViewBase`2.Tile">
-            <summary>
-            Referencia al tile sobre el que está la decoración.
-            
-            Por ahora no tiene una utilidad definida.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Z.Surfaces.Views.Shapes.DecorationViewBase`2.GetLocation">
-            <summary>
-            Obtiene la ubicación actual de la decoración del tile.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Z.Surfaces.Views.Shapes.SurfaceTileView">
-            <summary>
-            Tile base para terrenos poligonales basados en casilleros.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Z.Surfaces.Views.Shapes.SurfaceTileView.Visible">
-            <summary>
-            Esta propiedad empieza en <see cref="!:false"/>, para que sólo se marque como "visible"
-            cuando se vaya a renderizar.
-            </summary>
-        </member>
         <member name="F:Kriptok.Consts.DefaultFastPixelFormat">
             <summary>
             Formato gráfico por defecto para los "backbuffers".
@@ -15298,6 +15324,11 @@
             
             En el caso en que sea necesario, como en modos "scroll", utilizar el
             que corresponda, pero dejar el default como el que consuma menos recursos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Consts.Plot">
+            <summary>
+            Constantes relacinadas al ploteo de pixels en pantalla.
             </summary>
         </member>
     </members>
