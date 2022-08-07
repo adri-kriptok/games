@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "Pong\Pong.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "Snake\Snake.csproj", "{FC8EFA96-77EC-4538-8543-42785C9A721C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorials", "Tutorials\Tutorials.csproj", "{9ACF81D5-B15C-4D41-B880-67689D1E898A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,12 @@ Global
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
 		{FC8EFA96-77EC-4538-8543-42785C9A721C}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACF81D5-B15C-4D41-B880-67689D1E898A}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

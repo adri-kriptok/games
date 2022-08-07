@@ -9453,6 +9453,13 @@
             Consulta de colisiones entre un objeto y un tipo de objetos.
             </summary>    
         </member>
+        <member name="T:Kriptok.Entities.Queries.IMouseLocationQuery">
+            <summary>
+            Consulta para obtener las coordenadas del mouse en el plano de scroll.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
         <member name="T:Kriptok.Entities.Queries.MouseScrollLocationQuery">
             <summary>
             Consulta para obtener las coordenadas del mouse en el plano de scroll.
@@ -9729,6 +9736,31 @@
             <param name="loop">Indica si se reproduce en loop.</param>
             <param name="volume">Volumen de reproducción.</param>
         </member>
+        <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.Left">
+            <summary>
+            Indica si se está presionando el botón izquierdo del mouse.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.Right">
+            <summary>
+            Indica si se está presionando el botón derecho del mouse.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.X">
+            <summary>
+            Obtiene la última coordenada X del mouse.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.Y">
+            <summary>
+            Obtiene la última coordenada Y del mouse.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.Middle">
+            <summary>
+            Indica si se está presionando el botón medio del mouse.
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterX(System.Int32)">
             <summary>
             Centra el mouse horizontalmente en la pantalla.
@@ -9739,12 +9771,12 @@
             Centra el mouse horizontalmente en la pantalla.
             </summary>            
         </member>
-        <member name="P:Kriptok.Entities.Base.ItemBaseBase.Assembly">
+        <member name="P:Kriptok.Entities.Base.InteractiveComponentBase.Assembly">
             <summary>
             Obtiene el ensamblado en el que se encuentra definida esta clase.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button01">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button01">
             <summary>
             Tecla:            
             SNES:        
@@ -9753,12 +9785,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.AnalogDirection(Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.AnalogDirection(Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Obtiene la dirección en coordenadas cartesianas del control analógico del joystick.
             </summary>            
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button02">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button02">
             <summary>
             Tecla: 2         
             SNES:        
@@ -9767,7 +9799,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button03">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button03">
             <summary>
             Tecla:       Espacio
             SNES:        B
@@ -9775,7 +9807,7 @@
             XBOX:        A
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Button04">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button04">
             <summary>
             Tecla:       Shift            
             SNES:        X
@@ -9783,7 +9815,7 @@
             XBOX:        Y                        
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L1">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.L1">
             <summary>
             Tecla:              Q
             SNES:               L
@@ -9791,27 +9823,27 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R1">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.R1">
             <summary>
             Tecla:              E
             SNES:               R
             Playstation / XBOX: R1            
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.L2">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.L2">
             <summary>
             Tecla:              1           
             Playstation / XBOX: L2
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.R2">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.R2">
             <summary>
             Tecla:              3            
             Playstation / XBOX: R2     
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Kriptok.Entities.Base.ItemBaseBase.Input.Escape">
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Escape">
             <summary>
             Indica si está presionada la tecla de "Esc".
             </summary>            
