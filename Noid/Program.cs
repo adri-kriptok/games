@@ -20,7 +20,7 @@ namespace Noid
             {
                 s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200;
-                s.Title = "Kriptok - Noid";
+                s.Title = "Noid | Kriptok";
                 s.TimerInterval = 16;
                 s.OpenMidiNotePlayer();
             });            

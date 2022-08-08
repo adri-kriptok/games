@@ -25,7 +25,7 @@ namespace Tutorials.Level00
             {
                 p.FullScreen = true;
                 p.Mode = WindowSizeEnum.W800x450;
-                p.Title = "Kriptok Sdk - Tutor - Tutor 01 - Save";
+                p.Title = "Tutor - 00 - 01 - Memory | Kriptok";
             });
         }
     }

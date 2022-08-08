@@ -32,7 +32,7 @@ namespace Tutorials.Level00
             {
                 s.FullScreen = true;                
                 s.Mode = WindowSizeEnum.W800x450;
-                s.Title = "Kriptok Sdk - Tutor - Tutor 01 - B";
+                s.Title = "Tutor - 00 - 01 | Kriptok";
             });
         }
 
