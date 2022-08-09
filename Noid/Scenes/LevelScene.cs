@@ -1,14 +1,12 @@
-﻿using Kriptok.Audio;
-using Kriptok.Maps.Tiles.Editor;
-using Noid.Entities;
-using Noid.Entities.Pills;
-using Kriptok.Entities;
+﻿using Kriptok.Entities;
 using Kriptok.Extensions;
+using Kriptok.Maps.Tiles;
 using Kriptok.Scenes;
 using Kriptok.Views;
+using Noid.Entities;
+using Noid.Entities.Pills;
 using System;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Noid.Scenes
 {

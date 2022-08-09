@@ -1,7 +1,7 @@
 ﻿using Kriptok.Drawing;
 using Kriptok.Helpers;
+using Kriptok.Maps.Tiles;
 using Kriptok.Maps.Tiles.Base;
-using Kriptok.Maps.Tiles.Editor;
 
 namespace Noid.Scenes
 {
