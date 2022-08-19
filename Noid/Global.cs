@@ -65,11 +65,11 @@ namespace Noid
 
     public static class Sounds
     {        
-        internal static Resource PillSound = new Resource(typeof(Sounds).Assembly, "BUIU.WAV");
-        internal static Resource LaserSound = new Resource(typeof(Sounds).Assembly, "LASER.WAV");
-        internal static Resource MetalSound = new Resource(typeof(Sounds).Assembly, "METAL10.WAV");
-        internal static Resource BoundSound = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
-        internal static Resource RacketSound = new Resource(typeof(Sounds).Assembly, "GOLPE.WAV");
+        internal static Resource PillSound = Resource.Get(typeof(Sounds).Assembly, "BUIU.WAV");
+        internal static Resource LaserSound = Resource.Get(typeof(Sounds).Assembly, "LASER.WAV");
+        internal static Resource MetalSound = Resource.Get(typeof(Sounds).Assembly, "METAL10.WAV");
+        internal static Resource BoundSound = Resource.Get(typeof(Sounds).Assembly, "GOLPE.WAV");
+        internal static Resource RacketSound = Resource.Get(typeof(Sounds).Assembly, "GOLPE.WAV");
         // internal static Resource ReleaseBallSound = new Resource(typeof(Sounds).Assembly, "BILLAR0.WAV");
 
         /// <summary>

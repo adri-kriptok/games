@@ -349,7 +349,7 @@ namespace Noid.Entities
     class RacketView : IndexedSpriteView
     {
         public RacketView()
-            : base(new Resource(typeof(RacketView).Assembly, "Assets.Images.PadNormal.png"), 1, 1)
+            : base(Resource.Get(typeof(RacketView).Assembly, "Assets.Images.PadNormal.png"), 1, 1)
         {
             Add(typeof(RacketView).Assembly, "Assets.Images.PadSmall.png", 1, 1);
             Add(typeof(RacketView).Assembly, "Assets.Images.PadLarge.png", 1, 1);
