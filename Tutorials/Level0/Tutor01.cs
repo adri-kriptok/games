@@ -15,7 +15,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Tutorials.Level00
+namespace Tutorials.Level0
 {
     static class Tutor01
     {
@@ -32,7 +32,7 @@ namespace Tutorials.Level00
             {
                 s.FullScreen = true;                
                 s.Mode = WindowSizeEnum.W800x450;
-                s.Title = "Tutor - 00 - 01 | Kriptok";
+                s.Title = "Tutor - 0 - 1 | Kriptok";
             });
         }
 
@@ -45,7 +45,7 @@ namespace Tutorials.Level00
 
             protected override void Run(SceneHandler h)
             {
-                h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level00.Assets.Images.Background.png"));
+                h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level0.Assets.Images.Background.png"));
 
                 XBound = h.ScreenRegion.Size.Width + 20;
                 YBound = h.ScreenRegion.Size.Height + 20;
@@ -196,7 +196,7 @@ namespace Tutorials.Level00
                 {
                     if (shootCounter <= 0)
                     {
-                        Audio.PlaySound(GetType().Assembly, "Level00.Assets.Sounds.Shot1.wav");
+                        Audio.PlaySound(GetType().Assembly, "Level0.Assets.Sounds.Shot1.wav");
                         shootCounter = 5;
                     }
 

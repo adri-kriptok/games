@@ -80,11 +80,11 @@ namespace Tekrips.Scenes
 			points = 0;
 			Global.DescentSpeed = Global.InitialDescentSpeed;
 
-			h.Write(Global.WhiteFont, 122, 89, () => $"Lineas: {$"           {lines}".Right(9)}").LeftMiddle();
-			h.Write(Global.WhiteFont, 122, 105, () => $"Puntos: {$"           {points}".Right(9)}").LeftMiddle();
-			h.Write(Global.PinkFont, 122, 145, () => $"Record").LeftMiddle();
-			h.Write(Global.PinkFont, 122, 161, () => $"Lineas: {$"           {record.Lines}".Right(9)}").LeftMiddle();
-			h.Write(Global.PinkFont, 122, 177, () => $"Puntos: {$"           {record.Points}".Right(9)}").LeftMiddle();
+			h.Write(Global.BlueFont, 122, 89, () => $"Lineas: {$"           {lines}".Right(9)}").LeftMiddle();
+			h.Write(Global.BlueFont, 122, 105, () => $"Puntos: {$"           {points}".Right(9)}").LeftMiddle();
+			h.Write(Global.GoldFont, 122, 145, () => $"Record").LeftMiddle();
+			h.Write(Global.GoldFont, 122, 161, () => $"Lineas: {$"           {record.Lines}".Right(9)}").LeftMiddle();
+			h.Write(Global.GoldFont, 122, 177, () => $"Puntos: {$"           {record.Points}".Right(9)}").LeftMiddle();
 
 			matrix = (new Cube[Global.BoardWidth, Global.BoardHeight]).ToJaggedArray();
 

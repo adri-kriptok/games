@@ -34,7 +34,7 @@
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Tutorials.Level00.Tutor02_Memory</StartupObject>
+    <StartupObject>Tutorials.Level1.Tutor10_Scroll</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
     <OutputPath>bin\Release-FPS\</OutputPath>
@@ -49,13 +49,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.19.3\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.19.5\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.19.3\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.19.5\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.19.3\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.19.5\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -70,10 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Level00\Entities\Explosion.cs" />
-    <Compile Include="Level00\Tutor02_Memory.cs" />
-    <Compile Include="Level00\Tutor00.cs" />
-    <Compile Include="Level00\Tutor01.cs" />
+    <Compile Include="Level0\Entities\Explosion.cs" />
+    <Compile Include="Level1\Tutor10_Scroll.cs" />
+    <Compile Include="Level0\Tutor02_Memory.cs" />
+    <Compile Include="Level0\Tutor00.cs" />
+    <Compile Include="Level0\Tutor01.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,11 +98,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Level00\Assets\Sounds\Explosion1.wav" />
-    <EmbeddedResource Include="Level00\Assets\Sounds\Shot1.wav" />
+    <EmbeddedResource Include="Level0\Assets\Sounds\Explosion1.wav" />
+    <EmbeddedResource Include="Level0\Assets\Sounds\Shot1.wav" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Level00\Assets\Images\Background.png" />
+    <EmbeddedResource Include="Level0\Assets\Images\Background.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />

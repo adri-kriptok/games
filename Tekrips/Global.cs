@@ -10,11 +10,11 @@ namespace Tekrips
 {
     class Global
     {
-        public static readonly SuperFont WhiteFont =
+        public static readonly SuperFont BlueFont =
             new SuperFont(new Font("Courier New", 12, FontStyle.Bold), Color.White, Color.CornflowerBlue)
 			.SetShadow(-1, 1, Color.DarkBlue);
 		
-		public static readonly SuperFont PinkFont =
+		public static readonly SuperFont GoldFont =
 			new SuperFont(new Font("Courier New", 12, FontStyle.Bold), Color.White, Color.Gold)
 			.SetShadow(-1, 1, Color.DarkRed);
 

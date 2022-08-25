@@ -12,7 +12,7 @@ using Kriptok.Views.Sprites;
 using System;
 using System.Drawing;
 
-namespace Tutorials.Level00
+namespace Tutorials.Level0
 {
     static partial class Tutor00
     {
@@ -29,7 +29,7 @@ namespace Tutorials.Level00
             {
                 s.FullScreen = true;
                 s.Mode = WindowSizeEnum.W800x450;
-                s.Title = "Tutor - 00 - 00 | Kriptok";
+                s.Title = "Tutor - 0 - 0 | Kriptok";
             });
         }
 
@@ -37,7 +37,7 @@ namespace Tutorials.Level00
         {
             protected override void Run(SceneHandler h)
             {
-                h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level00.Assets.Images.Background.png"));
+                h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level0.Assets.Images.Background.png"));
 
                 h.Add(new Ship());
 
@@ -100,7 +100,7 @@ namespace Tutorials.Level00
                 {
                     if (shootCounter <= 0)
                     {
-                        Audio.PlaySound(Assembly, "Level00.Assets.Sounds.Shot1.wav");
+                        Audio.PlaySound(Assembly, "Level0.Assets.Sounds.Shot1.wav");
                         shootCounter = 5;
                     }
 

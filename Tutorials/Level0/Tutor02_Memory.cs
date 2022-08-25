@@ -11,7 +11,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Tutorials.Level00
+namespace Tutorials.Level0
 {
     static class Tutor02_Memory
     {
@@ -21,11 +21,11 @@ namespace Tutorials.Level00
         [STAThread]
         static void Main()
         {
-            Engine.Start(new InitScene(), p =>
+            Engine.Start(new InitScene(), s =>
             {
-                p.FullScreen = true;
-                p.Mode = WindowSizeEnum.W800x450;
-                p.Title = "Tutor - 00 - 01 - Memory | Kriptok";
+                s.FullScreen = true;
+                s.Mode = WindowSizeEnum.W800x450;
+                s.Title = "Tutor - 0 - 1 - Memory | Kriptok";
             });
         }
     }
@@ -42,7 +42,7 @@ namespace Tutorials.Level00
 
         protected override void Run(SceneHandler h)
         {
-            h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level00.Assets.Images.Background.png"));
+            h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level0.Assets.Images.Background.png"));
 
             h.Write(new SuperFont(Fonts.Arial12BoldItalic, Color.White), h.ScreenRegion.Size.Width / 2, 400,
                 "Presione S para guardar la posición y L para cargar.");

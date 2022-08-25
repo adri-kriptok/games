@@ -2380,6 +2380,21 @@
             Color transparente, en caso de tenerlo.
             </summary>
         </member>
+        <member name="M:Kriptok.Drawing.FastBitmap.#ctor(System.Reflection.Assembly,System.String)">
+            <summary>
+            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Drawing.FastBitmap"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.FastBitmap.#ctor(Kriptok.Common.Resource)">
+            <summary>
+            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Drawing.FastBitmap"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.FastBitmap.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Drawing.FastBitmap"/> del tamaño indicado por parámetro.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Drawing.FastBitmap.Clear">
             <summary>
             Limpia toda la imagen dejándola en el color 0x00000000.
@@ -2408,6 +2423,16 @@
             <summary>
             Copia una porción de memoria hasta la posición indicada con la longitud indicada.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.FastBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Establece un pixel del color indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.FastBitmap.SetPixel(System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Establece un pixel del color indicado por parámetro.
+            </summary>
         </member>
         <member name="M:Kriptok.Drawing.FastBitmap.BlitXY(Kriptok.Drawing.FastBitmap,System.Int32,System.Int32)">
             <summary>
@@ -2963,6 +2988,12 @@
             Este método es poco performante.
             
             NO USAR EN ALGORITMOS QUE REQUIEREN CORRER DE FORMA OPTIMA.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Extensions.ObjectExtensions.With``1(``0,System.Action{``0})">
+            <summary>
+            Permite establecer propiedades y configuraciones de un objeto 
+            sin necesidad de almacenarlo en una variable.
             </summary>        
         </member>
         <member name="F:Kriptok.Forms.MsDosForm.components">
@@ -3605,6 +3636,11 @@
             <summary>
             Devuelve el valor booleano de una coordenada, siguiendo el patrón
             de un tablero de ajedrez, con el primer casillero en "<see cref="!:true"/>".
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Maps.Tiles.TileHelper.GetTiler(System.Int32)">
+            <summary>
+            Obtiene un objeto capaz de "tilear coordenadas" de la forma más óptima posible.
             </summary>        
         </member>
         <member name="F:Kriptok.Maps.Tiles.TilesetLayer.maxTiles">
@@ -5683,6 +5719,11 @@
             Indica si para este frame no hay efectos de neblina.
             </summary>
         </member>
+        <member name="F:Kriptok.Modes.Context.Base.Render3DContextBase.SpriteScaler">
+            <summary>
+            Multiplicador de tamaño para los sprites.
+            </summary>
+        </member>
         <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetTransform">
             <summary>
             Obtiene la matriz de transformación de la cámara, para figuras tridimensionales.
@@ -5819,6 +5860,16 @@
         <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.RenderBranch(Kriptok.Views.Shapes.Base.IRenderBranch)">
             <summary>
             Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetSampleFloorShade">
+            <summary>
+            Obtiene el nivel de incidencia de la luz para un plano "piso".
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Context.Base.Render3DContextBase.GetSampleCeilingShade">
+            <summary>
+            Obtiene el nivel de incidencia de la luz para un plano "techo".
             </summary>
         </member>
         <member name="T:Kriptok.Modes.Context.Base.IPseudo3DRenderContext">
@@ -6521,6 +6572,11 @@
             Transforma un vértice tridimensional a la perspectiva del contexto.
             </summary>
         </member>
+        <member name="M:Kriptok.Modes.Full3D.Brushes.Full3DBrush.GetRelativeLocation(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Modes.Planes.IPlotPlane)">
+            <summary>
+            Obtiene la ubicación de la cámara relativa al tamaño de la textura y la escala.
+            </summary>            
+        </member>
         <member name="T:Kriptok.Modes.Full3D.Full3DMode">
             <summary>
             Clase base para entornos tridimensionales.
@@ -6561,45 +6617,10 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DPlanesMode"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.AddInfiniteGroundTexture(Kriptok.Common.Resource)">
+        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.AddPlane``1(``0)">
             <summary>
             Agrega un plano con una textura repetida infintamente a la altura cero.
             </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase">
-            <summary>
-            Representa un plano tridimencional utilizado en este modo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.Height">
-            <summary>
-            Altura del plano (coordenda sobre el eje Z) a renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.InverseScale">
-            <summary>
-            Escala a aplicar al plano al renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.#ctor(System.Int32)">
-            <summary>
-            Inicializa el plano a la altura indicada.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DPlaneBase.GetRelativeLocation(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la ubicación de la cámara relativa al tamaño de la textura y la escala.
-            </summary>            
-        </member>
-        <member name="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane">
-            <summary>
-            Representa un plano tridimencional con una simple textura.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane.#ctor(Kriptok.Common.Resource,System.Int32)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Full3D.Full3DPlanesMode.Full3DInfiniteTexturePlane"/>.
-            </summary>            
         </member>
         <member name="T:Kriptok.Modes.Full3D.Cameras.AcumulativeRotationCamera">
             <summary>
@@ -6862,6 +6883,196 @@
             la lista de vistas por renderizar.
             </summary>        
         </member>
+        <member name="T:Kriptok.Modes.Planes.IPlotPlane">
+            <summary>
+            Interfaz utilizada para la renderización de planos infinitos en espacios tridimencionales.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.IPlotPlane.Size">
+            <summary>
+            Tamaño en pixels del plano.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.IPlotPlane.Z">
+            <summary>
+            Altura del plano en el eje vertical (Z).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.IPlotPlane.GetRenderScale">
+            <summary>
+            Escala de renderización (utilizado para hacer parecer los planos más grandes o chicos de lo que son).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.IPlotPlane.SampleOrDefault(System.Int32,System.Int32)">
+            <summary>
+            Obtiene el color de las coordenadas indicadas por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Planes.IPlotPlane.OnRendering(Kriptok.Modes.Context.Base.Render3DContextBase)">
+            <summary>
+            Evento que se dispara antes de renderizar.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Planes.FinitePlane">
+            <summary>
+            Hace que un plano deje de repetirse infinitamente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.FinitePlane.#ctor(Kriptok.Modes.Planes.IPlotPlane)">
+            <summary>
+            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Modes.Planes.FinitePlane"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Planes.FinitePlane.#ctor(Kriptok.Modes.Planes.IPlotPlane,System.Drawing.Color)">
+            <summary>
+            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Modes.Planes.FinitePlane"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Modes.Planes.FinitePlane.Size">
+            <summary>
+            Tamaño en pixels del plano.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.FinitePlane.Z">
+            <summary>
+            Altura del plano en el eje vertical (Z).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.FinitePlane.GetRenderScale">
+            <summary>
+            Escala de renderización (utilizado para hacer parecer los planos más grandes o chicos de lo que son).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.FinitePlane.SampleOrDefault(System.Int32,System.Int32)">
+            <summary>
+            Obtiene el color de las coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlaneShadeBase.Size">
+            <summary>
+            Tamaño en pixels del plano.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlaneShadeBase.Z">
+            <summary>
+            Altura del plano en el eje vertical (Z).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlaneShadeBase.GetRenderScale">
+            <summary>
+            Escala de renderización (utilizado para hacer parecer los planos más grandes o chicos de lo que son).
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Planes.PlotPlaneBase">
+            <summary>
+            Clase base para planos infinitos de entornos tridimencionales.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Planes.PlotPlaneBase.tilerX">
+            <summary>
+            Objetos utilizados para relocalizar las coordenadas al renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Planes.PlotPlaneBase.tilerY">
+            <summary>
+            Objetos utilizados para relocalizar las coordenadas al renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Planes.PlotPlaneBase"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlotPlaneBase.Scale">
+            <summary>
+            Escala con la cual se debe representar el mapa en Mode7.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlotPlaneBase.Size">
+            <summary>
+            Tamaño en pixels del plano.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlotPlaneBase.Z">
+            <summary>
+            Altura del plano en el eje vertical (Z).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.OnRendering(Kriptok.Modes.Context.Base.Render3DContextBase)">
+            <summary>
+            Permite ejecutar código antes de renderizar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.SampleOrDefault(System.Int32,System.Int32)">
+            <summary>
+            Obtiene el color del pixel en las coordenadas indicadas por parámetro.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.InnerSample(System.Int32,System.Int32)">
+            <summary>
+            Obtiene el color en base a una textura, mapa de tiles, o lo que sea necesario.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.GetRenderScale">
+            <summary>
+            Escala de renderización (utilizado para hacer parecer los planos más grandes o chicos de lo que son).
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.PlotPlaneBase.Dispose">
+            <summary>
+            Libera los recursos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Planes.PlotAnimatedPlane">
+            <summary>
+            Esta clase representa un bitmap preparador para ser dibujado en Mode7.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Planes.PlotAnimatedPlane.XTiles">
+            <summary>
+            Para imágenes indexadas, indica cuántos tiles hay en horizontal.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Planes.PlotAnimatedPlane.TileAnimationIndexes">
+            <summary>
+            Índices de los tiles que deben mostrarse para generar la animación del plano.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Planes.PlotAnimatedPlane.TileAnimation">
+            <summary>
+            Indica la posición del array del TileAnimationIndexes se encuentra.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.PlotAnimatedPlane.AnimationSpeed">
+            <summary>
+            Velocidad a la cual se deben actualizar los tiles animados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Planes.PlotBitmapPlane`1">
+            <summary>
+            Esta clase representa un bitmap preparador para ser dibujado en Mode7.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Planes.TileMapPlane`1">
+            <summary>
+            Plano basado en un mapa de tiles.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Planes.TileMapPlane">
+            <summary>
+            Plano basado en un mapa de tiles.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Planes.TileMapPlane.TileAnimatedSpeed">
+            <summary>
+            Velocidad a la cual se deben actualizar los tiles animados del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Planes.TileMapPlane.Get(Kriptok.Modes.Planes.TileMapPlane)">
+            <summary>
+            Genera un plano basado en un mapa de tiles.
+            </summary>      
+        </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1">
             <summary>
             Este fondo utiliza una <see cref="T:System.Drawing.TextureBrush"/> para renderizar el fondo.
@@ -7033,11 +7244,6 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Brushes.Base.PlotPseudo3DBrushBase"/>.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Brushes.Base.PlotPseudo3DBrushBase`1.#ctor(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Common.Box{Kriptok.Drawing.Algebra.Matrix2x3F},System.Single,System.Single)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Brushes.Base.PlotPseudo3DBrushBase"/>.
-            </summary>        
-        </member>
         <member name="P:Kriptok.Modes.Pseudo3D.Brushes.Base.PlotPseudo3DBrushBase`1.ScanLineDistance">
             <summary>
             La coordenada Z de la línea que se está renderizando en ese momento.
@@ -7125,164 +7331,6 @@
             Sombreado del punto "sampleado".
             </summary>
         </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode">
-            <summary>
-            Clase base para fondos con perspectiva Pseudo3D, que utilizan un buffer
-            para renderizar pixel por pixel.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1">
-            <summary>
-            Clase base para fondos con perspectiva Pseudo3D, que utilizan un buffer
-            para renderizar pixel por pixel.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.regionWidth">
-            <summary>
-            Ancho de la región. Utilizado en algunos cálculos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.regionHeight">
-            <summary>
-            Alto de la región. Utilizado en algunos cálculos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.#ctor(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.#ctor(System.Drawing.Rectangle)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.GetScan0">
-            <summary>
-            Obtiene un puntero a la posición inicial del buffer de pixels.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.Dispose">
-            <summary>
-            Libera los recursos de la vista.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterSolidLine(System.Int32,System.UInt32)">
-            <summary>
-            Rasteriza una linea de un color determinado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterFilterLine(System.Int32,Kriptok.Modes.Ambient.Base.IColorTransformation)">
-            <summary>
-            Aplica el filtro indicado a la línea indicada.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.Plot(System.UInt32*,System.UInt32)">
-            <summary>
-            Pone el pixel indicado del color indicado, pero realiza las validaciones
-            necesarias para saber que todo está funcionando perfectamente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterColumn(System.UInt32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Dibuja una línea vertical en base a los parámetros indicados.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterColumn(System.UInt32,System.Int32,System.UInt32*)">
-            <summary>
-            Rasteriza una columna de pixels según los parámetros indicados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
-            <summary>
-            Obtiene una brocha para renderizar con el plano indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.IPseudo3DView.SetCamera``1(``0)">
-            <summary>
-            Establece el objeto sobre el cual se enfoca el modo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.IBufferedPseudo3DMode.RasterFilterLine(System.Int32,Kriptok.Modes.Ambient.Base.IColorTransformation)">
-            <summary>
-            Aplica el filtro indicado a la línea indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Base.IBufferedPseudo3DMode.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
-            <summary>
-            Obtiene una brocha para renderizar con el plano indicado por parámetro.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCamera">
-            <summary>
-            Cámara para interfaces Pseudo3D que modifica su Y-Shearing para apuntar a un objeto.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCamera.Height">
-            <summary>
-            Altura a la que se encuentra la cámara.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCameraBase">
-            <summary>
-            Cámara para interfaces Pseudo3D que modifica su Y-Shearing para apuntar a un objeto.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.OpenPseudo3DCamera">
-            <summary>
-            Representa una cámara de Pseudo3D fácil y rápida de implementar.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.OpenPseudo3DCamera.Height">
-            <summary>
-            Altura a la que se encuentra la cámara.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCamera">
-            <summary>
-            Cámara en modo Pseudo3D recomendada para interfaces en primera persona.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCamera.Height">
-            <summary>
-            Altura a la que se encuentra la cámara.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCameraBase">
-            <summary>
-            Cámara en modo Pseudo3D recomendada para interfaces en primera persona.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera">
-            <summary>
-            Cámara utilizada para definir el comportamiento de la cámara en interfaces Pseudo3D.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera.GetYShearing(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single,System.Single)">
-            <summary>
-            Obtiene el valor de Y-Shearing que debe presentar la cámara en el siguiente frame.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera.GetCameraHeight">
-            <summary>
-            Obtiene la altura de la cámara (la posición sobre el eje Z).
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.TargetPseudo3DCameraBase">
-            <summary>
-            Cámara para interfaces Pseudo3D que tiene un Y-shearing variable.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCameraExtensions.GetCamData(Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera)">
-            <summary>
-            Obtiene las propiedades de la cámara para renderizar.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DTarget">
-            <summary>
-            Los objetos que implementan esta interfaz pueden ser utilizados para ubicar un plano Pseudo3D.
-            </summary>
-        </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Mode7.GdipMode7PlaneShaded">
             <summary>
             Esta clase representa un mapa de Mode7 renderizado con GDI+, pero que 
@@ -7293,12 +7341,6 @@
             <summary>
             Obtiene la textura para renderizar dependiendo de los parámetros de sombreado definidos.
             </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7PlaneShaded.Mode7PlaneShadeBrush">
-            <summary>
-            Modifica la brocha de tipo <see cref="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7PlaneBrush"/> para que reaccione a la
-            luz ambiental de la región.
-            </summary>
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Mode7.Mode7PlaneShadingEnum">
             <summary>
@@ -7314,57 +7356,6 @@
             <summary>
             "Techo" del entorno.
             </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.Z">
-            <summary>
-            Altura Y del plano tridimensional sobre el cuál se debe dibujar el plano de Mode7.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.infiniteScroll">
-            <summary>
-            Indica si se debe renderizar como un scroll infinito.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.colorKeyValue">
-            <summary>
-            Color a mostrar fuera de los límites de la imagen.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.Scale">
-            <summary>
-            Escala con la cual se debe representar el mapa en Mode7.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.OnRendering">
-            <summary>
-            Permite ejecutar código antes de renderizar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.SampleOrDefault(System.Int32,System.Int32)">
-            <summary>
-            Obtiene el color del pixel en las coordenadas indicadas por parámetro.
-            </summary>            
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.Sample(System.Int32,System.Int32)">
-            <summary>
-            Permite customizar el color que se dibuja en el la posición actual, modificando el valor y/o
-            las coordenadas.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.ColorKey">
-            <summary>
-            Obtiene o establece el "color de fondo" del plano.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.CreateBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext)">
-            <summary>
-            Obtiene una brocha para rellenar secciones con este plano.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase.CreateBrushY0(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext)">
-            <summary>
-            Obtiene una brocha para rellenar secciones con este plano.
-            </summary>        
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7ViewY0">
             <summary>
@@ -7383,7 +7374,7 @@
             mantienen la cámara apuntando en un ángulo fijo.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7ViewY0.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7ViewY0.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Planes.IPlotPlane)">
             <summary>
             Obtiene una brocha para renderizar con el plano indicado por parámetro.
             </summary>
@@ -7459,15 +7450,20 @@
         </member>
         <member name="F:Kriptok.Modes.Pseudo3D.Mode7.TiltMode7View.regionWidth">
             <summary>
-            Ancho de la región donde ser renderiza.
+            Tamaño de la región donde ser renderiza.
             </summary>
         </member>
         <member name="F:Kriptok.Modes.Pseudo3D.Mode7.TiltMode7View.regionHeight">
             <summary>
-            Alto de la región donde se renderiza.
+            Tamaño de la región donde ser renderiza.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.TiltMode7View.#ctor(System.Drawing.Rectangle,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.TiltMode7View.regionWidthF">
+            <summary>
+            Ancho de la región donde ser renderiza.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.TiltMode7View.#ctor(System.Drawing.Rectangle,Kriptok.Modes.Planes.IPlotPlane)">
             <summary>
             Esta vista renderiza un plano en una perspectiva tridimensional.
             </summary>        
@@ -7545,59 +7541,9 @@
             Esta vista renderiza un plano en una perspectiva tridimensional.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.GdipMode7View.CreateGdipScrollingBackground(Kriptok.Modes.Pseudo3D.Backgrounds.HorizontalScrollArgs,System.Reflection.Assembly,System.String)">
-            <summary>
-            Obtiene una instancia de un fondo scrolleable para este modo de renderización.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotAnimatedMode7Plane">
-            <summary>
-            Esta clase representa un bitmap preparador para ser dibujado en Mode7.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.PlotAnimatedMode7Plane.XTiles">
-            <summary>
-            Para imágenes indexadas, indica cuántos tiles hay en horizontal.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.PlotAnimatedMode7Plane.TileAnimationIndexes">
-            <summary>
-            Índices de los tiles que deben mostrarse para generar la animación del plano.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.PlotAnimatedMode7Plane.TileAnimation">
-            <summary>
-            Indica la posición del array del TileAnimationIndexes se encuentra.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Mode7.PlotAnimatedMode7Plane.AnimationSpeed">
-            <summary>
-            Velocidad a la cual se deben actualizar los tiles animados.
-            </summary>
-        </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7PlaneBrush">
             <summary>
             Representa una brocha que toma la información de colores de un plano de Mode7.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7Plane`1">
-            <summary>
-            Esta clase representa un bitmap preparador para ser dibujado en Mode7.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Mode7.TiledMode7Plane`1">
-            <summary>
-            Vista de plano en perspectiva.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Modes.Pseudo3D.Mode7.TiledMode7Plane">
-            <summary>
-            Vista de plano en perspectiva.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Modes.Pseudo3D.Mode7.TiledMode7Plane.TileAnimatedSpeed">
-            <summary>
-            Velocidad a la cual se deben actualizar los tiles animados del mapa.
             </summary>
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View">
@@ -7620,7 +7566,7 @@
             Vista de plano en perspectiva.
             </summary>
         </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View`1.Plane">
+        <member name="F:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View`1.groundPlane">
             <summary>
             Plano inferior.
             </summary>
@@ -7630,10 +7576,173 @@
             Utilizado cuando el Mode7 también tiene un "techo".
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View`1.#ctor(System.Drawing.Rectangle,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View`1.#ctor(System.Drawing.Rectangle,Kriptok.Modes.Planes.IPlotPlane)">
             <summary>
-            Esta vista renderiza un plano en una perspectiva tridimensional.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View"/>.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View`1.#ctor(System.Drawing.Rectangle,Kriptok.Modes.Planes.TileMapPlane)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View"/>.
+            </summary>  
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode">
+            <summary>
+            Clase base para fondos con perspectiva Pseudo3D, que utilizan un buffer
+            para renderizar pixel por pixel.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1">
+            <summary>
+            Clase base para fondos con perspectiva Pseudo3D, que utilizan un buffer
+            para renderizar pixel por pixel.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.regionWidth">
+            <summary>
+            Ancho de la región. Utilizado en algunos cálculos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.regionHeight">
+            <summary>
+            Alto de la región. Utilizado en algunos cálculos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.#ctor(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.#ctor(System.Drawing.Rectangle)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DMode"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.GetScan0">
+            <summary>
+            Obtiene un puntero a la posición inicial del buffer de pixels.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.Dispose">
+            <summary>
+            Libera los recursos de la vista.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterSolidLine(System.Int32,System.UInt32)">
+            <summary>
+            Rasteriza una linea de un color determinado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterFilterLine(System.Int32,Kriptok.Modes.Ambient.Base.IColorTransformation)">
+            <summary>
+            Aplica el filtro indicado a la línea indicada.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.Plot(System.UInt32*,System.UInt32)">
+            <summary>
+            Pone el pixel indicado del color indicado, pero realiza las validaciones
+            necesarias para saber que todo está funcionando perfectamente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterColumn(System.UInt32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Dibuja una línea vertical en base a los parámetros indicados.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.RasterColumn(System.UInt32,System.Int32,System.UInt32*)">
+            <summary>
+            Rasteriza una columna de pixels según los parámetros indicados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.BufferedPseudo3DModeBase`1.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Planes.IPlotPlane)">
+            <summary>
+            Obtiene una brocha para renderizar con el plano indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.IPseudo3DView.SetCamera``1(``0)">
+            <summary>
+            Establece el objeto sobre el cual se enfoca el modo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.IBufferedPseudo3DMode.RasterFilterLine(System.Int32,Kriptok.Modes.Ambient.Base.IColorTransformation)">
+            <summary>
+            Aplica el filtro indicado a la línea indicada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Base.IBufferedPseudo3DMode.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Planes.IPlotPlane)">
+            <summary>
+            Obtiene una brocha para renderizar con el plano indicado por parámetro.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCamera">
+            <summary>
+            Cámara para interfaces Pseudo3D que modifica su Y-Shearing para apuntar a un objeto.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCamera.Height">
+            <summary>
+            Altura a la que se encuentra la cámara.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.AutoShearPseudo3DCameraBase">
+            <summary>
+            Cámara para interfaces Pseudo3D que modifica su Y-Shearing para apuntar a un objeto.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.OpenPseudo3DCamera">
+            <summary>
+            Representa una cámara de Pseudo3D fácil y rápida de implementar.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.OpenPseudo3DCamera.Height">
+            <summary>
+            Altura a la que se encuentra la cámara.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCamera">
+            <summary>
+            Cámara en modo Pseudo3D recomendada para interfaces en primera persona.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCamera.Height">
+            <summary>
+            Altura a la que se encuentra la cámara.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.Pseudo3DWithMouseLookCameraBase">
+            <summary>
+            Cámara en modo Pseudo3D recomendada para interfaces en primera persona.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera">
+            <summary>
+            Cámara utilizada para definir el comportamiento de la cámara en interfaces Pseudo3D.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera.GetYShearing(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single,System.Single)">
+            <summary>
+            Obtiene el valor de Y-Shearing que debe presentar la cámara en el siguiente frame.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera.GetCameraHeight">
+            <summary>
+            Obtiene la altura de la cámara (la posición sobre el eje Z).
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.TargetPseudo3DCameraBase">
+            <summary>
+            Cámara para interfaces Pseudo3D que tiene un Y-shearing variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCameraExtensions.GetCamData(Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DCamera)">
+            <summary>
+            Obtiene las propiedades de la cámara para renderizar.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Modes.Pseudo3D.Cameras.IPseudo3DTarget">
+            <summary>
+            Los objetos que implementan esta interfaz pueden ser utilizados para ubicar un plano Pseudo3D.
+            </summary>
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.ShadingAlgorithmEnum">
             <summary>
@@ -7817,16 +7926,6 @@
             <summary>
             Aplica transformaciones de color correspondiente a la renderización
             de líneas verticales texturadas.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext.GetSampleFloorShade">
-            <summary>
-            Obtiene el nivel de incidencia de la luz para un plano "piso".
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext.GetSampleCeilingShade">
-            <summary>
-            Obtiene el nivel de incidencia de la luz para un plano "techo".
             </summary>
         </member>
         <member name="M:Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext.GetGdipFloorShade">
@@ -8171,7 +8270,7 @@
             Valor que indica que no se deben aplicar sombreados sobre los polígonos.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext.GetPlaneBrush(Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+        <member name="M:Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext.GetPlaneBrush(Kriptok.Modes.Planes.IPlotPlane)">
             <summary>
             Crea una brocha para renderizar el piso o techo.
             </summary>        
@@ -8540,7 +8639,7 @@
             Genera una vista basada en un mapa de tipo Ray-Casting, pero con un ángulo de cámara fijo.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewModeY0.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Pseudo3D.Mode7.Base.PlotMode7PlaneBase)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Gfps.PlotGfpsViewModeY0.CreatePlaneBrush(Kriptok.Modes.Pseudo3D.BufferedPseudo3DRenderContext,Kriptok.Modes.Planes.IPlotPlane)">
             <summary>
             Obtiene una brocha para renderizar con el plano indicado por parámetro.
             </summary>
@@ -8886,13 +8985,13 @@
             Renderiza la partición.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition.IntersectinWithPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Drawing.Algebra.Vector2F,System.Single,System.Single,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition.IntersectingWithPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Busca la intersección entre el segmento definido por lós vértices pasados por parámetro
             y las particiones adyascentes.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition.IntersectNextPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Detecta intersecciones recursivamente entre los vértices indicados por parámetro
             y las paredes de los mapas.
@@ -8902,16 +9001,6 @@
             <summary>
             Excluye del buffer de renderizado las partes ocluídas por los vectores definidos
             en la vista.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8SectorPlane.TextureScale">
-            <summary>
-            Escalamiento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8SectorPlane.DefaultState">
-            <summary>
-            Indica si debe aplicar transformacines 
             </summary>        
         </member>
         <member name="T:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Texset">
@@ -8965,7 +9054,7 @@
             Obtiene la máxima/mínima coordenada Z para la ubicación indicada.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8View.ValidateLocation(Kriptok.Entities.Wld.IM8Entity,System.Action)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8View.ValidateLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
             <summary>
             Valida que el objeto pueda realizar el movimiento que intenta.
             </summary>
@@ -9026,7 +9115,7 @@
             Renderiza el piso y el techo de la partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Indica si este lado intersecta con el segmento definido por los dos vectores indicados por parámetro.
             
@@ -9040,7 +9129,7 @@
             segmento no intersecta con ningún "lado", o bien intersecta con una pared (lado que no a a otra partición).
             </returns>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IM8Entity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9048,7 +9137,7 @@
             <returns>Devuelve <see cref="!:true"/>, si ha encontrado la intersección, y 
             <see cref="!:false"/> de lo contrario.</returns>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.IntersectNextPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
@@ -9112,7 +9201,7 @@
             bordes superior e inferior de la pantalla.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.Intersects(Kriptok.Entities.Wld.IM8Entity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9131,7 +9220,7 @@
             Asigna la partición a la cual da este lado.
             </summary>    
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.IntersectNextPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
@@ -9159,7 +9248,7 @@
             Indica si el portal hacia la siguiente partición está abierto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.IntersectNextPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
@@ -9176,7 +9265,7 @@
             Renderiza el "lado" en la pantalla, cuando no da a ninguna partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.Intersects(Kriptok.Entities.Wld.IM8Entity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9184,7 +9273,7 @@
             <returns>Devuelve <see cref="!:true"/>, si ha encontrado la intersección, y 
             <see cref="!:false"/> de lo contrario.</returns>
         </member>
-        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.IntersectNextPartition(Kriptok.Entities.Wld.IM8Entity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Modes.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
@@ -9772,6 +9861,11 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Scroll.Base.GdipScrollLayerBase"/>.
             </summary>
         </member>
+        <member name="M:Kriptok.Modes.Scroll.Base.GdipScrollLayerBase.#ctor(Kriptok.Drawing.FastBitmap,System.Boolean,System.Boolean)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Scroll.Base.GdipScrollLayerBase"/>.
+            </summary>
+        </member>
         <member name="M:Kriptok.Modes.Scroll.Base.GdipScrollLayerBase.#ctor(System.Drawing.Bitmap,System.Boolean,System.Boolean)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Scroll.Base.GdipScrollLayerBase"/>.
@@ -9950,6 +10044,11 @@
             </summary>
         </member>
         <member name="M:Kriptok.Modes.Scroll.GdipBrushScrollLayer.#ctor(Kriptok.Common.Resource,System.Boolean,System.Boolean)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Scroll.GdipBrushScrollLayer"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Modes.Scroll.GdipBrushScrollLayer.#ctor(Kriptok.Drawing.FastBitmap,System.Boolean,System.Boolean)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Scroll.GdipBrushScrollLayer"/>.
             </summary>
@@ -10965,7 +11064,7 @@
             Obtiene la altura del piso para las coordenadas indicadas por parámetro.
             </summary>
         </member>
-        <member name="M:Kriptok.Modes.Partitioned.Wld.IWldView.ValidateLocation(Kriptok.Entities.Wld.IM8Entity,System.Action)">
+        <member name="M:Kriptok.Modes.Partitioned.Wld.IWldView.ValidateLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
             <summary>
             Valida que el objeto pueda ubicarse en la posición final luego de un movimiento.
             
@@ -11229,19 +11328,29 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Partitioned.Wld.WldSectorBase"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Partitioned.Wld.WldSectorBase.SetBottomHeight(System.Int32)">
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase.BottomHeight">
             <summary>
             Establece la altura del plano del piso del sector.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Partitioned.Wld.WldSectorBase.SetTopHeight(System.Int32)">
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase.TopHeight">
             <summary>
             Actualiza la altura del plano del techo del sector.
             </summary>        
         </member>
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase.BottomTextureLocation">
+            <summary>
+            Establece la "traslacion" de la textura del piso.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase.TopTextureLocation">
+            <summary>
+            Establece la "traslacion" de la textura del techo.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6">
             <summary>
-            Clase base para implementaciones de <see cref="!:WldSector"/>. 
+            Clase base para implementaciones de <see cref="T:Kriptok.Modes.Partitioned.Wld.WldSectorBase"/>. 
             </summary>
         </member>
         <member name="F:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6.Floor">
@@ -11264,12 +11373,12 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Modes.Partitioned.Wld.WldSectorBase"/>.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6.SetBottomHeight(System.Int32)">
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6.BottomHeight">
             <summary>
             Establece la altura del plano del piso del sector.
             </summary>        
         </member>
-        <member name="M:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6.SetTopHeight(System.Int32)">
+        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorBase`6.TopHeight">
             <summary>
             Actualiza la altura del plano del techo del sector.
             </summary>        
@@ -11294,9 +11403,22 @@
             Altura del plano.
             </summary>
         </member>
-        <member name="P:Kriptok.Modes.Partitioned.Wld.WldSectorPlaneBase`1.Texture">
+        <member name="F:Kriptok.Modes.Partitioned.Wld.WldSectorPlaneBase`1.Texture">
             <summary>
             Textura para renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Partitioned.Wld.WldSectorPlaneBase`1.TextureLocation">
+            <summary>
+            Traslación de la textura.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Modes.Partitioned.Wld.WldSectorPlaneBase`1.TextureScale">
+            <summary>
+            Escalamiento de la textura.
+            
+            La escala no se puede cambiar durante el juego porque siempre toma como centro
+            la coordenada (0, 0), no se puede "centrar" en el medio del sector que está afectando.
             </summary>
         </member>
         <member name="M:Kriptok.Modes.Partitioned.Wld.WldSectorPlaneBase`1.#ctor(Kriptok.Maps.Partitioned.Wld.WldSurfaceX,`0)">
@@ -11991,8 +12113,8 @@
         </member>
         <member name="P:Kriptok.Entities.Base.EntityBase.View">
             <summary>
-            Propiedad que indica el gráfico que debe renderizar asociado a este proceso.
-            </summary>        
+            Representación gráfica de esta entidad.
+            </summary>
         </member>
         <member name="M:Kriptok.Entities.Base.EntityBase.DistX(Kriptok.Entities.Base.EntityBase)">
             <summary>
@@ -12766,73 +12888,83 @@
             Coordenadas de la puerta, dentro de la cuadrícula del mapa.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.Wld.IM8Entity">
+        <member name="T:Kriptok.Entities.Wld.IWldEntity">
             <summary>
             Interfaz de una entidad de un mapa de M8.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8Entity.GetRadius">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.GetRadius">
             <summary>
             Obtiene el radio utilizado para validar la posición de la entidad en el mapa.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8Entity.GetLocationZ">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.GetLocationZ">
             <summary>
             Obtiene la coordenada Z de la ubicación tridimensional del objeto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8Entity.GetHeight">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.GetHeight">
             <summary>
             Obtiene la altura del objeto para saber si puede acceder a determinados sectores.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8Entity.GetStepHeight">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.GetStepHeight">
             <summary>
             Obtiene la altura que puede "subir" un objeto al moverse de un sector a otro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8Entity.UpdateData(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF)">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.UpdateData(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF)">
             <summary>
             Actualiza las propiedades de la entidad, indicado las coordenadas bidimensionales calculadas,
             así como los límites superior e inferior del área en que se encuentra.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IM8EntityExtensions.GetTopHeight(Kriptok.Entities.Wld.IM8Entity)">
+        <member name="M:Kriptok.Entities.Wld.IM8EntityExtensions.GetTopHeight(Kriptok.Entities.Wld.IWldEntity)">
             <summary>
             Obtiene la altura vertical donde "termina" el objeto.
             </summary>        
         </member>
-        <member name="T:Kriptok.Entities.Wld.M8EntityBase">
+        <member name="T:Kriptok.Entities.Wld.WldEntityBase`1">
             <summary>
-            Entidad sincrónica básica para objetos de M8.
+            Entidad sincrónica básica para objetos de mapas WLD.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Wld.M8EntityBase.map">
+        <member name="P:Kriptok.Entities.Wld.WldEntityBase`1.View">
+            <summary>
+            Representación gráfica de esta entidad.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Wld.WldEntityBase">
+            <summary>
+            Entidad sincrónica básica para objetos de mapas WLD.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Wld.WldEntityBase.map">
             <summary>
             Referencia al mapa de M8 en el cual que se encuentra la entidad.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Wld.M8EntityBase.jumpHandler">
+        <member name="F:Kriptok.Entities.Wld.WldEntityBase.jumpHandler">
             <summary>
             Controlador de saltos y caídas.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Wld.M8EntityBase.floorHeight">
+        <member name="F:Kriptok.Entities.Wld.WldEntityBase.floorHeight">
             <summary>
             Altura del piso del sector donde me encuentro.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Wld.M8EntityBase.ceilingHeight">
+        <member name="F:Kriptok.Entities.Wld.WldEntityBase.ceilingHeight">
             <summary>
             Altura del techo del sector donde me encuentro.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Wld.M8EntityBase.OnFrame(System.Single)">
+        <member name="M:Kriptok.Entities.Wld.WldEntityBase.OnFrame(System.Single)">
             <summary>
             Comportamiento de la entidad dentro de un entorno de validación de M8.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.M8EntityBase.Jump(System.Single)">
+        <member name="M:Kriptok.Entities.Wld.WldEntityBase.Jump(System.Single)">
             <summary>
             Le indica a la entidad que debe realizar un salto con la velocidad indicada.
             </summary>        
@@ -13188,7 +13320,7 @@
             Inicia un modo de renderización en perspectiva axonométrica en la región de pantalla indicada.
             </summary>        
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartMode7(Kriptok.Scenes.SceneHandler,System.Reflection.Assembly,System.String,System.Boolean,System.Action{Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View})">
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartMode7(Kriptok.Scenes.SceneHandler,System.Reflection.Assembly,System.String,System.Action{Kriptok.Modes.Pseudo3D.Mode7.PlotMode7View})">
             <summary>
             Inicializa una interfaz Mode7 en toda la pantalla.
             </summary>        
@@ -13490,19 +13622,21 @@
             <param name="assembly">Ensamblado donde se encuentra el recurso.</param>
             <param name="name">Nombre identificatorio del recurso.</param>
         </member>
+        <member name="F:Kriptok.Common.Resource.Assembly">
+            <summary>
+            Referencia al ensamblado que tiene el recurso.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Common.Resource.Name">
+            <summary>
+            Nombre completo del recurso.
+            </summary>
+        </member>
         <member name="M:Kriptok.Common.Resource.GetStream">
             <summary>
             Obtiene el stream del recurso indicado.
             </summary>
             <returns>Devuelve el stream del recurso indicado.</returns>
-        </member>
-        <member name="M:Kriptok.Common.Resource.UsingStream``1(System.Func{System.IO.Stream,``0})">
-            <summary>
-            Ejecuta una función que recibe por parámetro el stream del recurso.
-            </summary>
-            <typeparam name="T">Tipo del resultado de la función.</typeparam>
-            <param name="func">Función a ejecutar utilizando el stream del recurso.</param>
-            <returns>Devuelve el resultado de la evaluación de la función indicada por parámetro.</returns>
         </member>
         <member name="M:Kriptok.Common.Resource.UsingBitmap(System.Action{System.Drawing.Bitmap})">
             <summary>
@@ -13515,16 +13649,6 @@
             Ejecuta una acción que recibe por parámetro el stream del recurso.
             </summary>        
             <param name="action">Acción a ejecutar utilizando el stream del recurso.</param>        
-        </member>
-        <member name="F:Kriptok.Common.Resource.Assembly">
-            <summary>
-            Referencia al ensamblado que tiene el recurso.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Common.Resource.Name">
-            <summary>
-            Nombre completo del recurso.
-            </summary>
         </member>
         <member name="M:Kriptok.Common.Resource.ReaddAllLines">
             <summary>
@@ -13978,6 +14102,12 @@
             independientemente de su signo.
             </summary>        
         </member>
+        <member name="M:Kriptok.Helpers.MathHelper.SignedMax(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Obtiene el valor que se encuentra más lejos del 0 en la recta numérica,
+            independientemente de su signo.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.MathHelper.SignedMin(System.Single,System.Single)">
             <summary>
             Obtiene el valor que se encuentra más cerca del 0 en la recta numérica,
@@ -14345,7 +14475,7 @@
             Obtiene los límites de la figura para la colisión.
             </summary>        
         </member>
-        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.Get25DBoundValues(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single)">
+        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.GetPseudo3DRenderBounds(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext)">
             <summary>
             Obtiene los límites bidimensionales de la figura, pero centrados en el origen.
             </summary>        
@@ -15099,7 +15229,7 @@
         <member name="M:Kriptok.Views.Shapes.ISampleTexture.Sample(System.Int32,System.Int32)">
             <summary>
             Obtiene el valor de color de la posición indicada por los parámetros.
-            </summary>        
+            </summary>
         </member>
         <member name="M:Kriptok.Views.Shapes.ISampleTexture.SampleUW(System.Int32,System.Int32)">
             <summary>
@@ -16103,9 +16233,9 @@
             Obtiene el rectángulo correspondiente a la vista.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Base.GdipViewBase`1.Get25DBoundValues(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single)">
+        <member name="M:Kriptok.Views.Base.GdipViewBase`1.GetPseudo3DRenderBounds(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext)">
             <summary>
-            Devuelve límites horizontales de la vista para la renderización en <see cref="!:M8View"/>.
+            Devuelve límites horizontales de la vista para la renderización en <see cref="T:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8View"/>.
             </summary>
         </member>
         <member name="M:Kriptok.Views.Base.GdipViewBase`1.Kriptok#Views#Base#ICollisionableRenderizable#GetAutoHitbox">
@@ -16150,9 +16280,9 @@
             Indica que una vista puede ser renderizada interfaces pseudo3D.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Base.IPseudo3DRenderizable.Get25DBoundValues(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single)">
+        <member name="M:Kriptok.Views.Base.IPseudo3DRenderizable.GetPseudo3DRenderBounds(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext)">
             <summary>
-            Devuelve límites horizontales y verticales de la vista para la renderización en <see cref="!:M8View"/>.
+            Devuelve límites horizontales y verticales de la vista para la renderización en <see cref="T:Kriptok.Modes.Pseudo3D.Partitioned.Wld.M8View"/>.
             </summary>
         </member>
         <member name="T:Kriptok.Views.Base.IRectangleRenderizable">
@@ -16737,7 +16867,7 @@
             Obtiene el tamaño de la imagen.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Sprites.SpriteDecoratorViewBase`1.Get25DBoundValues(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext,System.Single)">
+        <member name="M:Kriptok.Views.Sprites.SpriteDecoratorViewBase`1.GetPseudo3DRenderBounds(Kriptok.Modes.Pseudo3D.Pseudo3DRenderContext)">
             <summary>
             Devuelve límites horizontales de la vista para la renderización en modos pseudo3D o "2.5D".
             </summary>

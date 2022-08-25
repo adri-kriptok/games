@@ -4,7 +4,7 @@ using Kriptok.Entities;
 using Kriptok.Entities.Base;
 using System.Drawing;
 
-namespace Tutorials.Level00
+namespace Tutorials.Level0
 {
     public class Explosion : SpriteAnimation
     {
@@ -19,7 +19,7 @@ namespace Tutorials.Level00
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
-            Audio.PlayWave(Assembly, "Level00.Assets.Sounds.Explosion1.wav");
+            Audio.PlayWave(Assembly, "Level0.Assets.Sounds.Explosion1.wav");
         }    
     }    
 }
