@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Level0\Assets\Sounds\Explosion1.wav" />
-    <EmbeddedResource Include="Level0\Assets\Sounds\Shot1.wav" />
+    <EmbeddedResource Include="Assets\Sounds\Shot1.wav" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Level0\Assets\Images\Background.png" />

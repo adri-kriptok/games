@@ -120,7 +120,7 @@ namespace Tutorials.Level1
                     {
                         if (shootCounter <= 0)
                         {
-                            Audio.PlaySound(GetType().Assembly, "Resources.Shot1.wav");
+                            Audio.PlaySound(GetType().Assembly, "Assets.Sounds.Shot1.wav");
                             shootCounter = 5;
                         }
 
