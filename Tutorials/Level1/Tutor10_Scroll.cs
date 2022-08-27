@@ -1,5 +1,4 @@
 ﻿using Kriptok;
-using Kriptok.Common;
 using Kriptok.Core;
 using Kriptok.Div;
 using Kriptok.Drawing;
@@ -8,7 +7,7 @@ using Kriptok.Entities.Base;
 using Kriptok.Entities.Debug;
 using Kriptok.Helpers;
 using Kriptok.IO;
-using Kriptok.Modes.Scroll;
+using Kriptok.Regions.Scroll;
 using Kriptok.Scenes;
 using Kriptok.Views.Sprites;
 using System;
@@ -67,7 +66,7 @@ namespace Tutorials.Level1
     #endif
             }
 
-            class Scroll : ScrollMode
+            class Scroll : ScrollRegion
             {
                 public Scroll(Rectangle region, FastBitmap starsBitmap) : base(region, new GdipBrushScrollLayer(starsBitmap, true, true)
                 {
@@ -97,10 +96,10 @@ namespace Tutorials.Level1
             class Ship : EntityBase<SpriteView>
             {
                 private const float rotation = MathHelper.PIF / 48;
-                private readonly ScrollMode scroll;
+                private readonly ScrollRegion scroll;
                 private int shootCounter;
 
-                public Ship(ScrollMode scroll) : base(new SpriteView(DivResources.Image("Tutorial.Spaceship.png")))
+                public Ship(ScrollRegion scroll) : base(new SpriteView(DivResources.Image("Tutorial.Spaceship.png")))
                 {
                     this.scroll = scroll;
                 }
