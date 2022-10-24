@@ -1157,10 +1157,9 @@
             Último momento en que se tomó el tiempo. Utilizado para calcular el tiempo entre frame y frame.
             </summary>
         </member>
-        <member name="P:Kriptok.Core.ComponentBase.Sys.TimeDelta">
+        <member name="F:Kriptok.Core.ComponentBase.Sys.TimeDelta">
             <summary>
-            Indica el porcentaje de tiempo que pasó entre frame y frame.
-            Se utiliza para generar una 
+            Indica el tiempo en milisegundos que pasó entre frame y frame.            
             </summary>
         </member>
         <member name="F:Kriptok.Core.Game.Threading.aliveThreadsArray">
@@ -1192,11 +1191,6 @@
             <summary>
             Libera los demás threads para que continúe.
             </summary>
-        </member>
-        <member name="M:Kriptok.Core.Game.Threading.GetThreadCount">
-            <summary>
-            Obtiene la cantidad de threads de juego que hay actualmente.
-            </summary>        
         </member>
         <member name="T:Kriptok.Core.Game.Threading.GameThread">
             <summary>
@@ -1318,11 +1312,6 @@
             Resuelve todas las colisiones que se indicaron.
             </summary>
         </member>
-        <member name="M:Kriptok.Core.Game.Collisions.GetQueryCount">
-            <summary>
-            Obtiene la cantidad de queries de colisión a resolver por frame.
-            </summary>        
-        </member>
         <member name="F:Kriptok.Core.Game.aliveObjectsArray">
             <summary>
             Arreglo de entidades vivas en este momento.
@@ -1358,11 +1347,6 @@
             Este lock se utiliza cuando se desea modificar la lista de objetos vivos.
             </summary>    
         </member>
-        <member name="M:Kriptok.Core.Game.GetAliveObjectsCount">
-            <summary>
-            Obtiene la cantidad de objetos vivos en este momento.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Core.RegionBase">
             <summary>
             Esta clase representa una región de la pantalla donde se pueden renderizar vistas.
@@ -1377,11 +1361,6 @@
             <summary>
             Resuelve todas las colisiones que se indicaron.
             </summary>
-        </member>
-        <member name="M:Kriptok.Core.RegionBase.GetQueryCount">
-            <summary>
-            Obtiene la cantidad de queries de colisión a resolver por frame.
-            </summary>        
         </member>
         <member name="F:Kriptok.Core.RegionBase.entities">
             <summary>
@@ -1537,11 +1516,6 @@
             Elimina todas las regiones excepto la principal.
             </summary>
         </member>
-        <member name="M:Kriptok.Core.Window.GetQueryCount">
-            <summary>
-            Obtiene la cantidad de consultas por región que están en este momento en memoria.
-            </summary>        
-        </member>
         <member name="F:Kriptok.Core.WindowSizeEnum.M320x200To240">
             <summary>
             Resolución especial para juegos antiguos que tenían una resolución de 320x200
@@ -1583,15 +1557,218 @@
             Obtiene las coordenadas del punto central de la pantalla.
             </summary>        
         </member>
+        <member name="T:Kriptok.Drawing.Shapes.ContainerTriangle">
+            <summary>
+            Representa un triángulo bidimensional, para validaciones de "contención de puntos".
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.ContainerTriangle.IsInside(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,System.Single,System.Single)">
+            <summary>        
+            https://stackoverflow.com/questions/2049582/how-to-determine-if-a-point-is-in-a-2d-triangle
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Cilinder.Location">
+            <summary>
+            Centro de la esfera.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Cilinder.Radius">
+            <summary>
+            Radio de la esfera.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Drawing.Shapes.Cilinder.Height">
+            <summary>
+            Altura del cilindro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Cilinder.Contains(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Indica si la esfera contiene la coordenada indicada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Circle.Location">
+            <summary>
+            Ubicación del círculo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Circle.Radius">
+            <summary>
+            Radio del círculo.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Drawing.Shapes.Circle.Diameter">
+            <summary>
+            Obtiene el diámetro del círculo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Circle.Overlaps(Kriptok.Drawing.Shapes.Circle,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si hay una superposición entre un círculo y un segmento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Circle.Intersection(Kriptok.Drawing.Shapes.Circle,Kriptok.Drawing.Algebra.Line2D,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Indica si hay una intersección entre una recta y el círculo. Y en caso de encontrarlo,
+            lo devuelve por parámetro de salida.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Circle.Intersection(Kriptok.Drawing.Shapes.Circle,Kriptok.Drawing.Algebra.Segment2D,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Indica si hay una intersección entre un segmento y el círculo. Y en caso de encontrarlo,
+            lo devuelve por parámetro de salida.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Circle.DiffractionIntersection(Kriptok.Drawing.Shapes.Circle,Kriptok.Drawing.Algebra.Segment2D,Kriptok.Drawing.Algebra.Segment2D@)">
+            <summary>
+            Calcula la intersección entre un segmento y un circulo, partiendo
+            el segmento en dos, y reflectándolo sobre el perímetro del círculo.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Sphere.Location">
+            <summary>
+            Centro de la esfera.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Sphere.Radius">
+            <summary>
+            Radio de la esfera.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Sphere.Contains(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Indica si la esfera contiene la coordenada indicada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Sphere.Contains(System.Single,System.Single,System.Single)">
+            <summary>
+            Indica si la esfera contiene la coordenada indicada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Sphere.CollidesWith(Kriptok.Drawing.Shapes.Sphere)">
+            <summary>
+            Indica si la esfera colisiona con la otra.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Contains(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Indica si los límites contienen el punto indicado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Contains(System.Single,System.Single,System.Single)">
+            <summary>
+            Indica si los límites sobre contienen el punto indicado.
+            </summary>     
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Overlaps(Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Verifica si el volumen se superpone con el indicado por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.SetLocation(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Ubica el volumen en la posición indicada.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.ZXY">
+            <summary>
+            Traspone las coordenadas del volumen.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.YZX">
+            <summary>
+            Traspone las coordenadas del volumen.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Scale(System.Single)">
+            <summary>
+            Escala el volumen pero lo mantiene en la misma posición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Scale(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Escala el volumen pero lo mantiene en la misma posición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.ContainsAny(Kriptok.Entities.Collisions.Coll3D.BoundingBox3D)">
+            <summary>
+            Indica si el volumen contiene alguno de los vértices que componen la "bounding-box"
+            indicada por parámetro.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Drawing.Algebra.Segment2D">
             <summary>
             Representa un segmento definido por dos puntos bidimensionales. 
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Algebra.Segment2D.Empty">
+            <summary>
+            Segmento vacío.
             </summary>
         </member>
         <member name="M:Kriptok.Drawing.Algebra.Segment2D.Swap">
             <summary>
             Intercambia los vectores.
             </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Intersection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la intersección entre dos segmentos definidos por pares
+            de vectores de dos dimensiones.
+            
+            Puede devolver <see cref="!:null"/> de no intersectarse.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.GetDirectionVector">
+            <summary>
+            Obtiene un vector dirección de las mismas dimensiones del vector original,
+            pero posicionado sobre el origen de coordenadas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Equals(Kriptok.Drawing.Algebra.Segment2D)">
+            <summary>
+            El segumento es igual, independientemente de la dirección.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.GetLength">
+            <summary>
+            Obtiene la longitud del segmento.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Connects(Kriptok.Drawing.Algebra.Segment2D,Kriptok.Drawing.Algebra.Segment2D)">
+            <summary>
+            Indica si este segmento conecta a los dos indicados por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Contains(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si el vector contiene al vértice indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.ToLine">
+            <summary>
+            Devuelve la recta por la que pasa el segmento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.MidPoint">
+            <summary>
+            Obtiene el punto medio del segmento.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Translate(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Traslada un segmento el vector indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.IntersectsXAxis(System.Single@)">
+            <summary>
+            Indica si el segmento intersecta al eje de coordenadas X.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Segment2D.Rotate(System.Single,System.Single)">
+            <summary>
+            Rota un vector.
+            </summary>        
         </member>
         <member name="T:Kriptok.Drawing.Algebra.ClipLineResultEnum">
             <summary>
@@ -1642,7 +1819,17 @@
         <member name="T:Kriptok.Drawing.Algebra.Line2D">
             <summary>
             Representa una línea bidimensional definida por un vector dirección y un punto.
+            </summary>    
+        </member>
+        <member name="F:Kriptok.Drawing.Algebra.Line2D.Empty">
+            <summary>
+            Una línea vacía sin dirección.
             </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Line2D.#ctor(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Devuelve una nueva instancia de, tipo <see cref="T:Kriptok.Drawing.Algebra.Line2D"/>.
+            </summary>        
         </member>
         <member name="F:Kriptok.Drawing.Algebra.Line2D.Direction">
             <summary>
@@ -1665,6 +1852,24 @@
             y una recta definida por un punto que pasa por el (0, 0)
             </summary>
         </member>
+        <member name="M:Kriptok.Drawing.Algebra.Line2D.AreParallel(Kriptok.Drawing.Algebra.Line2D,Kriptok.Drawing.Algebra.Line2D)">
+            <summary>
+            Indica si dos rectas son paralelas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Line2D.ArePerpendicular(Kriptok.Drawing.Algebra.Line2D,Kriptok.Drawing.Algebra.Line2D)">
+            <summary>
+            Indica si dos rectas son perpendiculares.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Line2D.OrthogonalProjection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Line2D)">
+            <summary>
+            Proyecta ortogonalmente un punto sobre la línea.
+            
+            Básicamente lo que hace es encontrar la interscción entre una recta,
+            y otra recta perpendicular que pasa por el punto indicado.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Drawing.Algebra.Matrix2x3F.Multiply(Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
             Este método devuelve un punto que corresponde a la multiplicación de la matriz por el punto.
@@ -1683,22 +1888,6 @@
             </summary>        
         </member>
         <member name="M:Kriptok.Drawing.Algebra.Matrix2x3F.Multiply(System.Single,System.Single)">
-            <summary>
-            Este método devuelve un punto que corresponde a la multiplicación de la matriz por el punto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Algebra.Matrix2x3F.Multiply00">
-            <summary>
-            Este método devuelve un punto que corresponde a la 
-            multiplicación de la matriz por el punto (0f, 0f).
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Algebra.Matrix2x3F.MultiplyX0(System.Single)">
-            <summary>
-            Este método devuelve un punto que corresponde a la multiplicación de la matriz por el punto.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Algebra.Matrix2x3F.Multiply0Y(System.Single)">
             <summary>
             Este método devuelve un punto que corresponde a la multiplicación de la matriz por el punto.
             </summary>        
@@ -1867,6 +2056,11 @@
             Estructura vectorial de dos dimensiones.
             </summary>    
         </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.GetDistance(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Calcula la distancia entre dos vectores.
+            </summary>
+        </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Extend(System.Single)">
             <summary>
             Transforma un vector bidimensional en uno tridimencional.
@@ -1880,7 +2074,7 @@
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Minus(Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
             Resta un vector del otro, devolviendo la diferencia.
-            </summary>        
+            </summary>       
         </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Minus(Kriptok.Drawing.Vector2I)">
             <summary>
@@ -1932,17 +2126,14 @@
             Clippea contra los límites (Y = 0) y (Y = maxY) el vector indicado.
             </summary>
         </member>
-        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Intersection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la intersección entre dos segmentos definidos por pares
-            de vectores de dos dimensiones.
-            
-            Puede devolver <see cref="!:null"/> de no intersectarse.
-            </summary>
-        </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Rotate(System.Single)">
             <summary>
             Rota un vector el ángulo indicado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Rotate(System.Single,System.Single)">
+            <summary>
+            Rota un vector sobre un ángulo definido por el seno y el coseno indicados por parámetro.
             </summary>
         </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.ClipY0(System.Single,Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
@@ -1970,6 +2161,54 @@
             <summary>
             Calcula el doble del área interior de un triángulo dado por tres <see cref="T:System.Drawing.PointF"/>.
             </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.GetAngle">
+            <summary>
+            Obtiene el ángulo del vector.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.GetAngleCos">
+            <summary>
+            Obtiene el coseno del ángulo del vector.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.GetNorm">
+            <summary>
+            Obtiene la norma del vector.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Project(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            https://gamedev.stackexchange.com/questions/70252/how-can-i-project-a-vector-on-another-vector
+            https://stackoverflow.com/questions/26958198/vector-projection-rejection-in-c
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.AngleBetween(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene el ángulo entre dos vectores.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.SortClockwise(Kriptok.Drawing.Algebra.Vector2F@,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Ordena dos vectores en sentido de las agujas del reloj (pero en el plano X, Y),
+            si se considera Y "hacia arriba". De lo contrario, como funciona el sistema de coordenadas
+            del monitor, en que Y va "hacia abajo", sería contrario a las agujas del reloj.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.BiggerAngle(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si un vector tiene un ángulo mayor al otro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.ArePerpendicular(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si dos vectores son perpendiculares.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.AreParallel(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si los vectores son paralelos.
+            </summary>        
         </member>
         <member name="T:Kriptok.Drawing.Algebra.Vector3F">
             <summary>
@@ -2107,9 +2346,19 @@
             Obtiene o establece el valor del pixel en la ubicación indicada por parámetro.
             </summary>        
         </member>
+        <member name="M:Kriptok.Drawing.IndexedBitmapBuilder.GetBitmap">
+            <summary>
+            Genera una imagen con los datos cargados.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Drawing.IndexedBitmapBuilder.GetBytes">
             <summary>
             Obtiene los bytes del mapa de bits.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.IndexedBitmapBuilder.SetPalette(System.Byte,System.Drawing.Color)">
+            <summary>
+            Establece un color de la paleta.
             </summary>        
         </member>
         <member name="M:Kriptok.Drawing.IndexedBitmapBuilder.GetWidth(System.Int32)">
@@ -2126,6 +2375,11 @@
             <summary>
             Copia un mapa de bits indexado al mapa de bits actual.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.IndexedBitmapBuilder.Clear">
+            <summary>
+            Limpia el mapa de bits.
+            </summary>
         </member>
         <member name="T:Kriptok.Drawing.IndexedBitmapBuilder.IndexedBitmap">
             <summary>
@@ -2146,97 +2400,6 @@
             <summary>
             Constructor de bitmaps de 256 colores en escala de grises.
             </summary>
-        </member>
-        <member name="F:Kriptok.Drawing.Shapes.Cilinder.Location">
-            <summary>
-            Centro de la esfera.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Drawing.Shapes.Cilinder.Radius">
-            <summary>
-            Radio de la esfera.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Drawing.Shapes.Cilinder.Height">
-            <summary>
-            Altura del cilindro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Cilinder.Contains(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Indica si la esfera contiene la coordenada indicada.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Drawing.Shapes.Sphere.Location">
-            <summary>
-            Centro de la esfera.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Drawing.Shapes.Sphere.Radius">
-            <summary>
-            Radio de la esfera.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Sphere.Contains(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Indica si la esfera contiene la coordenada indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Sphere.Contains(System.Single,System.Single,System.Single)">
-            <summary>
-            Indica si la esfera contiene la coordenada indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Sphere.CollidesWith(Kriptok.Drawing.Shapes.Sphere)">
-            <summary>
-            Indica si la esfera colisiona con la otra.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.Contains(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Indica si los límites contienen el punto indicado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.Contains(System.Single,System.Single,System.Single)">
-            <summary>
-            Indica si los límites sobre contienen el punto indicado.
-            </summary>     
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.Overlaps(Kriptok.Drawing.Shapes.Volume)">
-            <summary>
-            Verifica si el volumen se superpone con el indicado por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.SetLocation(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Ubica el volumen en la posición indicada.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.ZXY">
-            <summary>
-            Traspone las coordenadas del volumen.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.YZX">
-            <summary>
-            Traspone las coordenadas del volumen.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.Scale(System.Single)">
-            <summary>
-            Escala el volumen pero lo mantiene en la misma posición.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.Scale(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Escala el volumen pero lo mantiene en la misma posición.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.ContainsAny(Kriptok.Entities.Collisions.Coll3D.BoundingBox3D)">
-            <summary>
-            Indica si el volumen contiene alguno de los vértices que componen la "bounding-box"
-            indicada por parámetro.
-            </summary>        
         </member>
         <member name="T:Kriptok.Drawing.Hsv">
             <summary>
@@ -2306,12 +2469,6 @@
             </summary>        
         </member>
         <member name="M:Kriptok.Drawing.BoundF2.Intersects(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Indica si el rectángulo formado por los vértices indicados por parámetro se intersecta con
-            el rectángulo actual.
-            </summary>      
-        </member>
-        <member name="M:Kriptok.Drawing.BoundF2.Intersects(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
             <summary>
             Indica si el rectángulo formado por los vértices indicados por parámetro se intersecta con
             el rectángulo actual.
@@ -2405,11 +2562,6 @@
         <member name="F:Kriptok.Drawing.FastBitmap.on">
             <summary>
             Objteo utilizado para lockear el sistema hasta liberar un recursos.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Drawing.FastBitmap.resourceName">
-            <summary>
-            Nombre del recurso utilizado para generar este bitmap.
             </summary>
         </member>
         <member name="F:Kriptok.Drawing.FastBitmap.Width">
@@ -2560,11 +2712,6 @@
             A utility function to calculate area of triangle formed by (x1, y1),   (x2, y2) and (x3, y3) 
             </summary>                
         </member>
-        <member name="M:Kriptok.Drawing.Triangle2D.IsInside(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,System.Single,System.Single)">
-            <summary>        
-            https://stackoverflow.com/questions/2049582/how-to-determine-if-a-point-is-in-a-2d-triangle
-            </summary>
-        </member>
         <member name="M:Kriptok.Drawing.Triangle2D.IsInside(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)">
             <summary>
             A function to check whether point P(x, y) lies inside the triangle formed by A(x1, y1), B(x2, y2) and C(x3, y3)
@@ -2704,6 +2851,11 @@
             Lista de recursos que sí están accessibles en el ensamblado indicado.
             </summary>
         </member>
+        <member name="P:Kriptok.Exceptions.CoordinateOutOfMapException.Coordinate">
+            <summary>
+            Coordenada que se encuentra fuera del mapa.
+            </summary>
+        </member>
         <member name="M:Kriptok.Extensions.MemoryMappedFileExtensions.WriteStr(System.IO.MemoryMappedFiles.MemoryMappedFile,System.String)">
             <summary>
             Escribe un mensaje en la posición 0.
@@ -2831,7 +2983,7 @@
         <member name="T:Kriptok.Extensions.FloatExtensions">
             <summary>
             Funcionalidades extendidas del tipo <see cref="T:System.Single"/>.
-            </summary>
+            </summary>    
         </member>
         <member name="M:Kriptok.Extensions.FloatExtensions.Floor(System.Single)">
             <summary>
@@ -3175,11 +3327,6 @@
             <summary>
             Indica si debe detener el juego completamente, y cerrarlo.
             </summary>
-        </member>
-        <member name="F:Kriptok.Forms.FormBase.GameStartedTime">
-            <summary>
-            Utilizado en tiempo de desarrollo para 
-            </summary>        
         </member>
         <member name="M:Kriptok.Forms.FormBase.#ctor">
             <summary>
@@ -3951,11 +4098,6 @@
         <member name="T:Kriptok.Maps.Tiles.Map2DTile">
             <summary>
             Esta clase representa un tile común en un mapa bidimensional.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Maps.Tiles.Map2DTile.Id">
-            <summary>
-            Id único del objeto.
             </summary>
         </member>
         <member name="F:Kriptok.Maps.Tiles.Map2DTile.currentTile">
@@ -5406,11 +5548,6 @@
             Indica si la partición contiene el punto indicado por parámetro.
             </summary>        
         </member>
-        <member name="P:Kriptok.Maps.Partitioned.Wld.WldPartitionSideX.WindowToPartitionId">
-            <summary>
-            Esta propiedad es sólo para debug, y análisis.
-            </summary>
-        </member>
         <member name="P:Kriptok.Maps.Partitioned.Wld.WldPartitionSideX.PortalToSectorId">
             <summary>
             Indica a qué sector conecta este lado.
@@ -6277,11 +6414,6 @@
             <summary>
             Establece la distancia de renderización que se estará utilizando.
             </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Context.Base.IRenderContextExtensions.RenderAxis(Kriptok.Regions.Context.Base.IRenderContext,System.Single)">
-            <summary>
-            Renderiza el eje de coordenadas para tener 
-            </summary>        
         </member>
         <member name="M:Kriptok.Regions.Context.Base.IRenderContextExtensions.Project3D(Kriptok.Regions.Context.Base.IRenderContext,Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
@@ -7353,11 +7485,6 @@
             Coordenada V de la textura.
             </summary>
         </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.GaroudShading.PlaneSample3.Z">
-            <summary>
-            Distancia del punto a la cámara. Sólo disponible en modo DEBUG.
-            </summary>
-        </member>
         <member name="F:Kriptok.Regions.Pseudo3D.GaroudShading.PlaneSample3.W">
             <summary>
             Distancia del punto "sampleado" a la cámara.
@@ -7692,11 +7819,6 @@
             Alto de la región. Utilizado en algunos cálculos.
             </summary>
         </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegionBase`1.regionLength">
-            <summary>
-            Tamaño de la región en la que estoy dibujando.
-            </summary>
-        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegionBase`1.#ctor(System.Drawing.Rectangle,System.Drawing.Imaging.PixelFormat)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegion"/>.
@@ -7803,6 +7925,12 @@
             Cámara en modo Pseudo3D recomendada para interfaces en primera persona.
             </summary>
         </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.Pseudo3DWithMouseLookCameraBase.GetVerticalAngle">
+            <summary>
+            Obtiene el "ángulo" vertical en el que está "mirando" la cámara, calculando un 
+            ángulo aproximado en base al Y-Shearing y al campo de visión.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Cameras.IPseudo3DCamera">
             <summary>
             Cámara utilizada para definir el comportamiento de la cámara en interfaces Pseudo3D.
@@ -7862,21 +7990,6 @@
             <summary>
             Se utiliza para ahorrar algunos cálculos, indicando si debe o no escalara verticalmente
             los vértices.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.PlotViewWrapper">
-            <summary>
-            Esta vista es sólo para debug y pruebas.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.PlotViewWrapper.PlotFlatVerticalQuadView">
-            <summary>
-            Representa un panel vertical para planos pseudo3D.        
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.PlotViewWrapper.PlotTexturedVerticalQuadView">
-            <summary>
-            Representa un panel vertical para planos pseudo3D.        
             </summary>
         </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Pseudo3DVerticalTexturedPanelUVBase`1">
@@ -8310,11 +8423,6 @@
             superior e inferior del Y-Buffer para la columna indicada.
             </summary>        
         </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.GdipTexturedVerticalQuadView">
-            <summary>
-            Represnta una panel vertical para planos pseudo3D.
-            </summary>
-        </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion">
             <summary>
             Plano básico de un terreno Voxel.
@@ -8421,11 +8529,6 @@
             Valor al cual se resetean las columnas del buffer.
             </summary>
         </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.YBufferBase.regionHeight">
-            <summary>
-            Alto de la pantalla.
-            </summary>
-        </member>
         <member name="F:Kriptok.Regions.Pseudo3D.YBufferBase.renderHeight">
             <summary>
             Listado del estado actual de las columnas.
@@ -8445,11 +8548,6 @@
             <param name="width">Tamaño de la pantalla.</param>
             <param name="height">Tamaño de la pantalla.</param>
             <param name="resetValue">Valor al cual se resetean las columnas del buffer.</param>
-        </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.YBufferBase.Width">
-            <summary>
-            Ancho del buffer;
-            </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.YBufferBase.Reset">
             <summary>
@@ -8778,11 +8876,6 @@
             Representa a los paneles que se renderizan por la mitad del tile.
             </summary>
         </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Gfps.GdipGfpsPanel.Id">
-            <summary>
-            Id único del objeto.
-            </summary>
-        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Gfps.GdipGfpsPanel.GetWrapper">
             <summary>
             Obtiene un wrapper para esta vista.
@@ -8806,15 +8899,31 @@
             Representa a los paneles que se renderizan por la mitad del tile.
             </summary>
         </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Gfps.PlotGfpsPanel.Id">
-            <summary>
-            Id único del objeto.
-            </summary>
-        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Gfps.PlotGfpsPanel.GetWrapper">
             <summary>
             Obtiene un wrapper para este panel.
             </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.PartitionSideIntersectionResultEnum">
+            <summary>
+            Estos son los posibles resultados de la intersección de un vector con un "lado"
+            de una partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.PartitionSideIntersectionResultEnum.NotFound">
+            <summary>
+            No encontró colisión con un borde.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.PartitionSideIntersectionResultEnum.Founded">
+            <summary>
+            Indica si encontró una colisión.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.PartitionSideIntersectionResultEnum.KeepLooking">
+            <summary>
+            Indica que encontró una colisión, pero se debe seguir buscando en la siguiente partición.
+            </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedPseudo3DRegionBase`2.lastCameraLocation">
             <summary>
@@ -8869,6 +8978,17 @@
             de no encontrarse dentro de ninguna partición.
             </summary>        
         </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedPseudo3DRegionBase`2.FindPartition(Kriptok.Drawing.Algebra.Vector2F,`1,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la partición en la que se encuentra la coordenada indicada. O <see cref="!:null"/>
+            de no encontrarse dentro de ninguna partición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedPseudo3DRegionBase`2.GetFloorHeight(Kriptok.Common.Base.ILocalizable2D)">
+            <summary>
+            Obtiene la altura del terreno para el objeto indicado por parámetro.
+            </summary>
+        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Base.IPseudo3DPartition`1.CheckNextPartitions(Kriptok.Drawing.Algebra.Vector2F,`0@)">
             <summary>
             Indica si alguna de las particiones adyacentes contiene la coordenada indicada por parámetro.
@@ -8906,6 +9026,64 @@
             Ubicación del array hasta donde se deben empezar a buscar vistas.
             
             Empieza en "-1" asumiendo que no hay objetos en la lista de renderizables.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion">
+            <summary>
+            Vista de interfaz tridimencional.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.graph">
+            <summary>
+            Grafo de particiones de la vista.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.yBuffer">
+            <summary>
+            Y-Buffer de la vista para renderizado.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.AnimatedTextures">
+            <summary>
+            Arreglo de texturas animadas para actualizar las imágenes.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.textureAnimation">
+            <summary>
+            Control de animación de tiles.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.Sector(System.Int32)">
+            <summary>
+            Obtiene el sector con el id indicado para modificación en el juego.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.FindPartition(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la partición en la que se encuentra la coordenada indicada. O <see cref="!:null"/>
+            de no encontrarse dentro de ninguna partición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.FindPartition(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la partición en la que se encuentra la coordenada indicada,
+            pero permite que se le especifique una "partición de partida" y una "coordenada de partida",
+            para acelerar la búsqueda.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.GetClosestCameraLocationToTarget(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,System.Single,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+            <summary>
+            Método que busca el punto más cercano al "objetivo" que se encuentre dentro del mapa. 
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.ValidatingLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
+            <summary>
+            Valida que el objeto pueda realizar el movimiento que intenta.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.IPseudo3DWldRegion">
+            <summary>
+            Interfaz para regiones de mapas WLD con proyección Pseudo3D.
             </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8ColorFilter.NoEffect">
@@ -9089,12 +9267,12 @@
             Vértice tridimensional correspondiente al piso de la partición.
             </summary>
         </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.Height">
+        <member name="P:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FloorHeight">
             <summary>
             Altura del piso del sector al que pertenece la partición.
             </summary>
         </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.TopHeight">
+        <member name="P:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.CeilingHeight">
             <summary>
             Altura del techo del sector al que pertenece la partición.
             </summary>
@@ -9114,16 +9292,62 @@
             Renderiza la partición.
             </summary>        
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.IntersectingWithPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.IntersectingWithPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Busca la intersección entre el segmento definido por lós vértices pasados por parámetro
             y las particiones adyascentes.
             </summary>        
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Detecta intersecciones recursivamente entre los vértices indicados por parámetro
             y las paredes de los mapas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.ClampZBounds(Kriptok.Drawing.BoundF)">
+            <summary>
+            Actualiza los límites verticales de movimiento.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FindPartition(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro, siguiendo la línea
+            delimitada por el segmento que se indica por parámetro.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro, siguiendo la línea
+            delimitada por el segmento que se indica por parámetro.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FindPartition(Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro
+            por proximidad.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro
+            por proximidad.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.ClearFindNearWalls(Kriptok.Regions.Partitioned.Wld.WldCollisionContext)">
+            <summary>
+            Algoritmo recursivo que se encarga de buscar las paredes "cercanas" para validar
+            la ubicación de un objeto luego de moverse.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.FindNearWalls(Kriptok.Regions.Partitioned.Wld.WldCollisionContext,System.Int32)">
+            <summary>
+            Detecta intersecciones recursivamente entre los vértices indicados por parámetro
+            y las paredes de los mapas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition.Intersects(Kriptok.Drawing.Shapes.Circle)">
+            <summary>
+            Indica si la partición se intersecta con el círculo 
             </summary>        
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8PortalViewReference.ApplyExclusion(Kriptok.Regions.Pseudo3D.YBufferDouble,Kriptok.Drawing.Bound2)">
@@ -9137,76 +9361,9 @@
             Set de texturas para vistas de tipo <see cref="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion"/>.
             </summary>
         </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion">
-            <summary>
-            Vista de interfaz tridimencional.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.graph">
-            <summary>
-            Grafo de particiones de la vista.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.yBuffer">
-            <summary>
-            Y-Buffer de la vista para renderizado.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.originalCameraLocation">
-            <summary>
-            Posición original de la cámara, antes de reacomodarla en el mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.AnimatedTextures">
-            <summary>
-            Arreglo de texturas animadas para actualizar las imágenes.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.textureAnimation">
-            <summary>
-            Control de animación de tiles.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.Sector(System.Int32)">
-            <summary>
-            Obtiene el sector con el id indicado para modificación en el juego.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.FindPartition(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la partición en la que se encuentra la coordenada indicada. O <see cref="!:null"/>
-            de no encontrarse dentro de ninguna partición.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.GetClampedZ(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene la máxima/mínima coordenada Z para la ubicación indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.GetFloorHeight(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la máxima/mínima coordenada Z para la ubicación indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Pseudo3DWldRegion.ValidateLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
-            <summary>
-            Valida que el objeto pueda realizar el movimiento que intenta.
-            </summary>
-        </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase">
             <summary>
             Representa cada lado de una partición.     
-                         
-              T   -> 0--------1
-                     |   TOP  |
-              PT1 -> 0--------1
-                     |        |
-                     | PORTAL |
-                     |        |
-              PT2 -> 0--------1
-                     | BOTTOM |
-              B   -> 0--------1
-            
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.sector">
@@ -9249,7 +9406,7 @@
             Renderiza el piso y el techo de la partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Indica si este lado intersecta con el segmento definido por los dos vectores indicados por parámetro.
             
@@ -9263,7 +9420,7 @@
             segmento no intersecta con ningún "lado", o bien intersecta con una pared (lado que no a a otra partición).
             </returns>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.Intersects(System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9271,12 +9428,31 @@
             <returns>Devuelve <see cref="!:true"/>, si ha encontrado la intersección, y 
             <see cref="!:false"/> de lo contrario.</returns>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
             o bien con un obstáculo que no pueda ser sorteado.
             </summary>                
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.FindPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro, siguiendo la línea
+            delimitada por el segmento que se indica por parámetro.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Dado el segmento definido por el par de vértices indicados por parámetro, 
+            este método permite continuar con la búsqueda de la siguiente partición
+            en línea recta.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8PartitionSideBase.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro, 
+            por proximidad.
+            </summary>    
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8VerticalPanelBase.Sector">
             <summary>
@@ -9305,22 +9481,51 @@
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.VP0">
             <summary>
-            Vértice tridimensional correspondiente al techo del portal.
+            Vértices tridimensionales que conforman el portal.
+            
+            0----------1
+            |          |
+            |          |
+            |          |
+            2----------3
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.VP1">
             <summary>
-            Vértice tridimensional correspondiente al techo del portal.
+            Vértices tridimensionales que conforman el portal.
+            
+            0----------1
+            |          |
+            |          |
+            |          |
+            2----------3
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.VP2">
             <summary>
-            Vértice tridimensional correspondiente al piso del portal.
+            Vértices tridimensionales que conforman el portal.
+            
+            0----------1
+            |          |
+            |          |
+            |          |
+            2----------3
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.VP3">
             <summary>
-            Vértice tridimensional correspondiente al piso del portal.
+            Vértices tridimensionales que conforman el portal.
+            
+            0----------1
+            |          |
+            |          |
+            |          |
+            2----------3
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.PartitionTo">
+            <summary>
+            Partición a la cual da este lado.
             </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.RenderPortal(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8PartitionContext,Kriptok.Drawing.Bound)">
@@ -9335,7 +9540,7 @@
             bordes superior e inferior de la pantalla.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.Intersects(System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9354,12 +9559,46 @@
             Asigna la partición a la cual da este lado.
             </summary>    
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
             o bien con un obstáculo que no pueda ser sorteado.
             </summary>                
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Dado el segmento definido por el par de vértices indicados por parámetro, 
+            este método permite continuar con la búsqueda de la siguiente partición
+            en línea recta.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Dado el segmento definido por el par de vértices indicados por parámetro, 
+            este método permite continuar con la búsqueda de la siguiente partición por proximidad.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortal.AppendSideToContext(Kriptok.Regions.Partitioned.Wld.WldCollisionContext,System.Int32,System.Int32)">
+            <summary>
+            Indica si tiene que agregar la pared al contexto de colisión.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls">
+            <summary>
+            Representa un lado de partición que puede tener un portal y paneles arriba o abajo.
+                         
+              T   -> 0--------1
+                     |   TOP  |
+              PT1 -> 0--------1
+                     |        |
+                     | PORTAL |
+                     |        |
+              PT2 -> 0--------1
+                     | BOTTOM |
+              B   -> 0--------1
+            
+            </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.topPanel">
             <summary>
@@ -9382,11 +9621,26 @@
             Indica si el portal hacia la siguiente partición está abierto.
             </summary>        
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
             o bien con un obstáculo que no pueda ser sorteado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.ValidatePartitionHeight(Kriptok.Entities.Wld.IWldEntity,Kriptok.Drawing.BoundF,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition)">
+            <summary>
+            Valida si la entidad puede "entrar" a la partición indicada por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SidePortalWalls.AppendSideToContext(Kriptok.Regions.Partitioned.Wld.WldCollisionContext,System.Int32,System.Int32)">
+            <summary>
+            Indica si tiene que agregar la pared al contexto de colisión.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.owner">
+            <summary>
+            Partición a la que partenece esta pared.
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.fullPanel">
@@ -9399,7 +9653,7 @@
             Renderiza el "lado" en la pantalla, cuando no da a ninguna partición.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.Intersects(Kriptok.Entities.Wld.IWldEntity,System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.Intersects(System.Int32,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Encuentra la intersección entre este lado, y el segmento definido por los dos vértices
             indicados por parámetro.
@@ -9407,12 +9661,35 @@
             <returns>Devuelve <see cref="!:true"/>, si ha encontrado la intersección, y 
             <see cref="!:false"/> de lo contrario.</returns>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Vector2F@)">
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.IntersectNextPartition(Kriptok.Entities.Wld.IWldEntity,Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF@,Kriptok.Drawing.Algebra.Line2D@)">
             <summary>
             Dado el segmento definido por el par de vértices indicados por parámetro, y la intersección
             encontrada, este método permite continuar con la búsqueda de la intersección contra una pared,
             o bien con un obstáculo que no pueda ser sorteado.
             </summary> 
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Dado el segmento definido por el par de vértices indicados por parámetro, 
+            este método permite continuar con la búsqueda de la siguiente partición
+            en línea recta.      
+            </summary>
+            <returns>Devuelve la partición a la que pertenece esta pared. Es el límite de la búsqueda.</returns>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.FindNextPartition(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32,Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Dado el segmento definido por el par de vértices indicados por parámetro, 
+            este método permite continuar con la búsqueda de la siguiente partición por proximidad.
+            
+            Como se trata de una pared, no tengo partición para continuar chequeando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Wld.Sides.M8SideWall.AppendSideToContext(Kriptok.Regions.Partitioned.Wld.WldCollisionContext,System.Int32,System.Int32)">
+            <summary>
+            Indica si tiene que agregar la pared al contexto de colisión.
+            
+            Se agrega siempre porque no es un portal.
+            </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9PartitionContext.ExcludeFromBottom(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
@@ -9456,6 +9733,16 @@
             <summary>
             Relaciona una particion con las correspondientes a través de sus "lados".
             </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Partition.GetFloorHeight(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la altura del "piso" para la coordenada indicada por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Partition.Contains(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si la particion contiene el punto indicado por parámetro.
+            </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Partition.GetNormal">
             <summary>
@@ -9542,11 +9829,6 @@
             Obtiene o establece la velocidad de la animación de las texuras animadas.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Region.GetHeightFor(Kriptok.Common.Base.ILocalizable2D)">
-            <summary>
-            Obtiene la altura del terreno para el objeto <see cref="!:obj"/>.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Region.M9Builder">
             <summary>
             Clase que ayuda a construir vistas de tipo <see cref="T:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.M9Region"/>.
@@ -9609,44 +9891,6 @@
             <summary>
             Obtiene las texturas animadas utilizadas en el mapa.
             </summary>            
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView">
-            <summary>
-            Esta clase algún día se podría definir como abstracta y eliminar el <see cref="!:PlotTexturedHorizontalTriView.Render(Graphics, RegionBase)"/>
-            ya que no aporta nada más que como test.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.swapped">
-            <summary>
-            No exactamente la funcionalidad del swappeo de caras, pero bastante parecido.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.inverseTextureScale">
-            <summary>
-            Inversa de la escala para aplicar a la textura.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.texture">
-            <summary>
-            Textura a utilizar para rellenar el polígono.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.TextureScale">
-            <summary>
-            Escala para aplicar a la textura.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.IsInvalid">
-            <summary>
-            Indica si la es o no "inválida", es decir, si está completamente detrás
-            de la cámara.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.PlotTexturedHorizontalTriView.ScaleZ">
-            <summary>
-            Se utiliza para ahorrar algunos cálculos, indicando si debe o no escalara verticalmente
-            los vértices.
-            </summary>
         </member>
         <member name="T:Kriptok.Regions.Scroll.TiledScrollLayer">
             <summary>
@@ -10110,6 +10354,170 @@
         <member name="M:Kriptok.Regions.Scroll.GdipImageScrollLayer.#ctor(System.Drawing.Bitmap,System.Boolean,System.Boolean)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Scroll.GdipImageScrollLayer"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Video.FlicVideo">
+            <summary>
+            Representa un video en formato FLI/FLC.
+            
+            Definición:
+                http://steve.hollasch.net/cgindex/formats/fli.html
+            
+            Migrado de:
+                https://github.com/aseprite/flic
+                https://ffmpeg.org/doxygen/0.6/flicvideo_8c-source.html#l00431    
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Video.FlicVideo.decoder">
+            <summary>
+            Decodificador de video.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Video.FlicVideo.frameDelta">
+            <summary>
+            Cantidad de tiempo que tiene que estar cada frame en pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Video.FlicVideo.acumTimeDelta">
+            <summary>
+            Utilizado para controlar la cantidad de frames que hay entre un fotograma y otro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.#ctor(System.Drawing.Rectangle,Kriptok.Common.Resource)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Video.FlicVideo"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.Dispose">
+            <summary>
+            Libera todos los recursos utilizados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Video.FlicVideo.FlicDecoder">
+            <summary>
+            Decodificador de video en formato FLI/FLC.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Video.FlicVideo.FlicDecoder.m_file">
+            <summary>
+            Stream de origen de datos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Video.FlicVideo.FlicDecoder.buffer">
+            <summary>
+            Buffer utilizado para renderizar las imágenes que se decodifican del video.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.#ctor(System.IO.Stream)">
+            <summary>
+            Devuelve una nueva instancia de <see cref="T:Kriptok.Regions.Video.FlicVideo.FlicDecoder"/>.
+            </summary>            
+        </member>
+        <member name="P:Kriptok.Regions.Video.FlicVideo.FlicDecoder.FrameCount">
+            <summary>
+            Cantidad de frames que tiene el video.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Video.FlicVideo.FlicDecoder.FrameIndex">
+            <summary>
+            Frame en el que se está actualmente.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Size">
+            <summary>
+            Obtiene el tamaño del video en pixels.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Speed">
+            <summary>
+            Frame en el que se está actualmente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.UsingImage(System.Action{System.Drawing.Bitmap})">
+            <summary>
+            Obtiene la imagen que se encuentra actualmente en el decoder.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Dispose">
+            <summary>
+            Libera los recursos utilizados por el decoder.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.EndOfFile">
+            <summary>
+            Indica si se alcanzó el final del archivo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Read32">
+            <summary>
+            Lee y retorna 32 bits del archivo.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Read16">
+            <summary>
+            Lee y retorna 16 bits del archivo.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.ReadNextFrame">
+            <summary>
+            Incrementa el frame del video. 
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.EndOfVideo">
+            <summary>
+            Indica si se ha alcanzado el final del video.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.ReadChunk">
+            <summary>
+            Lee una porción del archivo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.ReadBlackChunk">
+            <summary>
+            Limpia el buffer.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.ReadCopyChunk">
+            <summary>
+            Lee un comando de copia de datos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.LoadPalette(System.Boolean)">
+            <summary>
+            Lee y carga la paleta en el buffer.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.ReadBrunChunk">
+            <summary>
+            FLI_BRUN Chunks
+            These are much like FLI_LC chunks without the skips.They start immediately 
+            with the data for the first line, and go line-by-line from there.The first 
+            byte contains the number of packets in that line.The format for a packet is:
+            
+              size_count
+              data
+              
+            If size_count is positive the data consists of a single byte which is 
+            repeated size_count times.If size_count is negative there are -size_count 
+            bytes of data which are copied to the screen. In Autodesk Animator if the 
+            "compressed" data shows signs of exceeding 60000 bytes the frame is stored 
+            as FLI_COPY instead.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Video.FlicVideo.FlicDecoder.Reset">
+            <summary>
+            Resetea el decodificador de video.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Video.VideoBase">
+            <summary>
+            Clase base para la reproducción de videos.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Video.VideoBase.Loop">
+            <summary>
+            Indica si el video se debe repetir indefinidamente.
             </summary>
         </member>
         <member name="T:Kriptok.Regions.Screen.SubScreenRegionBase">
@@ -10945,6 +11353,624 @@
             Vértices de la vista que se transformarán, ya que la vista en sí no tiene un "Owner".
             </summary>
         </member>
+        <member name="T:Kriptok.Regions.Partitioned.IPartitionedRegion">
+            <summary>
+            Interfaz para unificar entornos particionados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.IPartitionedRegion.GetFloorHeight(Kriptok.Common.Base.ILocalizable2D)">
+            <summary>
+            Obtiene la altura del piso para las coordenadas indicadas por parámetro.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.IPartitionedPseudo3DRegion">
+            <summary>
+            Interfaz de regiones Pseudo3D divididas en particiones.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.PartitionedCollisionContext">
+            <summary>
+            Este es el contexto utilizado para la detección de colisiones con paredes de una entidad
+            en un entorno particionado.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.MinRadius">
+            <summary>
+            Mínimo radio que se puede utilizar para validar colisiones.
+            
+            Es 2, para que después cuando se divida por (r - RadiusModifier), siempre quede al menos 1f.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.RadiusModifier">
+            <summary>
+            Valor que se utiliza para modificar el radio de los objetos con los que se 
+            calcula la longitud de los "pasos".
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.PartitionedCollisionContext.DetectedCollisionEnum">
+            <summary>
+            Tipos de colisión con paredes encontradas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.DetectedCollisionEnum.V0">
+            <summary>
+            Colisiona con el primer vértice.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.DetectedCollisionEnum.V1">
+            <summary>
+            Colisiona con el segundo vértice.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.DetectedCollisionEnum.Segment">
+            <summary>
+            Colisiona con el segmento.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.circle">
+            <summary>
+            Círculo que representa la entidad en el plano 2D.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.movementDirection">
+            <summary>
+            Dirección de movimiento del objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.partitionIds">
+            <summary>
+            IDs de las particiones que ya fui recorriendo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.segments">
+            <summary>
+            Segmentos encontrados por el contexto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionedCollisionContext.vertices">
+            <summary>
+            Vértices o esquinas encontradas por el contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.Clear">
+            <summary>
+            Limpia el contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.GetCircle">
+            <summary>
+            Obtiene la caja de colision como está actualmente.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.ContinueCheckingFoward(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition,System.Int32)">
+            <summary>
+            Indica si debe "continuar" chequeando las siguiente partición a la que
+            apunta un "lado".
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.CalculateSteps(System.Single,System.Single)">
+            <summary>
+            Calcula la cantidad de "pasos" que debe dar la entidad para trasladarse una determinada distancia
+            en base a su radio.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.CollisionToSegment(Kriptok.Drawing.Algebra.Segment2D)">
+            <summary>
+            Busca la intersección entre un círculo y un segmento.
+            
+            Si hay intersección, indica el punto más cercano como parámetro de salida.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionedCollisionContext.ResolveMultipleSegment(System.Collections.Generic.IEnumerable{Kriptok.Drawing.Algebra.Segment2D})">
+            <summary>
+            Resuelve colisiones con más de dos paredes.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.PartitionSideBase`1">
+            <summary>
+            Representa una partición 
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionSideBase`1.v0">
+            <summary>
+            Vértices que definen el "lado" en el espacio 2D.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.PartitionSideBase`1.v1">
+            <summary>
+            Vértices que definen el "lado" en el espacio 2D.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionSideBase`1.#ctor(Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.PartitionSideBase`1"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionSideBase`1.GetLength">
+            <summary>
+            Obtiene la longitud del "lado".
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.PartitionSideBase`1.Intersection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Devuelve la recta que representa el "lado" con el que intersecta el segmento
+            representado por los dos vectores indicados por parámetro.
+            
+            Si se intersectan, devuelve la línea indicando como punto de referenci
+            el punto de intersección.
+            </summary>        
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Kriptok.Regions.Partitioned.PartitionSideBase`1.FindNearWalls(`0,System.Int32,System.Int32)" -->
+        <member name="M:Kriptok.Regions.Partitioned.PartitionSideBase`1.AppendSideToContext(`0,System.Int32,System.Int32)">
+            <summary>
+            Indica si tiene que agregar la pared al contexto de colisión.
+            
+            También realiza los llamados recursivos.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldCollisionContext">
+            <summary>
+            Contexto de detección de colisiones para escenarios WLD.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.zBound">
+            <summary>
+            Límites verticales del espacio que puede ocupar la entidad. 
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.Clear">
+            <summary>
+            Limpia el contexto.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.ClampVertical(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition)">
+            <summary>
+            Limita verticalmente el espacio por el que puede pasar la entidad.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.GetZBounds">
+            <summary>
+            Obtiene los límites verticales calculados por el contexto.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.ValidateHeight(Kriptok.Regions.Pseudo3D.Partitioned.Wld.M8Partition)">
+            <summary>
+            Valida si la entidad se puede mover a la partición indicada por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldCollisionContext.GetNewData">
+            <summary>
+            Obtiene la información para actualizar la entidad.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.IWldRegion">
+            <summary>
+            Interfaz que representa el conjunto de vistas que implementan <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.Sector(System.Int32)">
+            <summary>
+            Obtiene el sector con el id indicado para modificación en el juego.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.SetAnimationSpeed(System.Single)">
+            <summary>
+            Establece la velocidad a la que cambian los tiles animados del mapa.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.ValidatingLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
+            <summary>
+            Valida que el objeto pueda ubicarse en la posición final luego de un movimiento.
+            
+            En caso de que no pueda, se lo ubicará en la posición válida más cercana.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.IWldViewExtensions">
+            <summary>
+            Funcionalidades extra de la interfaz <see cref="T:Kriptok.Regions.Partitioned.Wld.IWldRegion"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldViewExtensions.Sectors(Kriptok.Regions.Partitioned.Wld.IWldRegion,System.Action{Kriptok.Regions.Partitioned.Wld.WldSectorBase},System.Int32[])">
+            <summary>
+            Ejecuta una misma función sobre todos los sectores indicados por parámetro.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7">
+            <summary>
+            Esta clase representa el grafo de sectores/particiones/lados/vértices de una
+            vista que implemetna <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Sectors">
+            <summary>
+            Sectores del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.sectorsById">
+            <summary>
+            Sectores del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.vertices">
+            <summary>
+            Colección con todos los vértices del mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Partitions">
+            <summary>
+            Lista de particiones a dibujar. Es un array para poder se recorrido rápidamente.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Vertices">
+            <summary>
+            Vértices de la vista.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.#ctor(Kriptok.Maps.Partitioned.Wld.WldMapX,`0,`1)">
+            <summary>
+            Devuelve una nueva instancia de la clase 
+            <see cref="T:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.FindPartition(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la partición en la que se encuentra la coordenada indicada. O <see cref="!:null"/>
+            de no encontrarse dentro de ninguna partición.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.FindPartition(Kriptok.Drawing.Algebra.Vector2F,`5,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la partición en la que se encuentra la coordenada indicada,
+            pero permite que se le especifique una "partición de partida" y una "coordenada de partida",
+            para acelerar la búsqueda.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Sector(System.Int32)">
+            <summary>
+            Obtiene el sector con el id indicado para modificación en el juego.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.NewSector(`0,Kriptok.Maps.Partitioned.Wld.WldSectorX,`2,`2)">
+            <summary>
+            Instancia un nuevo sector.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.NewPartition(`3,Kriptok.Maps.Partitioned.Wld.WldPartitionX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
+            <summary>
+            Instancia una nueva partición.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Update(Kriptok.Regions.Context.Base.IRenderBufferContext)">
+            <summary>
+            Aplica las transformaciones sobre los vértices tridimensionales
+            para que puedan ser proyectados a la cámara.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6">
+            <summary>
+            Clase base para implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldPartitionX"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Id">
+            <summary>
+            El Id de la partición sólo existe por motivos de debugging. Desgraciadamente, hay que mantenerlo :S
+            Algún día cuando todo funcione joya de forma definitiva, se sacará.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Sector">
+            <summary>
+            Sector al que pertenece la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V0">
+            <summary>
+            Vértice bidimensional que compone la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V1">
+            <summary>
+            Vértice bidimensional que compone la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V2">
+            <summary>
+            Vértice bidimensional que compone la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side01">
+            <summary>
+            Lado de la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side12">
+            <summary>
+            Lado de la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side20">
+            <summary>
+            Lado de la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.container">
+            <summary>
+            Contendor triangular para calcular si la partición contiene vértices.
+            
+            No debe ser nunca "readonly" ya que eventualmente se van a poder mover los vértices,
+            y al ser un struct, no se podría modificar.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.#ctor(`0,Kriptok.Maps.Partitioned.Wld.WldPartitionX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.NewPartitionSide(Kriptok.Maps.Partitioned.Wld.WldPartitionSideX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
+            <summary>
+            Instancia un nuevo "lado" de una partición, con los vértices indicados.
+            </summary>                
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.PostProcessing(Kriptok.Maps.Partitioned.Wld.WldPartitionX,`4)">
+            <summary>
+            Ejecuta código después de construir el árbol de particiones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Contains(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si la partición contiene el punto indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.GetFloorHeight(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la altura del "piso" para la coordenada indicada por parámetro.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.FindPartition(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro, siguiendo la línea
+            delimitada por el segmento que se indica por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.FindPartition(Kriptok.Drawing.Algebra.Vector2F,System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Busca la partición que contiene la coordenada indicada por parámetro
+            por proximidad.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Get2DBounds">
+            <summary>
+            Obtiene los límites en el plano 2D de la partición.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6">
+            <summary>
+            Clase base para la implementación de vistas que representen <see cref="T:Kriptok.Maps.Partitioned.Wld.WldPartitionSideX"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.Owner">
+            <summary>
+            Partición a la cual pertenece el "lado".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V0">
+            <summary>
+            Vértice tridimensional correspondiente al techo del portal.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V1">
+            <summary>
+            Vértice tridimensional correspondiente al techo del portal.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V2">
+            <summary>
+            Vértice tridimensional correspondiente al piso de la partición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V3">
+            <summary>
+            Vértice tridimensional correspondiente al piso de la partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.#ctor(`2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.SetPartitionTo(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexCollection,`2)">
+            <summary>
+            Asigna la partición a la cual da este lado.
+            
+            Sólo requiere implementación en "lados portales".
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.GeneratePanels(Kriptok.Maps.Partitioned.Wld.WldPartitionSideX,`4)">
+            <summary>
+            Crea los paneles del lado.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase">
+            <summary>
+            Clase base para implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldSectorX"/>. 
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.MaxHeight">
+            <summary>
+            Máxima altura del techo que pueden tener los sectores.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.MinHeight">
+            <summary>
+            Máxima altura del piso que pueden tener los sectores.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.MaxScale">
+            <summary>
+            Máximo escala de renderización de las texturas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.MinScale">
+            <summary>
+            Mínima escala de renderización de las texturas.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.Id">
+            <summary>
+            Identificador numérico del sector.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.ShadeDisabled">
+            <summary>
+            Indica si al renderizar este sector no debe tomarse en cuenta la
+            incidencia de la luz.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.FogDisabled">
+            <summary>
+            Indica si al renderizar este sector no debe tomarse en cuenta la neblina.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.Color">
+            <summary>
+            Indica si se debe aplicar un filtro de color al sector.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase.#ctor(Kriptok.Maps.Partitioned.Wld.WldSectorX)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.FloorHeight">
+            <summary>
+            Establece la altura del plano del piso del sector.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.CeilingHeight">
+            <summary>
+            Actualiza la altura del plano del techo del sector.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.BottomTextureLocation">
+            <summary>
+            Establece la "traslacion" de la textura del piso.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.TopTextureLocation">
+            <summary>
+            Establece la "traslacion" de la textura del techo.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6">
+            <summary>
+            Clase base para implementaciones de <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>. 
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Floor">
+            <summary>
+            "Piso" del sector.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Ceiling">
+            <summary>
+            "Techo" del sector.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Partitions">
+            <summary>
+            Lista de particiones que componen el sector.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.#ctor(Kriptok.Maps.Partitioned.Wld.WldSectorX,`1,`1)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.FloorHeight">
+            <summary>
+            Establece la altura del plano del piso del sector.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.CeilingHeight">
+            <summary>
+            Actualiza la altura del plano del techo del sector.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.InvalidHeights">
+            <summary>
+            Indica si el sector está completamente cerrado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.AddPartition(`2)">
+            <summary>
+            Agrega una partición al sector.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1">
+            <summary>
+            Implementación base para clases que representen pisos y techos en implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.Height">
+            <summary>
+            Altura del plano.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.Texture">
+            <summary>
+            Textura para renderizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.TextureLocation">
+            <summary>
+            Traslación de la textura.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.TextureScale">
+            <summary>
+            Escalamiento de la textura.
+            
+            La escala no se puede cambiar durante el juego porque siempre toma como centro
+            la coordenada (0, 0), no se puede "centrar" en el medio del sector que está afectando.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.#ctor(Kriptok.Maps.Partitioned.Wld.WldSurfaceX,`0)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1"/>.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase">
+            <summary>
+            Estos vértices son los que utilizan las particiones para saber dónde renderizarse. Dependen
+            directamente del sector al que pertenecen. Se agrupan de a 3 por piso + 3 por techo en cada partición.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexPortalBottom.#ctor(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase)">
+            <summary>
+            Estos son los vértices utilizados para determinar el tamaño de las paredes basándose en
+            los sectores de los cuales parten y hacia los cuales van.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexPortalTop.#ctor(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase)">
+            <summary>
+            Estos son los vértices utilizados para determinar el tamaño de las paredes basándose en
+            los sectores de los cuales parten y hacia los cuales van.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Partitioned.IPartition">
+            <summary>
+            Interfaz de una region triangular en las que se divide un mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.IPartition.GetFloorHeight(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la altura del "piso" para la coordenada indicada por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Partitioned.IPartition.Contains(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Indica si la particion contiene el punto indicado por parámetro.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Regions.Surfaces.DecoratedScrollableTiledViewBase`2">
             <summary>
             Representa una clase particular de terreno que además tiene una capa de objetos.
@@ -11067,6 +12093,11 @@
             Permite personalizar el comportamiento y el orden de renderización.
             </summary>
         </member>
+        <member name="F:Kriptok.Regions.Surfaces.ScrollableViewBase`1.RefreshOnEachFrame">
+            <summary>
+            Indica si debe actualizar los puntos CADA fotograma, o sólo cuando la cámara se mueva.
+            </summary>
+        </member>
         <member name="M:Kriptok.Regions.Surfaces.ScrollableViewBase`1.UpdateViews(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Permite customizar los límites de renderización del terreno.
@@ -11163,11 +12194,6 @@
             Por ahora no tiene una utilidad definida.
             </summary>        
         </member>
-        <member name="M:Kriptok.Regions.Surfaces.DecoratedTileView`2.GetMidPoint">
-            <summary>
-            Obtiene la ubicación de la decoración del tile.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Regions.Surfaces.DecorationViewBase`2">
             <summary>
             Representa una decoración en el mapa de tiles.
@@ -11195,431 +12221,6 @@
             Esta propiedad empieza en <see cref="!:false"/>, para que sólo se marque como "visible"
             cuando se vaya a renderizar.
             </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.IPartition">
-            <summary>
-            Interfaz de una region triangular en las que se divide un mapa.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.IWldRegion">
-            <summary>
-            Interfaz que representa el conjunto de vistas que implementan <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.Sector(System.Int32)">
-            <summary>
-            Obtiene el sector con el id indicado para modificación en el juego.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.SetAnimationSpeed(System.Single)">
-            <summary>
-            Establece la velocidad a la que cambian los tiles animados del mapa.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.SetBackground(Kriptok.Regions.SkyboxBackground)">
-            <summary>
-            Establece el fondo para dibujar.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.GetClampedZ(Kriptok.Drawing.Algebra.Vector3F)">
-            <summary>
-            Obtiene la máxima/mínima coordenada Z para la ubicación indicada.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.GetFloorHeight(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la altura del piso para las coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldRegion.ValidateLocation(Kriptok.Entities.Wld.IWldEntity,System.Action)">
-            <summary>
-            Valida que el objeto pueda ubicarse en la posición final luego de un movimiento.
-            
-            En caso de que no pueda, se lo ubicará en la posición válida más cercana.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.IWldViewExtensions">
-            <summary>
-            Funcionalidades extra de la interfaz <see cref="T:Kriptok.Regions.Partitioned.Wld.IWldRegion"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldViewExtensions.Sectors(Kriptok.Regions.Partitioned.Wld.IWldRegion,System.Action{Kriptok.Regions.Partitioned.Wld.WldSectorBase},System.Int32[])">
-            <summary>
-            Ejecuta una misma función sobre todos los sectores indicados por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.IWldViewExtensions.SetBackground(Kriptok.Regions.Partitioned.Wld.IWldRegion,Kriptok.Views.Shapes.Base.ShapeViewBase)">
-            <summary>
-            Establece el fondo para dibujar.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7">
-            <summary>
-            Esta clase representa el grafo de sectores/particiones/lados/vértices de una
-            vista que implemetna <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Sectors">
-            <summary>
-            Sectores del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.sectorsById">
-            <summary>
-            Sectores del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.vertices">
-            <summary>
-            Colección con todos los vértices del mapa.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Partitions">
-            <summary>
-            Lista de particiones a dibujar. Es un array para poder se recorrido rápidamente.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Vertices">
-            <summary>
-            Vértices de la vista.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.#ctor(Kriptok.Maps.Partitioned.Wld.WldMapX,`0,`1)">
-            <summary>
-            Devuelve una nueva instancia de la clase 
-            <see cref="T:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.FindPartition(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la partición en la que se encuentra la coordenada indicada. O <see cref="!:null"/>
-            de no encontrarse dentro de ninguna partición.
-            </summary>       
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Sector(System.Int32)">
-            <summary>
-            Obtiene el sector con el id indicado para modificación en el juego.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.NewSector(`0,Kriptok.Maps.Partitioned.Wld.WldSectorX,`2,`2)">
-            <summary>
-            Instancia un nuevo sector.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.NewPartition(`3,Kriptok.Maps.Partitioned.Wld.WldPartitionX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
-            <summary>
-            Instancia una nueva partición.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldGraphBase`7.Update(Kriptok.Regions.Context.Base.IRenderBufferContext)">
-            <summary>
-            Aplica las transformaciones sobre los vértices tridimensionales
-            para que puedan ser proyectados a la cámara.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6">
-            <summary>
-            Clase base para implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldPartitionX"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Id">
-            <summary>
-            El Id de la partición sólo existe por motivos de debugging. Desgraciadamente, hay que mantenerlo :S
-            Algún día cuando todo funcione joya de forma definitiva, se sacará.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Sector">
-            <summary>
-            Sector al que pertenece la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V0">
-            <summary>
-            Vértice bidimensional que compone la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V1">
-            <summary>
-            Vértice bidimensional que compone la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.V2">
-            <summary>
-            Vértice bidimensional que compone la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side01">
-            <summary>
-            Lado de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side12">
-            <summary>
-            Lado de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Side20">
-            <summary>
-            Lado de la partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.#ctor(`0,Kriptok.Maps.Partitioned.Wld.WldPartitionX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="!:WldPartitionBase"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.NewPartitionSide(Kriptok.Maps.Partitioned.Wld.WldPartitionSideX,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
-            <summary>
-            Instancia un nuevo "lado" de una partición, con los vértices indicados.
-            </summary>                
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.PostProcessing(Kriptok.Maps.Partitioned.Wld.WldPartitionX,`4)">
-            <summary>
-            Ejecuta código después de construir el árbol de particiones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Contains(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Indica si la partición contiene el punto indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionBase`6.Contains(System.Single,System.Single)">
-            <summary>
-            Indica si la partición contiene el punto indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6">
-            <summary>
-            Tipos de paneles que puede contener el "lado".
-                         
-              T   -> 0--------1
-                     |  TOP   |
-              PT1 -> 0--------1
-                     |        |
-                     | PORTAL |
-                     |        |
-              PT2 -> 0--------1
-                     | BOTTOM |
-              B   -> 0--------1
-              
-            Representa cada lado de una partición.
-            Clase base para la implementación de vistas que representen <see cref="T:Kriptok.Maps.Partitioned.Wld.WldPartitionSideX"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.Owner">
-            <summary>
-            Partición a la cual pertenece el "lado".
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.v0">
-            <summary>
-            Vértice bidimensional correspondiente al techo de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.v1">
-            <summary>
-            Vértice bidimensional correspondiente al techo de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.PartitionTo">
-            <summary>
-            Partición a la cual da este lado.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V0">
-            <summary>
-            Vértice tridimensional correspondiente al techo del portal.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V1">
-            <summary>
-            Vértice tridimensional correspondiente al techo de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V2">
-            <summary>
-            Vértice tridimensional correspondiente al piso de la partición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.V3">
-            <summary>
-            Vértice tridimensional correspondiente al piso de la partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.#ctor(`2,Kriptok.Drawing.Vertex2,Kriptok.Drawing.Vertex2,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldTopVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex,Kriptok.Regions.Partitioned.Wld.Vertices.WldBottomVertex)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.Intersection(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Indica si el "lado" intersecta con el segmento definido por dos puntos
-            indicados por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.SetPartitionTo(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexCollection,`2)">
-            <summary>
-            Asigna la partición a la cual da este lado.
-            
-            Sólo requiere implementación en "lados portales".
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldPartitionSideBase`6.GeneratePanels(Kriptok.Maps.Partitioned.Wld.WldPartitionSideX,`4)">
-            <summary>
-            Crea los paneles del lado.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase">
-            <summary>
-            Clase base para implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldSectorX"/>. 
-            </summary>
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.Id">
-            <summary>
-            Identificador numérico del sector.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.ShadeDisabled">
-            <summary>
-            Indica si al renderizar este sector no debe tomarse en cuenta la
-            incidencia de la luz.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.FogDisabled">
-            <summary>
-            Indica si al renderizar este sector no debe tomarse en cuenta la neblina.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase.Color">
-            <summary>
-            Indica si se debe aplicar un filtro de color al sector.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase.#ctor(Kriptok.Maps.Partitioned.Wld.WldSectorX)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.BottomHeight">
-            <summary>
-            Establece la altura del plano del piso del sector.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.TopHeight">
-            <summary>
-            Actualiza la altura del plano del techo del sector.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.BottomTextureLocation">
-            <summary>
-            Establece la "traslacion" de la textura del piso.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase.TopTextureLocation">
-            <summary>
-            Establece la "traslacion" de la textura del techo.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6">
-            <summary>
-            Clase base para implementaciones de <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>. 
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Floor">
-            <summary>
-            "Piso" del sector.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Ceiling">
-            <summary>
-            "Techo" del sector.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.Partitions">
-            <summary>
-            Lista de particiones que componen el sector.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.#ctor(Kriptok.Maps.Partitioned.Wld.WldSectorX,`1,`1)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorBase"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.BottomHeight">
-            <summary>
-            Establece la altura del plano del piso del sector.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.TopHeight">
-            <summary>
-            Actualiza la altura del plano del techo del sector.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.InvalidHeights">
-            <summary>
-            Indica si el sector está completamente cerrado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorBase`6.AddPartition(`2)">
-            <summary>
-            Agrega una partición al sector.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1">
-            <summary>
-            Implementación base para clases que representen pisos y techos en implementaciones de <see cref="T:Kriptok.Maps.Partitioned.Wld.WldMapX"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.Sector">
-            <summary>
-            Sector al que pertenece el plano.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.Height">
-            <summary>
-            Altura del plano.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.Texture">
-            <summary>
-            Textura para renderizar.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.TextureLocation">
-            <summary>
-            Traslación de la textura.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.TextureScale">
-            <summary>
-            Escalamiento de la textura.
-            
-            La escala no se puede cambiar durante el juego porque siempre toma como centro
-            la coordenada (0, 0), no se puede "centrar" en el medio del sector que está afectando.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1.#ctor(Kriptok.Maps.Partitioned.Wld.WldSurfaceX,`0)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Partitioned.Wld.WldSectorPlaneBase`1"/>.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase">
-            <summary>
-            Estos vértices son los que utilizan las particiones para saber dónde renderizarse. Dependen
-            directamente del sector al que pertenecen. Se agrupan de a 3 por piso + 3 por techo en cada partición.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexPortalBottom.#ctor(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase)">
-            <summary>
-            Estos son los vértices utilizados para determinar el tamaño de las paredes basándose en
-            los sectores de los cuales parten y hacia los cuales van.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexPortalTop.#ctor(Kriptok.Regions.Partitioned.Wld.Vertices.WldVertexBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase,Kriptok.Regions.Partitioned.Wld.WldSectorBase)">
-            <summary>
-            Estos son los vértices utilizados para determinar el tamaño de las paredes basándose en
-            los sectores de los cuales parten y hacia los cuales van.
-            </summary>        
         </member>
         <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
             <summary>
@@ -12360,7 +12961,7 @@
             a una distancia menor a la suma de sus radios.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollision``1(System.Func{``0,System.Int32})">
+        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollision``1(System.Func{``0,System.Single})">
             <summary>
             Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
             a una distancia menor a la suma de sus radios.
@@ -12378,7 +12979,7 @@
             a una distancia menor a la suma de sus radios.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollisions``1(System.Func{``0,System.Int32})">
+        <member name="M:Kriptok.Entities.Base.EntityBase.RadiusCollisions``1(System.Func{``0,System.Single})">
             <summary>
             Obtiene el el objeto con el que se encuentra a una distancia de "colisión de radios", es decir, 
             a una distancia menor a la suma de sus radios.
@@ -12691,11 +13292,6 @@
             Caja de colisión que realiza la validación en dos etapas.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.CheckToRegion(Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext)">
-            <summary>
-            Sólo por motivos de debug.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DDoubleCheckBase.DoubleCheckContext">
             <summary>
             Contexto de intersección de regiones con dos chequeos.
@@ -12715,11 +13311,6 @@
             <summary>
             Elipse utilizada para detectar colisiones.
             </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DEllipse.SecondCheckEllipse.GetEllipse">
-            <summary>
-            Obtiene el elipse para renderizarlo.
-            </summary>            
         </member>
         <member name="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DPath.SecondCheckPath">
             <summary>
@@ -12778,11 +13369,6 @@
             Límites calculados de la región de colisión.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll2D.Hitbox2DRectangle.DrawOn(System.Drawing.Graphics)">
-            <summary>
-            Dibuja el contorno de la caja de colisión.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Entities.Collisions.Coll2D.SecondCheckBase">
             <summary>
             Clase base para el segundo chequeo que se realiza con figuras más complejas que un rectángulo.
@@ -12819,16 +13405,6 @@
             Caja de colisiones tridimensional.
             </summary>
         </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices">
-            <summary>
-            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetCollisionVertices(System.Collections.Generic.IEnumerable{Kriptok.Drawing.Algebra.Vector3F})">
-            <summary>
-            Devuelve un texto con los vértices para poner en Metasequoia y analizar la colisión.
-            </summary>        
-        </member>
         <member name="M:Kriptok.Entities.Collisions.Coll3D.BoundingBox3D.GetNormals">
             <summary>
             Obtiene tres direcciones de rotación (los primeros tres vectores),
@@ -12860,11 +13436,6 @@
         <member name="M:Kriptok.Entities.Collisions.Coll3D.Collision3DShape.TransformVolume(Kriptok.Drawing.Shapes.Volume)">
             <summary>
             Transforma un volumen utilizando la matriz de transformación de la figura.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.GetCollision3DType">
-            <summary>
-            Obtiene el tipo de colisión para graficarla.
             </summary>        
         </member>
         <member name="M:Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase.Collide(Kriptok.Entities.Collisions.Coll3D.Hitbox3DBase)">
@@ -12950,11 +13521,6 @@
             Devuelve si las figuras indicadas por parámetro se superponen.
             </summary>        
         </member>
-        <member name="T:Kriptok.Entities.Collisions.Collision3DTypeEnum">
-            <summary>
-            Tipo de caja de colisión 3D. Utilizado para mostrar la caja de colisión gráficamente.
-            </summary>
-        </member>
         <member name="T:Kriptok.Entities.Collisions.Collision3DHelper">
             <summary>
             Agrupa todas las funcionalidades necesarias para chequear collisiones entre objetos.
@@ -13031,16 +13597,6 @@
             Indica si un objeto determinado está dentro del rango de visión del objeto propietario.
             </summary>        
         </member>
-        <member name="T:Kriptok.Entities.Debug.LinesOfSight">
-            <summary>
-            Esta clase indica gráficamente hacia dónde se encuentra mirando el personaje.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Debug.LinesOfSight.#ctor(Kriptok.Entities.Base.EntityBase,System.Single)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Debug.LinesOfSight"/>.
-            </summary>        
-        </member>
         <member name="T:Kriptok.Entities.Debug.MapGridMarker">
             <summary>
             Este objeto se utiliza para marcar el lugar donde se encuentra un objeto dentro de una cuadrícula
@@ -13110,15 +13666,15 @@
             Coordenadas de la puerta, dentro de la cuadrícula del mapa.
             </summary>
         </member>
+        <member name="T:Kriptok.Entities.Terrain.ITerrainEntity">
+            <summary>
+            Interfaz para entidades cuyo comportamiento está relacionado a mapas/regiones de tipo <see cref="T:Kriptok.Regions.Pseudo3D.Partitioned.Terrain.ITerrainRegion"/>.
+            </summary>
+        </member>
         <member name="T:Kriptok.Entities.Wld.IWldEntity">
             <summary>
             Interfaz de una entidad de un mapa de M8.
             </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Wld.IWldEntity.GetRadius">
-            <summary>
-            Obtiene el radio utilizado para validar la posición de la entidad en el mapa.
-            </summary>        
         </member>
         <member name="M:Kriptok.Entities.Wld.IWldEntity.GetLocationZ">
             <summary>
@@ -13135,11 +13691,31 @@
             Obtiene la altura que puede "subir" un objeto al moverse de un sector a otro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.IWldEntity.UpdateData(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF)">
+        <member name="M:Kriptok.Entities.Wld.IWldEntity.UpdateData(Kriptok.Entities.Wld.WldEntityDataUpdate)">
             <summary>
             Actualiza las propiedades de la entidad, indicado las coordenadas bidimensionales calculadas,
             así como los límites superior e inferior del área en que se encuentra.
             </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Wld.WldEntityDataUpdate">
+            <summary>
+            Estructura que sirve para indicarle a la entidad dónde queda en el mapa después de moverse.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Wld.WldEntityDataUpdate.#ctor(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.BoundF)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Wld.WldEntityDataUpdate"/>.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Entities.Wld.WldEntityDataUpdate.Location">
+            <summary>
+            Ubicación válida de la entidad.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Wld.WldEntityDataUpdate.ZBound">
+            <summary>
+            Límites verticales del espacio que puede ocupar la entidad.
+            </summary>
         </member>
         <member name="M:Kriptok.Entities.Wld.IM8EntityExtensions.GetTopHeight(Kriptok.Entities.Wld.IWldEntity)">
             <summary>
@@ -13166,11 +13742,6 @@
             Referencia al mapa de M8 en el cual que se encuentra la entidad.
             </summary>
         </member>
-        <member name="F:Kriptok.Entities.Wld.WldEntityBase.jumpHandler">
-            <summary>
-            Controlador de saltos y caídas.
-            </summary>
-        </member>
         <member name="F:Kriptok.Entities.Wld.WldEntityBase.floorHeight">
             <summary>
             Altura del piso del sector donde me encuentro.
@@ -13181,12 +13752,72 @@
             Altura del techo del sector donde me encuentro.
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.Wld.WldEntityBase.#ctor(Kriptok.Regions.Pseudo3D.Partitioned.Wld.IPseudo3DWldRegion)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Wld.WldEntityBase"/>
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Wld.WldEntityBase.#ctor(Kriptok.Regions.Pseudo3D.Partitioned.Wld.IPseudo3DWldRegion,Kriptok.Views.Base.IView)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Wld.WldEntityBase"/>
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.Wld.WldEntityBase.OnFrame(System.Single)">
             <summary>
             Comportamiento de la entidad dentro de un entorno de validación de M8.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.Wld.WldEntityBase.Jump(System.Single)">
+        <member name="T:Kriptok.Entities.Partitioned.IPart2DEntity">
+            <summary>
+            Interfaz de una entidad de un mapa particionado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Partitioned.IPart2DEntity.GetRadius">
+            <summary>
+            Obtiene el radio utilizado para validar la posición de la entidad en el mapa.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Partitioned.Part2DEntityBase`1">
+            <summary>
+            Entidad sincrónica básica para objetos de mapas WLD.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Partitioned.Part2DEntityBase`1.View">
+            <summary>
+            Representación gráfica de esta entidad.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Partitioned.Part2DEntityBase">
+            <summary>
+            Entidad sincrónica básica para objetos de mapas particionados.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Partitioned.Part2DEntityBase.map">
+            <summary>
+            Referencia al mapa de M8 en el cual que se encuentra la entidad.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Partitioned.Part2DEntityBase.#ctor(Kriptok.Regions.Partitioned.IPartitionedRegion)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Partitioned.Part2DEntityBase"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Partitioned.Part2DEntityBase.#ctor(Kriptok.Regions.Partitioned.IPartitionedRegion,Kriptok.Views.Base.IView)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Entities.Partitioned.Part2DEntityBase"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Partitioned.Part2DEntityBase.JumpHandler">
+            <summary>
+            Controlador de saltos y caídas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Partitioned.Part2DEntityBase.GetRadius">
+            <summary>
+            Obtiene el radio utilizado para validar la posición de la entidad en el mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.Partitioned.Part2DEntityBase.Jump(System.Single)">
             <summary>
             Le indica a la entidad que debe realizar un salto con la velocidad indicada.
             </summary>        
@@ -13202,12 +13833,12 @@
             Esta clase representa una relación de distancia entre un objeto y otro.
             </summary>    
         </member>
-        <member name="P:Kriptok.Entities.DistanceTo`1.Object">
+        <member name="F:Kriptok.Entities.DistanceTo`1.Object">
             <summary>
             Objeto hasta el cuál se está midiendo la distancia.
             </summary>
         </member>
-        <member name="P:Kriptok.Entities.DistanceTo`1.Distance">
+        <member name="F:Kriptok.Entities.DistanceTo`1.Distance">
             <summary>
             Distancia hasta el objeto referenciado.
             </summary>        
@@ -13394,6 +14025,11 @@
             Inicializa un modo de Scroll con la "capa" indicada por parámetro.
             </summary>        
         </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.StartVideo``1(``0)">
+            <summary>
+            Inicializa el modo de reproducción de video en la región indicada por parámetro.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Scenes.SceneHandler.Set(Kriptok.Scenes.SceneBase)">
             <summary>
             Establece la escena indicada por parámetro como la única actividad.
@@ -13421,14 +14057,6 @@
             <summary>
             Espera una cantidad determinada de renderizados de pantalla indicados por parámetro.
             </summary>        
-        </member>
-        <member name="M:Kriptok.Scenes.SceneHandler.ResetTimer">
-            <summary>
-            Resetea los frames por segundo, el tiempo desde el inicio del programa, y el contador
-            de frames.
-            
-            Sólo disponible en modo DEBUG.
-            </summary>
         </member>
         <member name="M:Kriptok.Scenes.SceneHandler.FadeTo(System.Drawing.Color,System.Byte)">
             <summary>
@@ -13555,7 +14183,7 @@
             Inicializa una interfaz Mode7 en toda la pantalla.
             </summary>        
         </member>
-        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartPseudo3D(Kriptok.Scenes.SceneHandler,System.Action{Kriptok.Regions.Pseudo3D.Mode7.PlotMode7Region})">
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartPseudo3D(Kriptok.Scenes.SceneHandler,System.Action{Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegion})">
             <summary>
             Inicializa la perspectiva pseudo 3D en toda la pantalla.
             </summary>        
@@ -13891,12 +14519,6 @@
             Para que no se pueda instanciar. Test Comment
             </summary>
         </member>
-        <member name="T:Kriptok.Common.Cache.ItemCache`2">
-            <summary>
-            Esta clase se mantiene pública para poder monitorear la caché desde otros proyectos en modo DEBUG,
-            pero interna e inaccesible en modo Release, ya que no es necesaria.
-            </summary>  
-        </member>
         <member name="M:Kriptok.Common.Cache.ItemCache`2.Clear">
             <summary>
             Limpia todos los recursos de la caché, y libera todos los recursos que se hubiesen cargado.
@@ -13910,44 +14532,9 @@
             <param name="resolution"></param>
             <returns></returns>
         </member>
-        <member name="T:Kriptok.Helpers.DebugHelper">
-            <summary>
-            Funcionalidades de ayuda para el modo DEBUG.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Helpers.DebugHelper.AddToViewCount(System.Int32)">
-            <summary>
-            Incrementa la cantidad de vistas a renderizar en el número indicado.
-            </summary>
-        </member>
         <member name="T:Kriptok.Helpers.SinCosHelper">
             <summary>
             Clase utilizada para el cálculo de Senos y Cosenos tabulados.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Helpers.SinCosHelper.tableSize">
-            <summary>
-            Cantidad de valores a tabular.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Helpers.SinCosHelper.tableMask">
-            <summary>
-            Máscara para truncar valores.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Helpers.SinCosHelper.multiplier">
-            <summary>
-            Multiplicador para transformar valores.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Helpers.SinCosHelper.sinTable">
-            <summary>
-            Tabla de valores de SENO precalculados.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Helpers.SinCosHelper.cosTable">
-            <summary>
-            Tabla de valores del coseno precalculados.
             </summary>
         </member>
         <member name="M:Kriptok.Helpers.SinCosHelper.TabSinF(System.Single)">
@@ -14087,19 +14674,14 @@
             Calcula el doble del área interior de un triángulo dado por tres <see cref="T:System.Drawing.PointF"/>.
             </summary>
         </member>
-        <member name="M:Kriptok.Helpers.PointFHelper.TriangleAreaX2(System.Drawing.PointF[])">
+        <member name="M:Kriptok.Helpers.ColorHelper.OldToNew(System.Int32)">
             <summary>
-            Calcula el doble del área interior de un triángulo dado por tres <see cref="T:System.Drawing.PointF"/>.
+            Transforma una coordenada de color del formato viejo de MS-DOS (0..63) a (0..255).
             </summary>        
         </member>
         <member name="M:Kriptok.Helpers.ExceptionHelper.ValidateRangeCO(System.Int32,System.Int32,System.Int32)">
             <summary>
             Valida que el rango del valor sea entre [0, max), es decir, cerrado en 0, abierto en max)
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Helpers.ExceptionHelper.MsgBox(System.Exception)">
-            <summary>
-            Muestra por pantalla la excepción recibida.
             </summary>        
         </member>
         <member name="M:Kriptok.Helpers.ImageAttributesHelper.Alpha(System.Single)">
@@ -14219,6 +14801,11 @@
             Funciones matemáticas extra.
             </summary>
         </member>
+        <member name="F:Kriptok.Helpers.MathHelper.Cos45">
+            <summary>
+            Obtiene el seno y coseno de un ángulo de 45°. Es decir, Sqrt(2)/2.
+            </summary>
+        </member>
         <member name="F:Kriptok.Helpers.MathHelper.Gravity">
             <summary>
             Constante de aceleración gravitatoria.
@@ -14242,16 +14829,6 @@
         <member name="M:Kriptok.Helpers.MathHelper.GetDistanceF(Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
             Calcula la distancia tridimensional entre dos puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Helpers.MathHelper.GetDistance(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Calcula la distancia bidimensional entre dos puntos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Helpers.MathHelper.GetDistanceF(Kriptok.Drawing.Algebra.Vector2F,Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Calcula la distancia bidimensional entre dos puntos.
             </summary>
         </member>
         <member name="M:Kriptok.Helpers.MathHelper.GetDistance(Kriptok.Drawing.Vector2I,Kriptok.Drawing.Vector2I)">
@@ -14378,7 +14955,19 @@
             independientemente de su signo.
             </summary>        
         </member>
+        <member name="M:Kriptok.Helpers.MathHelper.SignedMax(System.Single,System.Single,System.Single)">
+            <summary>
+            Obtiene el valor que se encuentra más lejos del 0 en la recta numérica,
+            independientemente de su signo.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.MathHelper.SignedMax(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Obtiene el valor que se encuentra más lejos del 0 en la recta numérica,
+            independientemente de su signo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Helpers.MathHelper.SignedMax(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Obtiene el valor que se encuentra más lejos del 0 en la recta numérica,
             independientemente de su signo.
@@ -14662,11 +15251,6 @@
         <member name="F:Kriptok.Views.Shapes.Base.VertexBase.Transformed">
             <summary>
             Este es el punto transformado después de aplicar las transformaciones.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Shapes.Base.VertexBase.Location">
-            <summary>
-            Punto base de las coordenadas, antes de transformar.
             </summary>
         </member>
         <member name="M:Kriptok.Views.Shapes.Base.VertexBase.CalculateBounds(Kriptok.Views.Shapes.Base.VertexBase[])">
@@ -15085,11 +15669,6 @@
             Vista que representa una "esfera" con meridianos y paralelos.
             </summary>
         </member>
-        <member name="T:Kriptok.Views.Shapes.Textured.PlotTexturedPolygonView">
-            <summary>
-            Representa un polígono tridimensional texturado.
-            </summary>
-        </member>
         <member name="T:Kriptok.Views.Shapes.Textured.TexturedTerrainView">
             <summary>
             Esta vista representa una montaña tridimensional con textura basado en una cuadrícula.
@@ -15220,6 +15799,11 @@
         <member name="T:Kriptok.Views.Shapes.Vertices.Vertex3">
             <summary>
             Representa un vértice tridimensional.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.Vertices.Vertex3.Location">
+            <summary>
+            Punto base de las coordenadas, antes de transformar.
             </summary>
         </member>
         <member name="F:Kriptok.Views.Shapes.Meshes.cache">
@@ -15411,11 +15995,6 @@
             Actualiza la animación de un tile animado.
             </summary>        
         </member>
-        <member name="M:Kriptok.Views.Shapes.Texts.ITexture.SetId(System.Int32)">
-            <summary>
-            Establece el id de la textura.
-            </summary>        
-        </member>
         <member name="M:Kriptok.Views.Shapes.Texts.IShadedTexture`1.WithShade(System.UInt32)">
             <summary>
             Obtiene una textura adaptada a la luz ambiental actual, si es que
@@ -15431,11 +16010,6 @@
             <summary>
             Indica si se ha descargado de memoria.
             </summary>        
-        </member>
-        <member name="P:Kriptok.Views.Shapes.Texts.SampleTexture.Id">
-            <summary>
-            Indica el identificador del elemento dentro de la colección de texturas.
-            </summary>
         </member>
         <member name="P:Kriptok.Views.Shapes.Texts.SampleTexture.Animated">
             <summary>
@@ -16151,16 +16725,6 @@
             de la luz ambiental.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Shapes.TextureBuilder.Test(System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            Devuelve una imagen estándar para pruebas con varias texturas.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.TextureBuilder.Test(System.Single,System.Single,System.Single,System.Single,Kriptok.Views.Shapes.TextureOptions)">
-            <summary>
-            Devuelve una imagen estándar para pruebas con varias texturas.
-            </summary>        
-        </member>
         <member name="M:Kriptok.Views.Shapes.TextureBuilder.ToSampleTexture">
             <summary>
             Obtiene una textura en base al recurso.
@@ -16816,11 +17380,6 @@
         <member name="T:Kriptok.Views.Gdip.GdipSpriteListBase">
             <summary>
             Esta clase representa una colección de mapas de bits.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Gdip.GdipSpriteListBase.key">
-            <summary>
-            Índice de imagen actual.
             </summary>
         </member>
         <member name="M:Kriptok.Views.Gdip.GdipSpriteListBase.#ctor">
