@@ -3280,6 +3280,14 @@
             XBOX:        A
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button03Pressed">
+            <summary>
+            Tecla:       Espacio
+            SNES:        B
+            Playstation: X (o "O" en la playstation japonesa).
+            XBOX:        A
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button04">
             <summary>
             Tecla:       Shift            
@@ -17437,6 +17445,46 @@
             Método que se dispara al mover el cursor a otra opción del menú.
             </summary>
         </member>
+        <member name="P:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.Location">
+            <summary>
+            Ubicación donde empezar a renderizar el menú.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.Font">
+            <summary>
+            Fuente que utiliza el menú.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.CloseOnSelection">
+            <summary>
+            Indica si debe eliminar las opciones luego de seleccionar una opción.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.Add(System.String,System.Action)">
+            <summary>
+            Agrega una opción al menú.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.GetItems">
+            <summary>
+            Obtiene las opciones.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.OnCursorMove(System.Action{System.Int32,System.Int32})">
+            <summary>
+            Permite establecer una acción a realizar cuando se mueve el cursor de una opción a otra.
+            </summary>            
+        </member>
+        <member name="T:Kriptok.Scenes.SceneHandler.MenuArrow">
+            <summary>
+            Cursor que indica la opción seleccionada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Scenes.SceneHandler.MenuArrow.builder">
+            <summary>
+            Referencia al constructor que generó el menú.
+            </summary>
+        </member>
         <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartSubScreen(Kriptok.Scenes.SceneHandler,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Inicializa una sub-región de pantalla.
@@ -18159,6 +18207,11 @@
         <member name="M:Kriptok.Helpers.KeyboardHelper.AnyKeyPressed">
             <summary>
             Devuelve la tecla presionada si se ha presionado una tecla.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Helpers.KeyboardHelper.KeyPressed(System.Windows.Forms.Keys)">
+            <summary>
+            Indica si se presionó la tecla
             </summary>        
         </member>
         <member name="T:Kriptok.Helpers.MathHelper">

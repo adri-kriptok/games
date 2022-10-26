@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9500277E-B07B-4594-8596-F49D6A7EF440}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PerdidoEnElTiempo</RootNamespace>
+    <AssemblyName>PerdidoEnElTiempo</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.0.20.17\lib\net462\Kriptok.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Sdk.0.20.17\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.cs" />
+    <Compile Include="Scenes\Base\VideoSceneBase.cs" />
+    <Compile Include="Scenes\Egypt\Egypt6Scene.cs" />
+    <Compile Include="Scenes\Egypt\Egypt5Scene.cs" />
+    <Compile Include="Scenes\Egypt\Egypt4Scene.cs" />
+    <Compile Include="Scenes\Egypt\Egypt3Scene.cs" />
+    <Compile Include="Scenes\Egypt\Egypt2Scene.cs" />
+    <Compile Include="Scenes\Egypt\Egypt1Scene.cs" />
+    <Compile Include="Scenes\Dino\Dino2Scene.cs" />
+    <Compile Include="Scenes\Dino\Dino1Scene.cs" />
+    <Compile Include="Scenes\GameOverScene.cs" />
+    <Compile Include="Scenes\InitScene.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Space\Space2Scene.cs" />
+    <Compile Include="Scenes\Space\Space1Scene.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Assets\Videos\Intro\A01.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A02.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A03.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A04.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A05.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A06.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Intro\A07.FLI" />
+    <EmbeddedResource Include="Assets\Videos\A66.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A08.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A09.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A10.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A11.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A12.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A13.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A14.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A15.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A16.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A17.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A18.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Dino\A19.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A21.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A22.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A23.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A24.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A25.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A26.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A27.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A28.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A29.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A30.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A31.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A32.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A33.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A34.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A35.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A36.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Egypt\A37.FLI" />
+    <EmbeddedResource Include="Assets\Videos\FINAL.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A38.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A39.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A40.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A41.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A42.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A43.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A44.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A45.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A46.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A47.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A48.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A49.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A50.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A51.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A52.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A53.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A54.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A55.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A56.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A57.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A58.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A59.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A60.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A61.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A62.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A63.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A64.FLI" />
+    <EmbeddedResource Include="Assets\Videos\Space\A65.FLI" />
+    <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Frame.png" />
+    <EmbeddedResource Include="Assets\Images\muerte01.png" />
+    <EmbeddedResource Include="Assets\Images\gameover.png" />
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\FlicPlayer.exe" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+    <EmbeddedResource Include="Assets\Images\muerte04.png" />
+    <EmbeddedResource Include="Assets\Images\muerte02.png" />
+    <EmbeddedResource Include="Assets\Images\choice2doors.png" />
+    <EmbeddedResource Include="Assets\Images\choiceboulder.png" />
+    <EmbeddedResource Include="Assets\Images\muerte03.png" />
+    <EmbeddedResource Include="Assets\Images\choice3doors.png" />
+    <Content Include="CREDITOS.TXT">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LEEME.TXT">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
