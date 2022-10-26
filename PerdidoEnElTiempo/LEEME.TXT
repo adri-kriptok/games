@@ -1,0 +1,246 @@
+                                            
+        Û฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿฿Û
+        Û PERDIDO EN EL TIEMPO Û          
+        ÛÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÜÛ
+                                                        ARRIBA
+                                    +  PULSA:    IZQUIERDA   DERECHA
+                                       ------           ABAJO
+                                            ESC ----- para salir.
+                                            AV.PAG. - para pasar la pagina.
+                                            RE.PAG. - para retroceder pag.
+     *** INDICE ***
+       
+        1. Descripcion de los ficheros de animacion.
+        2. Material utilizado.
+        3. Autores [direccion, telefono,...].
+        4. El render y el post-render.
+        5. Otros datos de interes.
+        6. Combinaciones ganadoras. Para finalizar la demo correctamente.
+        7. Instalar en el disco duro.
+        8. Otros proyectos para empresas interesadas.
+        9. Saludos y agradecimientos.
+
+
+1. DESCRIPCION DE LOS FICHEROS DE ANIMACION:
+
+ษอออออออออออออหอออออออออหออออออออออออออออออหออออออออออออออออออออออออออออออออป
+บ FICHEROS    บ  MEGAS  บ TIEMPO DE RENDER บ COMENTARIO                     บ
+ฬอออออออออออออฮอออออออออฮออออออออออออออออออฮออออออออออออออออออออออออออออออออน
+บ A01.FLI     บ 0.787   บ  00:22:00        บ SERGIO BLANCO                  บ
+บ A02.FLI     บ 1.444   บ  00:25:00        บ TORRELAVEGA 1996               บ
+บ A03.FLI     บ 0.729   บ  00:26:00        บ RODOLFO BLANCO                 บ
+บ A04.FLI     บ 0.272   บ  00:20:00        บ LE CAE UN RAYO A UN CHICO      บ
+บ A05.FLI     บ 0.908   บ  00:28:00        บ PRESENTAN                      บ
+บ A06.FLI     บ 0.208   บ  00:18:00        บ WARPING                        บ
+บ A07.FLI     บ 1.483   บ  00:38:00        บ PERDIDO EN EL TIEMPO (titulo)  บ
+บ A08.FLI     บ 0.661   บ  00:22:00        บ JURASICO -150 MILLONES         บ
+บ A09.FLI     บ 0.195   บ  00:23:00        บ CHICO CAYENDO                  บ
+บ A10.FLI     บ 0.560   บ  00:14:00        บ EL DINO QUE SE ACERCA          บ 
+บ A11.FLI     บ 0.443   บ  00:18:00        บ SE ACERCA MAY Y MAS            บ
+บ A12.FLI     บ 0.259   บ  00:14:00        บ TE VA A COMER PERO...          บ
+บ A13.FLI     บ 0.423   บ  00:22:00        บ EL DINO PASA POR ENCIMA DE TI  บ
+บ A14.FLI     บ 0.226   บ  00:28:00        บ EL DINO LE ALCANZA Y LE MUERDE บ
+บ A15.FLI     บ 0.418   บ  00:52:00        บ EL DINO LE ARRANCA LA CABEZA   บ
+บ A16.FLI     บ 0.372   บ  00:56:00        บ EL DINO LLAMA A OTRO DINO      บ
+บ A17.FLI     บ 0.408   บ  00:36:00        บ EL ATAQUE DE LOS DOS DINOS ... บ
+บ A18.FLI     บ 0.492   บ  00:58:00        บ DESAPARECES JUSTO A TIEMPO     บ
+บ A19.FLI     บ 0.365   บ  00:32:00        บ AL SALTAR SE CAE AL AGUA       บ
+บ A20.FLI     บ CANCELA.บ  CANCELADA       บ SE LE VE BAJO EL AGUA MUERTO   บ
+บ A21.FLI     บ 1.564   บ  00:36:00        บ EGIPTO SIGLO XXII a.c.         บ
+บ A22.FLI     บ 0.089   บ  00:06:00        บ EL CHICO APARECE EN EGIPTO     บ
+บ A23.FLI     บ 1.054   บ  00:32:00        บ UN COCO LE CAE EN LA CABEZA    บ
+บ A24.FLI     บ 0.094   บ  00:06:00        บ ENTRAS EN LA SALA DEL TESORO   บ 
+บ A25.FLI     บ 0.066   บ  00:08:00        บ ENTRAS POR LA PUERTA           บ
+บ A26.FLI     บ 0.141   บ  00:12:00        บ PISAS UN BOTO, MIRAS Y ...     บ
+บ A27.FLI     บ 0.475   บ  00:18:00        บ SE TE CLAVA UNA FLECHA         บ
+บ A28.FLI     บ 0.898   บ  00:12:00        บ CAMINAS POR UN PASILLO Y...    บ
+บ A29.FLI     บ 0.281   บ  00:10:00        บ UNA ROCA TE SIGUE PERO ...     บ
+บ A30.FLI     บ 0.330   บ  00:15:00        บ LA BOLA LE APLASTA             บ
+บ A31.FLI     บ 0.352   บ  00:14:00        บ TE ECHAS A UN LADO             บ
+บ A32.FLI     บ 0.112   บ  00:07:00        บ TE TRASNPORTAR AL NIVEL TRES   บ
+บ A33.FLI     บ 0.902   บ  00:16:00        บ TE ENCUENTRAS CON EL ELQUELETO บ
+บ A34.FLI     บ 0.153   บ  00:14:00        บ AL SALIR LA PUERTA SE CIERRA   บ 
+บ A35.FLI     บ 0.518   บ  00:21:00        บ SE TE ACERCA EL ESQUELETO      บ
+บ A36.FLI     บ 0.965   บ  00:38:00        บ TE ARRANCA LA CABEZA Y ...     บ
+บ A37.FLI     บ 0.087   บ  00:14:00        บ TE COGE Y TE TIRA              บ
+บ A38.FLI     บ 0.023   บ  00:06:00        บ ANO 2215 ESTACION ESTELAR...   บ
+บ A39.FLI     บ 0.452   บ  00:22:00        บ TE APROXIMAS EN UNA NAVE       บ
+บ A40.FLI     บ 0.996   บ  00:21:30        บ LA NAVE ATERRIZA               บ
+บ A41.FLI     บ 0.180   บ  00:08:00        บ ENTRAS EN LA NAVE              บ
+บ A42.FLI     บ 0.105   บ  00:14:00        บ TE ENCUENTRAS CON UN ROBOT     บ
+บ A43.FLI     บ 0.905   บ  00:56:00        บ TE DESINTEGRAS                 บ
+บ A44.FLI     บ 0.237   บ  00:13:00        บ SALES DE LA NAVE EN OTRA NAVE  บ
+บ A45.FLI     บ 1.590   บ  01:36:00        บ TU NAVE EXPERIMENTAL EXPLOTA   บ
+บ A46.FLI     บ 0.133   บ  00:08:00        บ SE ACERCA UNA NAVE ENEMIGA     บ
+บ A47.FLI     บ 0.353   บ  00:12:00        บ TE PERSIGUE Y ..               บ
+บ A48.FLI     บ 0.096   บ  00:06:00        บ TE DISPARA UN HAZ DE ENERGIA   บ
+บ A49.FLI     บ 0.108   บ  00:08:00        บ EL DISPARO TE SIGE PERO ...    บ
+บ A50.FLI     บ 0.250   บ  00:06:30        บ TU DISPARAS ALGO               บ
+บ A51.FLI     บ 0.388   บ  00:21:00        บ EL ANTIMISIL DESTRUYE EL MISIL บ
+บ A52.FLI     บ 0.553   บ  00:48:00        บ TU NAVE EXPLOTA                บ
+บ A53.FLI     บ 0.152   บ  00:06:00        บ LOS MISILES SE CRUZAN          บ
+บ A54.FLI     บ 0.547   บ  00:45:00        บ SU NAVE EXPLOTA                บ
+บ A55.FLI     บ 1.103   บ  00:28:00        บ TU NAVE SE ACERCA A UN PLANETA บ
+บ A56.FLI     บ 0.520   บ  03:12:00 *      บ TU NAVE ATERRIZA EN EL PLANETA บ 
+บ A57.FLI     บ 0.264   บ  00:18:00        บ SE TE ACERCA UN ROBOT          บ
+บ A58.FLI     บ 0.454   บ  00:26:00        บ ENTRAS EN LA HABITACION        บ
+บ A59.FLI     บ 0.226   บ  00:14:00        บ TE VAS                         บ
+บ A60.FLI     บ 0.416   บ  00:21:00        บ TE DISPARA UN RAYO LASER       บ
+บ A61.FLI     บ 0.833   บ  00:37:00        บ LOS RAYOS TE ALCANZAN          บ
+บ A62.FLI     บ 0.799   บ  00:23:00        บ DAS UNA PATADA AL ROBOT        บ
+บ A63.FLI     บ 0.771   บ  00:13:00        บ IMAGEN DEL ROBOT ACTIVANDO     บ
+บ A64.FLI     บ 0.017   บ  00:01:30        บ LA AUTODESTRUCCION DE LA BASE  บ
+บ A65.FLI     บ 1.378   บ  00:47:00        บ LA AUTODESTRUCCION DE LA BASE  บ
+บ A66.FLI     บ 1.504   บ  00:39:00        บ FIN?                           บ
+บ FINAL.FLI   บ 2.168   บ  01:16:00        บ CREDITOS Y AGRADECIMIENTOS     บ 
+บ SVGA1.FLC   บ 6.900   บ  06:11:00        บ ANIMACION EN SVGA CON MILES    บ
+บ             บ         บ                  บ DE POLIGONOS Y A 600X480       บ
+ฬอออออออออออออฮอออออออออฮออออออออออออออออออฮออออออออออออออออออออออออออออออออน
+บ TOTAL:      บ 43.192  บ                  บ                                บ
+ศอออออออออออออสอออออออออสออออออออออออออออออสออออออออออออออออออออออออออออออออผ
+  * Esta animacion tardo tanto tiempo en renderizar debido a los reflections
+    maps, que desbordaron mi memoria.
+
+  - TOTAL DE MEGAS DE LAS ANIMACIONES : 43.192 MEGAS
+  - TOTAL DE MEGAS DE TODO EL PROGRAMA: 45.623 MEGAS
+
+2. MATERIAL UTILIZADO:
+   
+   486 DX2 66 Mhz.
+   8 MEGAS DE RAM (ญSOLO!).
+   + NUESTRO SOFTWARE 2D y 3D.
+
+3. AUTORES:
+   
+   - SERGIO BLANCO
+   - RODOLFO BLANCO
+
+   * DIRECCION:
+        C\EL CID CAMPEADOR Nง5-4งI
+            39300 TORRELAVEGA
+               CANTABRIA
+   * TELEFONO: 942  804563
+
+   SI QUIERES CONTACTAR CON NOSOTROS PARA COLABORAR CON NOSOTROS EN
+   PROXIMAS ANIMACIONES, ESCRIBENOS O LLAMANOS. 
+   
+4.  EL RENDER:
+
+    EL RENDER SE HA REALIZADO A UNA RESOLUCION DE 320X200, PERO PARA QUE LA
+    ANIMACION FUESE MAS FLUIDA Y SUAVE, SE RECONVIRTIO A 200X150, CON LO
+    QUE LAS ANIMACIONES PIERDEN DETALLE Y CALIDAD PERO AUMENTA LA SUAVIDAD
+    Y LA FLUIDEZ. PODRIAMOS HABERLA RENDERIZADO EN SVGA A 800X600 O INCLUSO
+    MAS, PERO IMAGINAROS LA CANTIDAD DE MEGAS QUE OCUPARIAN [MAS DEL TRIPLE]
+    Y SEGURO QUE NO CORRERIA TAN SUAVE, TAN REAL, TAN ...
+    ADEMAS TODAS LAS ANIMACION CORREN EN VGA, ASI COMO LAS FOTOS ESTATICAS,
+    QUE HAN SIDO DIBUJADAS A PARTIR DEL ULTIMO FRAME DE LA ANIMACION ANTERIOR
+    EDITANDO UNICAMENTE EL TEXTO Y LAS OPCIONES. 
+    TRAS EL RENDER, EN EL QUE NO HAY NADA MAS QUE HACER QUE ESPERAR, SE PASA
+    A LA FASE DE ENCUADRE, EN LA QUE PINTAMOS LOS MARCOS DE LAS ANIMACION
+    CON EL COLOR MAS OSCURO DE SU PALETA PARA NO VARIAR LOS COLORES DE LA 
+    PALETA GRAFICA QUE USE LA ANIMACION.
+    
+    ** TRUCOS: **
+    
+    NUESTRA TECNICA MAS AVANZADA LA REALIZAMOS CUANDO TENEMOS UNA LARGA 
+    ANIMACION Y UN GRAN NUMERO DE POLIGONOS. ENTONCES, BORRAMOS LOS
+    OBJETOS QUE APARECEN MAS CERCA DE LA CAMARA Y RENDERIZAMOS EL RESTO.
+    UNA VEZ HECHO, VOLVEMOS A CARGAR EL ARCHIVO Y BORRAMOS TODOS LOS OBJETOS
+    EXCEPTO LOS QUE HABIAMOS BORRADO ANTERIORMENTE. LA ANIMACION QUE TENEMOS
+    LA PONEMOS AHORA COMO FONDO, RESULTANDO LA ANIMACION FINAL TRAS ESTE
+    SEGUNDO RENDER. NO HEMOS NOTADO NINGUN FALLO, NI REDUCCION DE CALIDAD
+    POR LO QUE ESTO SIRVE Y PARA MUCHO: YA QUE HEMOS NOTADO UN AHORRO DE
+    TIEMPO DE RENDER DEL 50 AL 80% ญญINCREIBLE!!.
+    Y SE TIENES MAS DE 50.000 POLYGONOS PUEDES REALIZAR ESTA OPERACION 
+    VARIAS VECES. QUEDANDO LA ANIMACION FINAL TRAS 3,4 O INCLUSO 5 RENDERS
+    DE MENOR TIEMPO QUE SI RENDERIZARAS TODO A LA VEZ.
+    จCONOCES ALGUNA TECNICA MEJOR? ญญAVISANOS!!.
+    
+    RESUMIENDO: RENDERIZAMOS SOLO LOS OBJETOS DEL FONDO, PARA LUEGO PONER
+    ESA ANIMACION COMO FONDO DE LOS OBJETOS MAS CERCANOS A LA CAMARA.
+
+    PERO ESTE TRUCO NO HA SIDO USADO EN LOS RENDERS DE LA ANIMACION DADA
+    SU ESCASO NUMERO DE FRAMES Y LA RAPIDEZ DE LOS RENDERS (AUN ESTOY
+    SORPRENDIDO). UNICAMENTE LO HEMOS USADO EN UNA DE LAS ANIMACION, AQUELLA
+    EN LA QUE SE VEN POR PRIMERA VEZ DOS DINOSAURIOS VINIENDO HACIA TI (YA
+    QUE LA CANTIDAD DE FRAMES ERA ACEPTABLE Y LOS POLIGONOS ERAN BASTANTES
+    PARA MI RAM).
+    TAMBIEN USAMOS ESTA TECNICA EN LA ANIMACION EN SVGA (SVGA1.FLC) DEBIDO
+    A QUE LA ALTA RESOLUCION TARDABA BASTANTE Y EL ALTO NUMERO DE POLIGONOS
+    (MAS DE 80.000) SUPERABA A MI RAM. AL FINAL CONSEGUIMOS REDUCIR EL 
+    TIEMPO DE RENDER DE CADA FRAME EN UNOS 2 MINUTOS (CALCULA: 2 MIN. x 175
+    FRAMES = 5.8 HORAS QUE AHORRAMOS EN EL RENDER). LAS PARTES DE LA 
+    ANIMACION QUE FORMAN PARTE DEL FONDO Y NO DE LA ESCENA EN SI SON: LOS
+    DOS ARBOLES Y EL MONTE DE ATRAS DEL TODO, ASI COMO EL CIELO. COMO PUEDES
+    APRECIAR NO SE NOTA EN ABSOLUTO YA QUE CUANDO CREE LA ESCENA, LOS
+    ARBOLES Y LA MONTAฅA ESTABAN INTACTOS, PERO LUEGO LOS APARTE Y LOS 
+    RENDERICE PARA PONERLOS DE FONDO.
+                                     
+5. OTROS DATOS DE INTERES:
+
+   LA ANIMACION FUE REALIZADA ENTRE EL 24 DE AGOSTO Y EL 2 DE OCTUBRE
+   INCLUIDO EN TIEMPO DE RENDER Y TODO. ADEMAS DE VARIOS DIAS EN LOS QUE
+   NO TOCAMOS PARA NADA EL ORDENADOR. TODAVIA ERA VERANO !!!.
+   AHORA VAMOS A COMENZAR NUESTRA SEGUNDA DEMO INTERACTIVA, ESTA VEZ, CON  
+   ALGUNAS MEJORAS SUSTANCIALES Y QUE PRONTO VOLVEREMOS A MANDAR SOLO A
+   PCMANIA. POR ADELANTAR ALGO, DIRE QUE SERA UNA ANIMACION NAVIDEฅA Y QUE
+   SERA AUN MAS ESPECTACULAR.
+
+6. COMBINACIONES GANADORAS:
+
+   PARA ACABAR LA ANIMACION INTERACTIVA: PERDIDO EN EL TIEMPO, CORRECTAMENTE
+   DEBES SEGUIR ESTAS COMBINACIONES DE BOTONES.
+
+   FASE 1:
+                1 - 2
+
+   FASE 2:
+                1 - 1 - 1 - 2 
+                1 - 2 - 2              CUALQUIERA DE ESTAS COMBINACIONES
+                1 - 3 - 2              PUEDE LLEVARLE A LA CONCLUSION DE
+                3 - 1 - 2              LA FASE
+                3 - 2 - 1 - 2 
+   FASE 3:
+                2 - 2 - 1 - 2
+                2 - 1 - 2 - 1 - 1 - 2
+
+7. INSTALAR EN EL DISCO DURO:
+
+   SI DESEA INSTALAR LA ANIMACION EN EL DISCO DURO PARA UNA MAYOR FLUIDEZ DE
+   LA MISMA. SALGA AL DOS Y TECLEE INSTALAR Y SIGA LAS INSTRUCCIONES DEL
+   PROGRAMA.
+   LA INSTALACION NECESITARA UN TOTAL DE 48 MEGAS DE DISCO DURO LIBRE.
+
+8. OTROS PROYECTOS:
+
+   SI DESEEAN QUE COLABOREMOS EN PROYECTOS, ANIMACIONES, PROGRAMAS, 
+   PONEROS EN CONTACTO CON NOSOTROS.
+   TENEMOS EXPERIENCIA DEMOSTRABLE EN LA CONFIGURACION DE ROTULOS ANIMADOS,
+   PRESENTACIONES,... ETC.
+   NUESTRO TELEFONO ES: 942 804563 de Torrelavega. Cantabria.
+
+9. SALUDOS Y AGRADECIMIENTOS:
+    
+   UN SALUDO A TODOS LOS QUE ME ESCRIBIERON TRAS LA ANTERIOR PUBLICACION
+   DE DOS DE NUESTRAS ANIMACIONES: LA JOYA Y LAS AVENTURAS DE SUPER TOONS.
+   Y ES ESPECIAL A :
+    - MAC`95   Por haberme mandado modulos musicales y haber respondido
+               a mis cartas (un saludo a Mateo Diaz de Laredo).
+    - Francisco Collantes de Leon. 
+    - Javier Castro de Malaga.
+    - Juan Luis Merino de Burgos.
+    - Javier Barrachina de Valencia.
+    - Act (a ver si me respondes la carta que te acabo de mandar).
+    - Y a: Star Kid, Alberto Moro (Santander),
+
+
+    + PERO SOBRE TODO A LA REVISTA PCMANIA MUCHAS GRACIAS POR HABERNOS 
+    PUBLICADO LAS ANTERIORES ANIMACIONES Y GRACIAS ADELANTADAS POR
+    PUBLICARME ESTA ANIMACION INTERACTIVA.
+
+    NOTA: NUESTRAS ANTERIORES ANIMACIONES FUERON PUBICADAS EN:
+           
+           * PCMANIA Nง36 (OCTUBRE). 
+                
+                + X:\ANIMA\AVENTURA
+                + X:\ANIMA\JOYA

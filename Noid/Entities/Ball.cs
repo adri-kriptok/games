@@ -261,8 +261,8 @@ namespace Noid.Entities
                             var rY10 = p1.Plus(-8, 4);
                             var rY11 = p1.Plus(8, 4);
 
-                            var y0 = Vector2F.Intersection(p0, p1, rY00, rY01);
-                            var y1 = Vector2F.Intersection(p0, p1, rY10, rY11);
+                            var y0 = Segment2D.Intersection(p0, p1, rY00, rY01);
+                            var y1 = Segment2D.Intersection(p0, p1, rY10, rY11);
 #if DEBUG
                             // Lado izquierdo.
                             var rX00 = p1.Plus(-8, -4);
@@ -272,8 +272,8 @@ namespace Noid.Entities
                             var rX10 = p1.Plus(8, -4);
                             var rX11 = p1.Plus(8, 4);
 
-                            var x0 = Vector2F.Intersection(p0, p1, rX00, rX01);
-                            var x1 = Vector2F.Intersection(p0, p1, rX10, rX11);
+                            var x0 = Segment2D.Intersection(p0, p1, rX00, rX01);
+                            var x1 = Segment2D.Intersection(p0, p1, rX10, rX11);
 
                             if (!x0.HasValue && !y0.HasValue && !x1.HasValue && !y1.HasValue)
                             {
