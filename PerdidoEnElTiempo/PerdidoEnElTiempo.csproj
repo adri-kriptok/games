@@ -163,6 +163,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Kriptok.dll" />
+    <Content Include="bin\PerdidoEnElTiempo.exe" />
     <EmbeddedResource Include="Assets\Images\Frame.png" />
     <EmbeddedResource Include="Assets\Images\muerte01.png" />
     <EmbeddedResource Include="Assets\Images\gameover.png" />
@@ -185,12 +187,6 @@
     <EmbeddedResource Include="Assets\Images\choice3doors.png" />
     <EmbeddedResource Include="Assets\Images\choicespace.png" />
     <EmbeddedResource Include="Assets\Images\choiceship.png" />
-    <Content Include="CREDITOS.TXT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LEEME.TXT">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

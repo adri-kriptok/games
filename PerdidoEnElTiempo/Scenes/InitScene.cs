@@ -31,7 +31,7 @@ namespace PerdidoEnElTiempo.Scenes
             h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
-                menu.Location = new Point(85, 140);
+                menu.Location = Global.MenuPlace;// new Point(85, 140);
                 menu.OnCursorMove((from, to) => h.PlayCursorMoveSound());
 
                 menu.Add("Jugar", () =>

@@ -12,13 +12,7 @@ namespace PerdidoEnElTiempo.Scenes
     {
         protected override void Run(SceneHandler h)
         {
-            h.FadeOn();
-            var text = h.Write(Global.MenuFont,
-                h.ScreenRegion.Size.Width / 2,
-                h.ScreenRegion.Size.Height / 2, "mas tarde...").CenterMiddle();
-            h.Wait(2000);
-            h.FadeOff();
-            text.Die();
+            Later(h);
             h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choice2doors.png");
             h.FadeOn();
 
