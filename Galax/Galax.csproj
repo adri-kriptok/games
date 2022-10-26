@@ -50,6 +50,9 @@
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.0.20.17\lib\net462\Kriptok.dll</HintPath>
     </Reference>
+    <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Div.0.20.17\lib\net462\Kriptok.Div.dll</HintPath>
+    </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Sdk.0.20.17\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>

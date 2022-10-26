@@ -1,6 +1,7 @@
 ﻿using Kriptok;
 using Kriptok.Audio;
 using Kriptok.Core;
+using Kriptok.Div.Scenes;
 using Kriptok.IO;
 using Noid.Scenes;
 using System;
@@ -16,7 +17,7 @@ namespace Noid
             Config.Load<BaseConfiguration>().Mute();
 #endif
             Global.ResetValues();            
-            Engine.Start(new IntroScene(), s =>
+            Engine.Start(new DivIntroVideoScene<IntroScene>(false), s =>
             {
                 s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200;

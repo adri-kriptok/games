@@ -1,6 +1,7 @@
 ﻿using Galax.Scenes;
 using Kriptok;
 using Kriptok.Core;
+using Kriptok.Div.Scenes;
 using Kriptok.Entities.Base;
 using System;
 
@@ -14,7 +15,7 @@ namespace Galax
         [STAThread]
         static void Main()
         {            
-            Engine.Start(new TitleScene(), s =>
+            Engine.Start(new DivIntroVideoScene<TitleScene>(false), s =>
             {
                 s.Title = "Galax | Kriptok";
                 s.FullScreen = false;
