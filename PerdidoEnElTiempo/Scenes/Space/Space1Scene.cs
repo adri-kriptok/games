@@ -21,10 +21,14 @@ namespace PerdidoEnElTiempo.Scenes
 
         protected override void Run(SceneHandler h)
         {
+            // Si pierde, continúa desde acá.
+            Global.State = 2;
+
             if (jump)
             {
                 var v = h.StartVideo(new FlicDecoder(Resource.Get(Assembly, "Assets.Videos.Space.A41.FLI")));
                 v.GoToEnd();
+                h.FadeOn();
             }
             else
             {
@@ -34,6 +38,8 @@ namespace PerdidoEnElTiempo.Scenes
                 PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Space.A41.FLI"), false);
             }
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -45,7 +51,6 @@ namespace PerdidoEnElTiempo.Scenes
                 {
                     h.PlayMenuOKSound();
 
-                    h.Wait(250);
                     h.FadeOff();
                     h.Set(new Space2Scene());
                 });
@@ -53,8 +58,8 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.Add("Vas por la derecha.", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Space2Scene());
-
+                    h.FadeOff();
+                    h.Set(new Space3Scene());
                 });
             });
         }

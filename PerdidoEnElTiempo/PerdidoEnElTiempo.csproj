@@ -67,6 +67,12 @@
     <Compile Include="Scenes\InitScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\Space\Space7Scene.cs" />
+    <Compile Include="Scenes\Space\Space8Scene.cs" />
+    <Compile Include="Scenes\Space\Space6Scene.cs" />
+    <Compile Include="Scenes\Space\Space5Scene_Finale.cs" />
+    <Compile Include="Scenes\Space\Space4Scene_ChooseShip.cs" />
+    <Compile Include="Scenes\Space\Space3Scene.cs" />
     <Compile Include="Scenes\Space\Space2Scene.cs" />
     <Compile Include="Scenes\Space\Space1Scene.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -177,6 +183,8 @@
     <EmbeddedResource Include="Assets\Images\choiceboulder.png" />
     <EmbeddedResource Include="Assets\Images\muerte03.png" />
     <EmbeddedResource Include="Assets\Images\choice3doors.png" />
+    <EmbeddedResource Include="Assets\Images\choicespace.png" />
+    <EmbeddedResource Include="Assets\Images\choiceship.png" />
     <Content Include="CREDITOS.TXT">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

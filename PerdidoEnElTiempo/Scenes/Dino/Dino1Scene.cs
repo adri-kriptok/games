@@ -11,10 +11,11 @@ namespace PerdidoEnElTiempo.Scenes
     internal class Dino1Scene : VideoSceneBase
     {
         protected override void Run(SceneHandler h)
-        {
-            h.FadeOn(255);
-            
-            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A08.FLI"));
+        {                        
+            // Si pierde, continúa desde acá.
+            Global.State = 0;
+
+            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A08.FLI"), () => h.FadeFrom(Color.White));
             var frame = h.Add(new Frame());
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A09.FLI"));
             //frame.Die();
@@ -23,6 +24,8 @@ namespace PerdidoEnElTiempo.Scenes
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A11.FLI"));
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A12.FLI"), false);
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -44,8 +47,7 @@ namespace PerdidoEnElTiempo.Scenes
                     h.Wait(250);
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A14.FLI"));
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A15.FLI"), false);
-                    h.FadeOff();
-                    h.Set(new GameOverScene(1));
+                    GameOver(h, 1);
                 });
             });
         }

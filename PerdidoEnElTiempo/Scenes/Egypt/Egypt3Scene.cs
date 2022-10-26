@@ -20,6 +20,8 @@ namespace PerdidoEnElTiempo.Scenes
             h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choiceboulder.png");
             h.FadeOn();
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -31,9 +33,8 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
                     h.Wait(250);
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A30.FLI"), false);
-                    h.Wait(2000);
-                    h.FadeOff();
-                    h.Set(new GameOverScene(0));
+                    h.Wait(2000);                    
+                    GameOver(h, 0);
                 });
 
                 menu.Add("Echarte para un lado.", () =>

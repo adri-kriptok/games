@@ -15,6 +15,15 @@ namespace PerdidoEnElTiempo.Scenes.Base
 {
     abstract class VideoSceneBase : SceneBase
     {
+        internal const string AUTODESTRUCT = "AUTRODESTRUCCION";
+
+        public void GameOver(SceneHandler h, int endScene)
+        {
+            h.Wait(250);
+            h.FadeOff();
+            h.Set(new GameOverScene(endScene));
+        }
+
         internal static IVideoEntity PlayVideo(SceneHandler h, Resource r, bool autoKill = true)
         {
             var v = h.StartVideo(new FlicDecoder(r));
@@ -59,6 +68,30 @@ namespace PerdidoEnElTiempo.Scenes.Base
 
             h.FadeTo(Color.White);
         }
+
+        protected override void OnMessage(SceneHandler h, object message)
+        {
+            base.OnMessage(h, message);
+
+            if (message as string == AUTODESTRUCT)
+            {
+                h.Set(new Space8Scene());
+            }
+        }
+
+        internal static Tuple<ITextEntity, AutoDestructController> AutoDestructCheck(SceneHandler h)
+        {
+            if (Global.AutoDestructionTimer > 0)
+            {
+                return new Tuple<ITextEntity, AutoDestructController>
+                (                
+                    h.Write(Global.DangerFont, h.ScreenRegion.Size.Width / 2, 40,
+                        () => $"AUTODESTRUCCIÓN EN {Global.AutoDestructionTimer}").CenterMiddle(),
+                    h.Add(new AutoDestructController())
+                );
+            }
+            return new Tuple<ITextEntity, AutoDestructController>(null, null);
+        }
     }
 
     /// <summary>
@@ -76,6 +109,33 @@ namespace PerdidoEnElTiempo.Scenes.Base
 
         protected override void OnFrame()
         {
+        }
+    }
+
+    /// <summary>
+    /// Controla la autodestrucción.
+    /// </summary>
+    internal class AutoDestructController : EntityBase
+    {
+        private DateTime lastState;
+
+        public AutoDestructController()
+        {
+            this.lastState = DateTime.Now;
+        }
+
+        protected override void OnFrame()
+        {
+            if ((DateTime.Now - lastState).TotalSeconds > 1)
+            {
+                Global.AutoDestructionTimer -= 1;
+                lastState = DateTime.Now;
+            }
+
+            if (Global.AutoDestructionTimer <= 0)
+            {
+                Scene.SendMessage(VideoSceneBase.AUTODESTRUCT);
+            }
         }
     }
 }

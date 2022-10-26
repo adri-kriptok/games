@@ -14,6 +14,8 @@ namespace PerdidoEnElTiempo.Scenes
         {
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A17.FLI"), false);
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -25,9 +27,8 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
                     h.Wait(250);
                     h.Add(new Frame());
-                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A19.FLI"), false);
-                    h.FadeOff();
-                    h.Set(new GameOverScene(4));
+                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A19.FLI"), false);                    
+                    GameOver(h, 4);
                 });
 
                 menu.Add("Quedarte quieto.", () =>

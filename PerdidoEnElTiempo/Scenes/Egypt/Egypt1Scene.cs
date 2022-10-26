@@ -12,11 +12,16 @@ namespace PerdidoEnElTiempo.Scenes
     {
         protected override void Run(SceneHandler h)
         {
+            // Si pierde, continúa desde acá.
+            Global.State = 1;
+
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A21.FLI"), () => h.FadeFrom(Color.White));
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A22.FLI"), false);
             
             h.Wait(250);
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -39,10 +44,8 @@ namespace PerdidoEnElTiempo.Scenes
                 
                     h.Wait(250);
                     h.FadeOff();
-                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A23.FLI"), () => h.FadeOn(), false);
-                    h.Wait(250);
-                    h.FadeOff();
-                    h.Set(new GameOverScene(2));
+                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A23.FLI"), () => h.FadeOn(), false);                    
+                    GameOver(h, 2);
                 });
 
                 menu.Add("Ir a la pirámide pequeña.", () =>

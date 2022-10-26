@@ -1,4 +1,5 @@
 ﻿using Kriptok.Scenes;
+using System.Drawing;
 
 namespace PerdidoEnElTiempo.Scenes
 {
@@ -13,6 +14,10 @@ namespace PerdidoEnElTiempo.Scenes
 
         protected override void Run(SceneHandler h)
         {
+            // Reseteo este valor cuando pierdo, por si tengo que volver a pasar
+            // por las mismas pantallas.
+            Global.AutoDestructionTimer = 0;
+
             if (endScene == 0)
             {
                 h.ScreenRegion.SetBackground(Assembly, $"Assets.Images.gameover.png");
@@ -24,6 +29,21 @@ namespace PerdidoEnElTiempo.Scenes
             
             h.FadeOn();
             h.Wait(2000);
+
+            h.FadeTo(Color.White);
+
+            switch (Global.State)
+            {
+                case 0:
+                    h.Set(new Dino1Scene());
+                    break;
+                case 1:
+                    h.Set(new Egypt1Scene());
+                    break;
+                case 2:
+                    h.Set(new Space1Scene());
+                    break;
+            }            
         }
     }
 }

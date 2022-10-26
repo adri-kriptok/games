@@ -13,8 +13,10 @@ namespace PerdidoEnElTiempo.Scenes
         protected override void Run(SceneHandler h)
         {
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A25.FLI"));
-            var vid = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A33.FLI"), false);            
+            var vid = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A33.FLI"), false);
 
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;
@@ -22,7 +24,7 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.CloseOnSelection = true;
                 menu.OnCursorMove((from, to) => h.PlayCursorMoveSound());
 
-                menu.Add("Volver por donde has venido.", () =>
+                menu.Add("Retroceder por donde has venido.", () =>
                 {
                     h.PlayMenuOKSound();
                     h.Wait(250);
@@ -30,9 +32,8 @@ namespace PerdidoEnElTiempo.Scenes
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A34.FLI"));
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A35.FLI"));
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A36.FLI"), false);
-                    h.Wait(1000);
-                    h.FadeOff();
-                    h.Set(new GameOverScene(0));
+                    h.Wait(1000);                    
+                    GameOver(h, 0);
                 });
                 
                 menu.Add("Enfrentarte al esqueleto.", () =>

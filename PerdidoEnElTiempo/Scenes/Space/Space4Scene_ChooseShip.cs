@@ -8,18 +8,14 @@ using System.Drawing;
 
 namespace PerdidoEnElTiempo.Scenes
 {
-    internal class Egypt6Scene : VideoSceneBase
+    internal class Space4Scene : VideoSceneBase
     {
         protected override void Run(SceneHandler h)
         {
-            h.FadeOn();
-            var text = h.Write(Global.MenuFont,
-                h.ScreenRegion.Size.Width / 2,
-                h.ScreenRegion.Size.Height / 2, "mas tarde...").CenterMiddle();
-            h.Wait(2000);
-            h.FadeOff();
-            text.Die();
-            h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choice3doors.png");
+            h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choiceship.png");
+
+            var entities = AutoDestructCheck(h);
+
             h.FadeOn();
 
             // Limpio el buffer de teclas.
@@ -31,22 +27,26 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.CloseOnSelection = true;
                 menu.OnCursorMove((from, to) => h.PlayCursorMoveSound());
 
-                menu.Add("Entrar por la izquierda.", () =>
+                menu.Add("Nave estelar \"Aguila 2\" [roja/blanca].", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Egypt4Scene());
+                    h.Set(new Space5Scene());
                 });
 
-                menu.Add("Entrar por el medio.", () =>
+                menu.Add("Nave experimental \"W23\" [azul].", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Egypt3Scene());
-                });
+                    
+                    // Detengo la autodestrucción.
+                    if (entities.Item1 != null)
+                    {
+                        entities.Item1.Die();
+                        entities.Item2.Die();
+                    }
 
-                menu.Add("Entrar por la derecha.", () =>
-                {
-                    h.PlayMenuOKSound();
-                    h.Set(new Egypt5Scene());                    
+                    h.Add(new Frame());
+                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Space.A45.FLI"), false);
+                    GameOver(h, 0);
                 });
             });
         }

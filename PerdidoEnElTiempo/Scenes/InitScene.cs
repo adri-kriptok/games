@@ -11,20 +11,24 @@ namespace PerdidoEnElTiempo.Scenes
     {
         protected override void Run(SceneHandler h)
         {
-            var bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A01.FLI"), false);
-            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A02.FLI"), bre);
-            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A03.FLI"), bre);
-            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A04.FLI"), bre);
-            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A05.FLI"), bre);
-            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A06.FLI"), bre);
+            var bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A01.FLI"), () => h.FadeOn(), false);
+            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A02.FLI"), null, bre);
+            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A03.FLI"), null, bre);
+            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A04.FLI"), null, bre);
+            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A05.FLI"), null, bre);
+            bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A06.FLI"), null, bre);
                         
             var video = h.StartVideo(new FlicDecoder(Resource.Get(Assembly, "Assets.Videos.Intro.A07.FLI")));
-            // h.WaitOrKeyPress(video);
+            
             if (bre || h.WaitOrKeyPress(video) != Keys.None)
             {                
                 video.GoToEnd();
             }
 
+            h.Wait(500);
+
+            // Limpio el buffer de teclas.
+            h.WaitOrKeyPress(1);
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = new Point(85, 140);
@@ -33,7 +37,7 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.Add("Jugar", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.FadeOff();
+                    h.FadeTo(Color.White);
                     h.Set(new Dino1Scene());
                 });
 
@@ -45,13 +49,19 @@ namespace PerdidoEnElTiempo.Scenes
             });
         }
 
-        private bool PlayOrKeyPress(SceneHandler h, Resource resource, bool bre)
+        private bool PlayOrKeyPress(SceneHandler h, Resource resource, Action beforeStart, bool bre)
         {
             if (bre)
             {
                 return true;
             }
             var video = h.StartVideo(new FlicDecoder(resource));
+
+            if (beforeStart != null)
+            {
+                beforeStart();
+            }
+
             if (h.WaitOrKeyPress(video) != Keys.None)
             {
                 return true;

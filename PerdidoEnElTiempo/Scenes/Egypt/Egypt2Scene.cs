@@ -24,7 +24,6 @@ namespace PerdidoEnElTiempo.Scenes
 
             // Limpio el buffer de teclas.
             h.WaitOrKeyPress(1);
-
             h.StartSingleMenu(Global.MenuFont, menu =>
             {
                 menu.Location = Global.MenuPlace;

@@ -8,18 +8,11 @@ using System.Drawing;
 
 namespace PerdidoEnElTiempo.Scenes
 {
-    internal class Egypt6Scene : VideoSceneBase
+    internal class Space3Scene : VideoSceneBase
     {
         protected override void Run(SceneHandler h)
         {
-            h.FadeOn();
-            var text = h.Write(Global.MenuFont,
-                h.ScreenRegion.Size.Width / 2,
-                h.ScreenRegion.Size.Height / 2, "mas tarde...").CenterMiddle();
-            h.Wait(2000);
-            h.FadeOff();
-            text.Die();
-            h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choice3doors.png");
+            h.ScreenRegion.SetBackground(Assembly, "Assets.Images.choicespace.png");
             h.FadeOn();
 
             // Limpio el buffer de teclas.
@@ -31,22 +24,25 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.CloseOnSelection = true;
                 menu.OnCursorMove((from, to) => h.PlayCursorMoveSound());
 
-                menu.Add("Entrar por la izquierda.", () =>
+                menu.Add("Izquierda: Sala de mandos.", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Egypt4Scene());
+                    h.Wait(250);
+                    h.Set(new Space6Scene());
                 });
 
-                menu.Add("Entrar por el medio.", () =>
+                menu.Add("Derecha: Puerto A33.", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Egypt3Scene());
+                    h.FadeOff();
+                    h.Set(new Space4Scene());
                 });
 
-                menu.Add("Entrar por la derecha.", () =>
+                menu.Add("Volver.", () =>
                 {
                     h.PlayMenuOKSound();
-                    h.Set(new Egypt5Scene());                    
+                    h.FadeOff();
+                    h.Set(new Space1Scene(true));
                 });
             });
         }

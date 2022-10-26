@@ -21,7 +21,7 @@ namespace PerdidoEnElTiempo
 #if DEBUG
             Config.Load<BaseConfiguration>().Mute();
 #endif
-            Engine.Start(new Space1Scene(), s =>
+            Engine.Start(new InitScene(), s =>
             {
                 s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200To240;
