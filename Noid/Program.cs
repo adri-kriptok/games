@@ -14,7 +14,7 @@ namespace Noid
         static void Main()
         {
 #if DEBUG
-            Config.Load<BaseConfiguration>().Mute();
+            // Config.Load<BaseConfiguration>().Mute();
 #endif
             Global.ResetValues();            
             Engine.Start(new DivIntroVideoScene<IntroScene>(false), s =>

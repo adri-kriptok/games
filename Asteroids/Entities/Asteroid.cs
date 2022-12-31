@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace Asteroids.Entities
 {
@@ -111,7 +112,7 @@ namespace Asteroids.Entities
                 Die();
 
                 // Si es el último asteroide...
-                if (Find.All<Asteroid>().Length == 0)
+                if (Find.All<Asteroid>().Count() == 0)
                 {
                     // ... le aviso a la actividad que pase de nivel.
                     Scene.SendMessage(PlaySceneMessages.Win);

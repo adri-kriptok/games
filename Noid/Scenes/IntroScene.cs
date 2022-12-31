@@ -16,7 +16,8 @@ namespace Noid.Scenes
     {
         protected override void Run(SceneHandler h)
         {
-            // Arranca la música tecno.                        
+            // Arranca la música tecno.
+            h.StopMusic();           
             h.PlayMusic(new PlayMusicOptions(DivResources.Music("Tecno.xm"))
             {
                 Loop = true

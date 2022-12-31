@@ -121,6 +121,11 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.IsEntitySetTabSelected">
+            <summary>
+            Indica si el tab principal seleccionado es el de entidades, y no el de tiles.
+            </summary>        
+        </member>
         <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.components">
             <summary>
             Required designer variable.
@@ -148,6 +153,11 @@
             Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
             </summary>
         </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.SelectedPen2">
+            <summary>
+            Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
+            </summary>
+        </member>
         <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.DrawPen">
             <summary>
             Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
@@ -163,8 +173,7 @@
             Método principal, actualiza todos los tabs cuando se cambia el tileset.
             </summary>
             <param name="tabs">Control de tabs.</param>
-            <param name="tileset">Tilset seleccionado.</param>
-            <param name="assemblies">Ensamblados del proyecto.</param>
+            <param name="tileset">Tilset seleccionado.</param>        
         </member>
         <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Models.MapModel.GetMapSize">
             <summary>

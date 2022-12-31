@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0AA7F371-1276-4EDB-A3BB-A37CB6C312B5}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tekrips", "Tekrips\Tekrips.csproj", "{795A944F-8F88-468B-8534-750BF981C59E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerdidoEnElTiempo", "PerdidoEnElTiempo\PerdidoEnElTiempo.csproj", "{9500277E-B07B-4594-8596-F49D6A7EF440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Intruder", "Kriptok.Intruder\Kriptok.Intruder.csproj", "{14B3C223-111E-48FD-8761-D54037FE1EAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,12 @@ Global
 		{9500277E-B07B-4594-8596-F49D6A7EF440}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9500277E-B07B-4594-8596-F49D6A7EF440}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
 		{9500277E-B07B-4594-8596-F49D6A7EF440}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

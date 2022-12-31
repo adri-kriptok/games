@@ -34,11 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.20.17\lib\net462\Kriptok.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Kriptok.0.21.1\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.20.17\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.21.1\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -151,6 +150,7 @@
     <EmbeddedResource Include="Assets\Videos\Space\A64.FLI" />
     <EmbeddedResource Include="Assets\Videos\Space\A65.FLI" />
     <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="bin\PerdidoEnElTiempo.zip" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +166,16 @@
     <EmbeddedResource Include="Assets\Images\Frame.png" />
     <EmbeddedResource Include="Assets\Images\muerte01.png" />
     <EmbeddedResource Include="Assets\Images\gameover.png" />
+    <EmbeddedResource Include="Assets\Images\muerte04.png" />
+    <EmbeddedResource Include="Assets\Images\muerte02.png" />
+    <EmbeddedResource Include="Assets\Images\choice2doors.png" />
+    <EmbeddedResource Include="Assets\Images\choiceboulder.png" />
+    <EmbeddedResource Include="Assets\Images\muerte03.png" />
+    <EmbeddedResource Include="Assets\Images\choice3doors.png" />
+    <EmbeddedResource Include="Assets\Images\choicespace.png" />
+    <EmbeddedResource Include="Assets\Images\choiceship.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />
     <Content Include=".sdk\bin\Debug\Kriptok.xml" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
@@ -177,14 +187,6 @@
     <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
     <Content Include=".sdk\tools\Kriptok.xml" />
     <Content Include=".sdk\tools\MidiNoteTester.exe" />
-    <EmbeddedResource Include="Assets\Images\muerte04.png" />
-    <EmbeddedResource Include="Assets\Images\muerte02.png" />
-    <EmbeddedResource Include="Assets\Images\choice2doors.png" />
-    <EmbeddedResource Include="Assets\Images\choiceboulder.png" />
-    <EmbeddedResource Include="Assets\Images\muerte03.png" />
-    <EmbeddedResource Include="Assets\Images\choice3doors.png" />
-    <EmbeddedResource Include="Assets\Images\choicespace.png" />
-    <EmbeddedResource Include="Assets\Images\choiceship.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

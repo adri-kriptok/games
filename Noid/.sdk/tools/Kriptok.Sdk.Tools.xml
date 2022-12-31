@@ -120,6 +120,12 @@
             Abre la ruta indicada por parámetro.
             </summary>        
         </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.RefreshEntityTreeView(System.Windows.Forms.TreeView,Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+            <summary>
+            Construye el árbol de entidades mezclando la metadata del mapa con las
+            registradas con los recursos.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Sdk.Tools.Helpers.FormHelper.InitMainForm(System.Windows.Forms.Form,System.String)">
             <summary>
             Inicializa el formulario principal de una aplicación. 
@@ -196,21 +202,56 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Kriptok.Sdk.Tools.Forms.ObjectForm.components">
+        <member name="F:Kriptok.Sdk.Tools.Forms.EntityForm.components">
             <summary>
             Required designer variable.
             </summary>
         </member>
-        <member name="M:Kriptok.Sdk.Tools.Forms.ObjectForm.Dispose(System.Boolean)">
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:Kriptok.Sdk.Tools.Forms.ObjectForm.InitializeComponent">
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel">
+            <summary>
+            Colección de entidades que pueden ser utilizadas en editores de mapas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.#ctor(Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+            <summary>
+            Devuelve una nueva intancia de la clase <see cref="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.Entities">
+            <summary>
+            Listado de entidades reconocidas para el editor de mapas.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityTypeModel">
+            <summary>
+            Representa cada tipo de entidad que hay en el mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.ToTreeNode">
+            <summary>
+            Obtiene un nodo para agregar a un árbol.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.GetText">
+            <summary>
+            Obtiene un texto identificatorio para el tipo de entidad.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityModel">
+            <summary>
+            Representa cada entidad que hay en el mapa.
             </summary>
         </member>
         <member name="T:Kriptok.Sdk.Tools.Models.SplitterPanelModel">
