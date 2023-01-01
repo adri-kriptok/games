@@ -48,17 +48,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.21.1\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.21.2\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.21.1\lib\net462\Kriptok.Div.dll</HintPath>
-    </Reference>
-    <Reference Include="Kriptok.Rpg, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Assets\Libs\Kriptok.Rpg.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.21.2\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.21.1\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.21.2\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk.RM, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assets\Libs\Kriptok.Sdk.RM.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.RM.VX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -186,7 +186,7 @@
     <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
     <Content Include=".sdk\tools\Kriptok.xml" />
     <Content Include=".sdk\tools\MidiNoteTester.exe" />
-    <Content Include="Assets\Libs\Kriptok.Rpg.dll" />
+    <Content Include="Assets\Libs\Kriptok.Sdk.RM.dll" />
     <Content Include="Assets\Libs\Kriptok.Sdk.RM.VX.dll" />
     <Content Include="Assets\Libs\Kriptok.Sdk.RM2000.dll" />
     <EmbeddedResource Include="Assets\Sounds\Cancel1.wav" />
