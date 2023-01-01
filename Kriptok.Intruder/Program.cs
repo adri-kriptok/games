@@ -24,8 +24,8 @@ namespace Kriptok.Intruder
 
             //Engine.Start(new Mission01_TheBeach(), p =>
             //Engine.Start(new TheBeachMapScene(), p =>
-            Engine.Start(new TestMapScene(), p =>
-            //Engine.Start(new IntroScene(), p =>
+            //Engine.Start(new TestMapScene(), p =>
+            Engine.Start(new IntroScene(), p =>
             {
 #if DEBUG
                 p.FullScreen = false;
