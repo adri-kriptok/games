@@ -65,15 +65,21 @@ namespace Kriptok.Intruder.Entities.Effects
         private readonly ModifiableStroke stroke = new ModifiableStroke(color, 2f);
 
         public WaterWaveView() : base(CreateVertices())
-        {            
+        {          
+        }
+
+        protected override void Build(GdipShapeCollectionInitializer shapes)
+        {
+            base.Build(shapes);
+
             var verts = base.GetVertices().ToArray();
 
             for (int i = 1; i < vertexCount; i++)
             {
-                Add(stroke, verts[i], verts[i - 1]);
+               shapes.Add(stroke, verts[i], verts[i - 1]);
             }
 
-            Add(stroke, verts[0], verts[vertexCount - 1]);
+            shapes.Add(stroke, verts[0], verts[vertexCount - 1]);
         }
 
         /// <summary>

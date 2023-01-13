@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.21.2\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.21.4\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.21.2\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.21.4\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -150,7 +150,6 @@
     <EmbeddedResource Include="Assets\Videos\Space\A64.FLI" />
     <EmbeddedResource Include="Assets\Videos\Space\A65.FLI" />
     <None Include=".sdk\bin\lib-selector.bat" />
-    <None Include="bin\PerdidoEnElTiempo.zip" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -187,6 +186,9 @@
     <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
     <Content Include=".sdk\tools\Kriptok.xml" />
     <Content Include=".sdk\tools\MidiNoteTester.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

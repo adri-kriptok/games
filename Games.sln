@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerdidoEnElTiempo", "Perdid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Intruder", "Kriptok.Intruder\Kriptok.Intruder.csproj", "{14B3C223-111E-48FD-8761-D54037FE1EAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.AnaglyphZone", "Kriptok.AnaglyphZone\Kriptok.AnaglyphZone.csproj", "{268A8F4C-F0BC-418A-8D73-F633A9E25871}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,9 +89,18 @@ Global
 		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
 		{14B3C223-111E-48FD-8761-D54037FE1EAB}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{268A8F4C-F0BC-418A-8D73-F633A9E25871} = {0AA7F371-1276-4EDB-A3BB-A37CB6C312B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E7D7099-E367-4117-9677-045165DB4B95}

@@ -135,8 +135,12 @@ namespace Kriptok.Intruder.Entities
                     Audio.PlayWave(DivResources.Sound("Humanos.AAAH01.WAV"));
                 //}
                 //deadScream = true;
+#if DEBUG || SHOWFPS
+                life = 1f;
+#else   
                 Die();
                 Scene.SendMessage(MapMessages.PlayerDied);
+#endif
                 return;
             }
 

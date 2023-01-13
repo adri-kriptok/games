@@ -11,6 +11,7 @@ using Kriptok.Maps.Terrains;
 using Kriptok.Regions.Partitioned;
 using Kriptok.Regions.Partitioned.Wld;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
+using Kriptok.Sdk.RM2000;
 using Kriptok.Views.Sprites;
 using System;
 using System.Collections.Generic;
@@ -144,7 +145,8 @@ namespace Kriptok.Intruder.Entities.Enemies
                     if (damageCounter > damageCounterMax)
                     {
                         // Audio.PlayMidiPercussionNote(27, 127);
-                        Audio.PlaySound(Assembly, "Sounds.Cancel1.wav");
+                        Audio.PlayWave(Rm2kResources.Sound("Cancel1.wav"));
+
                         player.Damage(Rand.Next(15, 20));
                         damageCounter = 0f;
                     }

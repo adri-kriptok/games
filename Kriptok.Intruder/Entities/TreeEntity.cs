@@ -44,6 +44,8 @@ namespace Kriptok.Intruder.Entities
 
     internal class TreeView : FlatCircleView
     {
+        internal TreeShape Tree;
+
         public TreeView() : this(Vector3F.U001)
         {
         }
@@ -65,12 +67,17 @@ namespace Kriptok.Intruder.Entities
             RotateTransform(0f, MathHelper.HalfPIF, 0f);
             RotateTransform(0f, 0f, MathHelper.HalfPIF);
 
-            SwapAllFaces();
-
-            Add(new TreeShape(GetVertices().First()));
+            SwapAllFaces();            
         }
 
-        private class TreeShape : Particle<GdipSprite>
+        protected override void Build(GdipShapeCollectionInitializer shapes)
+        {
+            base.Build(shapes);
+
+            this.Tree = shapes.Add(new TreeShape(GetVertices().First()));
+        }
+
+        internal class TreeShape : Particle<GdipSprite>
         {
             public TreeShape(VertexBase vertex) : base(new GdipSprite(typeof(TreeView).Assembly, "Assets.Images.Trees.Tree00.png")
             {

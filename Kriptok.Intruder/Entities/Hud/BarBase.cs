@@ -4,6 +4,7 @@ using Kriptok.Extensions;
 using Kriptok.Helpers;
 using Kriptok.Regions.Context.Base;
 using Kriptok.Views;
+using Kriptok.Views.Base;
 using Kriptok.Views.Primitives;
 using Kriptok.Views.Shapes;
 using System;
@@ -68,7 +69,7 @@ namespace Kriptok.Intruder.Entities.Hud
                 this.brush = brush;
             }
 
-            public override void SetOwner(EntityBase entity)
+            public override void SetOwner(IViewOwner entity)
             {
                 base.SetOwner(entity);
                 this.owner = (BarBase)entity;

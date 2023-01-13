@@ -69,9 +69,12 @@ namespace Kriptok.Intruder.Entities
             {
                 new Vertex3(0f, 0f, 0f),
                 new Vertex3(1000f, 0f, 0f),
+            }, shapes =>
+            {
+                shapes.Add(Strokes.Blue, 0, 1);
             })
             {
-                Add(Strokes.Blue, 0, 1);
+                
 
                 //Scale = new Vector3F(100);
             }
