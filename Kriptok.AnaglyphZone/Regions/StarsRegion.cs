@@ -63,11 +63,11 @@ namespace Kriptok.AZ.Regions
                 g.FillRectangle(brush3, rectangle);
 
                 brush2.ResetTransform();
-                brush2.TranslateTransform(-(camLocation.X * 0.15f).Round(), (camLocation.Z * 0.15f).Round());
+                brush2.TranslateTransform(-(camLocation.X * 0.2f).Round(), (camLocation.Z * 0.2f).Round());
                 g.FillRectangle(brush2, rectangle);
 
                 brush1.ResetTransform();
-                brush1.TranslateTransform(-(camLocation.X * 0.2f).Round(), (camLocation.Z * 0.2f).Round());
+                brush1.TranslateTransform(-(camLocation.X * 0.3f).Round(), (camLocation.Z * 0.3f).Round());
                 g.FillRectangle(brush1, rectangle);
             });
 

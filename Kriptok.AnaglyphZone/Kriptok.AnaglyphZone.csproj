@@ -68,7 +68,6 @@
     <Compile Include="Entities\Enemies\Asteroid.cs" />
     <Compile Include="Entities\Enemies\EnemyBase.cs" />
     <Compile Include="Entities\Enemies\EnemyScore.cs" />
-    <Compile Include="Entities\Environment\Stars.cs" />
     <Compile Include="Entities\Explosion.cs" />
     <Compile Include="Entities\GameOver.cs" />
     <Compile Include="Entities\PlayerShip.cs" />

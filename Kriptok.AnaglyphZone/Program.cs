@@ -27,10 +27,7 @@ namespace Kriptok.AZ
             {
                 s.FullScreen = true;
                 s.Mode = WindowSizeEnum.W340x192;
-                s.Title = "Vector3D | Kriptok";
-                //s.TimerInterval = 16;
-                s.OpenMidiNotePlayer();
-                //s.ExtractMidiPlayer();
+                s.Title = "Anaglyph Zone | Kriptok";                
             });
         }
     }
