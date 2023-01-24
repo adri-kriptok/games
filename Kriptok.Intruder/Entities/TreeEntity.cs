@@ -74,7 +74,7 @@ namespace Kriptok.Intruder.Entities
         {
             base.Build(shapes);
 
-            this.Tree = shapes.Add(new TreeShape(GetVertices().First()));
+            this.Tree = shapes.Add(new TreeShape(shapes.GetVertices().First()));
         }
 
         internal class TreeShape : Particle<GdipSprite>

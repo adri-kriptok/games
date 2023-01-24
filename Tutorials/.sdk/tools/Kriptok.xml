@@ -2333,6 +2333,11 @@
             Resta un vector del otro, devolviendo la diferencia.
             </summary>       
         </member>
+        <member name="M:Kriptok.Drawing.Algebra.Vector2F.Minus(System.Single,System.Single)">
+            <summary>
+            Resta un vector del otro, devolviendo la diferencia.
+            </summary>       
+        </member>
         <member name="M:Kriptok.Drawing.Algebra.Vector2F.Minus(Kriptok.Drawing.Vector2I)">
             <summary>
             Resta un vector del otro, devolviendo la diferencia.
@@ -2692,6 +2697,16 @@
             Obtiene una esfera trasladada tridimencionalmente según indica el vector.
             </summary>        
         </member>
+        <member name="T:Kriptok.Drawing.Shapes.Volume">
+            <summary>
+            Representa un volumen tridimencional alineado a los ejes.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.Shapes.Volume.Invalid">
+            <summary>
+            Volumen vacío para inicialización.
+            </summary>
+        </member>
         <member name="M:Kriptok.Drawing.Shapes.Volume.#ctor(Kriptok.Drawing.Algebra.Vector3F,Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
             Crea un volumen en base a dos vértices.
@@ -2712,7 +2727,7 @@
             Verifica si el volumen se superpone con el indicado por parámetro.
             </summary>
         </member>
-        <member name="M:Kriptok.Drawing.Shapes.Volume.SetLocation(Kriptok.Drawing.Algebra.Vector3F)">
+        <member name="M:Kriptok.Drawing.Shapes.Volume.OnLocation(Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
             Ubica el volumen en la posición indicada.
             </summary>        
@@ -2743,9 +2758,36 @@
             indicada por parámetro.
             </summary>        
         </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Extend(Kriptok.Drawing.Algebra.Vector3F)">
+            <summary>
+            Extiende los límites de los bordes tridimencionales para incluir
+            el vértice indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.GetBoxVectors">
+            <summary>
+            Obtiene unalista de vectores que componen la caja tridimensional.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Drawing.Shapes.Volume.Transform(Kriptok.Drawing.Algebra.Matrix3x4F)">
+            <summary>
+            Aplica una transformación a los vértices de la figura para luego
+            retornar un nuevo volumen.
+            </summary>        
+        </member>
         <member name="P:Kriptok.Drawing.PaletteSwap.Count">
             <summary>
             Cantidad de rotaciones.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.BoundF.Min">
+            <summary>
+            Mínimo valor del límite.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Drawing.BoundF.Max">
+            <summary>
+            Máximo valor del límite.
             </summary>
         </member>
         <member name="M:Kriptok.Drawing.BoundF.Overlaps(Kriptok.Drawing.Bound)">
@@ -4251,6 +4293,16 @@
         <member name="P:Kriptok.Entities.Base.ItemBase.Mouse.Middle">
             <summary>
             Indica si se está presionando el botón medio del mouse.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ItemBase.Mouse.rightPressed">
+            <summary>
+            Variables utilizadas para detectar si se presionó o no un botón del mouse.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.ItemBase.Mouse.leftPressed">
+            <summary>
+            Variables utilizadas para detectar si se presionó o no un botón del mouse.
             </summary>
         </member>
         <member name="M:Kriptok.Entities.Base.ItemBase.Mouse.ReCenterX(System.Int32)">
@@ -9554,6 +9606,9 @@
             Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
             </summary>
         </member>
+        <member name="M:Kriptok.Regions.Context.Base.Render3DContextBase.TranslateFor2D(Kriptok.Drawing.Algebra.Vector2F)">
+            <inheritdoc/>
+        </member>
         <member name="M:Kriptok.Regions.Context.Base.Render3DContextBase.GetSampleFloorShade">
             <summary>
             Obtiene el nivel de incidencia de la luz para un plano "piso".
@@ -9631,7 +9686,7 @@
             Utiliza el patrón Double-Dispatch.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Context.Base.Render2DContextBase.TranslateForSprite(Kriptok.Drawing.Algebra.Vector2F)">
+        <member name="M:Kriptok.Regions.Context.Base.Render2DContextBase.TranslateFor2D(Kriptok.Drawing.Algebra.Vector2F)">
             <inheritdoc/>
         </member>
         <member name="M:Kriptok.Regions.Context.Base.Render2DContextBase.GetCalculatedScaleFov(System.Single)">
@@ -9782,7 +9837,7 @@
             Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Context.Base.RenderContextBase.TranslateForSprite(Kriptok.Drawing.Algebra.Vector2F)">
+        <member name="M:Kriptok.Regions.Context.Base.RenderContextBase.TranslateFor2D(Kriptok.Drawing.Algebra.Vector2F)">
             <inheritdoc/>
         </member>
         <member name="M:Kriptok.Regions.Context.Base.RenderContextBase.GetCalculatedScaleFov(System.Single)">
@@ -9918,7 +9973,7 @@
             Renderiza un objeto según corresponda en la perspectiva que se está utilizando.
             </summary>
         </member>
-        <member name="M:Kriptok.Regions.Context.Base.IRenderContext.TranslateForSprite(Kriptok.Drawing.Algebra.Vector2F)">
+        <member name="M:Kriptok.Regions.Context.Base.IRenderContext.TranslateFor2D(Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
             Aplica una transformación para la renderización de sprites y otras figuras bidimensionales.
             </summary>        
@@ -10278,6 +10333,16 @@
             <summary>
             IMPORTANTE: no hacer que sea READ-ONLY porque sino no se puede establecer el Translate.
             </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Context.ScrollRenderContext.#ctor(Kriptok.Regions.Scroll.ScrollRegion,System.Drawing.Graphics,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Context.ScrollRenderContext"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Context.ScrollRenderContext.#ctor(Kriptok.Regions.Scroll.TileScrollFixedRegion,System.Drawing.Graphics,Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Context.ScrollRenderContext"/>.
+            </summary>        
         </member>
         <member name="M:Kriptok.Regions.Context.ScrollRenderContext.GetCalculatedLocation(Kriptok.Drawing.Algebra.Vector3F)">
             <summary>
@@ -10866,6 +10931,11 @@
             Este fondo utiliza una <see cref="T:System.Drawing.TextureBrush"/> para renderizar el fondo.
             </summary>
         </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1.#ctor(Kriptok.Regions.Pseudo3D.Pseudo3DRegionBase{`0},Kriptok.Common.Resource,Kriptok.Regions.Pseudo3D.Backgrounds.HorizontalScrollArgs)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1"/>.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1.#ctor(Kriptok.Regions.Pseudo3D.Pseudo3DRegionBase{`0},Kriptok.Regions.Pseudo3D.Backgrounds.HorizontalScrollArgs,System.Reflection.Assembly,System.String)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1"/>.
@@ -10875,6 +10945,11 @@
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1"/>.
             </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Backgrounds.GdipHorizontalScrollingBackground`1.GetMaxY(`0)">
+            <summary>
+            Obtiene la máxima coordenada "Y" hasta la cual se debe renderizar.
+            </summary>        
         </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Backgrounds.HorizontalScrollArgs">
             <summary>
@@ -10982,10 +11057,7 @@
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Brushes.Base.PlotPseudo3DBrushDataBase.RelativeHeight">
             <summary>
-            Obtiene la altura relativa del plano con respecto a la cámara.
-            
-            Esta propiedad se puede eliminar y utilizar dentro de los cálculos iniciales.
-            Por otro lado, al eliminarla posiblemente quede un algoritmo menos performante.
+            Obtiene la altura relativa del plano con respecto a la cámara.    
             </summary>
         </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Brushes.Base.IPseudo3DBrush`1">
@@ -11477,174 +11549,6 @@
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Mode7.PlotMode7Region"/>.
             </summary>  
         </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Views.VBRenderizable.x0">
-            <summary>
-            Coordenada X donde empieza el buffer.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Views.VBRenderizable.y1">
-            <summary>
-            Máximo valor Y calculado para el bounding-box del renderizable.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Views.VBRenderizable.bufferValues">
-            <summary>
-            Estado del buffer actual.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelSpaceRenderizable.CompareTo(Kriptok.Views.Base.IPriorizable)">
-            <inheritdoc/>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelSpaceRenderizable.GetDrawOrder">
-            <inheritdoc/>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelSpaceRenderizable.GetPriority">
-            <summary>
-            La distancia a la cámara sobre el eje de profundidad.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.context">
-            <summary>
-            Contexto de renderización.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.renderizables">
-            <summary>
-            Lista de objetos a renderizar este frame.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.filteredRenderizables">
-            <summary>
-            Lista de renderizables filtrados a renderizar al final.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.NextRenderizableDistance">
-            <summary>
-            Es la distancia hasta el próximo renderizable.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.nextRenderizable">
-            <summary>
-            Lista de objetos a renderizar este frame.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.nextRenderizablePosition">
-            <summary>
-            Posición del próximo renderizable a evaluar en el array <see cref="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.renderizables"/>.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.SetRenderDistance(System.Single)">
-            <summary>
-            Establece la distancia de renderización.
-            </summary>
-            <param name="nextDistance">La distancia a la cual se va a renderizar
-            esta pasada. Pero antes de renderizar.</param>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainRenderizableArray.AddCurrentRenderizable">
-            <summary>
-            Chequea si tiene que agregar el renderizable que está actualmente
-            cargado en el buffer para renderizar, y lo agrega.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion">
-            <summary>
-            Plano básico de un terreno Voxel.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.YBuffer">
-            <summary>
-            Buffer de columnas para la renderización.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.voxelTerrain">
-            <summary>
-            Terreno principal.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.tiltAngle">
-            <summary>
-            Ángulo de rotación de la cámara sobre el eje de profundidad.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.#ctor(System.Drawing.Rectangle,Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrain)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion"/>.
-            </summary>        
-        </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.Scale">
-            <summary>
-            Escala a aplicar a la brocha de renderización del terreno.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.TiltAngle">
-            <summary>
-            Rotación de la cámara sobre el eje X. Sólo acepta valores entre:
-            <see cref="F:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.minTilt"/> y <see cref="F:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.maxTilt"/>.        
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Core.Camera)">
-            <summary>
-            Genera un nuevo contexto de renderización para la región.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Core.Camera,System.Single)">
-            <summary>
-            Genera un nuevo contexto de renderización para la región.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.Pseudo3DVoxelTerrainRegion.SampleHeight(Kriptok.Drawing.Algebra.Vector2F)">
-            <summary>
-            Obtiene la altura del terreno en las coordenadas indicadas por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrain.GetMaxHeight">
-            <summary>
-            Obtiene el máximo de altura que puede alcanzar el terreno.
-            
-            No obstante, este valor no debe ser utilizado en una expresión de cálculo, ya que no es
-            para nada performante. Debe obtenerse una vez, guardarse en una variable, y luego ser utilizado.
-            </summary>        
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.previewsAngleSin">
-            <summary>
-            Seno precalculado del ángulo de inclinación de la cámara.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.fastShearingMatrix">
-            <summary>
-            Matriz rápida.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.cameraZ">
-            <summary>
-            Dato utilizado para cálculos.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.CreateBrush(Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrain,System.Single)">
-            <summary>
-            Crea una brocha de voxels para los parámetros indicados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.ProjectColumn(System.Single,System.Single)">
-            <summary>
-            Calcula sólo la proyección de la coordenada Y del punto.        
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.Shear(Kriptok.Drawing.BoundF2)">
-            <summary>
-            Aplica la transformación 2D del contexto al bounding-box de la entidad.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.Voxel.VoxelTerrainContext.ApplyShear">
-            <summary>
-            Aplica la transformación de shearing al objeto graphics.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Regions.Pseudo3D.Voxel.VoxelYBuffer1">
-            <summary>
-            Y-Buffer preprado especialmente para entornos de Voxel Terrain.
-            </summary>
-        </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegion">
             <summary>
             Clase base para fondos con perspectiva Pseudo3D, que utilizan un buffer
@@ -11723,6 +11627,16 @@
             Obtiene una brocha para renderizar con el plano indicado por parámetro.
             </summary>
         </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegionBase`1.CreateCubeCilinderBackground(Kriptok.Common.Resource,System.Int32)">
+            <summary>
+            Crea un fondo poligonal extendiendo la textura indicada sobre un cilindro.        
+            </summary>       
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Base.BufferedPseudo3DRegionBase`1.CreateCilinderBackground(Kriptok.Common.Resource,System.Int32,System.Int32)">
+            <summary>
+            Crea un fondo poligonal extendiendo la textura indicada sobre un cilindro.        
+            </summary>       
+        </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Base.IPseudo3DRegion.SetCamera``1(``0)">
             <summary>
             Establece el objeto sobre el cual se enfoca el modo.
@@ -11752,6 +11666,9 @@
             <summary>
             Cámara para interfaces Pseudo3D que modifica su Y-Shearing para apuntar a un objeto.
             </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.AutoShearPseudo3DCameraBase.GetYShearing(Kriptok.Regions.Pseudo3D.Pseudo3DRenderContext,System.Single,System.Single)">
+            <inheritdoc/>
         </member>
         <member name="T:Kriptok.Regions.Pseudo3D.Cameras.OpenPseudo3DCamera">
             <summary>
@@ -11803,6 +11720,18 @@
             <summary>
             Cámara para interfaces Pseudo3D que tiene un Y-shearing variable.
             </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.TargetPseudo3DCameraBase.GetDirection">
+            <inheritdoc />
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.TargetPseudo3DCameraBase.GetLocation2D">
+            <inheritdoc />
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.TargetPseudo3DCameraBase.GetYShearing(Kriptok.Regions.Pseudo3D.Pseudo3DRenderContext,System.Single,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Cameras.TargetPseudo3DCameraBase.GetCameraHeight">
+            <inheritdoc />
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Cameras.IPseudo3DCameraExtensions.GetCamData(Kriptok.Regions.Pseudo3D.Cameras.IPseudo3DCamera)">
             <summary>
@@ -11892,6 +11821,11 @@
             </summary>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.Pseudo3DRegionBase`1.CreateGdipScrollingBackground(Kriptok.Regions.Pseudo3D.Backgrounds.HorizontalScrollArgs,System.Reflection.Assembly,System.String)">
+            <summary>
+            Obtiene una instancia de un fondo scrolleable para este modo de renderización.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.Pseudo3DRegionBase`1.CreateGdipScrollingBackground(Kriptok.Regions.Pseudo3D.Backgrounds.HorizontalScrollArgs,Kriptok.Common.Resource)">
             <summary>
             Obtiene una instancia de un fondo scrolleable para este modo de renderización.
             </summary>        
@@ -12419,10 +12353,19 @@
             Excluye una línea vertical a partir del punto indicado.
             </summary>        
         </member>
-        <member name="M:Kriptok.Regions.Pseudo3D.YBufferBase.IfVisible(System.Int32,System.Int32,System.Action{System.UInt16})">
+        <member name="M:Kriptok.Regions.Pseudo3D.YBufferBase.CheckStatus(System.Int32,System.Int32,System.UInt16@)">
             <summary>
-            Ejecuta una acción si se cumple la condición de visibilidad.
-            </summary>        
+            Este método tiene un funcionamiento complejo.
+            Por un lado, valida si el valor indicado por parámetro para la columna
+            indicada no está ya ocludido por el buffer.
+            
+            También actualiza el buffer con el valor indicado.
+            </summary>   
+            <param name="columnIndex">Columna a evaluar.</param>
+            <param name="value">Valor para validar.</param>
+            <param name="currentHeight">Parámetro de salida que indica el estado
+            actual del buffer para la columna indicada.</param>
+            <returns>Indica si el valor indicado.</returns>
         </member>
         <member name="M:Kriptok.Regions.Pseudo3D.YBufferBase.FindMinValue(System.Int32,System.Int32)">
             <summary>
@@ -12771,11 +12714,6 @@
         <member name="T:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedBufferedContextBase">
             <summary>
             Contexto de renderización de entornos Pseudo3D particionados.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedBufferedContextBase.RegionBounds">
-            <summary>
-            Límites de la region en la que se está renderizando.
             </summary>
         </member>
         <member name="F:Kriptok.Regions.Pseudo3D.Partitioned.Base.PartitionedBufferedContextBase.RegionWidth">
@@ -14548,6 +14486,263 @@
         <member name="M:Kriptok.Regions.Pseudo3D.Pseudo3DSurfaceRegionY0`1.Pseudo3DSurfaceY0Row.GetDrawOrder">
             <inheritdoc/>
         </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceBrush.#ctor(Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext,Kriptok.Mapping.VoxelSpace.VoxelTerrain,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="terrain"></param>
+            <param name="scale"></param>
+            <param name="halfWidthFov"></param>
+            <param name="cameraAngleSin"></param>
+            <param name="calculatedYShearY"></param>
+            <param name="terrainHeight">Obtiene la altura relativa en la que debe inferirse el mapa
+            al momento de renderizar.
+            
+            En principio es siempre 0, pero si se aplicara curvatura,
+            habría que recalcular este valor para tomarla en cuenta
+            y que no se generen "huecos" a la distancia.</param>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.tiltAngleSin">
+            <summary>
+            Seno precalculado del ángulo de inclinación de la cámara.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.fastShearingMatrix">
+            <summary>
+            Matriz rápida.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.cameraZ">
+            <summary>
+            Dato utilizado para cálculos.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.HorizonY">
+            <summary>
+            Altura del horizonte. Toma en cuenta curvatura.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.OffsetY">
+            <summary>
+            Obtiene el valor correspondiente al elemento de la matriz que indica
+            cuánto es el máximo que se desplaza verticalmente la pantalla 
+            dado el ángulo de Shearing.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.CreateBrush(Kriptok.Mapping.VoxelSpace.VoxelTerrain,System.Single)">
+            <summary>
+            Crea una brocha de voxels para los parámetros indicados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.ProjectColumn(System.Single,System.Single)">
+            <summary>
+            Calcula sólo la proyección de la coordenada Y del punto.        
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.Shear(Kriptok.Drawing.BoundF2)">
+            <summary>
+            Aplica la transformación 2D del contexto al bounding-box de la entidad.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.ApplyShear">
+            <summary>
+            Aplica la transformación de shearing al objeto graphics.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceShearingBackground">
+            <summary>
+            Fondo scrolleable que contempla el shearing del modo, así como
+            un horizonte mucho mas bajo para contemplar la curvatura.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion">
+            <summary>
+            Plano básico de un terreno Voxel.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Core.Camera,System.Single)">
+            <summary>
+            Genera un nuevo contexto de renderización para la región.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.CurvedVoxelSpaceContext.curvatureMultiplier">
+            <summary>
+            Utilizado para reducir la cantida de chequeos necesarios 
+            a la hora de proyectar vértices.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.CurvedVoxelSpaceContext.horizonY">
+            <summary>
+            Altura del horizonte considerando la curvatura.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.CurvedVoxelSpaceContext.GetTerrainHeight">
+            <summary>
+            Esta fórmula es una improvisación. Parece resolver el problema de que el terreno
+            desaparezca cuando se baja mucho el Y-Shearing.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.CurvedVoxelSpaceContext.GetCurveHorizonY">
+            <summary>
+            Obtiene la altura del horizonte sobre el eje Y de la pantalla.
+            
+            Nota importante: 
+                Se asume que la altura del terreno en los puntos de mínima altura
+                se encuentra en el plano Z = 0 (o Y = 0, en el entorno 3D).
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceCurvedRegion.CurvedVoxelSpaceContext.HorizonY">
+            <inheritdoc/>
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion">
+            <summary>
+            Plano básico de un terreno Voxel.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.YBuffer">
+            <summary>
+            Buffer de columnas para la renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.voxelTerrain">
+            <summary>
+            Terreno principal.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.HalfRegionWidth">
+            <summary>
+            Media pantalla verticalmente, precalculada para optimizar cálculos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.tiltAngle">
+            <summary>
+            Ángulo de rotación de la cámara sobre el eje de profundidad.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.tiltAngleSin">
+            <summary>
+            Seno el ángulo de ladeo de la cámara.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.inverseTextureScale">
+            <summary>
+            Inversa de la escala a aplicar a la textura.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.#ctor(System.Drawing.Rectangle,Kriptok.Mapping.VoxelSpace.VoxelTerrain)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.CreateYBuffer(System.Drawing.Size)">
+            <summary>
+            Crea el Y-Buffer a utilizar.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.TextureScale">
+            <summary>
+            Escala a aplicar a la brocha de renderización del terreno.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.TiltAngle">
+            <summary>
+            Rotación de la cámara sobre el eje X. Sólo acepta valores entre:
+            <see cref="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.minTilt"/> y <see cref="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.maxTilt"/>.        
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Core.Camera)">
+            <summary>
+            Genera un nuevo contexto de renderización para la región.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Core.Camera,System.Single)">
+            <summary>
+            Genera un nuevo contexto de renderización para la región.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.SampleHeight(Kriptok.Drawing.Algebra.Vector2F)">
+            <summary>
+            Obtiene la altura del terreno en las coordenadas indicadas por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.GetBoundsF">
+            <inheritdoc/>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.context">
+            <summary>
+            Contexto de renderización.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.renderizables">
+            <summary>
+            Lista de objetos a renderizar este frame.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.filteredRenderizables">
+            <summary>
+            Lista de renderizables filtrados a renderizar al final.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.NextRenderizableDistance">
+            <summary>
+            Es la distancia hasta el próximo renderizable.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.nextRenderizable">
+            <summary>
+            Lista de objetos a renderizar este frame.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.nextRenderizablePosition">
+            <summary>
+            Posición del próximo renderizable a evaluar en el array <see cref="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.renderizables"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.SetRenderDistance(System.Single)">
+            <summary>
+            Establece la distancia de renderización.
+            </summary>
+            <param name="nextDistance">La distancia a la cual se va a renderizar
+            esta pasada. Pero antes de renderizar.</param>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizableArray.AddCurrentRenderizable">
+            <summary>
+            Chequea si tiene que agregar el renderizable que está actualmente
+            cargado en el buffer para renderizar, y lo agrega.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelYBuffer1">
+            <summary>
+            Y-Buffer preprado especialmente para entornos de Voxel Terrain.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VBRenderizable.x0">
+            <summary>
+            Coordenada X donde empieza el buffer.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VBRenderizable.y1">
+            <summary>
+            Máximo valor Y calculado para el bounding-box del renderizable.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VBRenderizable.bufferValues">
+            <summary>
+            Estado del buffer actual.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizable.CompareTo(Kriptok.Views.Base.IPriorizable)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizable.GetDrawOrder">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRenderizable.GetPriority">
+            <summary>
+            La distancia a la cámara sobre el eje de profundidad.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Regions.Scroll.TiledScrollLayer">
             <summary>
             Esta vista es como una scroll view simple, pero optimizada. Por tanto,
@@ -15023,6 +15218,11 @@
             Controlador principal que se encarga de manejar los planos de scroll cuando se encuentra en modo Scroll.
             </summary>
         </member>
+        <member name="F:Kriptok.Regions.Scroll.ScrollRegion.Rotation">
+            <summary>
+            Obtiene o establece la rotación del plano de scroll.
+            </summary>
+        </member>
         <member name="M:Kriptok.Regions.Scroll.ScrollRegion.NewRenderContext(System.Drawing.Graphics,Kriptok.Drawing.Algebra.Vector2F)">
             <summary>
             Genera un nuevo contexto de renderización para la región.
@@ -15246,15 +15446,23 @@
             Una cámara base para interfaces tridimensionales.
             </summary>
         </member>
+        <member name="M:Kriptok.Regions.Base.Camera3DBase.GetDistance">
+            <inheritdoc/>
+        </member>
         <member name="M:Kriptok.Regions.Base.IRegion3D.SetFog(System.UInt32,System.UInt32,System.Drawing.Color)">
             <summary>
             Establece una neblina que afecta los objetos a la distancia en la región.
             </summary>
         </member>
-        <member name="P:Kriptok.Regions.Base.ICamera3D.Distance">
+        <member name="T:Kriptok.Regions.Base.ICamera3D">
+            <summary>
+            Interfaz básica para cámaras 3D.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Regions.Base.ICamera3D.GetDistance">
             <summary>
             Obtiene la distancia que debe mantener la cámara hasta el objetivo.
-            </summary>        
+            </summary>                
         </member>
         <member name="P:Kriptok.Regions.Base.ICamera3D.FieldOfView">
             <summary>
@@ -15920,6 +16128,11 @@
             <summary>
             Vértices de la vista que se transformarán, ya que la vista en sí no tiene un "Owner".
             </summary>
+        </member>
+        <member name="M:Kriptok.Regions.SkyboxBackground.RenderOn(Kriptok.Regions.Context.Base.IRenderContext)">
+            <summary>
+            Renderiza el fondo poligonal en el contexto indicado por parámetro.
+            </summary>        
         </member>
         <member name="T:Kriptok.Regions.Partitioned.IPartitionedRegion">
             <summary>
@@ -17263,11 +17476,6 @@
             Renderiza la vista en el objeto Graphics indicado.
             </summary>        
         </member>
-        <member name="T:Kriptok.Views.Base.IRenderizable3D">
-            <summary>
-            Agrega funcionalidades de renderizado 3D.
-            </summary>
-        </member>
         <member name="F:Kriptok.Views.Base.GdipPrimitiveBase.Rectangle">
             <summary>
             Rectángulo utilizado para la renderización.
@@ -17844,6 +18052,16 @@
             Agrega a la figura, una línea que conecte dos vértices, en base a los parámetros indicados.
             </summary>        
         </member>
+        <member name="M:Kriptok.Views.Shapes.Base.GdipShapeCollectionInitializer.GetVertices">
+            <summary>
+            Obtiene todos los vértices cargados hasta el momento.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Base.Face3DBase">
+            <summary>
+            Cara genérica tridimensional de tres vértices.
+            </summary>
+        </member>
         <member name="F:Kriptok.Views.Shapes.Base.Face3DBase.isValid">
             <summary>
             Indica si la vista está completamente delante de la cámara para el siguiente frame.
@@ -18262,6 +18480,22 @@
             Ordena los vectoras en el sentido de las agujas del reloj.
             </summary>        
         </member>
+        <member name="M:Kriptok.Views.Shapes.Base.VertexBase.GetClosestDistance">
+            <summary>
+            Utilizado para medir la distancia a la cámara de
+            figuras con vértices jerárquicos.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Base.VertexBase.IncludeTransformedInVolume(Kriptok.Drawing.Shapes.Volume)">
+            <summary>
+            Utilizado para calcular los límites tridimencionales de las figuras jerárquicas.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Base.VertexBase.IncludeLocationInVolume(Kriptok.Drawing.Shapes.Volume,Kriptok.Drawing.Algebra.Matrix3x4F)">
+            <summary>
+            Utilizado para calcular los límites tridimencionales de las figuras jerárquicas.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Views.Shapes.Base.ShapeViewBase">
             <summary>
             Esta clase representa una figura tridimensional.
@@ -18290,10 +18524,10 @@
             </summary>
             <param name="vertices">Arreglo con todos los vértices de la figura.</param>
         </member>
-        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.AddVertices(System.Collections.Generic.IEnumerable{Kriptok.Views.Shapes.Base.VertexBase})">
+        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.#ctor">
             <summary>
-            Agrega un vértice a la figura para poder ser utilizado.
-            </summary>        
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Base.ShapeViewBase"/>.
+            </summary>
         </member>
         <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.CreateBoundVertices(Kriptok.Views.Shapes.Base.VertexBase[])">
             <summary>
@@ -18320,7 +18554,7 @@
             Devuelve un clon de la figura, clonando también todos los vértices.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.TranslateTo000">
+        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.TranslateTo000(System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Translada todos los vértices equitativamente alrededor del origen de coordenadas.
             </summary>        
@@ -18363,7 +18597,7 @@
             Obtiene los vértices de la figura.
             </summary>        
         </member>
-        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.GetClosestPoint">
+        <member name="M:Kriptok.Views.Shapes.Base.ShapeViewBase.GetClosestDistance">
             <summary>
             Obtiene la distancia desde la cámara al vértice más cercano que compone la figura.
             </summary>
@@ -18421,8 +18655,9 @@
         </member>
         <member name="M:Kriptok.Views.Shapes.GdipShapeViewBase.InnerBuild(Kriptok.Views.Shapes.Base.GdipShapeCollectionInitializer)">
             <summary>
-            Provee de un contexto para agregar figuras al modelo.
-            </summary>        
+            Provee de un contexto para agregar figuras al modelo.        
+            </summary>                
+            <returns>Retorna los vértices a transformar al momento de renderizar la figura.</returns>
         </member>
         <member name="M:Kriptok.Views.Shapes.GdipShapeViewBase.SwapAllFaces">
             <summary>
@@ -18490,6 +18725,30 @@
             Este método permite remover caras de la figura tridimensional que cumplan con una determinada
             condición.
             </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.MqoBuilder">
+            <summary>
+            Utilizado para cargar un modelo MQO en memoria.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.MqoBuilder.#ctor(System.Reflection.Assembly,System.String,System.Int32)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.MqoBuilder"/>
+            pero sólo lee uno de los objetos, especificado por su Id.
+            </summary>
+            <param name="assembly"></param>
+            <param name="resourceName"></param>
+            <param name="mqoObjectId">Id del objeto MQO a cargar.</param>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.MqoBuilder.FindLine(System.String[],System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="textLines"></param>
+            <param name="regex"></param>
+            <param name="fromLine"></param>
+            <param name="toLine"></param>
+            <returns>Devuelve el numero de línea buscado, o -1 si no se encuentra.</returns>
         </member>
         <member name="T:Kriptok.Views.Shapes.ShapeVertexCollection">
             <summary>
@@ -18579,6 +18838,153 @@
             <summary>
             Obtiene los vértices que componen los "límites" tridimencionales de la figura.
             </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertex">
+            <summary>
+            Rama de un esqueleto de vistas jerárquicas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertex.RotateX(System.Single)">
+            <summary>
+            Rota el vérice sobre el eje X.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertex.RotateY(System.Single)">
+            <summary>
+            Rota el vérice sobre el eje Y.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertex.RotateZ(System.Single)">
+            <summary>
+            Rota el vérice sobre el eje Z.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertexBase">
+            <summary>
+            Clase base para vértices jerárquicos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertexBase.GetTransformMatrix(Kriptok.Drawing.Algebra.Matrix3x4F)">
+            <summary>
+            Obtiene la matriz de transformación para este vértice.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertexBase.GetClosestDistance">
+            <summary>
+            Obtiene la distancia a la que se encuentra el vértice más cercano 
+            a la cámara al momento de renderizar.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertexBase.GetCalculatedLocation">
+            <inheritdoc/>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.HierarchicalLeafVertex">
+            <summary>
+            Hoja de un árbol de vértices jerárquicos.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.HierarchicalRootVertex">
+            <summary>
+            Vértice principal de vistas jerárquicas.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex25Base">
+            <summary>
+            Representa una clase base para vértices de 2.5 dimensiones.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.Vertices.Vertex25Base.pivot">
+            <summary>
+            Punto de apoyo bidimensional del vértice de 2.5 dimensiones.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.#ctor(Kriptok.Drawing.Vertex2)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Vertices.Vertex25Base"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25Base)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Vertices.Vertex25Base"/>,
+            utilizando como pivote el pivote del vértice indicado por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.GetPivot">
+            <summary>
+            Obtiene el pivote.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.GetDistance2D(Kriptok.Views.Shapes.Vertices.Vertex25Base,Kriptok.Views.Shapes.Vertices.Vertex25Base)">
+            <summary>
+            Calcula la distancia bidimensional entre dos vértices de 2.5 dimensiones.
+            </summary>    
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.SamePivot(Kriptok.Views.Shapes.Vertices.Vertex25Base)">
+            <summary>
+            Indica si ambos vértices comparten el mismo pivot.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex25Normal">
+            <summary>
+            Representa un tipo de vértice para entorno Pseudo3D que además tiene una normal.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Normal.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25Normal)">
+            <summary>
+            Constructor utilizado para poder reutilizar el pivot de uno de los vértices.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Normal.GetNormal">
+            <summary>
+            Obtiene la normal asociada a este vértice.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25)">
+            <summary>
+            Constructor utilizado para poder reutilizar el pivot de uno de los vértices.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.IHierarchicalVertex">
+            <summary>
+            Interfaz para englobar todos los vértices jerárquicos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.IHierarchicalVertex.GetCalculatedLocation">
+            <summary>
+            Obtiene la ubicación calculada del vértice en el entorno tridimensional.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.CalculatedVertex">
+            <summary>
+            Representa un vértice cuya transformación es buscar el punto intermedio
+            entre varios vértices.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.Vertices.CalculatedVertex.vertices">
+            <summary>
+            Indica los puntos en base a los cuales debe promediar su posición.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.Vertices.CalculatedVertex.verticesDivisor">
+            <summary>
+            Inverso de la cantidad de vértices por los que habría que dividir
+            para calcular el promedio.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.Vertices.CalculatedVertex.#ctor(Kriptok.Views.Shapes.Base.VertexBase[])">
+            <summary>        
+            </summary>
+            <param name="vertices">Indica los puntos en base a los cuales debe promediar su posición.</param>
+        </member>
+        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex3">
+            <summary>
+            Representa un vértice tridimensional.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.Vertices.Vertex3.Location">
+            <summary>
+            Punto base de las coordenadas, antes de transformar.
+            </summary>
         </member>
         <member name="T:Kriptok.Views.Shapes.Wireframe.WireframeTriFace3D">
             <summary>
@@ -18838,7 +19244,17 @@
             Traslada la malla sobre los ejes X e Y.
             </summary>        
         </member>
-        <member name="M:Kriptok.Views.Shapes.MeshBuilderBase.ProcessFileAsModel(System.String[])">
+        <member name="M:Kriptok.Views.Shapes.MeshBuilderBase.TranslateTransform(System.Single,System.Single,System.Single)">
+            <summary>
+            Traslada la malla sobre los ejes X e Y.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.MeshBuilderBase.TranslateToCenter(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Translada toda la figura a la coordenada (0, 0, 0).
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.MeshBuilderBase.ProcessFileAsModel(Kriptok.Common.Initializer,System.String[])">
             <summary>
             Este método implementa el parseo del archivo.
             </summary>        
@@ -18971,94 +19387,6 @@
             <summary>
             Utiliza una textura para llenar una determinada región de la pantalla, con las
             coordenadas indicadas por parámetro.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex25Base">
-            <summary>
-            Representa una clase base para vértices de 2.5 dimensiones.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Shapes.Vertices.Vertex25Base.pivot">
-            <summary>
-            Punto de apoyo bidimensional del vértice de 2.5 dimensiones.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.#ctor(Kriptok.Drawing.Vertex2)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Vertices.Vertex25Base"/>.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25Base)">
-            <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.Vertices.Vertex25Base"/>,
-            utilizando como pivote el pivote del vértice indicado por parámetro.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.GetPivot">
-            <summary>
-            Obtiene el pivote.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.GetDistance2D(Kriptok.Views.Shapes.Vertices.Vertex25Base,Kriptok.Views.Shapes.Vertices.Vertex25Base)">
-            <summary>
-            Calcula la distancia bidimensional entre dos vértices de 2.5 dimensiones.
-            </summary>    
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Base.SamePivot(Kriptok.Views.Shapes.Vertices.Vertex25Base)">
-            <summary>
-            Indica si ambos vértices comparten el mismo pivot.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex25Normal">
-            <summary>
-            Representa un tipo de vértice para entorno Pseudo3D que además tiene una normal.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Normal.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25Normal)">
-            <summary>
-            Constructor utilizado para poder reutilizar el pivot de uno de los vértices.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25Normal.GetNormal">
-            <summary>
-            Obtiene la normal asociada a este vértice.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.Vertex25.#ctor(Kriptok.Views.Shapes.Vertices.Vertex25)">
-            <summary>
-            Constructor utilizado para poder reutilizar el pivot de uno de los vértices.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Vertices.CalculatedVertex">
-            <summary>
-            Representa un vértice cuya transformación es buscar el punto intermedio
-            entre varios vértices.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Shapes.Vertices.CalculatedVertex.vertices">
-            <summary>
-            Indica los puntos en base a los cuales debe promediar su posición.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Shapes.Vertices.CalculatedVertex.verticesDivisor">
-            <summary>
-            Inverso de la cantidad de vértices por los que habría que dividir
-            para calcular el promedio.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Shapes.Vertices.CalculatedVertex.#ctor(Kriptok.Views.Shapes.Base.VertexBase[])">
-            <summary>        
-            </summary>
-            <param name="vertices">Indica los puntos en base a los cuales debe promediar su posición.</param>
-        </member>
-        <member name="T:Kriptok.Views.Shapes.Vertices.Vertex3">
-            <summary>
-            Representa un vértice tridimensional.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Views.Shapes.Vertices.Vertex3.Location">
-            <summary>
-            Punto base de las coordenadas, antes de transformar.
             </summary>
         </member>
         <member name="F:Kriptok.Views.Shapes.Meshes.cache">
@@ -19794,15 +20122,10 @@
             Instancia una nueva vista tridimensional con un modelo estándar de tetera de Utah.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Shapes.MqoMeshView.MqoBuilder.FindLine(System.String[],System.String,System.Int32,System.Int32)">
+        <member name="T:Kriptok.Views.Shapes.Line3DBase">
             <summary>
-            
+            Clase base para líneas de figuras tipo wireframe.
             </summary>
-            <param name="textLines"></param>
-            <param name="regex"></param>
-            <param name="fromLine"></param>
-            <param name="toLine"></param>
-            <returns>Devuelve el numero de línea buscado, o -1 si no se encuentra.</returns>
         </member>
         <member name="P:Kriptok.Views.Shapes.Line3DBase.Vertices">
             <summary>
@@ -20193,7 +20516,23 @@
             Representa una vista con un "esqueleto" de vértices y vistas.
             </summary>
         </member>
+        <member name="F:Kriptok.Views.Shapes.HierarchicalShapeViewBase.rootVertex">
+            <summary>
+            Vértice central de la figura.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Shapes.HierarchicalShapeViewBase.lastCalculatedVolume3D">
+            <summary>
+            Volumen utilizado para calcular visibilidad de la figura, así
+            como límites de renderización.
+            </summary>
+        </member>
         <member name="M:Kriptok.Views.Shapes.HierarchicalShapeViewBase.#ctor">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.HierarchicalShapeViewBase"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.HierarchicalShapeViewBase.#ctor(Kriptok.Views.Shapes.Vertices.HierarchicalRootVertex)">
             <summary>
             Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Shapes.HierarchicalShapeViewBase"/>.
             </summary>
@@ -20202,6 +20541,12 @@
             <summary>
             Método de construcción de la vista con vértices jerárquicos.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Shapes.HierarchicalShapeViewBase.GetClosestDistance">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.HierarchicalShapeViewBase.GetCollisionVolume">
+            <inheritdoc/>
         </member>
         <member name="T:Kriptok.Views.Shapes.HierarchicalShapeViewBase.HierarchicalShapeIntializer">
             <summary>
@@ -20217,6 +20562,11 @@
             <summary>
             Vértice principal de la figura.
             </summary>
+        </member>
+        <member name="M:Kriptok.Views.Shapes.HierarchicalShapeViewBase.HierarchicalShapeIntializer.AppendMesh(Kriptok.Views.Shapes.Vertices.HierarchicalBranchVertexBase,Kriptok.Views.Shapes.MeshBuilderBase)">
+            <summary>
+            Agrega un modelo alrededor del vértice indicado por parámetro.
+            </summary>            
         </member>
         <member name="M:Kriptok.Views.Shapes.FlatPyramidView.IsConvex">
             <summary>
@@ -21649,6 +21999,24 @@
             <summary>
             Validador de posición de entidades en entornos <see cref="T:Kriptok.Regions.Partitioned.Wld.IWldRegion"/>.
             </summary>
+        </member>
+        <member name="T:Kriptok.Mapping.VoxelSpace.VoxelTerrain">
+            <summary>
+            Clase que condensa la información de los terrenos Voxel: textura y altura del terreno.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Mapping.VoxelSpace.VoxelTerrain.Size">
+            <summary>
+            Obtiene el tamaño del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Mapping.VoxelSpace.VoxelTerrain.GetMaxHeight">
+            <summary>
+            Obtiene el máximo de altura que puede alcanzar el terreno.
+            
+            No obstante, este valor no debe ser utilizado en una expresión de cálculo, ya que no es
+            para nada performante. Debe obtenerse una vez, guardarse en una variable, y luego ser utilizado.
+            </summary>        
         </member>
         <member name="F:Kriptok.Consts.DefaultFastPixelFormat">
             <summary>

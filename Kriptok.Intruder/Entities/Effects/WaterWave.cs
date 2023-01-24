@@ -72,7 +72,7 @@ namespace Kriptok.Intruder.Entities.Effects
         {
             base.Build(shapes);
 
-            var verts = base.GetVertices().ToArray();
+            var verts = shapes.GetVertices().ToArray();
 
             for (int i = 1; i < vertexCount; i++)
             {

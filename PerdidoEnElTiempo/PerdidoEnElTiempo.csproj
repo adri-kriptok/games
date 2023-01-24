@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.21.4\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.21.6\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.21.4\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.21.6\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -175,6 +175,9 @@
     <EmbeddedResource Include="Assets\Images\choiceship.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />
     <Content Include=".sdk\bin\Debug\Kriptok.xml" />
     <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
@@ -186,9 +189,6 @@
     <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
     <Content Include=".sdk\tools\Kriptok.xml" />
     <Content Include=".sdk\tools\MidiNoteTester.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

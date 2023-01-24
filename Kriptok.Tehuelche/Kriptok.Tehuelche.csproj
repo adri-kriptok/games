@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{27834153-04F9-428A-B0F1-1733367B1F93}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kriptok.Tehuelche</RootNamespace>
+    <AssemblyName>Tehuelche</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Kriptok.Tehuelche.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Code Analysis|AnyCPU'">
+    <OutputPath>bin\Code Analysis\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
+    <OutputPath>bin\Release-FPS\</OutputPath>
+    <DefineConstants>TRACE;SHOWFPS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Performance|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-Performance\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.0.21.6\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Div.0.21.6\lib\net462\Kriptok.Div.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Sdk.0.21.6\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Common\Explosion.cs" />
+    <Compile Include="Entities\Enemies\EnemyAim.cs" />
+    <Compile Include="Entities\Enemies\EnemyBase.cs" />
+    <Compile Include="Entities\Enemies\EnemyMissile.cs" />
+    <Compile Include="Entities\Player\PlayerMissileExplosion.cs" />
+    <Compile Include="Entities\Hud\MinimapEnemy.cs" />
+    <Compile Include="Entities\Enemies\Tent.cs" />
+    <Compile Include="Entities\Hud\Hud.cs" />
+    <Compile Include="Entities\Hud\MinimapPlayer.cs" />
+    <Compile Include="Entities\Player\Blank.cs" />
+    <Compile Include="Entities\Player\PlayerAutoAim.cs" />
+    <Compile Include="Entities\Player\PlayerMissile.cs" />
+    <Compile Include="Entities\Common\SmokeParticle.cs" />
+    <Compile Include="Regions\TehuelcheMapRegionWater.cs" />
+    <Compile Include="Regions\TehuelcheMapRegion.cs" />
+    <Compile Include="Regions\MinimapScrollRegion.cs" />
+    <Compile Include="Regions\PlayerCam.cs" />
+    <Compile Include="Entities\Player\PlayerHelicopter.cs" />
+    <Compile Include="Regions\TehuelcheYBuffer.cs" />
+    <Compile Include="Scenes\Base\LevelBuilder.cs" />
+    <Compile Include="Scenes\InitScene.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\Enemies\Tank.cs" />
+    <Compile Include="Scenes\Base\LevelSceneBase.cs" />
+    <Compile Include="Scenes\Map00\Map00Scene.cs" />
+    <Compile Include="Scenes\Map01\Map01Scene.cs" />
+    <Compile Include="Testing\Glaciar.cs" />
+    <Compile Include="Testing\Grass.cs" />
+    <Compile Include="Testing\Lava.cs" />
+    <Compile Include="Testing\TestTank.cs" />
+    <Compile Include="Views\VoxelSpaceShapeViewBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scenes\Map00\Terrain.png" />
+    <EmbeddedResource Include="Scenes\Map00\Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Models\Helicopter.mqo" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Models\Tank.mqo" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Models\Tent.mqo" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scenes\Map01\Terrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scenes\Map01\Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\Clouds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\GrassTerrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\GrassTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\LavaTerrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\LavaTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Skies\Sky00.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Hud\Hud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Models\Missile.mqo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\FlicPlayer.exe" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
