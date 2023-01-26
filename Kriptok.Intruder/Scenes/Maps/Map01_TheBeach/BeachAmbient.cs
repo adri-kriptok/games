@@ -1,5 +1,7 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
+using Kriptok.Entities.Base;
 using Kriptok.Extensions;
 using Kriptok.Intruder.Entities;
 using Kriptok.Intruder.Entities.Enemies;
@@ -32,6 +34,7 @@ namespace Kriptok.Intruder.Scenes.Maps.Map01_TheBeach
             /// Indica si el jugador ya se acercó lo suficiente a un braquiosaurio.
             /// </summary>
             private bool seenBrachiosaurus = false;
+            private ISoundHandler brachioMusic;
 
             public BeachAmbient(Player player, IslandBeachRegion mapRegion) : base(player)
             {
@@ -42,6 +45,13 @@ namespace Kriptok.Intruder.Scenes.Maps.Map01_TheBeach
                     .ToDictionary(p => p.Id, p => p.GetCenter());
                 flyPartitions = mapRegion.GetSmallerPartitions()
                     .ToDictionary(p => p.Id, p => p.GetCenter());
+            }
+
+            protected override void OnStart(EntityStartHandler h)
+            {
+                base.OnStart(h);
+
+                this.brachioMusic = h.Audio.GetWaveHandler(DivResources.Sound("MusEfect.MUSICA9.WAV"));
             }
 
             protected override void OnFrame()
@@ -74,8 +84,8 @@ namespace Kriptok.Intruder.Scenes.Maps.Map01_TheBeach
                 if (!seenBrachiosaurus)
                 {
                     if (player.SeenBrachiosaurus())
-                    {
-                        Audio.PlayWave(DivResources.Sound("MusEfect.MUSICA9.WAV"));
+                    {                        
+                        brachioMusic.Play();
                         seenBrachiosaurus = true;
                     }
                 }

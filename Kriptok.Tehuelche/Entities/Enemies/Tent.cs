@@ -1,4 +1,5 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Helpers;
@@ -15,6 +16,8 @@ namespace Kriptok.Tehuelche.Enemies
 {
     internal class Tent : EnemyBase<TentView>
     {
+        private ISoundHandler dyingSound;
+
         public Tent(LevelBuilder builder, int x, int y, float angle) 
             : base(builder, new TentView(), 10f)
         {
@@ -30,6 +33,7 @@ namespace Kriptok.Tehuelche.Enemies
         {
             base.OnStart(h);
             h.SetCollision3DViewOBB();
+            dyingSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOS00.WAV"));
         }
 
         protected override void OnFrame()
@@ -40,7 +44,7 @@ namespace Kriptok.Tehuelche.Enemies
         internal override void OnDying()
         {
             base.OnDying();
-            Audio.PlayWave(DivResources.Sound("Guerra.EXPLOS00.WAV"));
+            dyingSound.Play();
         }
 
         internal override Vector3F GetAimAngle()

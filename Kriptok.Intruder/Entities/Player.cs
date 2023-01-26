@@ -1,4 +1,5 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Partitioned;
@@ -89,9 +90,12 @@ namespace Kriptok.Intruder.Entities
         /// Lista de dinosaurios que pueden escuchar cuando disparo.
         /// </summary>
         private readonly IList<DinosaurSenses> listeners = new List<DinosaurSenses>();
-
-        // private bool deadScream = false;
-
+        
+        /// <summary>
+        /// Sonidos del jugador.
+        /// </summary>
+        private ISoundHandler screamSound;
+        
         public Player(IPseudo3DWldRegion map) : base(map)
         {
             this.partitionedMap = map;
@@ -124,17 +128,16 @@ namespace Kriptok.Intruder.Entities
 
             //Location.X = 1996.9436f;
             //Location.Y = 889.969849f;
+
+            this.screamSound = h.Audio.GetWaveHandler(DivResources.Sound("Humanos.AAAH01.WAV"));
         }
 
         protected override void OnFrame(FramePhysicsHandler physicsHandler)
         {
             if (life <= 0)
-            {
-                // if (!deadScream)
-                // {
-                    Audio.PlayWave(DivResources.Sound("Humanos.AAAH01.WAV"));
-                //}
-                //deadScream = true;
+            {                                    
+                screamSound.Play();
+                
 #if DEBUG || SHOWFPS
                 life = 1f;
 #else   

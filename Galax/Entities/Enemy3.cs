@@ -1,4 +1,6 @@
-﻿using Kriptok.Views.Sprites;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
+using Kriptok.Views.Sprites;
 using System;
 
 namespace Galax.Entities
@@ -12,10 +14,14 @@ namespace Galax.Entities
         {
         }
 
-        protected override void PlaySound()
+        protected override void OnStart(EntityStartHandler h)
         {
-            Audio.PlayWave(GetType().Assembly, "BUIU.WAV");            
+            base.OnStart(h);
+
+            sound = h.Audio.GetWaveHandler("BUIU.WAV");
         }
+
+        protected override void PlaySound() => sound.Play();
 
         protected override void Shoot(int rnd)
         {
@@ -26,6 +32,7 @@ namespace Galax.Entities
         }
 
         private float mod;
+        private ISoundHandler sound;
 
         protected override void OnFrame()
         {

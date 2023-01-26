@@ -20,14 +20,15 @@ namespace Kriptok.AZ
         {
 #if DEBUG
             // Cargo la configuración del juego.
-            Config.Load<BaseConfiguration>().Mute();            
+            // Config.Load<BaseConfiguration>().Mute();
 #endif
 
             Engine.Start(new TitleScene(), s =>
+            // Engine.Start(new StarsScene(), s =>
             {
                 s.FullScreen = true;
                 s.Mode = WindowSizeEnum.W340x192;
-                s.Title = "Anaglyph Zone | Kriptok";                
+                s.Title = "Anaglyph Zone | Kriptok";
             });
         }
     }

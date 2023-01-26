@@ -7,6 +7,7 @@ using Kriptok.Views.Shapes;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using Kriptok.Audio;
 
 namespace Asteroids.Entities
 {
@@ -29,6 +30,11 @@ namespace Asteroids.Entities
         /// </summary>
         private Size regionSize;
 
+        /// <summary>
+        /// Sonido de inicio.
+        /// </summary>
+        private ISoundHandler shootSound;
+
         public Ship() : base(new ShipView())
         {            
             View.ScaleX = 1.25f;
@@ -43,6 +49,8 @@ namespace Asteroids.Entities
             regionSize = h.RegionSize;
             Location.X = regionSize.Width / 2;
             Location.Y = regionSize.Height / 2;
+
+            this.shootSound = h.Audio.GetSoundHandler("TUBO8.WAV");
         }
 
         protected override void OnFrame()
@@ -79,8 +87,8 @@ namespace Asteroids.Entities
 #if !DEBUG
                     canShoot = false;
 #endif
-                    // Sonido de disparo
-                    Audio.PlaySound(Assembly, "TUBO8.WAV");
+                    // Sonido de disparo                    
+                    shootSound.Play();
                     Add(new Shot(Location, Angle.Z));
                 }
             }

@@ -1,4 +1,6 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Common;
+using Kriptok.Div;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
@@ -51,6 +53,11 @@ namespace Kriptok.Tehuelche.Entities
         /// </summary>
         private float shakeCamera = 0f;
 
+        /// <summary>
+        /// Sonido de disparo del jugador.
+        /// </summary>
+        private ISoundHandler shootSound;
+
         public PlayerHelicopter(TehuelcheMapRegion region, float x, float y) 
             : base(new PlayerHelicopterView()
         {
@@ -75,6 +82,7 @@ namespace Kriptok.Tehuelche.Entities
             this.autoAim = Add(new PlayerAutoAim(this));
 
             h.SetCollision3DViewOBB();
+            this.shootSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.DISPARO9.WAV"));
         }
 
         protected override void OnFrame()
@@ -129,8 +137,8 @@ namespace Kriptok.Tehuelche.Entities
             }
 
             if (Mouse.RightPressed())
-            {
-                Audio.PlayWave(DivResources.Sound("Guerra.DISPARO9.WAV"));
+            {                
+                shootSound.Play();
                 if (autoAim.LockedOnEnemy(out EnemyBase enemy))
                 {
                     Add(new PlayerMissile(this, terrain, enemy));

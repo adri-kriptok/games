@@ -1,4 +1,5 @@
-﻿using Kriptok.Common;
+﻿using Kriptok.Audio;
+using Kriptok.Common;
 using Kriptok.Div;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
@@ -83,6 +84,16 @@ namespace Kriptok.Intruder.Entities.Enemies
         /// </summary>
         private float scratchCounter = 0f;
 
+        /// <summary>
+        /// Sonidos de gritos.
+        /// </summary>
+        private readonly ISoundHandler[] screamSounds = new ISoundHandler[9];
+
+        /// <summary>
+        /// Sonidos que hace el raptor.
+        /// </summary>
+        private ISoundHandler bestia02Sound, bestia04Sound, bestia10Sound, fiera03Sound;
+
         public Raptor(IPseudo3DTerrainRegion map, Player player) : base(map, new RaptorView())
         {
             this.map = map;
@@ -126,6 +137,22 @@ namespace Kriptok.Intruder.Entities.Enemies
             {
                 this.shadow = Add(new TerrainShadow(this, terr, Radius));                
             }
+
+            for (int i = 0; i < screamSounds.Length; i++)
+            {
+                var snd = i + 1;
+                if (snd >= 6)
+                {
+                    snd += 2;
+                }
+
+                screamSounds[i] = h.Audio.GetWaveHandler(Rm2kResources.Sound($"Kill{snd}.wav"));
+            }
+
+            bestia02Sound = h.Audio.GetWaveHandler(DivResources.Sound("Animales.BESTIA02.WAV"));
+            bestia04Sound = h.Audio.GetWaveHandler(DivResources.Sound("Animales.BESTIA04.WAV"));
+            bestia10Sound = h.Audio.GetWaveHandler(DivResources.Sound("Animales.BESTIA10.WAV"));
+            fiera03Sound = h.Audio.GetWaveHandler(DivResources.Sound("Animales.FIERA03.WAV"));                        
         }
 
         protected override void OnFrame(FramePhysicsHandler handler)
@@ -143,9 +170,8 @@ namespace Kriptok.Intruder.Entities.Enemies
                 if (life <= 0)
                 {
                     if (handler.Inertia.Z == 0f)
-                    {
-                        //Audio.PlayWave(DivResources.Sound("Animales.BESTIA02.WAV"));
-                        Scream(DivResources.Sound("Animales.BESTIA02.WAV"));
+                    {                        
+                        Scream(bestia02Sound);
                         Add(new DyingRaptor(this, player));
                         Die();
                     }
@@ -156,7 +182,7 @@ namespace Kriptok.Intruder.Entities.Enemies
                 }
                 else
                 {                    
-                    Scream(DivResources.Sound("Animales.BESTIA04.WAV"));
+                    Scream(bestia04Sound);
 
                     // ... Le indico a la vista que se ponga en rojo.
                     View.Hit();
@@ -219,7 +245,7 @@ namespace Kriptok.Intruder.Entities.Enemies
                             {
                                 if (Rand.Next(1, 8) == 8)
                                 {
-                                    Scream(DivResources.Sound("Animales.FIERA03.WAV"));
+                                    Scream(fiera03Sound);
                                 }
                                 status = VelociraptorStatusEnum.Chasing;
 
@@ -255,7 +281,7 @@ namespace Kriptok.Intruder.Entities.Enemies
                             {
                                 if (Rand.Next(1, 5) == 5)
                                 {
-                                    Scream(DivResources.Sound("Animales.FIERA03.WAV"));
+                                    Scream(fiera03Sound);
                                 }
                                 LookAt2D(player);
                                 handler.Jump(Rand.NextF(0.9f, 1f));
@@ -269,10 +295,9 @@ namespace Kriptok.Intruder.Entities.Enemies
                                     found.RejectMeHalfRadius();
 
                                     if ((scratchCounter -= handler.TimeDelta) <= 0f)
-                                    {
-                                        var snd = Rand.Next(1, 9);
-                                        if (snd >= 6) snd += 2;
-                                        Audio.PlaySound(Rm2kResources.Sound($"Kill{snd}.wav"));
+                                    {                                        
+                                        screamSounds[Rand.Next(1, 8)].Play();
+
                                         player.Damage(Rand.Next(30, 60));
                                         scratchCounter = Rand.NextF(10, 20) * handler.TimeDelta;
                                     }
@@ -354,9 +379,9 @@ namespace Kriptok.Intruder.Entities.Enemies
             }
         }
 
-        private void Scream(Resource resource)
+        private void Scream(ISoundHandler sound)
         {
-            Audio.PlayWave(resource);
+            sound.Play();
 
             // Si reproduce un sonido, tengo que avisar a los raptores de alrededor.
             foreach (var raptor in FindCloseEntities2D<Raptor>())
@@ -463,7 +488,7 @@ namespace Kriptok.Intruder.Entities.Enemies
         }
 
 #if DEBUG || SHOWFPS
-        private bool pointed = false;
+        private bool pointed = false;       
 
         public void Pointed()
         {
@@ -472,10 +497,8 @@ namespace Kriptok.Intruder.Entities.Enemies
 #endif
 
         internal void Scream()
-        {
-            // Audio.PlaySound(RmVxResources.Sound(""))
-            // Audio.PlayWave(DivResources.Sound("Animales.BESTIA10.WAV"));
-            Scream(DivResources.Sound("Animales.BESTIA10.WAV"));
+        {            
+            Scream(bestia10Sound);
         }
 
         /// <summary>

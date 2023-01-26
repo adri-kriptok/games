@@ -1,4 +1,5 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions.Queries;
 using Kriptok.Regions.Pseudo3D.VoxelSpace;
@@ -20,6 +21,7 @@ namespace Kriptok.Tehuelche.Entities
         private readonly PlayerHelicopter player;
         private readonly TehuelcheMapRegion terrain;
         private ISingleCollisionQuery<EnemyBase> enemyCollision;
+        private ISoundHandler explosi6Sound;
 
         public PlayerMissile(PlayerHelicopter player, TehuelcheMapRegion terrain)
             : base(new PlayerMissileView())
@@ -50,6 +52,8 @@ namespace Kriptok.Tehuelche.Entities
             h.SetCollision3DVertex();
 
             enemyCollision = h.GetCollision3D<EnemyBase>();
+
+            this.explosi6Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
         }
 
         protected override void OnFrame()
@@ -80,8 +84,8 @@ namespace Kriptok.Tehuelche.Entities
             }
 
             void Explode()
-            {
-                Audio.PlayWave(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
+            {                
+                explosi6Sound.Play();
                 Add(new PlayerMissileExplosion(Location, 1f));
                 Die();
             }

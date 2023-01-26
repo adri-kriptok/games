@@ -1,4 +1,6 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Common;
+using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions.Queries;
@@ -18,6 +20,11 @@ namespace Kriptok.Tehuelche.Enemies
         private readonly TehuelcheMapRegion terrain;
         private ISingleCollisionQuery<PlayerHelicopter> playerCollision;
 
+        /// <summary>
+        /// Sonidos del misil enemigo.
+        /// </summary>
+        private ISoundHandler explosi6Sound, explosi8Sound;
+
         public EnemyMissile(EnemyBase owner, TehuelcheMapRegion terrain, Vector3F location, float angleZ, float angleY)
              : base(new EnemyMissileView())
         {
@@ -36,6 +43,9 @@ namespace Kriptok.Tehuelche.Enemies
             h.SetCollision3DSphere();
 
             playerCollision = h.GetCollision3D<PlayerHelicopter>();
+
+            explosi6Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
+            explosi8Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI8.WAV"));
         }
 
         protected override void OnFrame()
@@ -49,8 +59,8 @@ namespace Kriptok.Tehuelche.Enemies
             }
 
             if (playerCollision.OnCollision(out PlayerHelicopter player))
-            {
-                Audio.PlayWave(DivResources.Sound("Guerra.EXPLOSI8.WAV"));
+            {                
+                explosi8Sound.Play();
                 player.Hit();
                 Explode();
                 return;
@@ -62,8 +72,8 @@ namespace Kriptok.Tehuelche.Enemies
 
             // Me fijo si no choqué contra el piso.
             if (terrain.SampleHeight(Location.XY()) >= Location.Z)
-            {
-                Audio.PlayWave(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
+            {                
+                explosi6Sound.Play();
                 Explode();
                 return;
             }

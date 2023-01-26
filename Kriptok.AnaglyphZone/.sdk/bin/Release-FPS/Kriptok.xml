@@ -24,6 +24,39 @@
             Reproduce una nota con el instrumento.
             </summary>        
         </member>
+        <member name="T:Kriptok.Audio.SoundHandlerBase">
+            <summary>
+            Clase base para controladores de reproducción de sonidos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.SoundHandlerBase.setToPlay">
+            <summary>
+            Indica si el sonido debe reproducirse próximamente.
+            
+            Esto es para que el sonido no se pise consigo mismo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.SoundHandlerBase.Enqueue(System.Boolean)">
+            <summary>
+            Encola el sonido para su reproducción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.SoundHandlerBase.Stop">
+            <summary>
+            Detiene la reproducción del sonido.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.SoundHandlerBase.InternalPlay">
+            <summary>
+            Reproduce internamente el sonido, y lo vuelve a dejar habilitado
+            para volver a listarlo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.SoundHandlerBase.ProtectedPlay">
+            <summary>
+            Reproduce el sonido.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Audio.Helpers.MidiHelper">
             <summary>
             Funcionalidades de ayuda para la reproducción de archivos "midi".
@@ -192,36 +225,14 @@
             Finaliza el proceso de ejecución de midis.
             </summary>
         </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySound(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.CheckStatus">
-            <summary>
-            Chequea si tiene que reproducir algún sonido encolado.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearSounds">
-            <summary>
-            Limpia la lista de sonidos que haya almacenados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlayWave(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido, pero antes lo descarga del
-            ensamblado como un archivo.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.SoundHelper.PlaySoundSync(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>        
-        </member>
         <member name="M:Kriptok.Audio.Helpers.SoundHelper.ClearCache">
             <summary>
             Libera los sonidos de la memoria.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.SoundHelper.StopAll">
+            <summary>
+            Detengo todos sonidos que estén en caché.
             </summary>
         </member>
         <member name="M:Kriptok.Audio.Helpers.MciHelper.Native.mciSendString(System.String,System.Text.StringBuilder,System.UInt32,System.IntPtr)">
@@ -235,17 +246,12 @@
             se baja desde recurso, se baja con extensión ".dat" (<seealso cref="M:Kriptok.Helpers.ResourcesHelper.ResolveId(Kriptok.Common.Resource)"/>).
             </summary>        
         </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWave(System.String,System.Boolean,System.Double)">
-            <summary>
-            Reproduce un archivo de sonido con los parámetros indicados.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.GetWaveDevice(System.String,System.Double)">
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.GetWaveDevice(System.String)">
             <summary>
             Obtiene el id del dispositivo a reproducir.
             </summary>        
         </member>
-        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWaveDevice(System.String,System.Boolean)">
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.PlayWaveDevice(System.String)">
             <summary>
             Reproduce un dispositivo indicado desde el principio.
             </summary>        
@@ -286,6 +292,11 @@
             <summary>
             Pausa toda la reproducicón de música.
             </summary>
+        </member>
+        <member name="M:Kriptok.Audio.Helpers.MciHelper.Stop(System.String)">
+            <summary>
+            Detiene un sonido específico en su reproducción.
+            </summary>        
         </member>
         <member name="F:Kriptok.Audio.MidiErrorEnum.MMSYSERR_NOERROR">
             <summary>
@@ -1099,6 +1110,21 @@
             https://softologyblog.wordpress.com/2009/09/30/controlling-midi-output-with-delphi/
             </summary>        
         </member>
+        <member name="T:Kriptok.Audio.ISoundHandler">
+            <summary>
+            Interfaz de los controladores que reproducen sonidos.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.ISoundHandler.Play">
+            <summary>
+            Reproduce el sonido.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.ISoundHandler.Stop">
+            <summary>
+            Detiene la ejecución del sonido.
+            </summary>
+        </member>
         <member name="T:Kriptok.Audio.MciWaveHandler">
             <summary>
             Representa un controlador de sonido que envía una señal a Windows para reproducir el sonido.
@@ -1107,6 +1133,54 @@
         <member name="F:Kriptok.Audio.MciWaveHandler.fileName">
             <summary>
             Nombre del archivo generado.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.MciWaveHandler.device">
+            <summary>
+            Referencia al sonido cargado en memoria.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Audio.MciWaveHandler.GetDevice">
+            <summary>
+            Obtiene el identificador para reproducción, y lo guarda.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Audio.MciWaveHandler.ProtectedPlay">
+            <inheritdoc/>
+        </member>
+        <member name="T:Kriptok.Audio.PlayMusicOptions">
+            <summary>
+            Clase de atributos para inicializar la reproducción de música.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.Resource">
+            <summary>
+            Recurso a reproducir.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.Loop">
+            <summary>
+            Indica si se debe repetir indefinidamente hasta ser detenida.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.From">
+            <summary>
+            Desde qué punto se debe empezar a reproducir.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.To">
+            <summary>
+            Hasta que punto se debe reproducir.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.Volume">
+            <summary>
+            Volumen de reproducción.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Audio.PlayMusicOptions.RestartIfPlaying">
+            <summary>
+            Si está sonando la misma canción, lo vuelve a poner desde el principio.
             </summary>
         </member>
         <member name="T:Kriptok.Audio.SoundPlayerHandler">
@@ -1312,6 +1386,11 @@
             Para que no se pueda instanciar. Test Comment
             </summary>
         </member>
+        <member name="P:Kriptok.Common.Cache.ItemCache`2.Values">
+            <summary>
+            Valores guardados en la cache.
+            </summary>
+        </member>
         <member name="M:Kriptok.Common.Cache.ItemCache`2.Clear">
             <summary>
             Limpia todos los recursos de la caché, y libera todos los recursos que se hubiesen cargado.
@@ -1321,9 +1400,6 @@
             <summary>
             Resolve utiliza el patrón doble check (antes y después de lockear).
             </summary>
-            <param name="key"></param>
-            <param name="resolution"></param>
-            <returns></returns>
         </member>
         <member name="T:Kriptok.Core.ComponentBase">
             <summary>
@@ -1376,6 +1452,51 @@
             <summary>
             Indica el tiempo en milisegundos que pasó entre frame y frame.            
             </summary>
+        </member>
+        <member name="T:Kriptok.Core.Game.Audio">
+            <summary>
+            Funcionalidades generales relacionadas a la reproducción de sonidos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Core.Game.Audio.playSoundQueue">
+            <summary>
+            Cola de sonidos a reproducir.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Core.Game.Audio.stopWaveBag">
+            <summary>
+            Lista de ondas a detener.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Core.Game.Audio.setToStopAll">
+            <summary>
+            Indica que debe detener todos los sonidos en el próximo frame.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.Game.Audio.EnqueueToPlay(Kriptok.Audio.SoundHandlerBase)">
+            <summary>
+            Encola un sonido para reproducir.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Core.Game.Audio.CheckStatus">
+            <summary>
+            Reproduce el siguiente sonido en la lista.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.Game.Audio.ClearSounds">
+            <summary>
+            Limpia la lista de sonidos que haya almacenados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Core.Game.Audio.StopAllSounds">
+            <summary>
+            Detiene todos los sonidos que se estén reproduciendo y los encolados.
+            </summary>            
+        </member>
+        <member name="M:Kriptok.Core.Game.Audio.EnqueueToStop(Kriptok.Audio.MciWaveHandler)">
+            <summary>
+            Encola una onda para detener.
+            </summary>            
         </member>
         <member name="F:Kriptok.Core.Game.Threading.aliveThreadsArray">
             <summary>
@@ -3969,205 +4090,54 @@
             Un único vertice en dos dimensiones.
             </summary>
         </member>
-        <member name="T:Kriptok.Entities.IVideoEntity">
+        <member name="T:Kriptok.Entities.Initialization.EntityInitializationAudio">
             <summary>
-            Representa una entidad que controla un video que se reproduce en pantalla.
+            Funcionalidades de inicialización de entidades relacionadas al audio.
             </summary>
         </member>
-        <member name="P:Kriptok.Entities.IVideoEntity.Loop">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetWaveHandler(System.String)">
             <summary>
-            Obtiene o establece si el video se debe repetir indefinidamente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.IVideoEntity.EndOfVideo">
-            <summary>
-            Indica si se encuentra al final del video.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.IVideoEntity.Kill">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetWaveHandler(System.Reflection.Assembly,System.String)">
             <summary>
-            Mata al objeto video.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.IVideoEntity.GoToEnd">
-            <summary>
-            Avanza hasta la última imagen del video.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.VideoEntity.EndOfVideo">
-            <summary>
-            Indica si se encuentra al final del video.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.VideoEntity.Loop">
-            <summary>
-            Obtiene o establece si el video se debe repetir indefinidamente.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.Base.IQuery">
-            <summary>
-            Consulta de colisiones entre dos entidades.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
-            <summary>
-            Consulta de colisiones entre una entidad y un tipo de entidades.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.Queries.Base.IQuery`1.Result">
-            <summary>
-            Resultado de la colisión.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.IMouseLocationQuery">
-            <summary>
-            Consulta para obtener las coordenadas del mouse en el plano de scroll.
-            
-            Sólo funciona para modos de pantalla determinados.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.MouseScrollLocationQuery">
-            <summary>
-            Consulta para obtener las coordenadas del mouse en el plano de scroll.
-            
-            Sólo funciona para modos de pantalla determinados.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.Queries.OutOfScreenQuery">
-            <summary>
-            Consulta para descubrir si el objeto se encuentra fuera de la pantalla.
-            
-            Sólo funciona para modos de pantalla determinados.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallStatusEnum">
-            <summary>
-            Estados posibles del objeto.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.None">
-            <summary>
-            No se está moviendo.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Jumping">
-            <summary>
-            Está saltando, moviéndose hacia arriba.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Falling">
-            <summary>
-            Está cayendo, moviéndose hacia abajo.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallHandlerY">
-            <summary>
-            Controlador de salto para entornos tipo screen/scroll en que los objetos se muevan 
-            sobre el plano XY.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerY.#ctor(System.Single)">
-            <summary>
-            Devuelve una nueva instancia de <see cref="T:Kriptok.Entities.JumpFallHandlerY"/>.
-            </summary>
-        </member>
-        <member name="T:Kriptok.Entities.JumpFallHandlerZ">
-            <summary>
-            Controlador de salto para entornos tipo tridimensionales en que los objetos "salten" sobre el eje Z.    
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerZ.#ctor(System.Single)">
-            <summary>
-            Devuelve una nueva instancia de <see cref="T:Kriptok.Entities.JumpFallHandlerZ"/>.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.gravity">
-            <summary>
-            Fuerza gravitatoria utilizada.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.inverseGravity">
-            <summary>
-            Inversa de la gravedad.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.halfGravity">
-            <summary>
-            Variable precalculada.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialHeight">
-            <summary>
-            Altura a partir de la cual se empezó a calcular el salto/caída.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialSpeed">
-            <summary>
-            Aceleración al comienzo del movimiento.
-            </summary>
-        </member>
-        <member name="F:Kriptok.Entities.JumpFallHandlerBase.timer">
-            <summary>
-            Tiempo acumulado del salto/caída.
-            </summary>
-        </member>
-        <member name="P:Kriptok.Entities.JumpFallHandlerBase.Status">
-            <summary>
-            Estado en el que se encuentra actualmente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.#ctor(System.Single)">
-            <summary>
-            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Entities.JumpFallHandlerBase"/>.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.SetGraviy(System.Single)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetWaveHandler(Kriptok.Common.Resource)">
             <summary>
-            Establece la fuerza de la gravedad, y precalcula variables necesarias.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartJump(System.Single,System.Single)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetSoundHandler(System.String)">
             <summary>
-            Inicia un salto con la aceleración indicada por parámetro.
-            
-            Como este método puede ser utilizado para un "double jump", no valida que se
-            encuentre en un estado válido.
-            
-            Esa validación debe realizare previamente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single)">
-            <summary>
-            Inicia una caída desde la altura inicial hasta la altura del piso.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single,System.Single)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetSoundHandler(System.Reflection.Assembly,System.String)">
             <summary>
-            Inicia una caída desde la altura inicial hasta la altura del piso.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.IncTimer(System.Single,System.Single,System.Single,System.Single@)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetSoundHandler(Kriptok.Common.Resource)">
             <summary>
-            Incrementa el tiempo y devuelve el valor de la altura.
-            </summary>        
-            <param name="t">Tiempo a incrementar.</param>
-            <param name="floorHeight">Altura del "piso" cuando se está cayendo.</param>
-            <param name="ceilingHeight">Altura del "techo" cuando se está saltando.</param>
-            <param name="newHeight">Resultado de la función.</param>        
-        </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.OverCeiling(System.Single,System.Single)">
-            <summary>
-            Indica si la altura del objeto es superior a la del techo.
+            Obtiene una referencia a un reproductor del sonido indicado por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.UnderFloor(System.Single,System.Single)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetMenuChangeSound">
             <summary>
-            Indica si la altura del objeto es inferior a la altura del piso.
+            Obtiene un controlador de un sonido por defecto para opciones del juego.
             </summary>        
         </member>
-        <member name="M:Kriptok.Entities.JumpFallHandlerBase.GetModifier(System.Single,System.Single)">
+        <member name="M:Kriptok.Entities.Initialization.EntityInitializationAudio.GetMenuOKSound">
             <summary>
-            Obtiene el modificar de altura en base a la velocidad inicial y a la aceleración.
+            Obtiene un controlador de un sonido por defecto para aceptación de una opción del juego.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Entities.Base.ProcessStartHandler">
+            <summary>
+            Inicializador de procesos asincrónicos.
             </summary>
         </member>
         <member name="T:Kriptok.Entities.Base.EntityStartHandler">
@@ -4184,6 +4154,11 @@
         <member name="F:Kriptok.Entities.Base.EntityStartHandler.Region">
             <summary>
             Región de renderización del objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.Base.EntityStartHandler.Audio">
+            <summary>
+            Funcionalidades de inicialización relacionadas al audio.
             </summary>
         </member>
         <member name="P:Kriptok.Entities.Base.EntityStartHandler.RegionSize">
@@ -4284,61 +4259,6 @@
             <summary>
             Agrupamiento de funciones de audio (sonido y música).
             </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySound(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary> 
-            <param name="resource">Recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySoundSync(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlaySoundSync(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.StopMusic">
-            <summary>
-            Detiene la música que esté sonando en ese momento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Int32,System.Int32,System.Double)">
-            <summary>
-            Reproduce un segmento de la canción indicada según los parámetros.
-            
-            Esta forma de reproducción no puede repetirse en continuado.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra la música.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>             
-            <param name="from">Indica desde qué punto debe empezar a reproducirse.</param>
-            <param name="to">Indica hasta qué punto debe reproducirse.</param>
-            <param name="volume">Volumen de reproducción.</param>
-        </member>
-        <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Double)">
-            <summary>
-            Reproduce la música indicada según los parámetros.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra la música.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-            <param name="loop">Indica si se reproduce en loop.</param>
-            <param name="volume">Volumen de reproducción.</param>
         </member>
         <member name="M:Kriptok.Entities.Base.ItemBase.Audio.PlayMidiNote(Kriptok.Audio.MidiInstrumentEnum,System.Byte,System.Byte,System.Byte)">
             <summary>
@@ -5011,6 +4931,207 @@
             Pero depende de la escena saber interpretarlo en la implementación del método
             <see cref="M:Kriptok.Scenes.SceneBase.OnMessage(Kriptok.Scenes.SceneHandler,System.Object)"/>,
             </summary>            
+        </member>
+        <member name="T:Kriptok.Entities.IVideoEntity">
+            <summary>
+            Representa una entidad que controla un video que se reproduce en pantalla.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.IVideoEntity.Loop">
+            <summary>
+            Obtiene o establece si el video se debe repetir indefinidamente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.EndOfVideo">
+            <summary>
+            Indica si se encuentra al final del video.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.Kill">
+            <summary>
+            Mata al objeto video.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.GoToEnd">
+            <summary>
+            Avanza hasta la última imagen del video.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.VideoEntity.EndOfVideo">
+            <summary>
+            Indica si se encuentra al final del video.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.VideoEntity.Loop">
+            <summary>
+            Obtiene o establece si el video se debe repetir indefinidamente.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.Base.IQuery">
+            <summary>
+            Consulta de colisiones entre dos entidades.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.Base.IQuery`1">
+            <summary>
+            Consulta de colisiones entre una entidad y un tipo de entidades.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.Queries.Base.IQuery`1.Result">
+            <summary>
+            Resultado de la colisión.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.IMouseLocationQuery">
+            <summary>
+            Consulta para obtener las coordenadas del mouse en el plano de scroll.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.MouseScrollLocationQuery">
+            <summary>
+            Consulta para obtener las coordenadas del mouse en el plano de scroll.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.Queries.OutOfScreenQuery">
+            <summary>
+            Consulta para descubrir si el objeto se encuentra fuera de la pantalla.
+            
+            Sólo funciona para modos de pantalla determinados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallStatusEnum">
+            <summary>
+            Estados posibles del objeto.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.None">
+            <summary>
+            No se está moviendo.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Jumping">
+            <summary>
+            Está saltando, moviéndose hacia arriba.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallStatusEnum.Falling">
+            <summary>
+            Está cayendo, moviéndose hacia abajo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallHandlerY">
+            <summary>
+            Controlador de salto para entornos tipo screen/scroll en que los objetos se muevan 
+            sobre el plano XY.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerY.#ctor(System.Single)">
+            <summary>
+            Devuelve una nueva instancia de <see cref="T:Kriptok.Entities.JumpFallHandlerY"/>.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Entities.JumpFallHandlerZ">
+            <summary>
+            Controlador de salto para entornos tipo tridimensionales en que los objetos "salten" sobre el eje Z.    
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerZ.#ctor(System.Single)">
+            <summary>
+            Devuelve una nueva instancia de <see cref="T:Kriptok.Entities.JumpFallHandlerZ"/>.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.gravity">
+            <summary>
+            Fuerza gravitatoria utilizada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.inverseGravity">
+            <summary>
+            Inversa de la gravedad.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.halfGravity">
+            <summary>
+            Variable precalculada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialHeight">
+            <summary>
+            Altura a partir de la cual se empezó a calcular el salto/caída.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.initialSpeed">
+            <summary>
+            Aceleración al comienzo del movimiento.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Entities.JumpFallHandlerBase.timer">
+            <summary>
+            Tiempo acumulado del salto/caída.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Entities.JumpFallHandlerBase.Status">
+            <summary>
+            Estado en el que se encuentra actualmente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.#ctor(System.Single)">
+            <summary>
+            Obtiene una nueva instancia de la clase <see cref="T:Kriptok.Entities.JumpFallHandlerBase"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.SetGraviy(System.Single)">
+            <summary>
+            Establece la fuerza de la gravedad, y precalcula variables necesarias.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartJump(System.Single,System.Single)">
+            <summary>
+            Inicia un salto con la aceleración indicada por parámetro.
+            
+            Como este método puede ser utilizado para un "double jump", no valida que se
+            encuentre en un estado válido.
+            
+            Esa validación debe realizare previamente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single)">
+            <summary>
+            Inicia una caída desde la altura inicial hasta la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.StartFall(System.Single,System.Single)">
+            <summary>
+            Inicia una caída desde la altura inicial hasta la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.IncTimer(System.Single,System.Single,System.Single,System.Single@)">
+            <summary>
+            Incrementa el tiempo y devuelve el valor de la altura.
+            </summary>        
+            <param name="t">Tiempo a incrementar.</param>
+            <param name="floorHeight">Altura del "piso" cuando se está cayendo.</param>
+            <param name="ceilingHeight">Altura del "techo" cuando se está saltando.</param>
+            <param name="newHeight">Resultado de la función.</param>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.OverCeiling(System.Single,System.Single)">
+            <summary>
+            Indica si la altura del objeto es superior a la del techo.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.UnderFloor(System.Single,System.Single)">
+            <summary>
+            Indica si la altura del objeto es inferior a la altura del piso.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Entities.JumpFallHandlerBase.GetModifier(System.Single,System.Single)">
+            <summary>
+            Obtiene el modificar de altura en base a la velocidad inicial y a la aceleración.
+            </summary>
         </member>
         <member name="T:Kriptok.Entities.SpriteAnimation">
             <summary>
@@ -14755,6 +14876,11 @@
             Seno el ángulo de ladeo de la cámara.
             </summary>
         </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.maxHeight">
+            <summary>
+            Máxima altura del terreno.
+            </summary>
+        </member>
         <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceRegion.inverseTextureScale">
             <summary>
             Inversa de la escala a aplicar a la textura.
@@ -18627,6 +18753,11 @@
             Este es el punto transformado después de aplicar las transformaciones.
             </summary>
         </member>
+        <member name="P:Kriptok.Views.Shapes.Base.VertexBase.IsInvalid">
+            <summary>
+            Indica si el vértice transformado quedó detrás de la cámara en interfaces 3D.
+            </summary>
+        </member>
         <member name="M:Kriptok.Views.Shapes.Base.VertexBase.CalculateBounds(Kriptok.Views.Shapes.Base.VertexBase[])">
             <summary>
             Obtiene los puntos máximos y mínimos de entre todos los vértices de la figura.
@@ -21509,7 +21640,85 @@
         <member name="T:Kriptok.Views.ClippedViewBase`1">
             <summary>
             Esta vista sirve para limitar la renderización de la vista interna a una región de pantalla limitada.  
-            </summary>    
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.ClippedViewBase`1.#ctor(`0)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.ClippedViewBase`1"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.ClippedViewBase`1.RenderOn(Kriptok.Regions.Context.Base.IRenderContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedViewBase`1.Clip(System.Drawing.Graphics)">
+            <summary>
+            Recorta la renderización de la vista a un área de la pantalla.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.ClippedIndexedSpriteView">
+            <summary>
+            Esta vista sirve para limitar la renderización de la vista interna a una región de pantalla limitada.  
+            Especializada para vistas de tipo <see cref="T:Kriptok.Views.Sprites.IndexedSpriteView"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.#ctor(Kriptok.Views.Sprites.IndexedSpriteView,System.Drawing.Rectangle)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.ClippedIndexedSpriteView"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.Clip(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.Graph">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.Alpha">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.SizeF">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.Flip">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.Scale">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.ReScale">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.ScaleX">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.ScaleY">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.ReScaleX">
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.ClippedIndexedSpriteView.ReScaleY">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.ScaleRGB(System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetMatrix(System.Boolean,Kriptok.Drawing.Algebra.Vector2F,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetReScale2D">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetScale2D">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetRectangle">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.Kriptok#Views#Base#ICollisionableRenderizable#GetAutoHitbox">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetCollisionRectangle">
+            <inheritdoc/>
         </member>
         <member name="M:Kriptok.Views.Texts.SuperFont.SetShadow(System.Int32,System.Int32,System.Drawing.Color)">
             <summary>
@@ -21857,6 +22066,11 @@
             Inicia un nuevo menú, y espera hasta que se seleccione una opción, para actuar en consecuencia.
             </summary>        
         </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.StopAllSounds">
+            <summary>
+            Detiene todos los sonidos y la música que se estén reproduciendo.
+            </summary>
+        </member>
         <member name="T:Kriptok.Scenes.SceneHandler.SceneMenuBuilder">
             <summary>
             Representa una clase para construir menues simples.
@@ -22030,6 +22244,11 @@
             <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
             <param name="resourceName">Nombre del recurso a reproducir.</param> 
         </member>
+        <member name="M:Kriptok.Scenes.FrameHandler.PlayWave(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce el sonido indicado por parámetro en forma de onda.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Scenes.FrameHandler.StopMusic">
             <summary>
             Detiene la música que esté sonando en ese momento.
@@ -22041,7 +22260,7 @@
             </summary>
             <param name="options">Música y configuración a reproducir.</param>
         </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Double)">
+        <member name="M:Kriptok.Scenes.FrameHandler.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Single)">
             <summary>
             Reproduce la música indicada según los parámetros.
             </summary>

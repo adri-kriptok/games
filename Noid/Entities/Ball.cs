@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kriptok.Audio;
 
 namespace Noid.Entities
 {
@@ -94,6 +95,8 @@ namespace Noid.Entities
         /// Velocidad acumulada de la bola.
         /// </summary>
         private float acumulatedSpeed = 0f;
+        
+        private ISoundHandler racketSound, boundSound;
 
         private Ball(Racket racket) : base(new IndexedSpriteView(typeof(Ball).Assembly, "Assets.Images.Ball.png", 2, 1))
         {
@@ -120,7 +123,7 @@ namespace Noid.Entities
             currentSpeed = ball.currentSpeed;
             bounces = ball.bounces;
             View.Graph = ball.View.Graph;
-        }
+        }        
 
         public override Vector3F GetRenderLocation()
         {
@@ -143,6 +146,8 @@ namespace Noid.Entities
 
             Location.Z = 3;
 
+            racketSound = h.Audio.GetWaveHandler(Sounds.RacketSound);
+            boundSound = h.Audio.GetWaveHandler(Sounds.BoundSound);
         }
 
         protected override void OnFrame()
@@ -213,23 +218,23 @@ namespace Noid.Entities
                         sticked = true;
                         break;                                
                     }
-                            
-                    Audio.PlayWave(Sounds.RacketSound);
+                                                
+                    racketSound.Play();
                 }
 
                 // Colisiona con el lado horizontal del tablero
                 if (newXY.Y <= 12f && incY < 0f)
                 {
-                    angulo0 = MathHelper.GetAngleF(incX, -incY);                            
-                    Audio.PlayWave(Sounds.BoundSound);
+                    angulo0 = MathHelper.GetAngleF(incX, -incY);                                                
+                    boundSound.Play();
                 }
 
                 // Colisiona con los lados verticales de la pantalla
                 if ((newXY.X <= 12 && incX < 0f) || (newXY.X >= 260 && incX > 0f))
                 {
                     angulo0 = MathHelper.GetAngleF(-incX, incY);
-                    //angulo0 =fget_angle(0,0,-incr_x,incr_y);                            
-                    Audio.PlayWave(Sounds.BoundSound);
+
+                    boundSound.Play();
                 }
 
                 // Actualiza las coordenadas reales

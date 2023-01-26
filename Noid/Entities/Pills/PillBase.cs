@@ -1,4 +1,5 @@
-﻿using Kriptok.Drawing.Algebra;
+﻿using Kriptok.Audio;
+using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Views.Sprites;
@@ -13,6 +14,7 @@ namespace Noid.Entities.Pills
     abstract class PillBase : EntityBase<SpriteView>
     {
         private bool picked = false;
+        private ISoundHandler pillSound;
 
         protected PillBase(Vector3F location, string imageName) 
             : base(new SpriteView(typeof(PillBase).Assembly, $"Assets.Images.Pills.{imageName}"))
@@ -26,13 +28,14 @@ namespace Noid.Entities.Pills
             base.OnStart(h);
 
             h.CollisionType = Collision2DTypeEnum.Ellipse;
+            pillSound = h.Audio.GetWaveHandler(Sounds.PillSound);
         }
 
         protected override void OnFrame()
         {
             if (picked)
             {
-                Audio.PlayWave(Sounds.PillSound);
+                pillSound.Play();
                 OnPick();
                 Die();
                 return;

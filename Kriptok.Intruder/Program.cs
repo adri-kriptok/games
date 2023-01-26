@@ -21,12 +21,18 @@ namespace Kriptok.Intruder
         {
 #if DEBUG
             Config.Get<BaseConfiguration>().Mute();
-#endif
-            //Engine.Start(new TheBeachMapScene(), p =>
-            Engine.Start(new IntroScene(), p =>
+#endif            
+             Engine.Start(new TheBeachMapScene(), p =>            
+            //Engine.Start(new IntroScene(), p =>
             {
-                p.FullScreen = true;                
-                p.Mode = Core.WindowSizeEnum.W340x192;                
+#if DEBUG
+                p.FullScreen = false;
+#else
+                p.FullScreen = true;
+#endif
+                //p.Mode = Core.WindowSizeEnum.W226x128;
+                p.Mode = Core.WindowSizeEnum.W340x192;
+                //p.Mode = Core.WindowSizeEnum.W680x384;
                 p.Title = "Intruder | Kriptok";
                 p.OpenMidiNotePlayer();
                 p.ExtractMidiPlayer();

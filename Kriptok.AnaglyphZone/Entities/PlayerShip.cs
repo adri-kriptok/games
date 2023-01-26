@@ -29,8 +29,12 @@ namespace Kriptok.AZ.Entities
         private int iAngle = 0;
 
         private ISingleCollisionQuery<EnemyBase> enemyCollision;
-
         private int soundCounter = 0;
+
+        /// <summary>
+        /// Sonido a ejecutar cuando dispara.
+        /// </summary>
+        private ISoundHandler shootSound;
 
         //public PlayerShip(CamTarget camTarget) : base(new WireframeMeshView(typeof(Meshes).Assembly, "Assets.Models.SpaceShip.mqo"))
         public PlayerShip(CamTargetBase camTarget) : base(new PlayerShipView())
@@ -44,6 +48,7 @@ namespace Kriptok.AZ.Entities
             h.SetCollision3DViewOBB();
 
             enemyCollision = h.GetCollision3D<EnemyBase>();
+            shootSound = h.Audio.GetSoundHandler("Assets.Sounds.Shot1.wav");
         }
 
         protected override void OnFrame()
@@ -75,8 +80,7 @@ namespace Kriptok.AZ.Entities
             {
                 if (soundCounter++ >= 3)
                 {
-                    Audio.PlaySound(Assembly, "Assets.Sounds.Shot1.wav");
-                    // Audio.PlayMidiNote(MidiInstrumentEnum.SynthBass2, 1, 75, 127);
+                    shootSound.Play();   
                     soundCounter = 0;
                 }
                 Add(new PlayerShot(this, -30f, -10f));

@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.AnaglyphZone", "Kri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Tehuelche", "Kriptok.Tehuelche\Kriptok.Tehuelche.csproj", "{27834153-04F9-428A-B0F1-1733367B1F93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pacoman", "Pacoman\Pacoman.csproj", "{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Code Analysis|Any CPU = Code Analysis|Any CPU
@@ -149,6 +151,16 @@ Global
 		{27834153-04F9-428A-B0F1-1733367B1F93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27834153-04F9-428A-B0F1-1733367B1F93}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
 		{27834153-04F9-428A-B0F1-1733367B1F93}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Code Analysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Code Analysis|Any CPU.Build.0 = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Debug-Performance|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Debug-Performance|Any CPU.Build.0 = Debug|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
+		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

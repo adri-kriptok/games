@@ -1,4 +1,5 @@
-﻿using Kriptok.Entities.Base;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
 using System.Windows.Forms;
 using Tekrips.Entities.Tokens;
 using Tekrips.Scenes;
@@ -19,6 +20,7 @@ namespace Tekrips.Entities
 		protected int BoardX;
 		protected int BoardY;
 		protected int Position;
+		private ISoundHandler rotateSound, stuckSound;
 
 		public TokenBase(BoardScene board, bool preview, int type, string resourceName)
 		{
@@ -55,6 +57,9 @@ namespace Tekrips.Entities
 			{
 				Add(item);
 			}
+
+			rotateSound = h.Audio.GetSoundHandler("Assets.Clock.wav");
+			stuckSound = h.Audio.GetSoundHandler("Cancel1.wav");
         }
 
         protected override void OnFrame()
@@ -80,7 +85,7 @@ namespace Tekrips.Entities
 				if (countToRotate <= 0 && CanRotate())
 				{
 					Rotate();
-					Audio.PlaySound(typeof(TokenBase).Assembly, "Assets.Clock.wav");
+					rotateSound.Play();
 					countToRotate = Global.RotateTime;
 				}
 			}
@@ -161,7 +166,7 @@ namespace Tekrips.Entities
 
 		private void Stuck()
 		{
-			Audio.PlaySound(typeof(TokenBase).Assembly, "Cancel1.wav");
+			stuckSound.Play();
 			for (int i = 0; i < 4; i++)
 			{
 				board.Occupy(cubes[i]);

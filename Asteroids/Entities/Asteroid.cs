@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using Kriptok.Audio;
 
 namespace Asteroids.Entities
 {
@@ -25,6 +26,11 @@ namespace Asteroids.Entities
         /// Tamaño de la pantalla.
         /// </summary>
         private Size regionSize;
+
+        /// <summary>
+        /// Sonido cuando se rompe un asteroide.
+        /// </summary>
+        private ISoundHandler breakSound;
 
         /// <summary>
         /// Velocidad de giro.
@@ -49,7 +55,7 @@ namespace Asteroids.Entities
         {
             this.level = level;
             ResetLocation();
-            this.size = size;            
+            this.size = size;
         }
 
         public Asteroid(int level, float x, float y, int size) : base(new AsteroidView(size))
@@ -70,7 +76,7 @@ namespace Asteroids.Entities
         {
             base.OnStart(h);
 
-            h.CollisionType = Collision2DTypeEnum.Auto;            
+            h.CollisionType = Collision2DTypeEnum.Auto;
             this.shotCollision = h.GetCollision2D<Shot>();
             this.shipCollision = h.GetCollision2D<Ship>();
 
@@ -84,6 +90,8 @@ namespace Asteroids.Entities
             speed = size + level;
 
             regionSize = h.RegionSize;
+
+            breakSound = h.Audio.GetWaveHandler("TUBO5.WAV");
         }
 
         protected override void OnFrame()
@@ -92,11 +100,12 @@ namespace Asteroids.Entities
             if (shotCollision.OnCollision(out Shot shot))
             {
                 // Suma puntuación.
-                Global.Score += 25 * size + (level - 1) * 25;  
-                    
-                shot.Die();                 // Elimina el disparo
-                // sound(sonido_explosion, 30 * (6 - graph), 33 * graph);
-                Audio.PlayWave(Assembly, "TUBO5.WAV");
+                Global.Score += 25 * size + (level - 1) * 25;
+
+                // Elimina el disparo
+                shot.Die();
+
+                breakSound.Play();                
 
                 if (size < 5)
                 {                      // Si el asteroide es muy grande
@@ -123,9 +132,9 @@ namespace Asteroids.Entities
 
             // Comprueba si se ha chocado con la nave                
             if (shipCollision.OnCollision(out Ship ship))
-            {                        
+            {
                 // Hace sonido de destrucción.
-                Audio.PlayWave(Assembly, "TUBO5.WAV");                        
+                breakSound.Play();
 
                 // Elimina el proceso de la nave
                 if (IsAlive())
@@ -141,7 +150,7 @@ namespace Asteroids.Entities
             Location = Helpers.Relocate(Location, regionSize);
 
             // Gira el asteroide            
-            Angle.Z += angleIncrement;                 
+            Angle.Z += angleIncrement;
         }
 
         class AsteroidView : PolygonView

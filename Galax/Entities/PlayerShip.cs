@@ -5,6 +5,7 @@ using Galax.Entities;
 using Galax.Scenes;
 using Kriptok.Views.Sprites;
 using System.Windows.Forms;
+using Kriptok.Audio;
 
 namespace Galax
 {
@@ -18,6 +19,11 @@ namespace Galax
         private ISingleCollisionQuery<EnemyShotBase> shotCollision;
         private ISingleCollisionQuery<EnemyBase> enemyCollision;
 
+        /// <summary>
+        /// Sonidos.
+        /// </summary>
+        private ISoundHandler laserSound, laser3Sound;
+
         public PlayerShip() : base(new SpriteView(typeof(PlayerShip).Assembly, "PlayerShip.png"))
         {
         }
@@ -27,19 +33,21 @@ namespace Galax
             base.OnStart(h);
 
             h.CollisionType = Collision2DTypeEnum.Auto;
-            
+
             Location.X = 160f;
             Location.Y = 188f;
-            
+
             // Sirve para disparar solo un disparo cada vez
             PlayerMisile.Flag = false;
 
             this.shotCollision = h.GetCollision2D<EnemyShotBase>();
             this.enemyCollision = h.GetCollision2D<EnemyBase>();
+            this.laserSound = h.Audio.GetWaveHandler("LASER.WAV");
+            this.laser3Sound = h.Audio.GetWaveHandler("LASER3.WAV");
         }
 
         protected override void OnFrame()
-        {                        
+        {
             // Lee las teclas y mueve la nave
             if (Input.Right() && speed < 6)
             {
@@ -78,11 +86,11 @@ namespace Galax
             {
 #if !DEBUG
                 if (PlayerMisile.Flag == false)
-                {                              
+                {
 #endif
                     // Dispara misil
-                    // Mira si hay otro disparado                   
-                    Audio.PlayWave(GetType().Assembly, "LASER.WAV");
+                    // Mira si hay otro disparado                                       
+                    laserSound.Play();
                     PlayerMisile.Flag = true;
                     Add(new PlayerMisile(Location.X, Location.Y - 10f));
 #if !DEBUG
@@ -91,10 +99,10 @@ namespace Galax
             }
 
             if (shotCollision.OnCollision(out EnemyShotBase shot))
-            {                
+            {
                 // Crea un proceso tipo explosion
-                Add(new Explosion(Location.X, Location.Y, 1f));
-                Audio.PlayWave(GetType().Assembly, "LASER3.WAV");
+                Add(new Explosion(Location.X, Location.Y, 1f));                
+                laser3Sound.Play();
 
                 shot.Die();
 
@@ -102,7 +110,7 @@ namespace Galax
                 Die();
             }
             else if (enemyCollision.OnCollision(out EnemyBase enemy))
-            { 
+            {
                 enemy.Explode();
                 Scene.SendMessage(LevelMessagesEnum.LoseLife);
                 Die();

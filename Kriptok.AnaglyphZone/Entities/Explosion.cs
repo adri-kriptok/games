@@ -28,8 +28,8 @@ namespace Kriptok.AZ.Entities
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
-
-            Audio.PlayWave(Assembly, "Assets.Sounds.Explosion1.wav");
+            
+            h.Audio.GetWaveHandler("Assets.Sounds.Explosion1.wav").Play();
         }
 
         protected override void OnFrame()

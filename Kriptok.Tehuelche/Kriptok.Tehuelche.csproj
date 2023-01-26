@@ -74,13 +74,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.21.6\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.22.6\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.21.6\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.22.6\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.21.6\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.22.6\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,10 +122,6 @@
     <Compile Include="Scenes\Base\LevelSceneBase.cs" />
     <Compile Include="Scenes\Map00\Map00Scene.cs" />
     <Compile Include="Scenes\Map01\Map01Scene.cs" />
-    <Compile Include="Testing\Glaciar.cs" />
-    <Compile Include="Testing\Grass.cs" />
-    <Compile Include="Testing\Lava.cs" />
-    <Compile Include="Testing\TestTank.cs" />
     <Compile Include="Views\VoxelSpaceShapeViewBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,21 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map01\Texture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\Clouds.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\GrassTerrain.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\GrassTexture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\LavaTerrain.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\LavaTexture.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Images\Skies\Sky00.png" />

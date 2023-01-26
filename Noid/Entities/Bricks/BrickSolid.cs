@@ -1,4 +1,6 @@
-﻿using Kriptok.Views.Sprites;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
+using Kriptok.Views.Sprites;
 using System.Drawing;
 
 namespace Noid.Entities
@@ -8,11 +10,19 @@ namespace Noid.Entities
         private readonly IndexedSpriteView view;
         private bool flashing;
         private bool change;
+        private ISoundHandler metalSound;
 
         public BrickSolid(int x, int y)
             : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(7), 1, 3))
         {
             this.view = (IndexedSpriteView)View;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            metalSound = h.Audio.GetWaveHandler(Sounds.MetalSound);
         }
 
         /// <summary>
@@ -55,7 +65,7 @@ namespace Noid.Entities
 
         internal override void Hit()
         {
-            Audio.PlayWave(Sounds.MetalSound);
+            metalSound.Play();
             flashing = true;
         }
 

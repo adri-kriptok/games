@@ -12,7 +12,7 @@ namespace Galax
 {
     public abstract class EnemyShotBase<T> : EnemyShotBase
         where T : ISpriteView
-    {        
+    {
         private IQuery<bool> outOfScreen;
 
         protected EnemyShotBase(T view, float x, float y) : base(view, x, y)
@@ -53,7 +53,7 @@ namespace Galax
         public EnemyShotBase(IView view, float x, float y) : base(view)
         {
             Location.X = x;
-            Location.Y = y;            
+            Location.Y = y;
         }
 
         protected override void OnStart(EntityStartHandler h)
@@ -62,7 +62,7 @@ namespace Galax
 
             h.CollisionType = Collision2DTypeEnum.Auto;
 
-            Audio.PlaySound(Assembly, "LASER2.WAV");
+            h.Audio.GetSoundHandler("LASER2.WAV").Play();
 
             if (Global.Player.Location.Y == Location.Y)
             {
@@ -76,7 +76,7 @@ namespace Galax
         }
 
         protected override void OnFrame()
-        {            
+        {
             Animate();
 
             // Mueve al proceso
@@ -85,7 +85,7 @@ namespace Galax
         }
 
         protected virtual void Animate()
-        {            
+        {
         }
     }
 }

@@ -6,6 +6,7 @@ using Kriptok.Views.Texts;
 using System;
 using System.Drawing;
 using Kriptok;
+using Kriptok.Drawing.Algebra;
 
 namespace Snake
 {
@@ -29,6 +30,8 @@ namespace Snake
 
         class GameScene : SceneBase
         {
+            private SnakeHead player;
+
             protected override void Run(SceneHandler h)
             {                
                 // Pone el fondo de pantalla
@@ -47,7 +50,7 @@ namespace Snake
                 h.PlayMusic(Assembly, "Animal.mid");
 
                 // Crea la cabeza del gusano que maneja todo el cuerpo
-                h.Add(new SnakeHead());
+                player = h.Add(new SnakeHead());
                 h.Add(new AppleCreator());
             }
 
@@ -57,6 +60,9 @@ namespace Snake
 
                 if ((string)message == "Reset")
                 {
+                    h.PlaySoundSync(Assembly, "Resources.Down.wav");
+                    player.Kill();
+
                     // Apago la pantalla.
                     h.FadeOff();
 
@@ -64,7 +70,7 @@ namespace Snake
                     h.FadeOn();
 
                     // Crea el nuevo gusano.
-                    h.Add(new SnakeHead());
+                    player = h.Add(new SnakeHead());
                 }
             }
         }

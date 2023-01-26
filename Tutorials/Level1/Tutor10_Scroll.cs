@@ -1,4 +1,5 @@
 ﻿using Kriptok;
+using Kriptok.Audio;
 using Kriptok.Core;
 using Kriptok.Div;
 using Kriptok.Drawing;
@@ -98,10 +99,18 @@ namespace Tutorials.Level1
                 private const float rotation = MathHelper.PIF / 48;
                 private readonly ScrollRegion scroll;
                 private int shootCounter;
+                private ISoundHandler shootSound;
 
                 public Ship(ScrollRegion scroll) : base(new SpriteView(DivResources.Image("Tutorial.Spaceship.png")))
                 {
                     this.scroll = scroll;
+                }
+
+                protected override void OnStart(EntityStartHandler h)
+                {
+                    base.OnStart(h);
+
+                    shootSound = h.Audio.GetSoundHandler("Assets.Sounds.Shot1.wav");
                 }
 
                 protected override void OnFrame()
@@ -119,7 +128,7 @@ namespace Tutorials.Level1
                     {
                         if (shootCounter <= 0)
                         {
-                            Audio.PlaySound(GetType().Assembly, "Assets.Sounds.Shot1.wav");
+                            shootSound.Play();
                             shootCounter = 5;
                         }
 

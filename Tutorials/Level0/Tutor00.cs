@@ -1,4 +1,5 @@
 ﻿using Kriptok;
+using Kriptok.Audio;
 using Kriptok.Core;
 using Kriptok.Div;
 using Kriptok.Entities.Base;
@@ -66,6 +67,7 @@ namespace Tutorials.Level0
         public class Ship : EntityBase<SpriteView>
         {
             private int shootCounter;
+            private ISoundHandler shootSound;
 
             public Ship() : base(new SpriteView(DivResources.Image("Tutorial.Spaceship.png")))
             {
@@ -77,6 +79,8 @@ namespace Tutorials.Level0
             {
                 base.OnStart(h);
                 Location.X = h.RegionSize.Width / 2;
+
+                shootSound = h.Audio.GetSoundHandler("Assets.Sounds.Shot1.wav");
             }
 
             protected override void OnFrame()
@@ -100,7 +104,7 @@ namespace Tutorials.Level0
                 {
                     if (shootCounter <= 0)
                     {
-                        Audio.PlaySound(Assembly, "Assets.Sounds.Shot1.wav");
+                        shootSound.Play();
                         shootCounter = 5;
                     }
 

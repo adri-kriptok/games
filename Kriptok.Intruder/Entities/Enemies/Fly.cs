@@ -1,4 +1,5 @@
-﻿using Kriptok.Common;
+﻿using Kriptok.Audio;
+using Kriptok.Common;
 using Kriptok.Div;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
@@ -46,6 +47,11 @@ namespace Kriptok.Intruder.Entities.Enemies
         /// </summary>
         private bool madeSound = false;
 
+        /// <summary>
+        /// Sonidos de la mosca.
+        /// </summary>
+        private ISoundHandler flySound, attackSound;
+
         public Fly(IPartitionedPseudo3DRegion map, Player player) : base(new FlyView())
         {
             this.map = map;
@@ -70,6 +76,9 @@ namespace Kriptok.Intruder.Entities.Enemies
             {
                 this.shadow = Add(new TerrainShadow(this, terr, Radius * 0.75f));
             }
+
+            this.flySound = h.Audio.GetWaveHandler(DivResources.Sound("Animales.AVISPA.WAV"));
+            this.attackSound = h.Audio.GetWaveHandler(Rm2kResources.Sound("Cancel1.wav"));
         }        
 
         protected override void OnFrame()
@@ -115,8 +124,8 @@ namespace Kriptok.Intruder.Entities.Enemies
             {
                 if (!madeSound == true &&
                     distToPlayer < 1000f)
-                {
-                    Audio.PlayWave(DivResources.Sound("Animales.AVISPA.WAV"));
+                {                    
+                    flySound.Play();
                     madeSound = true;
                 }
                 else if (distToPlayer > 1250f)
@@ -143,9 +152,8 @@ namespace Kriptok.Intruder.Entities.Enemies
 
                     // Si llego al límite, hago daño.
                     if (damageCounter > damageCounterMax)
-                    {
-                        // Audio.PlayMidiPercussionNote(27, 127);
-                        Audio.PlayWave(Rm2kResources.Sound("Cancel1.wav"));
+                    {                        
+                        attackSound.Play();
 
                         player.Damage(Rand.Next(15, 20));
                         damageCounter = 0f;
@@ -173,7 +181,7 @@ namespace Kriptok.Intruder.Entities.Enemies
         }
 
 #if DEBUG || SHOWFPS
-        private bool pointed = false;
+        private bool pointed = false;        
 
         public void Pointed()
         {

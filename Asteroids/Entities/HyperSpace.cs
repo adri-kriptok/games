@@ -17,8 +17,8 @@ namespace Asteroids.Entities
         {
             base.OnStart(h);
             
-            // Realiza el sonido
-            Audio.PlaySound(Assembly, "FX33.WAV");
+            // Realiza el sonido            
+            h.Audio.GetSoundHandler("FX33.WAV").Play();
         }
 
         protected override void OnFrame()

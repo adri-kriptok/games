@@ -1,4 +1,5 @@
-﻿using Kriptok.Entities.Base;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Sprites;
 using System;
 
@@ -16,8 +17,12 @@ namespace Pong.Entities
         private int xMod;
         private int yMod;
         private float speed = 1f;
-
         private const int halfRacketHeight = Racket.Height / 2;
+
+        /// <summary>
+        /// Sonidos.
+        /// </summary>
+        private ISoundHandler scoreSound, racketSound;
 
         public Ball(Racket leftRacket, Racket rightRachet, int xMod = -1, int yMod = -1)
             :base(new SpriteView(typeof(Ball).Assembly, "Ball.png"))
@@ -33,6 +38,9 @@ namespace Pong.Entities
         {
             Location.X = h.RegionSize.Width / 2;
             Location.Y = h.RegionSize.Height / 2;
+
+            this.scoreSound = h.Audio.GetSoundHandler("Sound.Attack1.wav");
+            this.racketSound = h.Audio.GetSoundHandler("Sound.Cursor1.wav");
         }
 
         protected override void OnFrame()
@@ -44,7 +52,7 @@ namespace Pong.Entities
             {
                 Location.Y = minY;
                 yMod = -yMod;
-                PlayCursorSound();
+                racketSound.Play();
                 IncSpeed();
             }
 
@@ -52,7 +60,7 @@ namespace Pong.Entities
             {
                 Location.Y = maxY;
                 yMod = -yMod;
-                PlayCursorSound();
+                racketSound.Play();
                 IncSpeed();
             }
 
@@ -65,7 +73,7 @@ namespace Pong.Entities
                     xMod = -xMod;
                     Location.X = minX;
                     IncSpeed();
-                    PlayCursorSound();
+                    racketSound.Play();
                 }
             }
 
@@ -73,7 +81,7 @@ namespace Pong.Entities
             {
                 rightRacket.Points += 1000;
                 Add(new Ball(leftRacket, rightRacket, xMod, yMod));
-                PlayAttackSound();
+                scoreSound.Play();
                 Die();
                 return;
             }
@@ -87,7 +95,7 @@ namespace Pong.Entities
                     xMod = -xMod;
                     Location.X = maxX;
                     IncSpeed();
-                    PlayCursorSound();
+                    racketSound.Play();
                 }
             }
 
@@ -95,7 +103,7 @@ namespace Pong.Entities
             {
                 leftRacket.Points += 1000;
                 Add(new Ball(leftRacket, rightRacket, xMod, yMod));
-                PlayAttackSound();
+                scoreSound.Play();                
                 Die();
                 return;
             }
@@ -104,16 +112,6 @@ namespace Pong.Entities
         private void IncSpeed()
         {
             speed *= 1.1f;
-        }
-
-        private void PlayAttackSound()
-        {
-            Audio.PlaySound(Assembly, "Sound.Attack1.wav");
-        }
-
-        private void PlayCursorSound()
-        {
-            Audio.PlaySound(Assembly, "Sound.Cursor1.wav");
         }
     }
 }

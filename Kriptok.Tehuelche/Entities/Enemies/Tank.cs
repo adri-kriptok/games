@@ -1,4 +1,5 @@
-﻿using Kriptok.Div;
+﻿using Kriptok.Audio;
+using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities;
 using Kriptok.Entities.Base;
@@ -30,6 +31,11 @@ namespace Kriptok.Tehuelche.Enemies
         private EnemyAim aim;
 
         /// <summary>
+        /// Sonidos del tanque.
+        /// </summary>
+        private ISoundHandler explosi7Sound, dyingSound;
+
+        /// <summary>
         /// Contador para disparar;
         /// </summary>
         private float shootCounter = 0;
@@ -56,6 +62,8 @@ namespace Kriptok.Tehuelche.Enemies
             ResetHatchAngle();
 
             aim = Add(new EnemyAim(this));
+            explosi7Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI7.WAV"));
+            dyingSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOS02.WAV"));
         }
 
         protected override void OnFrame()
@@ -97,8 +105,9 @@ namespace Kriptok.Tehuelche.Enemies
             if ((shootCounter += Sys.TimeDelta) > 1000f)
             {
                 if (aim.Target)
-                {
-                    Audio.PlayWave(DivResources.Sound("Guerra.EXPLOSI7.WAV"));
+                {                    
+                    explosi7Sound.Play();
+
                     Add(new EnemyMissile(this, terrain, View.CannonTip.GetCalculatedLocation(),
                         hatchAngle, cannonAngle));
                     shootCounter = 0f;
@@ -165,8 +174,8 @@ namespace Kriptok.Tehuelche.Enemies
 
         internal override void OnDying()
         {
-            base.OnDying();
-            Audio.PlayWave(DivResources.Sound("Guerra.EXPLOS02.WAV"));
+            base.OnDying();            
+            dyingSound.Play();
             Add(new PlayerMissileExplosion(Location, 2f));
         }
 

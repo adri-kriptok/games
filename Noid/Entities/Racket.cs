@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kriptok.Audio;
 
 namespace Noid.Entities
 {
@@ -77,6 +78,7 @@ namespace Noid.Entities
         /// Incremento X.
         /// </summary>
         private float incX = 0f;
+        private ISoundHandler laserSound;
 
         public Racket(bool demo) : base(new RacketView())
         {
@@ -105,6 +107,8 @@ namespace Noid.Entities
             // Coordenadas iniciales
             Location.X = 140;
             Location.Y = 188;
+
+            this.laserSound = h.Audio.GetSoundHandler(Sounds.LaserSound);
         }
 
         protected override void OnFrame()
@@ -173,7 +177,7 @@ namespace Noid.Entities
                 if (readyToFire)
                 {
                     // Y realiza sonido.                        
-                    Audio.PlaySound(Sounds.LaserSound);
+                    laserSound.Play();
 
                     // Dispara los lasers...
                     Add(new Laser(Location.X - 16f, Location.Y - 8f));

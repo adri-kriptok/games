@@ -19,7 +19,7 @@ namespace Tutorials.Level0
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
-            Audio.PlayWave(Assembly, "Level0.Assets.Sounds.Explosion1.wav");
+            h.Audio.GetWaveHandler(Assembly, "Level0.Assets.Sounds.Explosion1.wav").Play();
         }    
     }    
 }

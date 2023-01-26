@@ -55,7 +55,7 @@ namespace Kriptok.Intruder.Regions
         protected override void Render(Pseudo3DTerrainRenderContext context, RenderizableHandler[] renderizables)
         {            
 #if !DEBUG
-            skyBackground.Render(context, (context.YShearing - 42 * 2).Round());
+            skyBackground.Render(context, (context.YShearing - 84f).Round());
 #endif
 
             base.Render(context, renderizables.Take(50).ToArray());

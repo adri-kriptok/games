@@ -1,15 +1,25 @@
-﻿using Kriptok.Views.Sprites;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
+using Kriptok.Views.Sprites;
 
 namespace Noid.Entities
 {
     class BrickWall : Brick
     {
         private readonly IndexedSpriteView view;
+        private ISoundHandler boundSound;
 
         public BrickWall(int x, int y) 
             : base(x, y, new IndexedSpriteView(typeof(BrickWall).Assembly, GetBrickName(8), 1, 3))
         {
             this.view = (IndexedSpriteView)View;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            boundSound = h.Audio.GetWaveHandler(Sounds.BoundSound);
         }
 
         internal override void Hit()
@@ -22,8 +32,8 @@ namespace Noid.Entities
                 CheckLastBrick();
             }
             else
-            {
-                Audio.PlayWave(Sounds.BoundSound);
+            {                
+                boundSound.Play();
                 view.Graph++;
             }
         }

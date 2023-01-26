@@ -1,4 +1,5 @@
-﻿using Kriptok.Entities.Base;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Entities.Collisions.Base;
 using Kriptok.Entities.Collisions.Queries;
@@ -81,6 +82,11 @@ namespace Galax.Entities
         /// </summary>
         private IQuery<bool> outOfScreen;
 
+        /// <summary>
+        /// Sonido de disparo.
+        /// </summary>
+        private ISoundHandler laserSound;
+
         public EnemyBase(int index, IView view) : base(view)
         {
             this.index = index;
@@ -99,6 +105,8 @@ namespace Galax.Entities
             h.CollisionType = Collision2DTypeEnum.Auto;
             this.playerMisile = h.GetCollision2D<PlayerMisile>();
             this.outOfScreen = h.GetOutOfScreenQuery();
+
+            laserSound = h.Audio.GetWaveHandler("LASER3.WAV");
         }
 
         protected override void OnFrame()
@@ -242,8 +250,8 @@ namespace Galax.Entities
         {
             Add(new Explosion(Location.X, Location.Y, 1f));
 
-            // Y elimina el proceso haciendo un sonido y una explosion.
-            Audio.PlayWave(GetType().Assembly, "LASER3.WAV");
+            // Y elimina el proceso haciendo un sonido y una explosion.            
+            laserSound.Play();
             Die();
         }
     }

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pacoman</RootNamespace>
+    <AssemblyName>Pacoman</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Kriptok.Games.Pacoman.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.0.22.6\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Sdk.0.22.6\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Scenes\GameScene.cs" />
+    <Compile Include="Scenes\IntroScene.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Entities\Fruit.cs" />
+    <Compile Include="Entities\EatScore.cs" />
+    <Compile Include="Entities\Eyes.cs" />
+    <Compile Include="Entities\Ghost.cs" />
+    <Compile Include="Entities\Life.cs" />
+    <Compile Include="Entities\Blinker.cs" />
+    <Compile Include="Entities\Paco.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\Title.cs" />
+    <Compile Include="Views\PacomanClippedView.cs" />
+    <Compile Include="Views\GhostView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\BoardHardness.png" />
+    <EmbeddedResource Include="Assets\Images\BoardPathFind.png" />
+    <EmbeddedResource Include="Assets\Images\Fruits.png" />
+    <EmbeddedResource Include="Assets\Images\Board.png" />
+    <EmbeddedResource Include="Assets\Images\Ghost1.png" />
+    <EmbeddedResource Include="Assets\Images\GhostEyes.png" />
+    <EmbeddedResource Include="Assets\Images\Ghost3.png" />
+    <EmbeddedResource Include="Assets\Images\GhostScared.png" />
+    <EmbeddedResource Include="Assets\Images\Title.png" />
+    <EmbeddedResource Include="Assets\Images\Ghost2.png" />
+    <EmbeddedResource Include="Assets\Images\Player.png" />
+    <EmbeddedResource Include="Assets\Images\Ghost0.png" />
+    <EmbeddedResource Include="Assets\Images\Scores0.png" />
+    <EmbeddedResource Include="Assets\Images\Scores1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\Start.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\Intro.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\EatBlinker.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\Eat.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\EatGhost.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\Death.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\EatFruit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\FlicPlayer.exe" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

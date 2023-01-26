@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Kriptok.Views.Sprites;
 using Kriptok.Entities.Collisions.Base;
 using Kriptok.Entities.Collisions.Queries;
+using Kriptok.Audio;
 
 namespace Snake.Entities
 {
@@ -24,6 +25,11 @@ namespace Snake.Entities
         public const int Size = 8;
         public const int HalfSize = 4;
         public const float RealSize = Size;
+
+        /// <summary>
+        /// Sonido cuando se come una manzana.
+        /// </summary>
+        private ISoundHandler appleSound;
 
         public SnakeHead() : base(new SpriteView(typeof(SnakeHead).Assembly, "Red.png"))
         {
@@ -46,6 +52,8 @@ namespace Snake.Entities
 
             // Y se crea un cuerpo del gusano que crea a los otros
             son = Add(new SnakeSegment(128, 1));
+
+            appleSound = h.Audio.GetSoundHandler("Resources.Item2.wav");
         }
 
         protected override void OnFrame()
@@ -83,7 +91,8 @@ namespace Snake.Entities
                 Global.SnakeLength += 4;  // Incrementa la cola del gusano
                 Global.Score += 10;       // Suma 10 puntos a la puntuaci¢n                    
 
-                Audio.PlaySound(Assembly, "Resources.Item2.wav");
+                // Audio.PlaySound(Assembly, "Resources.Item2.wav");
+                appleSound.Play();
             }
 
             // Mueve al gusano en la direccion deseada
@@ -92,22 +101,26 @@ namespace Snake.Entities
 
             if (!InLimits() || segmentCollision.OnCollision())
             {
-                Audio.PlaySoundSync(Assembly, "Resources.Down.wav");
-
                 // Comprueba si se ha superado el record y lo actualiza                    
                 Global.Record = MaxScore.CheckAndSave(Global.Score);
 
                 // Reinicia las variable de puntos y longitud de cola
                 Global.Score = 0;
                 Global.SnakeLength = 8;
-
-                // Elimina todos los segmentos del gusano.
-                son.Remove();
-
+                
                 Scene.SendMessage("Reset");
-                Die();
                 return;
             }
+        }
+
+        /// <summary>
+        /// Mata a todos los segmentos, y luego muere.
+        /// </summary>
+        internal void Kill()
+        {
+            // Elimina todos los segmentos del gusano.
+            son.Remove();
+            Die();
         }
 
         private bool InLimits()

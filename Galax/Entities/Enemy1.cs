@@ -1,9 +1,13 @@
-﻿using Kriptok.Views.Sprites;
+﻿using Kriptok.Audio;
+using Kriptok.Entities.Base;
+using Kriptok.Views.Sprites;
 
 namespace Galax.Entities
 {
     class Enemy1 : EnemyBase<IndexedSpriteView>
-    {        
+    {
+        private ISoundHandler sound;
+
         public Enemy1(int index)
             : base(index, new IndexedSpriteView(typeof(Enemy3).Assembly, "Assets.Images.Enemy1.png", 3, 2))
         {
@@ -11,6 +15,13 @@ namespace Galax.Entities
         }
 
         protected override int EnemyType => 1;
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            sound = h.Audio.GetWaveHandler("FX1.WAV");
+        }
 
         protected override void OnFrame()
         {
@@ -20,10 +31,7 @@ namespace Galax.Entities
             base.OnFrame();
         }
 
-        protected override void PlaySound()
-        {            
-            Audio.PlayWave(GetType().Assembly, "FX1.WAV");            
-        }
+        protected override void PlaySound() => sound.Play();
 
         protected override void Shoot(int rnd)
         {            

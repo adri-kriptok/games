@@ -48,13 +48,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.21.6\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.22.6\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.21.6\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.22.6\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.21.6\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.22.6\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.RM, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,9 +135,6 @@
     <EmbeddedResource Include="Scenes\Maps\Map01_TheBeach\Map.terrx" />
     <EmbeddedResource Include="Scenes\Maps\Map00_Test\Map.wldx" />
     <EmbeddedResource Include="Scenes\Maps\Map01_TheBeach\Map.mqo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Images\Dinosaurs\Velociraptor.png" />
