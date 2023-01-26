@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kriptok Entretenimiento")]
 [assembly: AssemblyProduct("Tekrips")]
-[assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2017")]
+[assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

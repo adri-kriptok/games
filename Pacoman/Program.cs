@@ -18,7 +18,7 @@ namespace Kriptok.Games.Pacoman
             Engine.Start(new IntroScene(), p =>
             // Engine.Start(new GameScene(0), p =>
             {
-                p.Title = "DIV - Pacoman | Kriptok";
+                p.Title = "Pacoman | Kriptok";
                 p.FullScreen = false;                
                 p.Mode = WindowSizeEnum.M640x480;
                 p.TimerInterval = 32;

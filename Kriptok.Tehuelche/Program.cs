@@ -24,7 +24,7 @@ namespace Kriptok.Tehuelche
             {
                 p.FullScreen = true;
                 p.Mode = WindowSizeEnum.W340x192;
-                p.Title = "Kriptok - Tehuelche";
+                p.Title = "Tehuelche | Kriptok";
                 p.OpenMidiNotePlayer();
             });
         }        
