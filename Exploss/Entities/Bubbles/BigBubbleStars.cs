@@ -6,11 +6,11 @@ namespace Exploss.Entities
     /// <summary>
     /// Este proceso genera las estrellas que indican el inicio de una bola grande.
     /// </summary>
-    class BigBallStars : EntityBase<Explosion03View>
+    class BigBubbleStars : EntityBase<Explosion03View>
     {
         private int counter = 3;
 
-        public BigBallStars(float x, float y) : base(new Explosion03View())
+        public BigBubbleStars(float x, float y) : base(new Explosion03View())
         {
             Location.X = x;
             Location.Y = y;
@@ -24,7 +24,7 @@ namespace Exploss.Entities
             {
                 if (counter-- == 0)
                 {
-                    Add(new BigBall(Location.X, Location.Y));
+                    Add(new BigBubble(Location.X, Location.Y));
                     Die();
                 }
                 else

@@ -7,9 +7,9 @@ namespace Exploss.Entities
     /// Este proceso genera una bola pequenia, si colisiona con un disparo */
     /// el proceso es destruido   
     /// </summary>
-    class SmallBall : BubbleBase
+    class SmallBubble : BubbleBase
     {
-        public SmallBall(float x, float y, float xInc, float yInc)
+        public SmallBubble(float x, float y, float xInc, float yInc)
             : base(x, y, "Assets.Images.Bubble2.png", xInc, yInc)
         {
         }

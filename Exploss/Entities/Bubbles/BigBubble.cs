@@ -7,16 +7,16 @@ namespace Exploss.Entities
     /// Este proceso genera una bola grande, si colisiona con un disparo
     /// genera dos bolas medianas.
     /// </summary>
-    class BigBall : BubbleBase
+    class BigBubble : BubbleBase
     {
-        public BigBall(float x, float y) : base(x, y, "Assets.Images.Bubble0.png")
+        public BigBubble(float x, float y) : base(x, y, "Assets.Images.Bubble0.png")
         {
         }
 
         internal override void CreateSmallerBalls(Vector2F inc)
         {
-            Add(new MediumBall(Location.X, Location.Y, inc.X, inc.Y));
-            Add(new MediumBall(Location.X, Location.Y, -inc.X, -inc.Y));
+            Add(new MediumBubble(Location.X, Location.Y, inc.X, inc.Y));
+            Add(new MediumBubble(Location.X, Location.Y, -inc.X, -inc.Y));
         }
     }
 }

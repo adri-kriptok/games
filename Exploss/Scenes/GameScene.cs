@@ -96,7 +96,7 @@ namespace Exploss.Scenes
             h.Add(new PlayerCar());
 
             // Cada vez que se inicia una pantalla se crea al menos una bola grande
-            h.Add(new BigBallStars(Rand.Next(108, 532), Rand.Next(108, 287)));
+            h.Add(new BigBubbleStars(Rand.Next(108, 532), Rand.Next(108, 287)));
 
             // Y agrego el generador de objetos.
             h.Add(new LevelRandomizer(level));
@@ -160,7 +160,7 @@ namespace Exploss.Scenes
         {
             // Destruimos todos los procesos bola (grande, mediana,...)
             // que existian y todos los disparos     
-            h.Kill<BigBallStars>();
+            h.Kill<BigBubbleStars>();
             h.Kill<BubbleBase>();
             h.Kill<Shot>();
             h.Kill<LevelRandomizer>();
@@ -203,7 +203,7 @@ namespace Exploss.Scenes
 
                 if ((Rand.Next(1, 4000 / ((level +1) * Global.DifficultyLevel)) <= 2))
                 {
-                    Add(new BigBallStars(Rand.Next(108, 532), Rand.Next(108, 287)));
+                    Add(new BigBubbleStars(Rand.Next(108, 532), Rand.Next(108, 287)));
                 }
 
                 // Generamos un proceso que si es cogido por el coche nos da
