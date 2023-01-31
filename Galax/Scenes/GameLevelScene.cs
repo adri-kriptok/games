@@ -22,8 +22,12 @@ namespace Galax.Scenes
 
     class GameLevelScene : SceneBase
     {
-        private static readonly SuperFont gameFont = new SuperFont(new Font("Bauhaus 93", 10), 
-            Color.Cyan, Color.White).SetShadow(-1, 1, Color.FromArgb(0, 0, 255));
+        private static readonly SuperFont gameFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Bauhaus 93", 10);
+            builder.SetColor(Color.Cyan, Color.White);
+            builder.SetShadow(-1, 1, Color.FromArgb(0, 0, 255));
+        });
 
         /// <summary>
         /// Formacion inicial: 0 vac¡o, 1 tipo_nave_1, 2 tipo_nave_2, 3 tipo_nave_3

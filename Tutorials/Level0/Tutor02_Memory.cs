@@ -39,13 +39,17 @@ namespace Tutorials.Level0
 
     class InitScene : SceneBase
     {
+        private static readonly SuperFont font = SuperFont.Build(b =>
+        {
+            b.Font = Fonts.Arial12BoldItalic;
+            b.SetColor(Color.White);
+        });
 
         protected override void Run(SceneHandler h)
         {
             h.ScreenRegion.SetBackground(bg => bg.FillStretched(Assembly, "Level0.Assets.Images.Background.png"));
 
-            h.Write(new SuperFont(Fonts.Arial12BoldItalic, Color.White), h.ScreenRegion.Size.Width / 2, 400,
-                "Presione S para guardar la posición y L para cargar.");
+            h.Write(font, h.ScreenRegion.Size.Width / 2, 400, "Presione S para guardar la posición y L para cargar.");
 
             h.Add(new Ship());
         }

@@ -30,9 +30,13 @@ namespace Pong
             });
         }
 
-        public static SuperFont GameFont = new SuperFont(new Font("Courier New", 8), Color.White)
-            .SetShadow(1, 1, Color.FromArgb(64, 64, 255));        
-
+        public static SuperFont GameFont = SuperFont.Build(b =>
+        {
+            b.Font = new Font("Courier New", 8);
+            b.SetColor(Color.White);
+            b.SetShadow(1, 1, Color.FromArgb(64, 64, 255));
+        });
+            
         class InitScene : SceneBase
         {
             protected override void Run(SceneHandler h)

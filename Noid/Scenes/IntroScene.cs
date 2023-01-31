@@ -18,7 +18,7 @@ namespace Noid.Scenes
         {
             // Arranca la música tecno.
             h.StopMusic();           
-            h.PlayMusic(new PlayMusicOptions(DivResources.Music("Tecno.xm"))
+            h.PlayMusic(new PlayMusicOptions(DivResources.Music("NearTheEdge.s3m"))
             {
                 Loop = true
             });                

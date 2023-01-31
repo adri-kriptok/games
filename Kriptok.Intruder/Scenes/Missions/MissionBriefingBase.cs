@@ -18,8 +18,11 @@ namespace Kriptok.Intruder.Scenes.Missions
 {
     internal abstract class MissionBriefingBase : SceneBase
     {
-        private static readonly SuperFont font =
-            new SuperFont(new Font("Courier New", 8f), ColorHelper.Green);
+        private static readonly SuperFont font = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Courier New", 8f);
+            builder.SetColor(ColorHelper.Green);
+        });
 
         protected override void Run(SceneHandler h)
         {
@@ -59,7 +62,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                 nextLetter = text.First();
 
                 View.Center = new PointF(0f, 0f);
-                
+
                 Location.X = 100f;
                 Location.Y = 15f;
             }
@@ -90,7 +93,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                         writting = false;
                         return;
                     }
-                    
+
                     nextLetter = fullText[textLetter];
 
 
@@ -98,7 +101,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                     {
                         counterToNext = 20;
                     }
-                    else 
+                    else
                     {
                         counterToNext = 4;
                     }

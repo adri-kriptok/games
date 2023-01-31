@@ -12,11 +12,23 @@ namespace Asteroids
         /// <summary>
         /// Fuente principal a utilizar.
         /// </summary>
-        public static SuperFont GreenFont = new SuperFont(Font, ColorHelper.Green);
+        public static SuperFont GreenFont = SuperFont.Build(builder =>
+        {
+            builder.Font = Font;
+            builder.SetColor(ColorHelper.Green);
+        });
 
-        public static SuperFont CyanFont = new SuperFont(Font, Color.Cyan);
+        public static SuperFont CyanFont = SuperFont.Build(builder =>
+        {
+            builder.Font = Font;
+            builder.SetColor(Color.Cyan);
+        });
 
-        public static SuperFont YellowFont = new SuperFont(Font, Color.Yellow);
+        public static SuperFont YellowFont = SuperFont.Build(builder =>
+        {
+            builder.Font = Font;
+            builder.SetColor(Color.Yellow);
+        });
 
         /// <summary>
         /// Puntuación.

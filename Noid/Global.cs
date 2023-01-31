@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kriptok.Views.Shapes;
 
 namespace Noid
 {
@@ -33,12 +34,20 @@ namespace Noid
 
     public static class Global
     {
-        public static SuperFont Font = new SuperFont(new Font("Arial", 7), Color.Cyan, Color.White)
-            .SetShadow(1, 1, Color.Black.SetAlpha(192));
+        public static SuperFont Font = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Arial", 7);
+            builder.SetColor(Color.Cyan, Color.White);
+            builder.SetShadow(1, 1, Color.Black.SetAlpha(192));
+        });
 
-        public static SuperFont CreditsFont = new SuperFont(new Font("Arial", 10, FontStyle.Bold), Color.LightGoldenrodYellow)
-            .SetBorder(Color.Orange.SetAlpha(127), 2)
-            .SetShadow(3, 3, Color.Black.SetAlpha(192));
+        public static SuperFont CreditsFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Arial", 10, FontStyle.Bold);
+            builder.SetColor(Color.LightGoldenrodYellow);
+            builder.Border = Strokes.Get(Color.Orange.SetAlpha(127), 2);
+            builder.SetShadow(3, 3, Color.Black.SetAlpha(192));
+        });
 
         /// <summary>
         /// Puntaje actual del jugador.

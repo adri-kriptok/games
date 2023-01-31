@@ -22,8 +22,8 @@ namespace Kriptok.Intruder
 #if DEBUG
             Config.Get<BaseConfiguration>().Mute();
 #endif            
-             Engine.Start(new TheBeachMapScene(), p =>            
-            //Engine.Start(new IntroScene(), p =>
+             // Engine.Start(new TheBeachMapScene(), p =>            
+            Engine.Start(new IntroScene(), p =>
             {
 #if DEBUG
                 p.FullScreen = false;

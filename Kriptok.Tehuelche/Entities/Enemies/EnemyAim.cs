@@ -80,14 +80,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
                 // this.owner = owner;
             }
 
-#if DEBUG || SHOWFPS
-            public override bool IsVisible3D(IRenderContext3D context)
-            {                
-                return base.IsVisible3D(context);
-            }
-#else
             public override bool IsVisible3D(IRenderContext3D context) => false;                            
-#endif
 
             public override float GetPriority()
             {

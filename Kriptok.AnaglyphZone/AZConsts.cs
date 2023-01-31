@@ -28,7 +28,11 @@ namespace Kriptok.AZ
 
         public static readonly Font DefaultFont = new Font(DefaultFontFamily, 24, FontStyle.Bold);
 
-        public static readonly SuperFont TextFont = new SuperFont(new Font("OCR A", 12, FontStyle.Bold), Color.Fuchsia);
+        public static readonly SuperFont TextFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("OCR A", 12, FontStyle.Bold);
+            builder.SetColor(Color.Fuchsia);
+        });
     }
 
     public static class Global

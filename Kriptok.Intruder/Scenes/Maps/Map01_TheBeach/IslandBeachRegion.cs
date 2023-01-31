@@ -37,7 +37,6 @@ namespace Kriptok.Intruder.Regions
         private readonly float shoreVertex0X;
         private readonly float shoreVertex1X;
         private readonly float shoreVertex2X;
-        private float shoreVertexY;
         private float shoreEffect = 0f;
 
         private readonly ShoreEffect shoreEffectLocation = new ShoreEffect();
@@ -56,7 +55,6 @@ namespace Kriptok.Intruder.Regions
             this.shoreVertex0X = shoreVertex0.X;
             this.shoreVertex1X = shoreVertex1.X;
             this.shoreVertex2X = shoreVertex2.X;
-            this.shoreVertexY = 0;
 
             foreach (var parti in Partitions
                 .Where(p => p.TextureId == ExteriorTexset.OceanTexture)

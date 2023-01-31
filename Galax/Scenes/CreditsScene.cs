@@ -1,4 +1,5 @@
-﻿using Kriptok.Scenes;
+﻿using Kriptok.Drawing;
+using Kriptok.Scenes;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,25 @@ namespace Galax.Scenes
 {
     class CreditsScene : SceneBase
     {
-        private static readonly SuperFont credits = new SuperFont(new Font("Bauhaus 93", 14), 
-            Color.White, Color.Blue).SetShadow(-2, 2, Color.Black);
+        private static readonly SuperFont credits = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Bauhaus 93", 14);
+            builder.SetColor(Color.White, Color.Blue);
+            builder.SetShadow(-2, 2, Color.Black);
+        });
 
         protected override void Run(SceneHandler h)
         {
-            h.ScreenRegion.SetBackground(GetType().Assembly, "Credits.png");
+            h.ScreenRegion.SetBackground(bg =>
+            {
+                bg.Draw(Assembly, "TitleScreen.png", 0, 0, new ColorTransform()
+                {
+                    A = 1f,
+                    R = new ColorVector(0.5f, 0.0f, 0.5f),
+                    G = new ColorVector(0.0f, 0.0f, 0.0f),
+                    B = new ColorVector(0.5f, 0.0f, 0.5f),
+                });
+            });
 
             // Imprime textos.
             h.Write(credits, 160,  30, "- CREDITOS -").CenterMiddle();

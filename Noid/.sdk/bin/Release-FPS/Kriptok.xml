@@ -4957,6 +4957,11 @@
             Avanza hasta la última imagen del video.
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.ScaleTo(System.Drawing.Size)">
+            <summary>
+            Escala el video para que alcance el tamaño indicado por parámetro.
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.VideoEntity.EndOfVideo">
             <summary>
             Indica si se encuentra al final del video.
@@ -4966,6 +4971,9 @@
             <summary>
             Obtiene o establece si el video se debe repetir indefinidamente.
             </summary>
+        </member>
+        <member name="M:Kriptok.Entities.VideoEntity.ScaleTo(System.Drawing.Size)">
+            <inheritdoc/>
         </member>
         <member name="T:Kriptok.Entities.Queries.Base.IQuery">
             <summary>
@@ -6093,6 +6101,11 @@
             Esta clase es utilizada para descubrir las interacciones del usuario.
             </summary>
         </member>
+        <member name="F:Kriptok.Helpers.KeyboardHelper.keyStatus">
+            <summary>
+            Utilizado para saber cuando se presiona y suelta una tecla.
+            </summary>
+        </member>
         <member name="F:Kriptok.Helpers.KeyboardHelper.ScanCode">
             <summary>
             Código de la última tecla presionada.
@@ -6110,7 +6123,7 @@
         </member>
         <member name="M:Kriptok.Helpers.KeyboardHelper.KeyPressed(System.Windows.Forms.Keys)">
             <summary>
-            Indica si se presionó la tecla
+            Indica si se presionó la tecla, pero no si se está manteniendo presionada.
             </summary>        
         </member>
         <member name="T:Kriptok.Helpers.MathHelper">
@@ -14769,6 +14782,11 @@
             Dato utilizado para cálculos.
             </summary>
         </member>
+        <member name="F:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.RegionWidth">
+            <summary>
+            Ancho de la región.
+            </summary>
+        </member>
         <member name="P:Kriptok.Regions.Pseudo3D.VoxelSpace.VoxelSpaceContext.HorizonY">
             <summary>
             Altura del horizonte. Toma en cuenta curvatura.
@@ -15687,6 +15705,11 @@
             <summary>
             Copia los bits de una imagen sobre la imagen generada.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Regions.Screen.ScreenRegionBackground.Blit(Kriptok.Drawing.FastBitmap,System.Int32,System.Int32)">
+            <summary>
+            Copia los bits de una imagen sobre la imagen generada.
+            </summary>
         </member>
         <member name="M:Kriptok.Regions.Screen.ScreenRegionBackground.BlitCentered(System.Reflection.Assembly,System.String)">
             <summary>
@@ -17622,6 +17645,9 @@
             Obtiene el rectángulo correspondiente a la vista.
             </summary>
         </member>
+        <member name="M:Kriptok.Views.Base.GdipViewBase`1.Dispose">
+            <inheritdoc/>
+        </member>
         <member name="M:Kriptok.Views.Base.GdipViewBase`1.Kriptok#Views#Base#ICollisionableRenderizable#GetAutoHitbox">
             <summary>
             Obtiene la <see cref="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase"/> automática para este tipo de vista.
@@ -17891,30 +17917,42 @@
         <member name="M:Kriptok.Views.Base.ViewBase.GetDrawOrder">
             <inheritdoc/>
         </member>
-        <member name="T:Kriptok.Views.Gdip.GdipPath">
+        <member name="T:Kriptok.Views.Gdip.Base.CustomGdipViewBase">
             <summary>
-            Representa una vista con un polígono a definir.
+            Clase base para figuras custom renderizadas con GDI+.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,Kriptok.Views.FillConfig,Kriptok.Views.Shapes.IStroke)">
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.#ctor(System.Drawing.SizeF)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.Base.CustomGdipViewBase"/>.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.Color)">
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.#ctor(System.Single,System.Single)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.Base.CustomGdipViewBase"/>.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.RectangleF,System.Drawing.Color)">
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.Render(System.Drawing.Graphics)">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            Implementa la renderización de la figura.
             </summary>
         </member>
-        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.RectangleF,Kriptok.Views.FillConfig,Kriptok.Views.Shapes.IStroke)">
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.Render(Kriptok.Regions.Context.Base.IRenderContext,Kriptok.Drawing.Algebra.Vector2F,System.Single)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Kriptok.Views.Gdip.Base.CustomGdipViewBase.CustomGdipRenderizable">
             <summary>
-            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            Renderizable interno customizado.
             </summary>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.CustomGdipRenderizable.DrawRecalculated(Kriptok.Regions.Context.Base.IRenderContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.CustomGdipRenderizable.GetRectangle">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.Base.CustomGdipViewBase.CustomGdipRenderizable.GetSize">
+            <inheritdoc/>
         </member>
         <member name="T:Kriptok.Views.Gdip.Base.GdipCenteredBase">
             <summary>
@@ -17980,6 +18018,31 @@
             Obtiene la <see cref="T:Kriptok.Entities.Collisions.Coll2D.Hitbox2DBase"/> automática para este tipo de vista.
             </summary>
         </member>
+        <member name="T:Kriptok.Views.Gdip.GdipPath">
+            <summary>
+            Representa una vista con un polígono a definir.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,Kriptok.Views.FillConfig,Kriptok.Views.Shapes.IStroke)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.Color)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.RectangleF,System.Drawing.Color)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Gdip.GdipPath.#ctor(System.Drawing.Drawing2D.GraphicsPath,System.Drawing.RectangleF,Kriptok.Views.FillConfig,Kriptok.Views.Shapes.IStroke)">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Views.Gdip.GdipPolygon"/>.
+            </summary>
+        </member>
         <member name="T:Kriptok.Views.Gdip.GdipSpriteListBase">
             <summary>
             Esta clase representa una colección de mapas de bits.
@@ -18014,6 +18077,11 @@
             <summary>
             Esta propiedad se utiliza cuando se tiene una fuente con borde, en lugar de escribir directamente en
             el Graphics, se utiliza un GraphicsPath.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Gdip.GdipText.Message">
+            <summary>
+            Mensaje a mostrar.
             </summary>
         </member>
         <member name="T:Kriptok.Views.Gdip.GdipPolygon">
@@ -21061,6 +21129,134 @@
             Obtiene un material en base a los parámetros indicados.
             </summary>                 
         </member>
+        <member name="T:Kriptok.Views.Texts.FontBuilder">
+            <summary>
+            Constructor de fuentes.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.Font">
+            <summary>
+            Fuente de windows a utilizar.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.Color1">
+            <summary>
+            Primer color de brochas con gradiente.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.Color2">
+            <summary>
+            Segundo color de brochas con gradiente.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.Border">
+            <summary>
+            Obtiene o establece el color del borde de la fuente.
+            
+            Esta propiedad define el tipo de fuente que se generará.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Texts.FontBuilder.SetColor(System.Drawing.Color)">
+            <summary>
+            Establece un color plano para la fuente.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Texts.FontBuilder.SetColor(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Establece un gradiente vertical de dos colores para la fuente.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.ShadowColor">
+            <summary>
+            Color de la sombra.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.ShadowX">
+            <summary>
+            Desplazamiento de la sombra en el eje X.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.ShadowY">
+            <summary>
+            Desplazamiento de la sombra en el eje Y.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Texts.FontBuilder.SetShadow(System.Single,System.Single,System.Drawing.Color)">
+            <summary>
+            Establece una sombra para la fuente.
+            </summary>        
+        </member>
+        <member name="P:Kriptok.Views.Texts.FontBuilder.SingleColor">
+            <summary>
+            Indica si tiene un solo color.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Texts.FontBuilder.Build">
+            <summary>
+            Construye la fuente en base a los parámetros 
+            que se cargaron en la construcción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Texts.FontBuilder.HasShadow">
+            <summary>
+            Se fija si tiene que renderizar una sombra.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Texts.SuperFont">
+            <summary>
+            Fuente base para juegos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Views.Texts.SuperFont.DefaultFont">
+            <summary>
+            Una fuente por default para pruebas rápidas.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.SuperFont.Size">
+            <summary>
+            Tamaño de la fuente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Texts.SuperFont.Build(System.Action{Kriptok.Views.Texts.FontBuilder})">
+            <summary>
+            Construye la fuente en base a los parámetros indicados.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Texts.SuperFont.MeasureString(System.Drawing.Graphics,System.String)">
+            <summary>
+            Mide el tamaño del string indicado si se renderizara con esta fuente.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Views.Texts.SuperFont.Write(Kriptok.Regions.Context.Base.IRenderContext,System.String,Kriptok.Views.Gdip.GdipText)">
+            <summary>
+            Escribe el texto indicado en pantalla con esta fuente.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Texts.Fonts">
+            <summary>
+            Esta clase sirve para acumular algunas fuentes de uso frecuente.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Texts.TextPanelView.SetBorder(Kriptok.Views.Shapes.IStroke)">
+            <summary>
+            Agrega borde al panel.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Views.Texts.TextView">
+            <summary>
+            Esta vista es utilizada para representar un texto en pantalla.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.TextView.Font">
+            <summary>
+            Fuente que utiliza esta vista.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Views.Texts.TextView.Message">
+            <summary>
+            Mensaje a mostrar en pantalla.
+            </summary>
+        </member>
         <member name="T:Kriptok.Views.Videos.FlicDecoder">
             <summary>
             Decodificador de video en formato FLI/FLC.
@@ -21240,24 +21436,26 @@
             </summary>
         </member>
         <member name="M:Kriptok.Views.Videos.FlicVideoView.LastFrame">
-            <summary>
-            Devuelve si se ha alcanzado el final del video.
-            </summary>     
+            <inheritdoc/>  
         </member>
         <member name="M:Kriptok.Views.Videos.FlicVideoView.GoToEnd">
-            <summary>
-            Avanza hasta el último frame del video.
-            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:Kriptok.Views.Videos.FlicVideoView.Size">
+            <inheritdoc/>
         </member>
         <member name="T:Kriptok.Views.Videos.VideoViewBase">
             <summary>
             Clase base para la reproducción de videos.
             </summary>
         </member>
-        <member name="P:Kriptok.Views.Videos.VideoViewBase.Loop">
+        <member name="F:Kriptok.Views.Videos.VideoViewBase.Loop">
             <summary>
             Indica si el video se debe repetir indefinidamente.
             </summary>
+        </member>
+        <member name="P:Kriptok.Views.Videos.VideoViewBase.Size">
+            <inheritdoc/>
         </member>
         <member name="M:Kriptok.Views.Videos.VideoViewBase.EndOfVideo">
             <summary>
@@ -21277,6 +21475,11 @@
         <member name="M:Kriptok.Views.Videos.VideoViewBase.GoToEnd">
             <summary>
             Avanza hasta el último frame del video.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Views.Videos.VideoViewBase.ScaleTo(System.Drawing.Size)">
+            <summary>
+            Escala el video para que alcance el tamaño indicado por parámetro.
             </summary>
         </member>
         <member name="T:Kriptok.Views.Sprites.Base.IndexedSpriteViewBase`1">
@@ -21720,31 +21923,6 @@
         <member name="M:Kriptok.Views.ClippedIndexedSpriteView.GetCollisionRectangle">
             <inheritdoc/>
         </member>
-        <member name="M:Kriptok.Views.Texts.SuperFont.SetShadow(System.Int32,System.Int32,System.Drawing.Color)">
-            <summary>
-            Agrega una sombra al texto.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Texts.SuperFont.SetBorder(System.Drawing.Color,System.Single,System.Drawing.Drawing2D.LineJoin)">
-            <summary>
-            Agrega borde a la fuente.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Views.Texts.Fonts">
-            <summary>
-            Esta clase sirve para acumular algunas fuentes de uso frecuente.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Views.Texts.TextPanelView.SetBorder(Kriptok.Views.Shapes.IStroke)">
-            <summary>
-            Agrega borde al panel.
-            </summary>        
-        </member>
-        <member name="T:Kriptok.Views.Texts.TextView">
-            <summary>
-            Esta vista es utilizada para representar un texto en pantalla.
-            </summary>
-        </member>
         <member name="T:Kriptok.Views.ViewDecoratorBase`1">
             <summary>
             Esta vista sirve para extender el funcionamiento de cualquier <see cref="T:Kriptok.Views.Base.IRenderizable"/>
@@ -21937,6 +22115,81 @@
             Reproduce una nota midi con los parámetros indicados.
             </summary>        
         </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlaySound(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param>
+            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlaySoundLooping(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce repetidamente un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param>
+            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlaySound(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
+            permite reproducir un sonido a la vez.
+            </summary> 
+            <param name="resource">Recurso a reproducir.</param>
+            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlaySoundSync(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce un sonido de forma sincrónica.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param> 
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlaySoundSync(Kriptok.Common.Resource)">
+            <summary>
+            Reproduce un sonido de forma sincrónica.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlayWave(System.Reflection.Assembly,System.String)">
+            <summary>
+            Reproduce el sonido indicado por parámetro en forma de onda.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.StopMusic">
+            <summary>
+            Detiene la música que esté sonando en ese momento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlayMusic(Kriptok.Audio.PlayMusicOptions)">
+            <summary>
+            Reproduce la música indicada por parámetro.
+            </summary>
+            <param name="options">Música y configuración a reproducir.</param>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Single)">
+            <summary>
+            Reproduce la música indicada según los parámetros.
+            </summary>
+            <param name="assembly">Ensamblado donde se encuentra la música.</param>
+            <param name="resourceName">Nombre del recurso a reproducir.</param> 
+            <param name="loop">Indica si se reproduce en loop.</param>
+            <param name="from">Indica desde qué punto debe empezar a reproducirse.</param>
+            <param name="to">Indica hasta qué punto debe reproducirse.</param>
+            <param name="volume">Volumen de reproducción.</param>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.PauseMusic">
+            <summary>
+            Pausa la música que esté escuchándose en el momento.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandler.ResumeMusic">
+            <summary>
+            Continúa con la música que estába escuchándose y que fue pausada.
+            </summary>
+        </member>
         <member name="M:Kriptok.Scenes.SceneHandler.StartSubScreen(System.Drawing.Rectangle)">
             <summary>
             Inicializa una sub-región de pantalla.
@@ -22096,6 +22349,11 @@
             Indica si debe eliminar las opciones luego de seleccionar una opción.
             </summary>
         </member>
+        <member name="P:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.SelectedOption">
+            <summary>
+            Opción en la que arranca el cursor del menú.
+            </summary>
+        </member>
         <member name="M:Kriptok.Scenes.SceneHandler.SceneMenuBuilder.Add(System.String,System.Action)">
             <summary>
             Agrega una opción al menú.
@@ -22120,6 +22378,16 @@
             <summary>
             Referencia al constructor que generó el menú.
             </summary>
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.PlayCursorMoveSound(Kriptok.Scenes.SceneHandler)">
+            <summary>
+            Reproduce un sonido de la librería interna para mover cursores en menúes.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Scenes.SceneHandlerExtensions.PlayMenuOKSound(Kriptok.Scenes.SceneHandler)">
+            <summary>
+            Reproduce un sonido de la librería interna para seleccionar una opción de menú.
+            </summary>        
         </member>
         <member name="M:Kriptok.Scenes.SceneHandlerExtensions.StartSubScreen(Kriptok.Scenes.SceneHandler,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -22211,76 +22479,6 @@
             Constructor interno, para asegurar que no se pueda heredar la clase fuera de esta librería.
             </summary>
         </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlaySound(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlaySoundLooping(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce repetidamente un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlaySound(Kriptok.Common.Resource)">
-            <summary>
-            Reproduce un sonido que esté señalado como Recurso Embebido. Este método sólo
-            permite reproducir un sonido a la vez.
-            </summary> 
-            <param name="resource">Recurso a reproducir.</param>
-            <returns>Devuelve un handler del sonido que permite volver a reproducirlo o detenerlo.</returns>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlaySoundSync(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce un sonido de forma sincrónica.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra el sonido.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlayWave(System.Reflection.Assembly,System.String)">
-            <summary>
-            Reproduce el sonido indicado por parámetro en forma de onda.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.StopMusic">
-            <summary>
-            Detiene la música que esté sonando en ese momento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlayMusic(Kriptok.Audio.PlayMusicOptions)">
-            <summary>
-            Reproduce la música indicada por parámetro.
-            </summary>
-            <param name="options">Música y configuración a reproducir.</param>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PlayMusic(System.Reflection.Assembly,System.String,System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Single)">
-            <summary>
-            Reproduce la música indicada según los parámetros.
-            </summary>
-            <param name="assembly">Ensamblado donde se encuentra la música.</param>
-            <param name="resourceName">Nombre del recurso a reproducir.</param> 
-            <param name="loop">Indica si se reproduce en loop.</param>
-            <param name="from">Indica desde qué punto debe empezar a reproducirse.</param>
-            <param name="to">Indica hasta qué punto debe reproducirse.</param>
-            <param name="volume">Volumen de reproducción.</param>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.PauseMusic">
-            <summary>
-            Pausa la música que esté escuchándose en el momento.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandler.ResumeMusic">
-            <summary>
-            Continúa con la música que estába escuchándose y que fue pausada.
-            </summary>
-        </member>
         <member name="M:Kriptok.Scenes.FrameHandler.ConsoleBeep(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Reproduce un sonido de la consola.
@@ -22303,16 +22501,6 @@
             <summary>
             Obtiene una referencia a la región de la pantalla completa.
             </summary>
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandlerExtensions.PlayCursorMoveSound(Kriptok.Scenes.FrameHandler)">
-            <summary>
-            Reproduce un sonido de la librería interna para mover cursores en menúes.
-            </summary>        
-        </member>
-        <member name="M:Kriptok.Scenes.FrameHandlerExtensions.PlayMenuOKSound(Kriptok.Scenes.FrameHandler)">
-            <summary>
-            Reproduce un sonido de la librería interna para seleccionar una opción de menú.
-            </summary>        
         </member>
         <member name="T:Kriptok.Scenes.ProcessHandler">
             <summary>

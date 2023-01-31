@@ -39,6 +39,13 @@ namespace Tutorials.Level0
 
         public class InitScene : SceneBase
         {
+            private static readonly SuperFont font = SuperFont.Build(b =>
+            {
+                b.Font = new Font("Quartz MS", 20);
+                b.SetColor(Color.White, Color.Cyan);
+                b.SetShadow(2, 2, Color.Blue);
+            });
+
             internal static int XBound;
             internal static int XInc;
             internal static int YBound;
@@ -55,9 +62,6 @@ namespace Tutorials.Level0
                 YInc = YBound + 40;
 
                 var ship = h.Add(new Ship());
-
-                var font = new SuperFont(new Font("Quartz MS", 20), Color.White, Color.Cyan)
-                    .SetShadow(2, 2, Color.Blue);
 
                 h.Write(font, h.ScreenRegion.Size.Width / 2, 15, () => ship.Points.ToString("000000"));
 

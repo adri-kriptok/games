@@ -1,4 +1,6 @@
 ﻿using Kriptok.Core;
+using Kriptok.Div.Scenes;
+using Kriptok.IO;
 using Pacoman.Scenes;
 using System;
 
@@ -13,9 +15,9 @@ namespace Kriptok.Games.Pacoman
         static void Main()
         {
 #if DEBUG
-            //Config.Load<BaseConfiguration>().Mute();
+            Config.Load<BaseConfiguration>().Mute();
 #endif                  
-            Engine.Start(new IntroScene(), p =>
+            Engine.Start(new DivIntroVideoScene<IntroScene>(false), p =>
             // Engine.Start(new GameScene(0), p =>
             {
                 p.Title = "Pacoman | Kriptok";

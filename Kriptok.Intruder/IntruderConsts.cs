@@ -1,4 +1,5 @@
 ﻿using Kriptok.Extensions;
+using Kriptok.Views.Shapes;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -25,18 +26,28 @@ namespace Kriptok.Intruder
         /// </summary>
         public const float MaxSlopePlayerAbleToClimb = 0.2f;
 
-        public static readonly SuperFont LargeHudFont = new SuperFont(new Font("Arial", 12, FontStyle.Bold), Color.Red,
-            Color.FromArgb(192, 192, 0))
-            .SetBorder(Color.DarkRed)
-            .SetShadow(1, 1, Color.FromArgb(32, 16, 16));//.SetAlpha(128));
+        public static readonly SuperFont LargeHudFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Arial", 12, FontStyle.Bold);
+            builder.SetColor(Color.Red, Color.FromArgb(192, 192, 0));
+            builder.Border = Strokes.Get(Color.DarkRed);
+            builder.SetShadow(1, 1, Color.FromArgb(32, 16, 16));
+        });
 
-        public static readonly SuperFont SmallHudFont = new SuperFont(new Font("Courier New", 6), Color.White)
-            .SetShadow(1, 1, Color.Black);
+        public static readonly SuperFont SmallHudFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Courier New", 6);
+            builder.SetColor(Color.White);
+            builder.SetShadow(1, 1, Color.Black);
+        });
 
-        public static readonly SuperFont MenuFont = new SuperFont(new Font("Arial", 16, FontStyle.Bold), Color.Red,
-            Color.FromArgb(192, 192, 0))
-            .SetBorder(Color.DarkRed)
-            .SetShadow(1, 1, Color.FromArgb(32, 16, 16));//.SetAlpha(128));
+        public static readonly SuperFont MenuFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Arial", 16, FontStyle.Bold);
+            builder.SetColor(Color.Red, Color.FromArgb(192, 192, 0));
+            builder.Border = Strokes.Get(Color.DarkRed);
+            builder.SetShadow(1, 1, Color.FromArgb(32, 16, 16));
+        });
 
         /// <summary>
         /// Altura del heads up display.

@@ -1,4 +1,5 @@
-﻿using Kriptok.Views.Texts;
+﻿using Kriptok.Views.Shapes;
+using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,12 +11,20 @@ namespace PerdidoEnElTiempo
 {
     class Global
     {
-        public static SuperFont MenuFont = new SuperFont(new Font("Arial", 10), Color.White, Color.LightGoldenrodYellow)
-            .SetShadow(-1, 1, Color.DarkRed);
+        public static SuperFont MenuFont = SuperFont.Build(b =>
+        {
+            b.Font = new Font("Arial", 10);
+            b.SetColor(Color.White, Color.LightGoldenrodYellow);
+            b.SetShadow(-1, 1, Color.DarkRed);
+        });
 
-        public static SuperFont DangerFont = new SuperFont(new Font("Arial", 14, FontStyle.Bold), Color.Red, Color.OrangeRed)
-            .SetBorder(Color.Orange, 1);
-
+        public static SuperFont DangerFont = SuperFont.Build(b =>
+        {
+            b.Font = new Font("Arial", 14, FontStyle.Bold);
+            b.SetColor(Color.Red, Color.OrangeRed);
+            b.Border = Strokes.Get(Color.Orange, 1);
+        });
+            
         /// <summary>
         /// Ubicación donde debe aparecer el menú de opciones.
         /// </summary>

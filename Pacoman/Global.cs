@@ -6,8 +6,13 @@ using System.Drawing;
 namespace Pacoman
 {
     public static class Global
-    {        
-        public static SuperFont Font = new SuperFont(new Font("Quartz MS", 22), Color.White).SetShadow(2, 2, Color.DarkBlue);        
+    {
+        public static SuperFont Font = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font("Quartz MS", 22);
+            builder.SetColor(Color.White);
+            builder.SetShadow(2, 2, Color.DarkBlue);
+        });
 
         /// <summary>
         /// Tabla con el tiempo que dura el efecto de poder comer.

@@ -95,22 +95,16 @@ namespace Snake.Entities
                 appleSound.Play();
             }
 
+            if (!InLimits() || segmentCollision.OnCollision())
+            {
+                Scene.SendMessage("Reset");
+                Sleep();
+                return;
+            }
+
             // Mueve al gusano en la direccion deseada
             Location.X = Location.X + ix;
             Location.Y = Location.Y + iy;
-
-            if (!InLimits() || segmentCollision.OnCollision())
-            {
-                // Comprueba si se ha superado el record y lo actualiza                    
-                Global.Record = MaxScore.CheckAndSave(Global.Score);
-
-                // Reinicia las variable de puntos y longitud de cola
-                Global.Score = 0;
-                Global.SnakeLength = 8;
-                
-                Scene.SendMessage("Reset");
-                return;
-            }
         }
 
         /// <summary>

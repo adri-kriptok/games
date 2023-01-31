@@ -12,14 +12,16 @@ namespace Tekrips.Entities
         public static FontFamily GameFontFamily =
             Fonts.GetFontFamily(typeof(GameOver).Assembly, "8bitoperator.ttf");
 
-        public static readonly SuperFont GameOverFont =
-            new SuperFont(new Font(GameFontFamily, 32), Color.White, Color.OrangeRed)
-            //.SetBorder(Color.White, 1f)
-            .SetShadow(-2, 2, Color.Black);
+        public static readonly SuperFont GameOverFont = SuperFont.Build(builder =>
+        {
+            builder.Font = new Font(GameFontFamily, 32);
+            builder.SetColor(Color.White, Color.OrangeRed);
+            builder.SetShadow(-2, 2, Color.Black);
+        });                        
 
         public GameOver()
             : base(new TextPanelView(GameOverFont, " GAME OVER", 
-                new FillConfig(Color.DarkBlue, Color.Black, GradientDirectionEnum.Vertical),
+                new FillConfig(Color.DarkBlue, Color.Blue, GradientDirectionEnum.Vertical),
                     Strokes.Get(Color.LightGray, 2)))
         {
             View.SetShadow(-6, 6, Color.FromArgb(224 ,32, 32, 32));

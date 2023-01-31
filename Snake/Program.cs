@@ -37,13 +37,11 @@ namespace Snake
                 // Pone el fondo de pantalla
                 h.ScreenRegion.SetBackground(Assembly, "Resources.Background.png");
 
-                var superFont = new SuperFont(new Font("Arial", 8, FontStyle.Italic | FontStyle.Bold), Color.White);
-
                 Global.Record = MaxScore.Load();
 
                 // Pone los textos de la puntuaci¢n y de los records
-                h.Write(superFont, 9, 12, () => $"Puntos: {Global.Score}").LeftMiddle();
-                h.Write(superFont, 312, 12, () => $"Record: {Global.Record}").RightMiddle();
+                h.Write(Global.Font, 9, 12, () => $"Puntos: {Global.Score}").LeftMiddle();
+                h.Write(Global.Font, 312, 12, () => $"Record: {Global.Record}").RightMiddle();
 #if DEBUG
                 Config.Load<BaseConfiguration>().Mute();                
 #endif
@@ -59,13 +57,20 @@ namespace Snake
                 base.OnMessage(h, message);
 
                 if ((string)message == "Reset")
-                {
-                    h.PlaySoundSync(Assembly, "Resources.Down.wav");
-                    player.Kill();
+                {                
+                    h.PlaySoundSync(Assembly, "Resources.Down.wav");                    
+                    player.Kill();                    
 
                     // Apago la pantalla.
                     h.FadeOff();
 
+                    // Comprueba si se ha superado el record y lo actualiza                    
+                    Global.Record = MaxScore.CheckAndSave(Global.Score);
+
+                    // Reinicia las variable de puntos y longitud de cola
+                    Global.Score = 0;
+                    Global.SnakeLength = 8;
+                    
                     // Vuelvo a iniciar la pantalla.
                     h.FadeOn();
 
