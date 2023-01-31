@@ -35,12 +35,12 @@ namespace Exploss.Scenes
 
             h.Write(Global.Font1, h.ScreenRegion.Size.Width / 2, 100, "CREDITOS");
 
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 100 + 20 + 60, "Programación");
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 120 + 20 + 70, "Ismael Fernandez Bustos");
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 150 + 40 + 80, "Presentación");
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 170 + 40 + 90, "César Botana");
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 200 + 60 + 100, "Gracias especiales a");
-            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 220 + 60 + 110, "Ana Luis Campos");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 180, "Programación");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 210, "Ismael Fernandez Bustos");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 270, "Presentación");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 300, "César Botana");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 360, "Gracias especiales a");
+            h.Write(Global.Font2, h.ScreenRegion.Size.Width / 2, 390, "Ana Luis Campos");
 
             h.FadeOn();
 
