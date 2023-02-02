@@ -34,7 +34,7 @@ namespace Exploss.Entities
             h.CollisionType = Collision2DTypeEnum.Rectangle;
 
             shotCollision = h.GetCollision2D<Shot>();
-            exploss6Sound = h.Audio.GetSoundHandler("Sounds.EXPLOSS6.WAV");
+            exploss6Sound = h.Audio.GetWaveHandler("Sounds.EXPLOSS6.WAV");
         }
 
         protected override void OnFrame()

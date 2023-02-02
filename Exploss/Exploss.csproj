@@ -103,6 +103,7 @@
     <EmbeddedResource Include="Assets\Levels\Map08.explossx" />
     <None Include=".sdk\bin\lib-selector.bat" />
     <None Include=".sdk\tools\TileMapEditor.exe.config" />
+    <None Include="bin\Exploss.zip" />
     <None Include="DivManiaN01-47-49.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

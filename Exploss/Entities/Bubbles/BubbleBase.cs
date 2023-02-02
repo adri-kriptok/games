@@ -64,8 +64,8 @@ namespace Exploss.Entities.Bubbles
             this.collShot = h.GetCollision2D<Shot>();
             this.collBomb = h.GetCollision2D<Bomb>();
 
-            this.exploss4Sound = h.Audio.GetSoundHandler("Assets.Sounds.EXPLOSS4.WAV");
-            this.exploss9Sound = h.Audio.GetSoundHandler("Assets.Sounds.EXPLOSS9.WAV");
+            this.exploss4Sound = h.Audio.GetWaveHandler("Assets.Sounds.EXPLOSS4.WAV");
+            this.exploss9Sound = h.Audio.GetWaveHandler("Assets.Sounds.EXPLOSS9.WAV");
 
             Location.X = Location.X.Clamp(bounds.MinX, bounds.MaxX);
             Location.Y = Location.Y.Clamp(bounds.MinY, bounds.MaxY);
