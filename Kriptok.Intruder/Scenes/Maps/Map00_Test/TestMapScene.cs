@@ -39,10 +39,8 @@ namespace Kriptok.Intruder.Scenes.Maps.Map00_Test
             var map = WldMapX.Load(Assembly, $"{GetType().Namespace}.Map.wldx");
             var mapRegion = h.StartPseudo3DWld<InteriorTexset>(rect, map);
 
-            var r = (Region3DBase)mapRegion;
-            r.Ambience.DisableAmbientLight = true;
-            r.Ambience.AbsoluteLight = true;
-            r.Ambience.SetLightSource(0.2f, 1f, 0.1f);
+            var r = (Region3DBase)mapRegion;            
+            r.Ambience.Set(0.2f, 1f, 0.1f, 1f);
             var player = h.Add((RegionBase)mapRegion, new Player(mapRegion)
             {
                 Location = new Vector3F(600, 850, 0)

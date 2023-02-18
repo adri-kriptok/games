@@ -17,7 +17,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
     internal class EnemyAim : EntityBase<GdipShapeView>
     {
         private readonly EnemyBase owner;
-        private ISingleCollisionQuery<PlayerHelicopter> playerCollision;
+        private ISingleCollisionQuery<PlayerHelicopterBase> playerCollision;
 
         public EnemyAim(EnemyBase owner) : base(new EnemyAimView(owner))
         {
@@ -29,7 +29,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
             base.OnStart(h);
 
             h.SetCollision3DViewOBB();
-            this.playerCollision = h.GetCollision3D<PlayerHelicopter>();
+            this.playerCollision = h.GetCollision3D<PlayerHelicopterBase>();
         }
 
         /// <summary>
@@ -80,11 +80,12 @@ namespace Kriptok.Tehuelche.Entities.Enemies
                 // this.owner = owner;
             }
 
+            public override bool IsVisible2D(IRenderContext2D context) => false;
             public override bool IsVisible3D(IRenderContext3D context) => false;                            
 
-            public override float GetPriority()
+            public override float GetPriority(IProjector context)
             {
-                return base.GetPriority() - 100f;
+                return base.GetPriority(context) - 100f;
             }
 
             /// <summary>

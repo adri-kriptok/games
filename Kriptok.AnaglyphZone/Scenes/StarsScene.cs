@@ -38,7 +38,6 @@ namespace Kriptok.AZ.Scenes
 
             region = h.StartPseudo3D(new StarsRegion(playArea));
             region.Ambience.SetLightSource(1f, 0f, 0f);
-            region.Ambience.AbsoluteLight = true;
 
             camTarget = h.Add(region, new CamTarget2());
             var player = h.Add(region, new PlayerShip(camTarget));

@@ -22,7 +22,7 @@ namespace Kriptok.Intruder.Entities.Hud
     internal class AimCross : EntityBase<AimCrossView>
     {
         public AimCross() : base(new AimCrossView())
-        {
+        {            
         }
 
         protected override void OnStart(EntityStartHandler h)
@@ -33,7 +33,7 @@ namespace Kriptok.Intruder.Entities.Hud
         }
 
         protected override void OnFrame()
-        {
+        {            
         }
 
         internal class AimCrossView : CustomGdipViewBase
@@ -49,7 +49,7 @@ namespace Kriptok.Intruder.Entities.Hud
             {
                 g.DrawLine(pen, 2f, 0f, 2f, 4f);
                 g.DrawLine(pen, 0f, 2f, 1f, 2f);
-                g.DrawLine(pen, 3f, 2f, 4f, 2f);
+                g.DrawLine(pen, 3f, 2f, 4f, 2f);                
             }
 
             public override void Dispose()

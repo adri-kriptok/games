@@ -44,13 +44,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.22.15\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.22.18\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.22.15\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.22.18\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.22.15\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.22.18\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,10 +65,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Beam.cs" />
+    <Compile Include="Entities\Column.cs" />
     <Compile Include="Entities\Enemies\Asteroid.cs" />
     <Compile Include="Entities\Enemies\EnemyBase.cs" />
     <Compile Include="Entities\Enemies\EnemyScore.cs" />
+    <Compile Include="Entities\Environment\Stars.cs" />
     <Compile Include="Entities\Explosion.cs" />
+    <Compile Include="Entities\Environment\Grid.cs" />
     <Compile Include="Entities\GameOver.cs" />
     <Compile Include="Entities\PlayerShip.cs" />
     <Compile Include="Entities\PlayerShot.cs" />
@@ -76,12 +80,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions\StarsRegion.cs" />
-    <Compile Include="Regions\Vector3DContext.cs" />
-    <Compile Include="Regions\Vector3DRegion.cs" />
+    <Compile Include="Regions\AnaglyphZoneRegion.cs" />
     <Compile Include="Scenes\Cam.cs" />
     <Compile Include="Scenes\StarsScene.cs" />
+    <Compile Include="Scenes\EnclosedScene.cs" />
     <Compile Include="Scenes\TitleScene.cs" />
     <Compile Include="AZConsts.cs" />
+    <Compile Include="Views\CubeView.cs" />
+    <Compile Include="Views\GridView.cs" />
     <Compile Include="Views\WireframeShipView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -96,7 +102,6 @@
     <EmbeddedResource Include="Assets\8bitoperator.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include=".sdk\bin\lib-selector.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -112,21 +117,5 @@
     <EmbeddedResource Include="Assets\Sounds\Explosion1.wav" />
     <EmbeddedResource Include="Assets\Sounds\Shot1.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\FlicPlayer.exe" />
-    <Content Include=".sdk\tools\Kriptok.dll" />
-    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\Kriptok.xml" />
-    <Content Include=".sdk\tools\MidiNoteTester.exe" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
-  </PropertyGroup>
 </Project>

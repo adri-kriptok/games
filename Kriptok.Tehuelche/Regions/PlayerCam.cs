@@ -15,11 +15,11 @@ namespace Kriptok.Tehuelche.Regions
         internal const float CamModifier = 60f;
         private const float thirdPersonCameraDistance = 17.5f;
         private const float inverseThirdPersonCameraDistance = 1f / thirdPersonCameraDistance;
-        private readonly PlayerHelicopter heli;
+        private readonly PlayerHelicopterPseudo3D heli;
         private readonly AutoShearPseudo3DCamera thirdPersonCamera;
         private readonly Pseudo3DWithMouseLookCamera2 firstPersonCamera;
 
-        public PlayerCam(PlayerHelicopter heli) : base(heli)
+        public PlayerCam(PlayerHelicopterPseudo3D heli) : base(heli)
         {
             this.heli = heli;
 

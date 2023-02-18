@@ -1,6 +1,7 @@
 ﻿using Kriptok.Drawing;
 using Kriptok.Extensions;
 using Kriptok.Regions.Pseudo3D.VoxelSpace;
+using Kriptok.Regions.VoxelSpace;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,9 +15,9 @@ namespace Kriptok.Tehuelche.Regions
     {
         private static ushort[] resetValues = Array.Empty<ushort>();
 
-        public TehuelcheYBuffer(Size size) : base(size)
+        public TehuelcheYBuffer(Size size, int screenHeight) : base(size)
         {
-            resetValues = InitResetValues(size.Height);
+            resetValues = InitResetValues(screenHeight);
         }
 
         public override void Reset()

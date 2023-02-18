@@ -1,6 +1,7 @@
 ﻿using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Helpers;
+using Kriptok.Regions.Context.Base;
 using Kriptok.Tehuelche.Entities.Enemies;
 using Kriptok.Views.Base;
 using Kriptok.Views.Primitives;
@@ -54,7 +55,14 @@ namespace Kriptok.Tehuelche.Entities.Player
                 return base.IsVisible();
             }
 
-            public override float GetPriority() => base.GetPriority() + 999999f;            
+            public override float GetPriority(IProjector context)
+            {
+#if DEBUG
+                return base.GetPriority(context);
+#else
+                return base.GetPriority(context) + 999f;
+#endif
+            }
         }
     }
 }

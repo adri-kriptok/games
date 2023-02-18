@@ -5,27 +5,23 @@ using Kriptok.Entities;
 using Kriptok.Entities.Base;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
-using Kriptok.Regions.Scroll;
 using Kriptok.Tehuelche.Entities;
 using Kriptok.Tehuelche.Entities.Enemies;
 using Kriptok.Tehuelche.Entities.Player;
 using Kriptok.Tehuelche.Regions;
 using Kriptok.Tehuelche.Scenes.Base;
-using Kriptok.Tehuelche.Views;
 using Kriptok.Views.Shapes;
 using Kriptok.Views.Shapes.Vertices;
 using System;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using static Kriptok.Tehuelche.Enemies.Tank;
 
 namespace Kriptok.Tehuelche.Enemies
 {
     internal class Tank : EnemyBase<TankView>
     {
-        private readonly PlayerHelicopter player;
-        private readonly TehuelcheMapRegion terrain;
+        private readonly PlayerHelicopterBase player;
+        private readonly ITerrain terrain;
         private float hatchAngle = 0f;
         private float cannonAngle = 0f;
         private EnemyAim aim;
@@ -117,7 +113,7 @@ namespace Kriptok.Tehuelche.Enemies
             // -----------------------------------------------------------------------
             // Check de datos.
             // -----------------------------------------------------------------------
-            Location.Z = terrain.SampleHeight(Location.XY()) * 1.5f - Location.Z * 0.5f;
+            Location.Z = (terrain.GetHeight(Location.XY()) + Location.Z) * 0.5f;
             aim.Location = View.GetAimLocation();
             aim.Angle = GetAimAngle();
         }
@@ -223,18 +219,7 @@ namespace Kriptok.Tehuelche.Enemies
                 builder.AppendMesh(Hatch, hatch);
             }
 
-            public override float GetPriority() => -GetClosestDistance();
-
             internal Vector3F GetAimLocation() => CannonTip.GetCalculatedLocation();
-            // {                
-            //     var v = new Vector3F(12f, 0f, 12f);
-            // 
-            //     var m = Matrix3x4F.Identity;
-            //     m.RotateZ(Angle.Z);
-            //     m.RotateY(cannonAngle);
-            // 
-            //     return Cannon.GetCalculatedLocation().Plus(m.Multiply(v));                
-            // }
         }
     }
 }

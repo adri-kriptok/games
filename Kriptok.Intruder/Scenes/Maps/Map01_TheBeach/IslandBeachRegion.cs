@@ -59,7 +59,7 @@ namespace Kriptok.Intruder.Regions
             foreach (var parti in Partitions
                 .Where(p => p.TextureId == ExteriorTexset.OceanTexture)
                 .OfType<IM9HorizontalTextureComponent>())
-            {                
+            {
                 parti.TextureLocation = shoreEffectLocation;
             }
         }
@@ -318,11 +318,11 @@ namespace Kriptok.Intruder.Regions
         }).ToArray();
 
         private class ShoreEffect : ILocalizable2D
-        {          
+        {
             public float X;
             public float Y;
 
-            public Vector2F GetLocation2D() => new Vector2F(X, Y);            
+            public Vector2F GetLocation2D() => new Vector2F(X, Y);
         }
     }
 }

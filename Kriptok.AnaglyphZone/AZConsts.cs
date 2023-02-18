@@ -13,7 +13,7 @@ namespace Kriptok.AZ
     internal class AZConsts
     {
         public const float CamHeight = 300f;
-        
+
         public const float GridSize = 100f;
 
         public const int MinGridZ = -8;

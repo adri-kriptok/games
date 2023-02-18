@@ -2,11 +2,10 @@
 using Kriptok.Div;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions.Queries;
-using Kriptok.Regions.Pseudo3D.VoxelSpace;
 using Kriptok.Tehuelche.Entities.Enemies;
 using Kriptok.Tehuelche.Entities.Player;
 using Kriptok.Tehuelche.Regions;
-using Kriptok.Tehuelche.Views;
+using Kriptok.Views.Shapes;
 using static Kriptok.Tehuelche.Entities.PlayerMissile;
 
 namespace Kriptok.Tehuelche.Entities
@@ -18,12 +17,12 @@ namespace Kriptok.Tehuelche.Entities
         /// </summary>
         private static float side = 1.5f;
 
-        private readonly PlayerHelicopter player;
-        private readonly TehuelcheMapRegion terrain;
+        private readonly PlayerHelicopterBase player;
+        private readonly ITerrain terrain;
         private ISingleCollisionQuery<EnemyBase> enemyCollision;
         private ISoundHandler explosi6Sound;
 
-        public PlayerMissile(PlayerHelicopter player, TehuelcheMapRegion terrain)
+        public PlayerMissile(PlayerHelicopterBase player, ITerrain terrain)
             : base(new PlayerMissileView())
         {
             this.player = player;
@@ -33,7 +32,7 @@ namespace Kriptok.Tehuelche.Entities
             Angle = player.GetShootingDirection();
         }
 
-        public PlayerMissile(PlayerHelicopter player, TehuelcheMapRegion terrain, EnemyBase enemy)
+        public PlayerMissile(PlayerHelicopterBase player, ITerrain terrain, EnemyBase enemy)
             : base(new PlayerMissileView())
         {
             this.player = player;
@@ -77,7 +76,7 @@ namespace Kriptok.Tehuelche.Entities
             Advance3D(0.1875f * Sys.TimeDelta);
 
             // Me fijo si no choqué contra el piso.
-            if (terrain.SampleHeight(Location.XY()) >= Location.Z)
+            if (terrain.GetHeight(Location.XY()) >= Location.Z)
             {
                 Explode();
                 return;
@@ -91,7 +90,7 @@ namespace Kriptok.Tehuelche.Entities
             }
         }
 
-        internal class PlayerMissileView : VoxelSpaceShapeViewBase
+        internal class PlayerMissileView : MqoMeshView
         {
             public PlayerMissileView() 
                 : base(typeof(PlayerMissileView).Assembly, "Assets.Models.Missile.mqo")

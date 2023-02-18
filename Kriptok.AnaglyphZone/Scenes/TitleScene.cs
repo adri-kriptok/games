@@ -45,7 +45,6 @@ namespace Kriptok.Vector3D.Scenes
                 DistanceModifier = 5f
             });
             region.Ambience.SetLightSource(1f, 0f, 0f);
-            region.Ambience.AbsoluteLight = true;
 
             region.SetCamera(new TitleCam(h.Add(region, new TitleShip())));
 

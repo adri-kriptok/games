@@ -68,7 +68,7 @@ namespace Kriptok.Intruder.Entities
             public SegmentView() : base(new VertexBase[2]
             {
                 new Vertex3(0f, 0f, 0f),
-                new Vertex3(1000f, 0f, 0f),
+                new Vertex3(0f, 0f, 1000f),
             }, shapes =>
             {
                 shapes.Add(Strokes.Blue, 0, 1);

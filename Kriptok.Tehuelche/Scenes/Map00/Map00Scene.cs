@@ -2,12 +2,13 @@
 using Kriptok.Helpers;
 using Kriptok.Maps.Terrains;
 using Kriptok.Tehuelche.Enemies;
+using Kriptok.Tehuelche.Regions;
 using Kriptok.Tehuelche.Scenes.Base;
 using System.Drawing;
 
 namespace Kriptok.Tehuelche.Scenes.Map00
 {
-    internal class Map00Scene : LevelSceneBase
+    internal class Map00Scene : LevelSceneBasePseudo3D
     {
         protected override ByteTerrainData GetTerrain() => new ByteTerrainData(Assembly, $"{GetType().Namespace}.Terrain.png");
 
@@ -17,7 +18,7 @@ namespace Kriptok.Tehuelche.Scenes.Map00
 
         protected override void Run(LevelBuilder builder)
         {         
-            builder.Terrain.SetFog(256, 768, Color.FromArgb(96, 96, 128));
+            ((TehuelcheMapRegionPseudo3D)builder.Terrain).SetFog(256, 768, Color.FromArgb(96, 96, 128));
 
             //InstallEnemyBase(builder, 2125, 3305);
             //InstallEnemyBase(builder, 3525, 3000);

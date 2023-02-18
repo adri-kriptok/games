@@ -68,6 +68,6 @@ namespace Kriptok.AZ.Views
             }
         }
 
-        public override float GetPriority() => float.MinValue;
+        public override float GetPriority(IProjector context) => float.MinValue;
     }
 }

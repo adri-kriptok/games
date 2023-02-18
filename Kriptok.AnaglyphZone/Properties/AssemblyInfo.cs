@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Kriptok.AnaglyphZone")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kriptok Entretenimiento")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Kriptok.AnaglyphZone")]
-[assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2023")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

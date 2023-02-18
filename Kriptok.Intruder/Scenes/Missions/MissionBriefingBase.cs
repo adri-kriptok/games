@@ -22,7 +22,7 @@ namespace Kriptok.Intruder.Scenes.Missions
         {
             builder.Font = new Font("Courier New", 8f);
             builder.SetColor(ColorHelper.Green);
-        });
+        });            
 
         protected override void Run(SceneHandler h)
         {
@@ -62,7 +62,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                 nextLetter = text.First();
 
                 View.Center = new PointF(0f, 0f);
-
+                
                 Location.X = 100f;
                 Location.Y = 15f;
             }
@@ -93,7 +93,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                         writting = false;
                         return;
                     }
-
+                    
                     nextLetter = fullText[textLetter];
 
 
@@ -101,7 +101,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                     {
                         counterToNext = 20;
                     }
-                    else
+                    else 
                     {
                         counterToNext = 4;
                     }

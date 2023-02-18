@@ -4,6 +4,7 @@ using Kriptok.Regions.Pseudo3D.Cameras;
 using Kriptok.Tehuelche.Scenes;
 using Kriptok.Tehuelche.Scenes.Map00;
 using Kriptok.Tehuelche.Scenes.Map01;
+using Kriptok.Tehuelche.Scenes.Map02;
 using System;
 
 namespace Kriptok.Tehuelche
@@ -24,7 +25,7 @@ namespace Kriptok.Tehuelche
             {
                 p.FullScreen = true;
                 p.Mode = WindowSizeEnum.W340x192;
-                p.Title = "Tehuelche | Kriptok";
+                p.Title = "Kriptok - Tehuelche";
                 p.OpenMidiNotePlayer();
             });
         }        

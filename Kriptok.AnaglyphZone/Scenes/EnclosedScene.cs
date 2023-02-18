@@ -16,9 +16,8 @@ namespace Kriptok.AZ.Scenes
         {
             var playArea = h.ScreenRegion.Rectangle;
             
-            var region = h.StartPseudo3D(new Vector3DRegion(playArea));
+            var region = h.StartPseudo3D(new AnaglyphZoneRegion(playArea));
             region.Ambience.SetLightSource(1f, 0f, 0f);
-            region.Ambience.AbsoluteLight = true;
 
             var camTarget = h.Add(region, new CamTarget());
             var player = h.Add(region, new PlayerShip(camTarget));

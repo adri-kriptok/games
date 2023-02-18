@@ -14,10 +14,10 @@ namespace Kriptok.Tehuelche.Entities.Hud
 {
     internal class MinimapPlayer : EntityBase<PolygonView>
     {
-        private readonly PlayerHelicopter player;
+        private readonly PlayerHelicopterBase player;
         private readonly float scale;
 
-        public MinimapPlayer(PlayerHelicopter player, float scale) : base(new ArrowView())
+        public MinimapPlayer(PlayerHelicopterBase player, float scale) : base(new ArrowView())
         {
             this.player = player;
             this.scale = 1f / scale;

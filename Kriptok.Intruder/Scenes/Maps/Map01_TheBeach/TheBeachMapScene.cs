@@ -34,13 +34,12 @@ namespace Kriptok.Intruder.Scenes.Maps.Map01_TheBeach
     {
         protected override void Run(SceneHandler h, Rectangle rect)
         {
-
             var mapX = GetMap();
             var mapRegion = h.StartPseudo3D(new IslandBeachRegion(rect, mapX));
 
             var r = (RegionBase)mapRegion;
 
-            r.Ambience.SetLightSource(0.2f, 1f, 0.1f);
+            r.Ambience.Set(0.2f, 1f, 0.1f, 0f);
             var player = h.Add(mapRegion, new Player(mapRegion)
             {
                 Location = new Vector3F(mapX.Preview.X, mapX.Preview.Y, 0f)

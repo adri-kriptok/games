@@ -23,7 +23,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
 
         protected EnemyBase(LevelBuilder builder, IView view, float energy) : base(view)
         {
-            this.playArea = builder.Terrain.PlayArea;
+            this.playArea = builder.Terrain.GetPlayArea();
             this.energy = energy;
         }
 
@@ -57,7 +57,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
     internal abstract class EnemyBase<T> : EnemyBase
         where T : IView
     {
-        private readonly TehuelcheMapRegion terrain;
+        private readonly ITerrain terrain;
 
         protected EnemyBase(LevelBuilder builder, T view, float energy) 
             : base(builder, view, energy)
@@ -70,7 +70,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
         {
             base.OnStart(h);
 
-            Location.Z = terrain.SampleHeight(Location.XY());
+            Location.Z = terrain.GetHeight(Location.XY());
         }
 
         public new T View => (T)base.View;

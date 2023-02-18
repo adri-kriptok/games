@@ -74,13 +74,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.22.15\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.22.18\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.22.15\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.22.18\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.22.15\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.22.18\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -99,6 +99,8 @@
     <Compile Include="Entities\Enemies\EnemyAim.cs" />
     <Compile Include="Entities\Enemies\EnemyBase.cs" />
     <Compile Include="Entities\Enemies\EnemyMissile.cs" />
+    <Compile Include="Entities\Player\PlayerHelicopterAxonometric.cs" />
+    <Compile Include="Entities\Player\PlayerHelicopterBase.cs" />
     <Compile Include="Entities\Player\PlayerMissileExplosion.cs" />
     <Compile Include="Entities\Hud\MinimapEnemy.cs" />
     <Compile Include="Entities\Enemies\Tent.cs" />
@@ -108,21 +110,25 @@
     <Compile Include="Entities\Player\PlayerAutoAim.cs" />
     <Compile Include="Entities\Player\PlayerMissile.cs" />
     <Compile Include="Entities\Common\SmokeParticle.cs" />
-    <Compile Include="Regions\TehuelcheMapRegionWater.cs" />
-    <Compile Include="Regions\TehuelcheMapRegion.cs" />
+    <Compile Include="Regions\ITerrain.cs" />
+    <Compile Include="Regions\PlayerTarget.cs" />
+    <Compile Include="Regions\TehuelcheMapRegionAxonometric.cs" />
+    <Compile Include="Regions\TehuelcheMapRegionPseudo3D.cs" />
     <Compile Include="Regions\MinimapScrollRegion.cs" />
     <Compile Include="Regions\PlayerCam.cs" />
-    <Compile Include="Entities\Player\PlayerHelicopter.cs" />
+    <Compile Include="Entities\Player\PlayerHelicopterPseudo3D.cs" />
     <Compile Include="Regions\TehuelcheYBuffer.cs" />
     <Compile Include="Scenes\Base\LevelBuilder.cs" />
+    <Compile Include="Scenes\Base\LevelSceneBaseAxonometric.cs" />
     <Compile Include="Scenes\InitScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Enemies\Tank.cs" />
-    <Compile Include="Scenes\Base\LevelSceneBase.cs" />
+    <Compile Include="Scenes\Base\LevelSceneBasePseudo3D.cs" />
     <Compile Include="Scenes\Map00\Map00Scene.cs" />
+    <Compile Include="Scenes\Map01\Map01SceneAx.cs" />
     <Compile Include="Scenes\Map01\Map01Scene.cs" />
-    <Compile Include="Views\VoxelSpaceShapeViewBase.cs" />
+    <Compile Include="Scenes\Map02\Map02Scene.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map00\Terrain.png" />
@@ -153,26 +159,15 @@
     <EmbeddedResource Include="Assets\Models\Missile.mqo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".sdk\bin\lib-selector.bat" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="Scenes\Map02\Terrain.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\FlicPlayer.exe" />
-    <Content Include=".sdk\tools\Kriptok.dll" />
-    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\Kriptok.xml" />
-    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+    <EmbeddedResource Include="Scenes\Map02\Texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -3,11 +3,8 @@ using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Helpers;
-using Kriptok.Regions.Scroll;
 using Kriptok.Tehuelche.Entities.Enemies;
-using Kriptok.Tehuelche.Regions;
 using Kriptok.Tehuelche.Scenes.Base;
-using Kriptok.Tehuelche.Views;
 using Kriptok.Views.Shapes;
 using System;
 using static Kriptok.Tehuelche.Enemies.Tent;
@@ -52,12 +49,17 @@ namespace Kriptok.Tehuelche.Enemies
             throw new NotImplementedException();
         }
 
-        public class TentView : VoxelSpaceShapeViewBase
+        public class TentView : MqoMeshView
         {
             public TentView() : base(typeof(TentView).Assembly, "Assets.Models.Tent.mqo")
             {
                 Scale = new Vector3F(0.1f);
             }
+
+            /// <summary>
+            /// La tienda es convexa, no pierdo tiempo ordenando caras.
+            /// </summary>            
+            protected override bool IsConvex() => true;
         }
     }    
 }

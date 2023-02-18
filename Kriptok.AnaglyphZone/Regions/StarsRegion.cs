@@ -1,5 +1,6 @@
 ﻿using Kriptok.Extensions;
 using Kriptok.Regions.Buffered;
+using Kriptok.Regions.Pseudo3D;
 using Kriptok.Views.Base;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Kriptok.AZ.Regions
 {
-    internal class StarsRegion : Vector3DRegion
+    internal class StarsRegion : AnaglyphZoneRegion
     {
         private readonly Rectangle rectangle;
         private Bitmap buffer1;
@@ -50,8 +51,8 @@ namespace Kriptok.AZ.Regions
             buffer.SetPixel(x+1, y+1, color);
         }
 
-        protected override void Render(Vector3DContext context, IList<IRenderizable> views)
-        {
+        protected override void Render(Pseudo3DRenderContext context, IList<IRenderizable> views)
+        {        
             var camLocation = context.Camera.Location;
 
             var g = context.Graphics;

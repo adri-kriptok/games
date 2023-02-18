@@ -23,13 +23,12 @@ namespace Kriptok.Tehuelche.Entities.Player
     internal class PlayerAutoAim : EntityBase<GdipShapeView>
     {
         private const float initialLength = 350f;
-        private const float thirdPersonAngleModifier = MathHelper.QuarterPIF * 1.625f;
 
-        private readonly PlayerHelicopter owner;
+        private readonly PlayerHelicopterBase owner;
         private Blank blank;
         private IMultipleCollisionQuery<EnemyBase> enemyCollision;
 
-        public PlayerAutoAim(PlayerHelicopter owner) : base(new PlayerAutoAimView(owner))
+        public PlayerAutoAim(PlayerHelicopterBase owner) : base(new PlayerAutoAimView(owner))
         {
             this.owner = owner;
         }
@@ -57,29 +56,13 @@ namespace Kriptok.Tehuelche.Entities.Player
                 blank.Enemy = null;
             }
 
-            if (owner.UserFirstPersonCamera)
-            {
-                Angle.Y = owner.GetCameraAngle() * 0.5f - MathHelper.QuarterPIF;
-                Angle.Z = owner.CameraAngle;
-            }
-            else
-            {
-                Angle.Y = owner.Angle.Y - thirdPersonAngleModifier - owner.GetCameraAngle() * 0.125f;
-                Angle.Z = owner.Angle.Z;
-            }
+            var angles = owner.GetAngles();
+
+            Angle.Y = angles.X;
+            Angle.Z = angles.Y;
         }
 
-        public override Vector3F GetRenderLocation()
-        {
-            var ownerLocation = owner.GetRenderLocation();
-
-            if (owner.UserFirstPersonCamera)
-            {
-                ownerLocation.Z += 30f;
-            }
-
-            return ownerLocation;
-        }
+        public override Vector3F GetRenderLocation() =>  owner.GetRenderLocation();        
 
         /// <summary>
         /// Indica si tiene un enemigo en la mira.
@@ -92,12 +75,12 @@ namespace Kriptok.Tehuelche.Entities.Player
 
         private class PlayerAutoAimView : GdipShapeView
         {
-            //#if DEBUG || SHOWFPS
-            //            private static readonly IMaterial transparenteMaterial = Material.Get(ColorHelper.Green.SetAlpha(128));
-            //#endif
-            private readonly PlayerHelicopter player;
+#if DEBUG || SHOWFPS
+            // private static readonly IMaterial transparenteMaterial = Material.Get(ColorHelper.Green.SetAlpha(128));
+#endif
+            private readonly PlayerHelicopterBase player;
 
-            public PlayerAutoAimView(PlayerHelicopter player) : base(new VertexBase[3]
+            public PlayerAutoAimView(PlayerHelicopterBase player) : base(new VertexBase[3]
             {
                 new Vertex3(0f, 0f, 0f),
                 new Vertex3(0f, 0f, initialLength),
@@ -106,27 +89,30 @@ namespace Kriptok.Tehuelche.Entities.Player
             {
                 var verts = shapes.GetVertices().ToArray();
                 shapes.Add(new InvisibleFace(verts[0], verts[1], verts[2]));
-                //#if DEBUG || SHOWFPS
-                //                shapes.Add(transparenteMaterial, 0, 1, 2);
-                //                shapes.Add(transparenteMaterial, 0, 2, 1);
-                //#endif
+
+#if DEBUG || SHOWFPS
+                // shapes.Add(transparenteMaterial, 0, 1, 2);
+                // shapes.Add(transparenteMaterial, 0, 2, 1);
+#endif
             })
             {
                 this.player = player;
             }
 
-#if DEBUG || SHOWFPS
-            public override bool IsVisible3D(IRenderContext3D context)
-            {
-                if (player.UserFirstPersonCamera)
-                {
-                    return false;
-                }
-                return base.IsVisible3D(context);
-            }
-#else
-            public override bool IsVisible3D(IRenderContext3D context) => false;                            
-#endif
+            //#if DEBUG || SHOWFPS
+            //            public override bool IsVisible3D(IRenderContext3D context)
+            //            {
+            //                if (player.UserFirstPersonCamera)
+            //                {
+            //                    return false;
+            //                }
+            //                return base.IsVisible3D(context);
+            //            }
+            //#else
+            public override bool IsVisible2D(IRenderContext2D context) => false;
+
+            public override bool IsVisible3D(IRenderContext3D context) => false;
+            //#endif
 
             /// <summary>
             /// Vista invisible para que parezca que la mira se ajusta automáticamente.

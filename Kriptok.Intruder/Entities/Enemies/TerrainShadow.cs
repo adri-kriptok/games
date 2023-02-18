@@ -8,6 +8,8 @@ using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
 using System;
 using Kriptok.Helpers;
 using static Kriptok.Intruder.Entities.TerrainShadow;
+using Kriptok.Regions.Context.Base;
+using System.Runtime.Remoting.Contexts;
 
 namespace Kriptok.Intruder.Entities
 {
@@ -55,10 +57,10 @@ namespace Kriptok.Intruder.Entities
             {
             }
 
-            public override float GetPriority()
+            public override float GetPriority(IProjector context)
             {
                 // Para que aparezca siempre detrás del dinosaurio.
-                return base.GetPriority() + 1f;
+                return base.GetPriority(context) + 1f;
             }
         }
     }

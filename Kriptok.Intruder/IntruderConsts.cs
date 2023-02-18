@@ -33,14 +33,14 @@ namespace Kriptok.Intruder
             builder.Border = Strokes.Get(Color.DarkRed);
             builder.SetShadow(1, 1, Color.FromArgb(32, 16, 16));
         });
-
+            
         public static readonly SuperFont SmallHudFont = SuperFont.Build(builder =>
         {
             builder.Font = new Font("Courier New", 6);
             builder.SetColor(Color.White);
             builder.SetShadow(1, 1, Color.Black);
         });
-
+        
         public static readonly SuperFont MenuFont = SuperFont.Build(builder =>
         {
             builder.Font = new Font("Arial", 16, FontStyle.Bold);
@@ -48,7 +48,7 @@ namespace Kriptok.Intruder
             builder.Border = Strokes.Get(Color.DarkRed);
             builder.SetShadow(1, 1, Color.FromArgb(32, 16, 16));
         });
-
+        
         /// <summary>
         /// Altura del heads up display.
         /// </summary>

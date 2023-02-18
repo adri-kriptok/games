@@ -1,5 +1,4 @@
 ﻿using Kriptok.Audio;
-using Kriptok.Common;
 using Kriptok.Div;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
@@ -8,24 +7,23 @@ using Kriptok.Tehuelche.Entities;
 using Kriptok.Tehuelche.Entities.Enemies;
 using Kriptok.Tehuelche.Entities.Player;
 using Kriptok.Tehuelche.Regions;
-using Kriptok.Tehuelche.Views;
+using Kriptok.Views.Shapes;
 using static Kriptok.Tehuelche.Enemies.EnemyMissile;
-using static Kriptok.Tehuelche.Entities.PlayerMissile;
 
 namespace Kriptok.Tehuelche.Enemies
 {
     internal class EnemyMissile : EntityBase<EnemyMissileView>
     {
         private readonly EnemyBase owner;
-        private readonly TehuelcheMapRegion terrain;
-        private ISingleCollisionQuery<PlayerHelicopter> playerCollision;
+        private readonly ITerrain terrain;
+        private ISingleCollisionQuery<PlayerHelicopterBase> playerCollision;
 
         /// <summary>
         /// Sonidos del misil enemigo.
         /// </summary>
         private ISoundHandler explosi6Sound, explosi8Sound;
 
-        public EnemyMissile(EnemyBase owner, TehuelcheMapRegion terrain, Vector3F location, float angleZ, float angleY)
+        public EnemyMissile(EnemyBase owner, ITerrain terrain, Vector3F location, float angleZ, float angleY)
              : base(new EnemyMissileView())
         {
             this.owner = owner;
@@ -42,7 +40,7 @@ namespace Kriptok.Tehuelche.Enemies
             Radius = 10;
             h.SetCollision3DSphere();
 
-            playerCollision = h.GetCollision3D<PlayerHelicopter>();
+            playerCollision = h.GetCollision3D<PlayerHelicopterBase>();
 
             explosi6Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
             explosi8Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI8.WAV"));
@@ -58,7 +56,7 @@ namespace Kriptok.Tehuelche.Enemies
                 return;
             }
 
-            if (playerCollision.OnCollision(out PlayerHelicopter player))
+            if (playerCollision.OnCollision(out PlayerHelicopterBase player))
             {                
                 explosi8Sound.Play();
                 player.Hit();
@@ -71,7 +69,7 @@ namespace Kriptok.Tehuelche.Enemies
             Advance3D(0.1875f * Sys.TimeDelta);
 
             // Me fijo si no choqué contra el piso.
-            if (terrain.SampleHeight(Location.XY()) >= Location.Z)
+            if (terrain.GetHeight(Location.XY()) >= Location.Z)
             {                
                 explosi6Sound.Play();
                 Explode();
@@ -85,7 +83,7 @@ namespace Kriptok.Tehuelche.Enemies
             }
         }
 
-        internal class EnemyMissileView : VoxelSpaceShapeViewBase
+        internal class EnemyMissileView : MqoMeshView
         {
             public EnemyMissileView()
                 : base(typeof(EnemyMissileView).Assembly, "Assets.Models.Missile.mqo")

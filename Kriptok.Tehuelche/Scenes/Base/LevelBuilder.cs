@@ -1,4 +1,5 @@
-﻿using Kriptok.Regions.Scroll;
+﻿using Kriptok.Core;
+using Kriptok.Regions.Scroll;
 using Kriptok.Scenes;
 using Kriptok.Tehuelche.Entities;
 using Kriptok.Tehuelche.Entities.Enemies;
@@ -15,8 +16,8 @@ namespace Kriptok.Tehuelche.Scenes.Base
     internal class LevelBuilder
     {
         private readonly SceneHandler h;
-        public LevelBuilder(PlayerHelicopter player,
-            SceneHandler handler, TehuelcheMapRegion terrain, ScrollRegion minimap)
+        public LevelBuilder(PlayerHelicopterBase player,
+            SceneHandler handler, ITerrain terrain, ScrollRegion minimap)
         {
             this.h = handler;
             Player = player;
@@ -24,14 +25,14 @@ namespace Kriptok.Tehuelche.Scenes.Base
             Minimap = minimap;
         }
 
-        public TehuelcheMapRegion Terrain { get; }
+        public ITerrain Terrain { get; }
 
         public ScrollRegion Minimap { get; }
 
-        public PlayerHelicopter Player { get; }
+        public PlayerHelicopterBase Player { get; }
 
         internal void Add(MinimapEnemy enemy) => h.Add(Minimap, enemy);
 
-        internal void Add(EnemyBase enemy) => h.Add(Terrain, enemy);
+        internal void Add(EnemyBase enemy) => h.Add((RegionBase)Terrain, enemy);
     }
 }
