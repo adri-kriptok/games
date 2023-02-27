@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Exploss.Program;
 
 namespace Exploss.Scenes
 {
@@ -89,29 +90,36 @@ namespace Exploss.Scenes
                 m.OnCursorMove((from, to) => h.PlayCursorMoveSound());
 
                 m.Location = new Point(319, 350);
-                m.SelectedOption = Global.DifficultyLevel - 1;
+                m.SelectedOption = Config.Get<ExplossConfiguration>().DifficultyLevel - 1;
 
                 m.Add("Fácil", () =>
                 {
                     h.PlayMenuOKSound();
-                    Global.DifficultyLevel = 1;
+                    SaveDifficulty(1);
                     StartMainMenu(h, 1);
                 });
 
                 m.Add("Medio", () =>
                 {
                     h.PlayMenuOKSound();
-                    Global.DifficultyLevel = 2;
+                    SaveDifficulty(2);
                     StartMainMenu(h, 1);
                 });
 
                 m.Add("Difícil", () =>
                 {
                     h.PlayMenuOKSound();
-                    Global.DifficultyLevel = 3;
+                    SaveDifficulty(3);
                     StartMainMenu(h, 1);
                 });
             });
+        }
+
+        private static void SaveDifficulty(int level)
+        {
+            var config = Config.Get<ExplossConfiguration>();
+            config.DifficultyLevel = level;            
+            config.Save();
         }
     }
 }

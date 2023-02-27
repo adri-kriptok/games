@@ -2,12 +2,23 @@
 using Kriptok.Entities;
 using Kriptok.Entities.Base;
 using Kriptok.Extensions;
+using Kriptok.IO;
 using Kriptok.Views.Shapes;
 using Kriptok.Views.Texts;
 using System.Drawing;
 
 namespace Exploss
 {
+    public class ExplossConfiguration : BaseConfiguration
+    {
+        /// <summary>
+        /// Dificultad del juego.
+        /// 
+        /// Por defecto es el nivel medio.
+        /// </summary>
+        public int DifficultyLevel { get; set; } = 2;
+    }
+
     static class Global
     {
         public static SuperFont Font0 = SuperFont.Build(builder =>
@@ -64,11 +75,6 @@ namespace Exploss
         public static int NextLiveScore = Consts.ScoreLivesInterval;
 
         /// <summary>
-        /// Nivel de dificultad, arranca al medio.
-        /// </summary>
-        public static int DifficultyLevel = 2;
-
-        /// <summary>
         /// Numero de vidas.
         /// </summary>
         public static int CurrentLives;
@@ -77,19 +83,5 @@ namespace Exploss
         /// Numero de bombas.
         /// </summary>
         public static int CurrentBombs;
-
-        /*****************************************************************/
-        /*                       VARIABLES  GENERALES                    */
-        /*****************************************************************/
-
-        public static int DADA; //Flag para comprobar si se ha dado la vida cada 3000 puntos
-        public static int CONTINUADO; //Flag para ver si se ha continuado
-        public static int PROXIMA_VIDA; //Variable para controlar a que puntuacion se da la proxima vida
-        public static int CONT1, CONT2; //Dos contadores de uso general        
-
-        /// <summary>
-        /// Tabla que contiene los textos del final del juego.
-        /// </summary>
-        public static TextEntity[] ID_TEXTO = new TextEntity[6];
     }
 }

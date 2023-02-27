@@ -15,13 +15,13 @@ namespace Exploss
         static void Main()
         {
             Global.ScoreRecord = MaxScore.Load();
-            Config.Load<BaseConfiguration>().Mute();
 #if DEBUG
+            Config.Load<ExplossConfiguration>().Mute();
 #endif
-            Engine.Start(new GameScene(1), p =>
+            Engine.Start(new MenuScene(), p =>
             {
                 p.Title = "Exploss | Kriptok";
-                p.FullScreen = true;
+                p.FullScreen = false;
                 p.Mode = WindowSizeEnum.M640x480;
                 p.TimerInterval = 50;
             });

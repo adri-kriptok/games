@@ -189,10 +189,12 @@ namespace Exploss.Scenes
         private class LevelRandomizer : EntityBase
         {
             private readonly int level;
+            private readonly int difficultyLevel;
 
             internal LevelRandomizer(int level)
             {
                 this.level = level;
+                this.difficultyLevel = 4000 / ((level + 1) * Config.Get<ExplossConfiguration>().DifficultyLevel);
             }
 
             protected override void OnFrame()
@@ -201,7 +203,7 @@ namespace Exploss.Scenes
                 // nos encontremos, a mayor pantalla mayor probabilidad de que
                 // se cree una bola grande (mas dificultad)
 
-                if ((Rand.Next(1, 4000 / ((level +1) * Global.DifficultyLevel)) <= 2))
+                if (Rand.Next(1, difficultyLevel) <= 2)
                 {
                     Add(new BigBubbleStars(Rand.Next(108, 532), Rand.Next(108, 287)));
                 }
