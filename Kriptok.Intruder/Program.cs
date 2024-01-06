@@ -20,8 +20,8 @@ namespace Kriptok.Intruder
         static void Main()
         {
 #if DEBUG
-#endif            
             Config.Get<BaseConfiguration>().Mute();
+#endif            
              Engine.Start(new TheBeachMapScene(), p =>            
             //Engine.Start(new IntroScene(), p =>
             {

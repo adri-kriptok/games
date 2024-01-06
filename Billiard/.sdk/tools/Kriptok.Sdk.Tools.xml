@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kriptok.Sdk.Tools</name>
+    </assembly>
+    <members>
+        <member name="F:Kriptok.Sdk.Tools.Controls.NumericBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.NumericBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.NumericBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.DrawingToolEnum">
+            <summary>
+            Herramientas típicas de dibujo para editores gráficos.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Extensions.GraphicsExtensions.markerBitmap">
+            <summary>
+            Marcador utilizado para dibjar la posición inicial del jugador en modo "preview".
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.GraphicsExtensions.DrawMapMarker(System.Drawing.Graphics,System.Single,System.Single)">
+            <summary>
+            Dibuja un marcador para indicar la posición del jugador en modo preview.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.NumericUpDownExtensions.Bind(System.Windows.Forms.NumericUpDown,System.Int32,System.Action{System.Int32})">
+            <summary>
+            Bindea la modificación del campo de texto a una acción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.NumericUpDownExtensions.Bind(System.Windows.Forms.NumericUpDown,System.Int32,System.Int32,System.Int32,System.Action{System.Int32})">
+            <summary>
+            Bindea la modificación del campo de texto a una acción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.TrackBarExtensions.Bind(System.Windows.Forms.TrackBar,System.Int32,System.Action{System.Int32})">
+            <summary>
+            Bindea la modificación del campo de texto a una acción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.TrackBarExtensions.Bind(System.Windows.Forms.TrackBar,System.Int32,System.Int32,System.Int32,System.Action{System.Int32})">
+            <summary>
+            Bindea la modificación del campo de texto a una acción.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.AssemblyHelper.BindDomainCheck">
+            <summary>
+            Agrega un chequeo extra al cargador de ensamblados.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Helpers.ConfigurationManagerHelper">
+            <summary>
+            Funcionalidades extendidas de la clase <see cref="T:System.Configuration.ConfigurationManager"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.ConfigurationManagerHelper.AppSetting(System.String)">
+            <summary>
+            Obtiene el valor de un setting de archivo de configuración, validando que este exista primero.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.ConsoleHelper.ExecConsoleCommand(System.String)">
+            <summary>
+            Esta función ejecuta un comando de consola.
+            </summary>
+            <param name="command">Comando a ejecutar.</param>        
+            <returns>Devuelve la respuesta recibida en la salida estándar.</returns>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.ConsoleHelper.ExecConsoleCommand(System.String,System.String)">
+            <summary>
+            Esta función ejecuta un comando de consola.
+            </summary>
+            <param name="fileName">Comando a ejecutar.</param>
+            <param name="arguments">Directorio de inicio del proceso.</param>
+            <returns>Devuelve la respuesta recibida en la salida estándar.</returns>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Helpers.DirectoryHelper">
+            <summary>
+            Funcionalidades para facilitar el uso de la clase <see cref="T:System.IO.DirectoryInfo"/>
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.Get(System.String)">
+            <summary>
+            Obtiene un directorio indicado en el path pasado por parámetro, y de no existir, lo crea.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.Dir(System.String)">
+            <summary>
+            Devuelve todos los archivos existentes en el path indicado. De no existir el path, este
+            se crea.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.Dir(System.String,System.String)">
+            <summary>
+            Devuelve todos los archivos existentes en el path indicado. De no existir el path, este
+            se crea.
+            </summary>        
+            <param name="path"></param>
+            <param name="extensionFilter">Recordar escribir las extensiones con el "." delante, como ".png"</param>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.EnsureExists(System.String)">
+            <summary>
+            Obtiene un directorio indicado en el path pasado por parámetro, y de no existir, lo crea.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.Open(System.String)">
+            <summary>
+            Abre la ruta indicada por parámetro.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.RefreshEntityTreeView(System.Windows.Forms.TreeView,Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+            <summary>
+            Construye el árbol de entidades mezclando la metadata del mapa con las
+            registradas con los recursos.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.FormHelper.InitMainForm(System.Windows.Forms.Form,System.String)">
+            <summary>
+            Inicializa el formulario principal de una aplicación. 
+            Maximizado y con el título indicado por parámetro.
+            </summary>
+            <param name="form">Formulario principal de la aplicación.</param>
+            <param name="title">Título a aplicar en la ventana.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.FormHelper.SetTitle(System.Windows.Forms.Form,System.String)">
+            <summary>
+            Establece el título del formulario.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Helpers.KeyboardHelper">
+            <summary>
+            Esta clase es utilizada para descubrir las interacciones del usuario.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.KeyboardHelper.Key(System.Windows.Forms.Keys)">
+            <summary>
+            Indica si la tecla indicada se encuentra presionada.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Forms.InputSizeForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.InputSizeForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.InputSizeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Forms.IntFromToInputBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.IntFromToInputBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.IntFromToInputBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Forms.IntInputBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.IntInputBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.IntInputBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Forms.EntityForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel">
+            <summary>
+            Colección de entidades que pueden ser utilizadas en editores de mapas.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.#ctor(Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+            <summary>
+            Devuelve una nueva intancia de la clase <see cref="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel"/>.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.Entities">
+            <summary>
+            Listado de entidades reconocidas para el editor de mapas.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityTypeModel">
+            <summary>
+            Representa cada tipo de entidad que hay en el mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.ToTreeNode">
+            <summary>
+            Obtiene un nodo para agregar a un árbol.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.GetText">
+            <summary>
+            Obtiene un texto identificatorio para el tipo de entidad.
+            </summary>        
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.EntityModel">
+            <summary>
+            Representa cada entidad que hay en el mapa.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.SplitterPanelModel">
+            <summary>
+            Representa un modelo para el mantenimiento de los controles de tipo "SplitterPanel".
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.PictureBoxModel">
+            <summary>
+            Representa un modelo para el mantenimiento de los controles de tipo "PictureBox".
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Extensions.RectangleExtensions">
+            <summary>
+            Extensiones básicas para la clase <see cref="T:System.Drawing.Rectangle"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Extensions.RectangleExtensions.Center(System.Drawing.Rectangle)">
+            <summary>
+            Obtiene y devuelve el punto central del rectángulo, es decir: 
+            
+            (rect.X + rect.Width / 2, rect.Y + rect.Height / 2)        
+            </summary>        
+        </member>
+    </members>
+</doc>

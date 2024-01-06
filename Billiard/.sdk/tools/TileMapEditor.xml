@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TileMapEditor</name>
+    </assembly>
+    <members>
+        <member name="T:Kriptok.Objects.Base.CoordSystemEnum">
+            <summary>
+            Indica el sistema de coordenadas sobre el cuál se deben renderizar las vistas asociadas al proceso.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.Screen">
+            <summary>
+            Coordenadas planas de la pantalla. Se deja en cero para que sea el valor por default.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.Scroll">
+            <summary>
+            Plano bidimensional centrado en un proceso "cámara".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.TopDown">
+            <summary>
+            Plano bidimensional centrado en un proceso "cámara".
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.Axonometric">
+            <summary>
+            Plano de scroll, pero con perspectiva axonométrica.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.Pseudo3D">
+            <summary>
+            Espacio tridimensional, pero con una cámara que no puede rotar sobre el eje X.
+            Es utilizado por distintas combinaciones de técnicas que simulan un espacio tridimensional.
+            Ej: Mode7, RayCasting, Binary Space Partition.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Objects.Base.CoordSystemEnum.Full3D">
+            <summary>
+            Espacio completamente tridimensional, centrado en un proceso "cámara". 
+            Puede rotar la cámara en cualquier ángulo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Objects.Base.CoordSystemEnumExtensions.Is2DInterface(Kriptok.Objects.Base.CoordSystemEnum)">
+            <summary>
+            Indica si las colisiones se deben evaluar en dos dimensiones
+            (superposición de áreas).
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.drawingTool">
+            <summary>
+            Herramienta de dibujo que se está usando en este momento.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.drawing">
+            <summary>
+            Indica si en este momento está dibujando.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.selecting">
+            <summary>
+            Indica si en este momento el usuario está seleccionando una sección.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.startingPoint">
+            <summary>
+            Posición donde inicia el dibujo o selección actual.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.mouseLocation">
+            <summary>
+            Ubicación del mouse en el momento actual.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.MapBackgroundImage">
+            <summary>
+            Imagen donde se renderiza el mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.refreshFrom">
+            <summary>
+            Punto donde empieza el rectángulo que se debe recargar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.refreshTo">
+            <summary>
+            Punto donde termina el rectángulo que se debe recargar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.toolStripButtons">
+            <summary>
+            Lista de herramientas que se pueden utilizar.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.CopiedBitmap">
+            <summary>
+            Mapa copiado. Cuando se hace copy de un mapa. Se mantiene en memoria hasta que se selecciona otra cosa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.copying">
+            <summary>
+            Indica si se está copiando una sección de la pantalla.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.Map">
+            <summary>
+            Modelo del mapa cargado en el programa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.#ctor(System.String[])">
+            <summary>
+            Devuelve una nueva instancia de la clase <see cref="T:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm"/>
+            </summary>
+            <param name="args">Argumentos pasados por línea de comandos al ejecutar el programa.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.pictureBox_MouseClick(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Método de copia completa.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.IsEntitySetTabSelected">
+            <summary>
+            Indica si el tab principal seleccionado es el de entidades, y no el de tiles.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Forms.EditorForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper">
+            <summary>
+            Funcionalidades sobre el control de Tabs que tiene los tiles.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.SelectedPen1">
+            <summary>
+            Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.SelectedPen2">
+            <summary>
+            Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.DrawPen">
+            <summary>
+            Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.SelectPen">
+            <summary>
+            Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.Update(System.Windows.Forms.TabControl,Kriptok.Maps.Tiles.Base.TilesetBase)">
+            <summary>
+            Método principal, actualiza todos los tabs cuando se cambia el tileset.
+            </summary>
+            <param name="tabs">Control de tabs.</param>
+            <param name="tileset">Tilset seleccionado.</param>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Models.MapModel.GetMapSize">
+            <summary>
+            Obtiene el tamaño del mapa.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Models.MapModelWrapper.GetMapSize">
+            <summary>
+            Obtiene el tamaño del mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.TileMapEditor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.TileMapEditor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.TileMapEditor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

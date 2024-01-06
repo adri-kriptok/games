@@ -17,6 +17,8 @@ namespace Exploss
             Global.ScoreRecord = MaxScore.Load();
 #if DEBUG
             Config.Load<ExplossConfiguration>().Mute();
+#else
+            Config.Load<ExplossConfiguration>();
 #endif
             Engine.Start(new MenuScene(), p =>
             {

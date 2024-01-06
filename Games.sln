@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DivGamesStudio", "DivGamesS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exploss", "Exploss\Exploss.csproj", "{80CF6153-150C-4B2B-BF9F-137A2F871AB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Billiard", "Billiard\Billiard.csproj", "{F2407C89-010F-45BE-8ED6-9228C865DDEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Code Analysis|Any CPU = Code Analysis|Any CPU
@@ -175,6 +177,16 @@ Global
 		{80CF6153-150C-4B2B-BF9F-137A2F871AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{80CF6153-150C-4B2B-BF9F-137A2F871AB2}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
 		{80CF6153-150C-4B2B-BF9F-137A2F871AB2}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Code Analysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Code Analysis|Any CPU.Build.0 = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Debug-Performance|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Debug-Performance|Any CPU.Build.0 = Debug|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,6 +197,7 @@ Global
 		{FC8EFA96-77EC-4538-8543-42785C9A721C} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
 		{E44CCFB5-F5AF-458B-8B6D-C9DBEF9FE259} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
 		{80CF6153-150C-4B2B-BF9F-137A2F871AB2} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
+		{F2407C89-010F-45BE-8ED6-9228C865DDEC} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E7D7099-E367-4117-9677-045165DB4B95}
