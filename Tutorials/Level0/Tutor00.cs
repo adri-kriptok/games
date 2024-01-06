@@ -9,6 +9,7 @@ using Kriptok.Entities.Queries.Base;
 using Kriptok.Helpers;
 using Kriptok.IO;
 using Kriptok.Scenes;
+using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 using System;
 using System.Drawing;

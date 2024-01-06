@@ -1,7 +1,7 @@
 ﻿using Kriptok.Drawing;
 using Kriptok.Helpers;
-using Kriptok.Maps.Tiles;
-using Kriptok.Maps.Tiles.Base;
+using Kriptok.Mapping.Tiles;
+using Kriptok.Mapping.Tiles.Base;
 
 namespace Noid.Scenes
 {
@@ -15,7 +15,7 @@ namespace Noid.Scenes
             // Agrego los ladrillos.
             foreach (var i in IntHelper.Iota(1, 9))
             {
-                using (var bmp = new FastBitmap(Assembly, $"Assets.Images.Blocks.Block{i}.png"))
+                using (var bmp = FastBitmap.Load(Assembly, $"Assets.Images.Blocks.Block{i}.png"))
                 {
                     Layer0.AddBasicTiles(bmp, 0, 1, 0, 1);
                     //Layer0.Add(new Map2DTileInfo(bmp));

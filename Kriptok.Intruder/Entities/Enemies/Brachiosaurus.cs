@@ -4,9 +4,10 @@ using Kriptok.Entities.Partitioned;
 using Kriptok.Entities.Wld;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
-using Kriptok.Maps.Terrains;
+using Kriptok.Mapping.Terrains;
 using Kriptok.Regions.Partitioned.Wld;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
+using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,15 @@ namespace Kriptok.Intruder.Entities.Enemies
     {
         private float inc = 0f;
 
-        public Brachiosaurus(ITerrainRegion map) : base(map, new BrachiosaurusView())
+        public Brachiosaurus(IPseudo3DTerrainRegion map) : base(map, new BrachiosaurusView())
         {            
             Radius = 2000;                      
         }
 
-        protected override void OnStart(EntityStartHandler h)
+        protected override void OnStart(Part2DEntityStartHandler h)
         {
             base.OnStart(h);
-
+        
             Angle.Z = (float)Math.Acos(Math.Cos(Location.X + Location.Y));
             View.ScaleX = 20f + MathHelper.CosF(Location.X) * 2f;
             View.ScaleY = 20f + MathHelper.SinF(Location.Y) * 2f;

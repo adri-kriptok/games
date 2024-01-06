@@ -1,7 +1,7 @@
 ﻿using Kriptok.Div;
 using Kriptok.Drawing;
-using Kriptok.Maps.Tiles;
-using Kriptok.Maps.Tiles.Base;
+using Kriptok.Mapping.Tiles;
+using Kriptok.Mapping.Tiles.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Exploss.Mapping
         {
             Layer0.AddEmptyTile();
 
-            using (var blocks = new FastBitmap(Assembly, "Assets.Images.Blocks.png"))
+            using (var blocks = FastBitmap.Load(Assembly, "Assets.Images.Blocks.png"))
             {
                 Layer0.AddBasicTiles(blocks, 0, 3, 0, 1);
             }

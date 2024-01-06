@@ -48,7 +48,7 @@ namespace Kriptok.Intruder.Entities
 
             protected override void OnFrame()
             {
-                if (enemyCollisions.CloserCollision(out IEnemy enemy))
+                if (enemyCollisions.ClosestCollision(out IEnemy enemy))
                 {
 #if DEBUG || SHOWFPS
                     enemy.Pointed();

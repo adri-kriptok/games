@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Entities.Base;
+using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 
 namespace Galax.Entities

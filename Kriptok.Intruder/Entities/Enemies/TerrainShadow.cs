@@ -16,11 +16,11 @@ namespace Kriptok.Intruder.Entities
     internal class TerrainShadow : EntityBase<ShadowView>
     {
         internal static readonly Color ShadowColor = Color.Black.SetAlpha(64);
-        private readonly ITerrainRegion map;
+        private readonly IPseudo3DTerrainRegion map;
         private readonly EntityBase owner;
         private Vector3F normal;
 
-        public TerrainShadow(EntityBase owner, ITerrainRegion map, float radius) : base(new ShadowView())
+        public TerrainShadow(EntityBase owner, IPseudo3DTerrainRegion map, float radius) : base(new ShadowView())
         {
             this.map = map;
             this.owner = owner;

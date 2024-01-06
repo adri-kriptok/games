@@ -3,11 +3,12 @@ using Kriptok.Drawing.Algebra;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
 using Kriptok.Intruder.Maps;
-using Kriptok.Maps.Partitioned.Terrain;
+using Kriptok.Mapping.Partitioned.Terrain;
 using Kriptok.Regions.Pseudo3D;
 using Kriptok.Regions.Pseudo3D.Backgrounds;
 using Kriptok.Regions.Pseudo3D.Partitioned.Base;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
+using Kriptok.Regions.Pseudo3D.Partitioned.Wld;
 using Kriptok.Sdk.RM.VX;
 using Kriptok.Sdk.RM.VX.Ace.Texsets;
 using Kriptok.Views.Base;
@@ -35,9 +36,9 @@ namespace Kriptok.Intruder.Regions
             : base(region, map, new ExteriorTexset())
         {
             // Pongo el cielo scrolleable.
-            using (var back = new FastBitmap(RmVxResources.ParallaxAce("Ocean2.png")))
+            using (var back = FastBitmap.Load(RmVxResources.ParallaxAce("Ocean2.png")))
             {
-                using (var halfBack = new FastBitmap(back.Size.Width, back.Size.Height / 2))
+                using (var halfBack = FastBitmap.CreateBySize(back.Size.Width, back.Size.Height / 2, null))
                 {
                     halfBack.BlitImage(back, 0, 0);
                     this.skyBackground = new GdipHorizontalScrollingBackground<Pseudo3DTerrainRenderContext>(this, new HorizontalScrollArgs()
@@ -64,7 +65,7 @@ namespace Kriptok.Intruder.Regions
         protected override M9PartitionSideBase CreateSide(M9PartitionBase owner, 
             TerrainPartitionSideX sideX, M9Builder builder, M9Vertex v0, M9Vertex v1, int index)
         {
-            if (sideX.Wall == null && sideX.PartitionToId == M9PartitionBase.NoPartitionId)
+            if (sideX.Wall == null && sideX.PartitionToId == WldRegion.NoPartitionId)
             {
                 sideX.Wall = new TerrainPartitionSideWallX()
                 {

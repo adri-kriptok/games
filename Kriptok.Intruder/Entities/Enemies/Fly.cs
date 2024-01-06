@@ -8,11 +8,12 @@ using Kriptok.Entities.Base;
 using Kriptok.Entities.Partitioned;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
-using Kriptok.Maps.Terrains;
+using Kriptok.Mapping.Terrains;
 using Kriptok.Regions.Partitioned;
 using Kriptok.Regions.Partitioned.Wld;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
 using Kriptok.Sdk.RM2000;
+using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 using System;
 using System.Collections.Generic;
@@ -72,7 +73,7 @@ namespace Kriptok.Intruder.Entities.Enemies
 
             Location.Z = map.GetFloorHeight(this) + 72;
 
-            if (map is ITerrainRegion terr)
+            if (map is IPseudo3DTerrainRegion terr)
             {
                 this.shadow = Add(new TerrainShadow(this, terr, Radius * 0.75f));
             }

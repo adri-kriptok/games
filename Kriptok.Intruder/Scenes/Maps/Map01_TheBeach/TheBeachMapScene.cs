@@ -8,7 +8,7 @@ using Kriptok.Intruder.Entities.Enemies;
 using Kriptok.Intruder.Maps;
 using Kriptok.Intruder.Regions;
 using Kriptok.Intruder.Scenes.Maps;
-using Kriptok.Maps.Partitioned.Terrain;
+using Kriptok.Mapping.Partitioned.Terrain;
 using Kriptok.Regions.Base;
 using Kriptok.Regions.Partitioned;
 using Kriptok.Regions.Pseudo3D;

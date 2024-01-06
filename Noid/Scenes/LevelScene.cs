@@ -1,6 +1,7 @@
 ﻿using Kriptok.Entities;
 using Kriptok.Extensions;
-using Kriptok.Maps.Tiles;
+using Kriptok.Mapping.Tiles;
+using Kriptok.Mapping.Tiles.Editor;
 using Kriptok.Scenes;
 using Kriptok.Views;
 using Noid.Entities;

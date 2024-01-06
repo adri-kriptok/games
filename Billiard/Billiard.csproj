@@ -50,16 +50,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.22.18\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.23.1\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.22.18\lib\net462\Kriptok.Div.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.23.1\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.22.18\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.23.1\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.22.18\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.23.1\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

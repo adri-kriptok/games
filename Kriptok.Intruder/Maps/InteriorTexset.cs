@@ -1,6 +1,6 @@
 ﻿using Kriptok.Intruder.Entities.Enemies;
-using Kriptok.Maps;
-using Kriptok.Maps.Entities;
+using Kriptok.Mapping;
+using Kriptok.Mapping.Entities;
 using Kriptok.Regions.Pseudo3D.Partitioned.Wld;
 using System;
 using System.Collections.Generic;

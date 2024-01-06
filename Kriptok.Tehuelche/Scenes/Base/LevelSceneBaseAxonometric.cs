@@ -2,7 +2,7 @@
 using Kriptok.Common;
 using Kriptok.Extensions;
 using Kriptok.Mapping.VoxelSpace;
-using Kriptok.Maps.Terrains;
+using Kriptok.Mapping.Terrains;
 using Kriptok.Scenes;
 using Kriptok.Tehuelche.Entities;
 using Kriptok.Tehuelche.Entities.Hud;

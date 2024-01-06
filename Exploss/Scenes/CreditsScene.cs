@@ -7,7 +7,7 @@ using Kriptok.Drawing;
 using Kriptok.Entities.Base;
 using Kriptok.Helpers;
 using Kriptok.IO;
-using Kriptok.Maps.Tiles;
+using Kriptok.Mapping.Tiles;
 using Kriptok.Scenes;
 using Kriptok.Views.Texts;
 using System;

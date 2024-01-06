@@ -11,7 +11,7 @@ using Kriptok.Entities.Terrain;
 using Kriptok.Entities.Wld;
 using Kriptok.Extensions;
 using Kriptok.Helpers;
-using Kriptok.Maps.Terrains;
+using Kriptok.Mapping.Terrains;
 using Kriptok.Regions.Context.Base;
 using Kriptok.Regions.Partitioned;
 using Kriptok.Regions.Partitioned.Wld;
@@ -105,7 +105,7 @@ namespace Kriptok.Intruder.Entities.Enemies
 #endif
         }
 
-        public Raptor(IPseudo3DWldRegion map, Player player) : base(map, new RaptorView())
+        public Raptor(WldRegion map, Player player) : base(map, new RaptorView())
         {
             this.map = map;
             this.player = player;
@@ -116,7 +116,7 @@ namespace Kriptok.Intruder.Entities.Enemies
 #endif
         }
 
-        protected override void OnStart(EntityStartHandler h)
+        protected override void OnStart(Part2DEntityStartHandler h)
         {
             base.OnStart(h);
 
@@ -133,7 +133,7 @@ namespace Kriptok.Intruder.Entities.Enemies
 
             h.SetCollision3DAACilinder();
 
-            if (map is ITerrainRegion terr)
+            if (map is IPseudo3DTerrainRegion terr)
             {
                 this.shadow = Add(new TerrainShadow(this, terr, Radius));                
             }
@@ -538,7 +538,7 @@ namespace Kriptok.Intruder.Entities.Enemies
                 View.Center = new PointF(0.5f, 0.975f);
 
                 InitialTransform = DefaultColoration;
-                InitialTransform.Rotate(Rand.Next(-10, 30));
+                InitialTransform.RotateAverage(Rand.Next(-10, 30));
                 
                 Transform = InitialTransform;
 

@@ -30,7 +30,7 @@ namespace Kriptok.Tehuelche.Regions
 
         private ushort[] InitResetValues(int screenHeight)
         {
-            using (var bmp = new FastBitmap(GetType().Assembly, "Assets.Images.Hud.Hud.png"))
+            using (var bmp = FastBitmap.Load(GetType().Assembly, "Assets.Images.Hud.Hud.png"))
             {
                 var tc = bmp.GetTransparentColor().Value.ToUInt32();
                 var diff = screenHeight - bmp.Size.Height;

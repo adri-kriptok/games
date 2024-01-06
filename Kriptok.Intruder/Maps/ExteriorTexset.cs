@@ -1,5 +1,5 @@
 ﻿using Kriptok.Extensions;
-using Kriptok.Maps;
+using Kriptok.Mapping;
 using Kriptok.Regions.Pseudo3D;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
 using Kriptok.Sdk.RM.VX.Ace.Texsets;

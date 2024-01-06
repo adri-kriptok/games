@@ -23,9 +23,9 @@ namespace Kriptok.Intruder.Entities
 {
     internal class TreeEntity : EntityBase<TreeView>
     {
-        private readonly ITerrainRegion map;
+        private readonly IPseudo3DTerrainRegion map;
 
-        public TreeEntity(ITerrainRegion map, Vector3F location)
+        public TreeEntity(IPseudo3DTerrainRegion map, Vector3F location)
             : base(new TreeView(map.GetFloorNormal(location.XY())))
         {
             this.map = map;

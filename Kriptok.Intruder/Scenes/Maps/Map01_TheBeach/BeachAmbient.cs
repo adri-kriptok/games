@@ -6,7 +6,7 @@ using Kriptok.Extensions;
 using Kriptok.Intruder.Entities;
 using Kriptok.Intruder.Entities.Enemies;
 using Kriptok.Intruder.Regions;
-using Kriptok.Maps;
+using Kriptok.Mapping;
 using Kriptok.Regions.Pseudo3D.Partitioned.Terrain;
 using System.Collections.Generic;
 using System.Linq;

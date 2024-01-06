@@ -1,5 +1,5 @@
 ﻿using Kriptok.IO;
-using Kriptok.Maps.Tiles;
+using Kriptok.Mapping.Tiles;
 using Kriptok.Scenes;
 using System;
 using System.Collections.Generic;

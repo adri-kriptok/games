@@ -1,6 +1,6 @@
 ﻿using Kriptok.Common;
 using Kriptok.Helpers;
-using Kriptok.Maps.Terrains;
+using Kriptok.Mapping.Terrains;
 using Kriptok.Tehuelche.Enemies;
 using Kriptok.Tehuelche.Regions;
 using Kriptok.Tehuelche.Scenes.Base;

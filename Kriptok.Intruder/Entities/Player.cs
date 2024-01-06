@@ -96,7 +96,7 @@ namespace Kriptok.Intruder.Entities
         /// </summary>
         private ISoundHandler screamSound;
         
-        public Player(IPseudo3DWldRegion map) : base(map)
+        public Player(WldRegion map) : base(map)
         {
             this.partitionedMap = map;
             this.region = (Region3DBase)map;
@@ -121,8 +121,8 @@ namespace Kriptok.Intruder.Entities
         /// </summary>
         internal int ShotgunAmmo => Weapon.Ammo;
 
-        protected override void OnStart(EntityStartHandler h)
-        {
+        protected override void OnStart(Part2DEntityStartHandler h)
+        {        
             base.OnStart(h);
             partitionedMap.SetCamera(new Cam(this));
 

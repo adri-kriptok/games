@@ -168,7 +168,7 @@
             Utilizada para dibujar los rectángulos que representan la herramienta seleccionada.
             </summary>
         </member>
-        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.Update(System.Windows.Forms.TabControl,Kriptok.Maps.Tiles.Base.TilesetBase)">
+        <member name="M:Kriptok.Sdk.Tools.TileMapEditor.Helpers.TilesetTabControlHelper.Update(System.Windows.Forms.TabControl,Kriptok.Mapping.Tiles.Base.TilesetBase)">
             <summary>
             Método principal, actualiza todos los tabs cuando se cambia el tileset.
             </summary>

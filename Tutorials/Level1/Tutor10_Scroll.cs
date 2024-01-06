@@ -41,7 +41,7 @@ namespace Tutorials.Level1
                 Config.Get<BaseConfiguration>().Mute();
     #endif
 
-                var starsBitmap = new FastBitmap(1024, 1024);
+                var starsBitmap = FastBitmap.CreateBySize(1024, 1024, null);
 
                 for (int i = 0; i < 200; i++)
                 {

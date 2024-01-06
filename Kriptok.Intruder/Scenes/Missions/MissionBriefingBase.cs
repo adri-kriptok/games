@@ -4,6 +4,7 @@ using Kriptok.Entities.Base;
 using Kriptok.Helpers;
 using Kriptok.Intruder.Scenes.Maps.Map01_TheBeach;
 using Kriptok.Scenes;
+using Kriptok.Views.Base;
 using Kriptok.Views.Sprites;
 using Kriptok.Views.Texts;
 using System;
@@ -127,7 +128,7 @@ namespace Kriptok.Intruder.Scenes.Missions
                 new IndexedSpriteView(typeof(AdnElement).Assembly, "Assets.Images.Menues.Adn.png", 1, 7))
             {
                 for (int j = 0; j < i; j++)
-                {
+                {                    
                     View.Rotate();
                 }
 

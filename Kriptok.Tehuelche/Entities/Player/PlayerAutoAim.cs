@@ -44,7 +44,7 @@ namespace Kriptok.Tehuelche.Entities.Player
 
         protected override void OnFrame()
         {
-            if (enemyCollision.CloserCollision(out EnemyBase closer))
+            if (enemyCollision.ClosestCollision(out EnemyBase closer))
             {
                 var distance = GetDistance3D(closer);
                 View.ScaleX = distance / initialLength;

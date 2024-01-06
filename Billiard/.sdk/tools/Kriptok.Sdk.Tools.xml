@@ -4,6 +4,33 @@
         <name>Kriptok.Sdk.Tools</name>
     </assembly>
     <members>
+        <member name="P:Kriptok.Sdk.Tools.Controls.Direction360.ValueInDegrees">
+            <summary>
+            Obtiene el valor en grados.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Controls.Direction360.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.Direction360.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.Direction360.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.NumericBar.GetValue">
+            <summary>
+            Obtiene el valor actual del control.
+            </summary>        
+        </member>
         <member name="F:Kriptok.Sdk.Tools.Controls.NumericBar.components">
             <summary> 
             Required designer variable.
@@ -36,6 +63,16 @@
             Dibuja un marcador para indicar la posición del jugador en modo preview.
             </summary>
         </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.ListViewExtensions.SetImageList(System.Windows.Forms.ListView,System.Windows.Forms.ImageList)">
+            <summary>
+            Establece la imagelist para esta vista.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Extensions.ListViewExtensions.IsSorting(System.Windows.Forms.ListView)">
+            <summary>
+            Indica si el listView está siendo ordenado.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Sdk.Tools.Extensions.NumericUpDownExtensions.Bind(System.Windows.Forms.NumericUpDown,System.Int32,System.Action{System.Int32})">
             <summary>
             Bindea la modificación del campo de texto a una acción.
@@ -56,6 +93,16 @@
             Bindea la modificación del campo de texto a una acción.
             </summary>        
         </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.ComboBoxExtensions.Value``1(System.Windows.Forms.ComboBox)">
+            <summary>
+            Obtiene el valor seleccionado de un combo, sin validar que tenga forzosamente un elemento seleccionado.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.ComboBoxExtensions.ValueMandatory``1(System.Windows.Forms.ComboBox,System.String,``0@)">
+            <summary>
+            Obtiene el valor de un combo, y valida que tenga algo seleccionado.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Sdk.Tools.Helpers.AssemblyHelper.BindDomainCheck">
             <summary>
             Agrega un chequeo extra al cargador de ensamblados.
@@ -70,13 +117,6 @@
             <summary>
             Obtiene el valor de un setting de archivo de configuración, validando que este exista primero.
             </summary>        
-        </member>
-        <member name="M:Kriptok.Sdk.Tools.Helpers.ConsoleHelper.ExecConsoleCommand(System.String)">
-            <summary>
-            Esta función ejecuta un comando de consola.
-            </summary>
-            <param name="command">Comando a ejecutar.</param>        
-            <returns>Devuelve la respuesta recibida en la salida estándar.</returns>
         </member>
         <member name="M:Kriptok.Sdk.Tools.Helpers.ConsoleHelper.ExecConsoleCommand(System.String,System.String)">
             <summary>
@@ -120,11 +160,26 @@
             Abre la ruta indicada por parámetro.
             </summary>        
         </member>
-        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.RefreshEntityTreeView(System.Windows.Forms.TreeView,Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+        <member name="M:Kriptok.Sdk.Tools.Helpers.DirectoryHelper.FindAll(System.String,System.String,System.Action{System.String})">
+            <summary>
+            Busca todos los archivos del tipo indicado en el directorio.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.RefreshEntityTreeView(System.Windows.Forms.TreeView,Kriptok.Mapping.Entities.EntitySet,Kriptok.Mapping.Entities.MapEntityXBase[])">
             <summary>
             Construye el árbol de entidades mezclando la metadata del mapa con las
             registradas con los recursos.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.GetSelectedEntityTypeId(System.Windows.Forms.TreeView)">
+            <summary>
+            Obtiene el tipo de entidad que está seleccionada en el árbol de entidades, o cero si no puede resolverlo.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.EntityTreeViewHelper.SelectedEntity``1(System.Windows.Forms.TreeView,System.Action{``0})">
+            <summary>
+            Obtiene el tipo de entidad que está seleccionada en el árbol de entidades, o cero si no puede resolverlo.
+            </summary>
         </member>
         <member name="M:Kriptok.Sdk.Tools.Helpers.FormHelper.InitMainForm(System.Windows.Forms.Form,System.String)">
             <summary>
@@ -148,8 +203,23 @@
             <summary>
             Indica si la tecla indicada se encuentra presionada.
             </summary>
-            <param name="key"></param>
-            <returns></returns>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Forms.EntityForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
         </member>
         <member name="F:Kriptok.Sdk.Tools.Forms.InputSizeForm.components">
             <summary>
@@ -202,29 +272,12 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="F:Kriptok.Sdk.Tools.Forms.EntityForm.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Kriptok.Sdk.Tools.Forms.EntityForm.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
         <member name="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel">
             <summary>
             Colección de entidades que pueden ser utilizadas en editores de mapas.
             </summary>
         </member>
-        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.#ctor(Kriptok.Maps.Entities.EntitySet,Kriptok.Maps.Entities.MapEntityX[])">
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel.#ctor(Kriptok.Mapping.Entities.EntitySet,Kriptok.Mapping.Entities.MapEntityXBase[])">
             <summary>
             Devuelve una nueva intancia de la clase <see cref="T:Kriptok.Sdk.Tools.Models.EntityTypeCollectionModel"/>.
             </summary>
@@ -239,7 +292,17 @@
             Representa cada tipo de entidad que hay en el mapa.
             </summary>
         </member>
-        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.ToTreeNode">
+        <member name="P:Kriptok.Sdk.Tools.Models.EntityTypeModel.EditorColor">
+            <summary>
+            Color con el que se representará la entidad en el árbol de entidades del editor.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Models.EntityTypeModel.Entities">
+            <summary>
+            Obtiene la lista de entidades de este tipo que hay en el mapa.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.EntityTypeModel.ToTreeNode(System.String)">
             <summary>
             Obtiene un nodo para agregar a un árbol.
             </summary>
@@ -252,6 +315,36 @@
         <member name="T:Kriptok.Sdk.Tools.Models.EntityModel">
             <summary>
             Representa cada entidad que hay en el mapa.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Models.EntityModel.EntityX">
+            <summary>
+            Información interna del modelo.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Models.ListViewModel">
+            <summary>
+            Modelo para controlar la listView.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Models.ListViewModel.sorting">
+            <summary>
+            Indica si se está ordenando el contenido por alguna columna.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.ListViewModel.#ctor(System.Windows.Forms.ListView)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Kriptok.Sdk.Tools.Models.ListViewModel"/>.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.ListViewModel.Init(System.Windows.Forms.ListView)">
+            <summary>
+            Inicializa funcionalidades por defecto del ListView, como el ordenamiento.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Models.ListViewModel.IsSorting">
+            <summary>
+            Indica si está ordenando en este momento.
             </summary>
         </member>
         <member name="T:Kriptok.Sdk.Tools.Models.SplitterPanelModel">

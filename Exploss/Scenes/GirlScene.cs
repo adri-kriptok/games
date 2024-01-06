@@ -5,7 +5,7 @@ using Exploss.Mapping;
 using Kriptok.Div;
 using Kriptok.Entities.Base;
 using Kriptok.IO;
-using Kriptok.Maps.Tiles;
+using Kriptok.Mapping.Tiles;
 using Kriptok.Scenes;
 using Kriptok.Views.Texts;
 using System;
