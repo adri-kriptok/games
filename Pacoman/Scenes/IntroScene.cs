@@ -34,7 +34,7 @@ namespace Pacoman.Scenes
                 bg.UsingGraphics(g => BitmapHelper.UsingBitmap(Assembly, "Assets.Images.Board.png", bmp =>
                 {
                     g.Clear(Color.Black);
-                    g.DrawImage(bmp, 105, 0, Alpha(0.5f));
+                    g.DrawImage(bmp, 105, 0, ImageAttributesHelper.GetAlphaIA(128));
                 }));
             });
 
@@ -69,35 +69,6 @@ namespace Pacoman.Scenes
                     introMusicHandler.Stop();
                     h.Set(new GameScene(0));
                     return;
-            }
-        }
-
-        /// <summary>
-        /// Crea una instancia de <see cref="ImageAttributes"/> que sólo modifica la transparencia de la imagen.
-        /// </summary>        
-        public static ImageAttributes Alpha(float alpha)
-        {
-            ExceptionHelper.ValidateRange(alpha, 0f, 1f);
-
-            float[][] ptsArray = GetPointsArray(1f, 0f);
-
-            var imageAttributes = new ImageAttributes();
-
-            imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
-
-            return imageAttributes;
-
-            float[][] GetPointsArray(float contrast, float brightness)
-            {
-                // create matrix that will brighten and contrast the image
-                return new float[][]
-                {
-                    new float[] {contrast, 0, 0, 0, 0}, // scale red
-                    new float[] {0, contrast, 0, 0, 0}, // scale green
-                    new float[] {0, 0, contrast, 0, 0}, // scale blue
-                    new float[] {0, 0, 0, alpha, 0}, // don't scale alpha
-                    new float[] {brightness, brightness, brightness, 0, 1}
-                };                
             }
         }
     }

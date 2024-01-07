@@ -6713,6 +6713,16 @@
             Valida que el rango del valor sea entre [0, max), es decir, cerrado en 0, abierto en max)
             </summary>        
         </member>
+        <member name="T:Kriptok.Helpers.ImageAttributesHelper">
+            <summary>
+            Funcionalidades que facilitan el trabajo con instancias de <see cref="T:System.Drawing.Imaging.ImageAttributes"/>.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Helpers.ImageAttributesHelper.GetAlphaIA(System.Byte)">
+            <summary>
+            Obtiene una instancia de <see cref="T:System.Drawing.Imaging.ImageAttributes"/> que aplica transparencia.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.ImageAttributesHelper.Alpha(System.Single)">
             <summary>
             Crea una instancia de <see cref="T:System.Drawing.Imaging.ImageAttributes"/> que sólo modifica la transparencia de la imagen.
