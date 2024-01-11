@@ -16,7 +16,7 @@ namespace PerdidoEnElTiempo.Scenes
             Global.State = 1;
 
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A21.FLI"), () => h.FadeFrom(Color.White));
-            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A22.FLI"), false);
+            var prevVideo = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A22.FLI"), false);
             
             h.Wait(250);
 
@@ -35,6 +35,7 @@ namespace PerdidoEnElTiempo.Scenes
 
                     h.Wait(250);
                     h.FadeOff();
+                    prevVideo.Kill();
                     h.Set(new Egypt6Scene());
                 });
                 
@@ -44,7 +45,12 @@ namespace PerdidoEnElTiempo.Scenes
                 
                     h.Wait(250);
                     h.FadeOff();
-                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A23.FLI"), () => h.FadeOn(), false);                    
+                    prevVideo.Kill();
+                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A23.FLI"), () => 
+                    {
+                        h.FadeOn();
+                        h.Wait(1000);
+                    }, false);                    
                     GameOver(h, 2);
                 });
 
@@ -54,6 +60,7 @@ namespace PerdidoEnElTiempo.Scenes
 
                     h.Wait(250);
                     h.FadeOff();
+                    prevVideo.Kill();
                     h.Set(new Egypt2Scene());
                 });
             });

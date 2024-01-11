@@ -20,7 +20,7 @@ namespace PerdidoEnElTiempo.Scenes.Base
         public void GameOver(SceneHandler h, int endScene)
         {
             h.Wait(250);
-            h.FadeOff();
+            h.FadeOff();            
             h.Set(new GameOverScene(endScene));
         }
 
@@ -43,7 +43,9 @@ namespace PerdidoEnElTiempo.Scenes.Base
         internal static IVideoEntity PlayVideo(SceneHandler h, Resource r, Action beforeStart, bool autoKill = true)
         {
             var v = h.StartVideo(new FlicDecoder(r));
+            v.Pause();
             beforeStart();
+            v.Unpause();
 #if DEBUG
             h.WaitOrKeyPress(v);
 #else
@@ -57,9 +59,12 @@ namespace PerdidoEnElTiempo.Scenes.Base
             return v;
         }
 
-        internal void PlayTimeTravel(SceneHandler h)
+        internal void PlayTimeTravel(SceneHandler h, IVideoEntity prevVideo)
         {
             h.FadeTo(Color.White);
+
+            // Mato el video anterior después de aclarar la pantalla.
+            prevVideo.Kill();
 
             var v = h.StartVideo(new FlicDecoder(Resource.Get(Assembly, "Assets.Videos.Intro.A06.FLI")));
             h.WaitFrame();

@@ -12,7 +12,7 @@ namespace PerdidoEnElTiempo.Scenes
     {
         protected override void Run(SceneHandler h)
         {
-            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A25.FLI"));
+            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A25.FLI"), () => h.FadeOn());
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A24.FLI"), false);
 
             // Limpio el buffer de teclas.
@@ -35,6 +35,7 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
 
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A26.FLI"));
+
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Egypt.A27.FLI"), false);                    
                     GameOver(h, 3);
                 });

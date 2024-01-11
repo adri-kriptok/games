@@ -18,8 +18,8 @@ namespace PerdidoEnElTiempo
         [STAThread]
         static void Main()
         {
-#if DEBUG
             Config.Load<BaseConfiguration>().Mute();
+#if DEBUG
 #endif
             Engine.Start(new InitScene(), s =>
             {

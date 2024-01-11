@@ -12,7 +12,7 @@ namespace PerdidoEnElTiempo.Scenes
     {
         protected override void Run(SceneHandler h)
         {
-            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A17.FLI"), false);
+            var prevVideo = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A17.FLI"), false);
 
             // Limpio el buffer de teclas.
             h.WaitOrKeyPress(1);
@@ -27,6 +27,7 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
                     h.Wait(250);
                     h.Add(new Frame());
+                    prevVideo.Kill();
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A19.FLI"), false);                    
                     GameOver(h, 4);
                 });
@@ -36,9 +37,11 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
 
                     h.Wait(250);
-                    PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A18.FLI"), false);
+                    prevVideo.Kill();
                     
-                    PlayTimeTravel(h);
+                    var videoTokill = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A18.FLI"), false);
+                    
+                    PlayTimeTravel(h, videoTokill);
 
                     h.Set(new Egypt1Scene());
                 });

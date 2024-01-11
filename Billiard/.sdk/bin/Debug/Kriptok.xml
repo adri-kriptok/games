@@ -4876,6 +4876,13 @@
             Obtiene el ensamblado en el que se encuentra definida esta clase.
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.KeyPressed(System.Windows.Forms.Keys)">
+            <summary>
+            Indica si se presionó una tecla. Es decir, si pasa de estado "no presionada" a "presionada".
+            
+            Pero devuelve <see cref="!:false"/>, si la está manteniendo presionada.
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.Base.InteractiveComponentBase.Input.Button01">
             <summary>
             Tecla:            
@@ -5523,6 +5530,16 @@
             Escala el video para que alcance el tamaño indicado por parámetro.
             </summary>
         </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.Pause">
+            <summary>
+            Detiene la reproducción del video.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Entities.IVideoEntity.Unpause">
+            <summary>
+            Retoma la reproducción del video.
+            </summary>
+        </member>
         <member name="M:Kriptok.Entities.VideoEntity.EndOfVideo">
             <summary>
             Indica si se encuentra al final del video.
@@ -5534,6 +5551,12 @@
             </summary>
         </member>
         <member name="M:Kriptok.Entities.VideoEntity.ScaleTo(System.Drawing.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Entities.VideoEntity.Pause">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Entities.VideoEntity.Unpause">
             <inheritdoc/>
         </member>
         <member name="T:Kriptok.Entities.Queries.Base.IQuery">
@@ -6657,6 +6680,16 @@
             el movimiento opuesto, distanciando totalmente las entidades.
             </summary>
         </member>
+        <member name="T:Kriptok.Helpers.EnumTypeHelper">
+            <summary>
+            Funcionalidades para trabajar con tipos enumerados.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Helpers.EnumTypeHelper.GetValues``1">
+            <summary>
+            Obtiene un arreglo de valores del enumerado.
+            </summary>        
+        </member>
         <member name="T:Kriptok.Helpers.StructHelper">
             <summary>
             Funcionalidades extendidas para estructuras básicas.
@@ -6896,6 +6929,11 @@
             Transforma una coordenada de color del formato viejo de MS-DOS (0..63) a (0..255).
             </summary>        
         </member>
+        <member name="M:Kriptok.Helpers.ColorHelper.Lerp(System.UInt32,System.UInt32,System.Single)">
+            <summary>
+            Intercala dos colores en la proporción indicada por la variación.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.ExceptionHelper.ValidateRangeCO(System.Int32,System.Int32,System.Int32)">
             <summary>
             Valida que el rango del valor sea entre [0, max), es decir, cerrado en 0, abierto en max)
@@ -7028,7 +7066,12 @@
             Utilizado para saber cuando se presiona y suelta una tecla.
             </summary>
         </member>
-        <member name="F:Kriptok.Helpers.KeyboardHelper.ScanCode">
+        <member name="F:Kriptok.Helpers.KeyboardHelper.lastKeyDown">
+            <summary>
+            Última tecla presioanda.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Helpers.KeyboardHelper.lastKeyUp">
             <summary>
             Código de la última tecla presionada.
             </summary>
@@ -7038,19 +7081,31 @@
             Indica si la tecla indicada se encuentra presionada.
             </summary>
         </member>
+        <member name="M:Kriptok.Helpers.KeyboardHelper.KeyPressed">
+            <summary>
+            Indica si se presionó alguna tecla.
+            </summary>        
+        </member>
         <member name="M:Kriptok.Helpers.KeyboardHelper.AnyKeyPressed">
             <summary>
             Devuelve la tecla presionada si se ha presionado una tecla.
             </summary>        
         </member>
-        <member name="M:Kriptok.Helpers.KeyboardHelper.KeyPressed(System.Windows.Forms.Keys)">
+        <member name="M:Kriptok.Helpers.KeyboardHelper.KeyPress(System.Windows.Forms.Keys)">
             <summary>
-            Indica si se presionó la tecla, pero no si se está manteniendo presionada.
-            </summary>        
+            Indica si se presionó una tecla. Es decir, si pasa de estado "no presionada" a "presionada".
+            
+            Pero devuelve <see cref="!:false"/>, si la está manteniendo presionada.
+            </summary>    
         </member>
         <member name="T:Kriptok.Helpers.MathHelper">
             <summary>
             Funciones matemáticas extra.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Helpers.MathHelper.TwoPI">
+            <summary>
+            PI x 2
             </summary>
         </member>
         <member name="F:Kriptok.Helpers.MathHelper.Cos45">
@@ -11323,6 +11378,12 @@
             
             Pero los forms no pueden ser abstractos porque rompen el modo diseño.
             </summary>        
+        </member>
+        <member name="M:Kriptok.Forms.FormBase.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Kriptok.Forms.FormBase.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <inheritdoc/>
         </member>
         <member name="M:Kriptok.Forms.FormBase.OnActivated(System.EventArgs)">
             <inheritdoc/>
@@ -24997,6 +25058,11 @@
         </member>
         <member name="P:Kriptok.Views.Videos.VideoViewBase.Size">
             <inheritdoc/>
+        </member>
+        <member name="F:Kriptok.Views.Videos.VideoViewBase.paused">
+            <summary>
+            Indica que no debe avanzar el video en el siguiente frame.
+            </summary>
         </member>
         <member name="M:Kriptok.Views.Videos.VideoViewBase.EndOfVideo">
             <summary>

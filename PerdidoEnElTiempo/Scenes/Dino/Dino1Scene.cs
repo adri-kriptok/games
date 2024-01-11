@@ -22,7 +22,7 @@ namespace PerdidoEnElTiempo.Scenes
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A10.FLI"));
 
             PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A11.FLI"));
-            PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A12.FLI"), false);
+            var prevVideo = PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A12.FLI"), false);
 
             // Limpio el buffer de teclas.
             h.WaitOrKeyPress(1);
@@ -36,6 +36,7 @@ namespace PerdidoEnElTiempo.Scenes
                 {
                     h.PlayMenuOKSound();
                     h.Wait(250);
+                    prevVideo.Kill();
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A13.FLI"));
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A16.FLI"), false);
                     h.Set(new Dino2Scene());
@@ -45,6 +46,7 @@ namespace PerdidoEnElTiempo.Scenes
                     h.PlayMenuOKSound();
                     
                     h.Wait(250);
+                    prevVideo.Kill();
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A14.FLI"));
                     PlayVideo(h, Resource.Get(Assembly, "Assets.Videos.Dino.A15.FLI"), false);
                     GameOver(h, 1);

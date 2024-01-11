@@ -19,13 +19,15 @@ namespace PerdidoEnElTiempo.Scenes
             bre = PlayOrKeyPress(h, Resource.Get(Assembly, "Assets.Videos.Intro.A06.FLI"), null, bre);
                         
             var video = h.StartVideo(new FlicDecoder(Resource.Get(Assembly, "Assets.Videos.Intro.A07.FLI")));
-            
+
             if (bre || h.WaitOrKeyPress(video) != Keys.None)
-            {                
+            {
                 video.GoToEnd();
             }
-
-            h.Wait(500);
+            else
+            {
+                h.Wait(500);
+            }
 
             // Limpio el buffer de teclas.
             h.WaitOrKeyPress(1);
@@ -64,6 +66,7 @@ namespace PerdidoEnElTiempo.Scenes
 
             if (h.WaitOrKeyPress(video) != Keys.None)
             {
+                video.Kill();                
                 return true;
             }
             video.Kill();

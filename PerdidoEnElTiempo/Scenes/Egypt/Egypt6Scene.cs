@@ -28,18 +28,21 @@ namespace PerdidoEnElTiempo.Scenes
                 menu.Add("Entrar por la izquierda.", () =>
                 {
                     h.PlayMenuOKSound();
+                    h.FadeOff();
                     h.Set(new Egypt4Scene());
                 });
 
                 menu.Add("Entrar por el medio.", () =>
                 {
                     h.PlayMenuOKSound();
+                    h.FadeOff();
                     h.Set(new Egypt3Scene());
                 });
 
                 menu.Add("Entrar por la derecha.", () =>
                 {
                     h.PlayMenuOKSound();
+                    h.FadeOff();
                     h.Set(new Egypt5Scene());
                 });
             });
