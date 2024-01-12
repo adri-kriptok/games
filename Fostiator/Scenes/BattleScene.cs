@@ -1,19 +1,15 @@
-﻿using Kriptok.Scenes;
+﻿using Fostiator.Entities;
 using Kriptok.Common;
 using Kriptok.Drawing.Algebra;
-using Kriptok.Games.Dgs.Fostiator.Entities;
-using Kriptok.Games.Div.Fostiator;
-using Kriptok.Games.Div.Fostiator.Objects;
-using Kriptok.Games.Fostiator;
-using Kriptok.Regions.Context.Base;
+using Kriptok.Entities;
 using Kriptok.Regions.Scroll;
 using Kriptok.Regions.Scroll.Base;
-using Kriptok.Entities;
+using Kriptok.Scenes;
 using Kriptok.Views.Gdip;
 using System.Drawing;
-using static Kriptok.Games.Fostiator.Global2;
+using static Fostiator.Global2;
 
-namespace Kriptok.Games.Dgs.Fostiator.Scenes
+namespace Fostiator.Scenes
 {
     internal class BattleScene : SceneBase
     {
@@ -56,35 +52,35 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
             {
                 // Ordenador contra ordenador
                 case 0:
-                    id_luchador1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Computer, fighter1Id));
-                    id_luchador2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
+                    Fighter1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Computer, fighter1Id));
+                    Fighter2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
                     break;
 
                 // Jugador contra ordenador
                 case 1:
-                    id_luchador1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard1, fighter1Id));
-                    id_luchador2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
+                    Fighter1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard1, fighter1Id));
+                    Fighter2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
                     break;
 
                 // Ordenador contra jugador
                 case 2:
-                    id_luchador1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard2, fighter1Id));
-                    id_luchador2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
+                    Fighter1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard2, fighter1Id));
+                    Fighter2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Computer, fighter2Id, fighter1Id == fighter2Id));
                     break;
 
                 // Jugador contra jugador
                 case 3:
-                    id_luchador1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard2, fighter1Id));
-                    id_luchador2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Keyboard1, fighter2Id, fighter1Id == fighter2Id));
+                    Fighter1 = h.Add(scroll, new Fighter(260, 440, Global2.FilesX[fighter1Id], FlipEnum.FlipX, FighterControlEnum.Keyboard2, fighter1Id));
+                    Fighter2 = h.Add(scroll, new Fighter(700, 440, Global2.FilesX[fighter2Id], FlipEnum.None, FighterControlEnum.Keyboard1, fighter2Id, fighter1Id == fighter2Id));
                     break;
             }
 
-            scroll.SetTarget(new Target(id_luchador1, id_luchador2));
+            scroll.SetTarget(new Target(Fighter1, Fighter2));
 
             // Inicializa las variables enemigo de los muniecos que son
             // identificadores al proceso del enemigo
-            id_luchador1.enemigo = id_luchador2;
-            id_luchador2.enemigo = id_luchador1;
+            Fighter1.Enemy = Fighter2;
+            Fighter2.Enemy = Fighter1;
 
             // Escribe el nombre del escenario
             h.Write(Font1, 320, 0, ScenarioNames[scenario]).CenterTop();
@@ -99,8 +95,8 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
             h.Write(Font1, 596, 100, FighterNames[fighter2Id]).CenterTop();
 
             // Creo las barras de energía.
-            h.Add(new HealthBar(id_luchador1, 193, 37, 1, e => new Rectangle(296 - e, 28 - 1, e + 1, 20 + 2)));
-            h.Add(new HealthBar(id_luchador2, 445, 37, 2, e => new Rectangle(345, 28 - 1, e + 1, 20 + 2)));
+            h.Add(new HealthBar(Fighter1, 193, 37, 1, e => new Rectangle(296 - e, 28 - 1, e + 1, 20 + 2)));
+            h.Add(new HealthBar(Fighter2, 445, 37, 2, e => new Rectangle(345, 28 - 1, e + 1, 20 + 2)));
 
             // Crea las estrellas que marcan los combates ganados
             Stars(h, wins1, wins2);
@@ -121,7 +117,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
 
             h.WaitWhile(() => Global2.GameState == 1);            
 
-            if (((Fighter)id_luchador1).energia == 0) // Gana el jugador 2
+            if (((Fighter)Fighter1).Health == 0) // Gana el jugador 2
             {
                 wins2++;
             }

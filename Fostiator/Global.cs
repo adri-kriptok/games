@@ -1,10 +1,11 @@
 ﻿using Kriptok.Div;
-using Kriptok.Games.Dgs.Fostiator.Scenes;
+using Fostiator.Scenes;
 using Kriptok.Views.Shapes;
 using Kriptok.Views.Texts;
 using System.Drawing;
+using Fostiator.Entities;
 
-namespace Kriptok.Games.Fostiator
+namespace Fostiator
 {
     class Global2
     {
@@ -35,8 +36,8 @@ namespace Kriptok.Games.Fostiator
         // Textos de las opciones de combate
         public static string[] FighterNames = new string[] { "RIPLEY", "BISHOP", "ALIEN", "NOSTROMO" };
         public static string[] ScenarioNames = new string[] { "ESCENARIO 1 : CASTILLO IKA", "ESCENARIO 2 : LA CUEVA", "ESCENARIO 3: DESIERTO" };
-        public static string[] niveles = new string[] { "DIFICULTAD : FACIL", "DIFICULTAD : NORMAL", "DIFICULTAD : DIFICIL" };
-        public static string[] modos = new string[] { "ORDENADOR contra ORDENADOR", " TECLAS CURSOR contra ORDENADOR",
+        public static string[] Levels = new string[] { "DIFICULTAD : FACIL", "DIFICULTAD : NORMAL", "DIFICULTAD : DIFICIL" };
+        public static string[] Modes = new string[] { "ORDENADOR contra ORDENADOR", " TECLAS CURSOR contra ORDENADOR",
                 "TECLAS UJHK-Q contra ORDENADOR","TECLAS UJHK-Q contra TECLAS CURSOR" };
         
         /// <summary>
@@ -65,7 +66,7 @@ namespace Kriptok.Games.Fostiator
         public static int GameState;
 
 
-        public static Fighter id_luchador1;
-        public static Fighter id_luchador2;
+        public static Fighter Fighter1;
+        public static Fighter Fighter2;
     }
 }

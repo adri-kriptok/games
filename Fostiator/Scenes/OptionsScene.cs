@@ -1,16 +1,16 @@
 ﻿using Kriptok.Scenes;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Extensions;
-using Kriptok.Games.Dgs.Fostiator.Entities;
+using Fostiator.Entities;
 using Kriptok.Entities;
 using Kriptok.Views.Gdip;
 using Kriptok.Views.Texts;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static Kriptok.Games.Fostiator.Global2;
+using static Fostiator.Global2;
 
-namespace Kriptok.Games.Dgs.Fostiator.Scenes
+namespace Fostiator.Scenes
 {
     internal class OptionsScene : SceneBase
     {       
@@ -86,8 +86,8 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
 
             // Pone textos seleccionables
             textInfo[0].Text = h.Write(Font2, 320, 470, "EMPEZAR JUEGO").CenterBottom();
-            textInfo[1].Text = h.Write(Font1, 320, 90, () => modos[gameMode]).CenterTop();
-            textInfo[2].Text = h.Write(Font1, 320, 120, () => niveles[DifficultyLevel]).CenterTop();
+            textInfo[1].Text = h.Write(Font1, 320, 90, () => Modes[gameMode]).CenterTop();
+            textInfo[2].Text = h.Write(Font1, 320, 120, () => Levels[DifficultyLevel]).CenterTop();
             textInfo[3].Text = h.Write(Font1, 320, 150, () => BlodLevels[BloodLevel]).CenterTop();
 
             // Pone los graficos de los muniecos y del escenario elegidos

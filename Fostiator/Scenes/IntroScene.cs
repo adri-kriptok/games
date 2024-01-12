@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kriptok.Games.Dgs.Fostiator.Scenes
+namespace Fostiator.Scenes
 {
     public class IntroScene : SceneBase
     {

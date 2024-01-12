@@ -1,9 +1,10 @@
-﻿using Kriptok.Games.Dgs.Fostiator.Scenes;
+﻿using Fostiator.Scenes;
 using Kriptok.IO;
 using Kriptok.Core;
 using System;
+using Kriptok;
 
-namespace Kriptok.Games.Div.Fostiator
+namespace Fostiator
 {
     static class Program
     {
@@ -16,8 +17,7 @@ namespace Kriptok.Games.Div.Fostiator
 #if DEBUG
             Config.Load<BaseConfiguration>().Mute();
 #endif
-
-            //Engine.Start(new OptionsActivity(), p =>
+            
             Engine.Start(new IntroScene(), p =>
             {
                 p.Title = "DIV - Fostiator | Kriptok";

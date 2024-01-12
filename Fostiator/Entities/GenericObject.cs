@@ -1,12 +1,12 @@
 ﻿using Kriptok.Div;
 using Kriptok.Entities.Base;
-using Kriptok.Games.Fostiator;
+using Fostiator;
 using Kriptok.Views.Div;
 using Kriptok.Views.Gdip;
 using Kriptok.Views.Sprites;
 using System;
 
-namespace Kriptok.Games.Dgs.Fostiator.Entities
+namespace Fostiator.Entities
 {
     /// <summary>    
     /// Pone los graficos estaticos del marcador y la pantalla de opciones

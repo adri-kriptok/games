@@ -1,9 +1,9 @@
 ﻿using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
-using Kriptok.Games.Fostiator;
+using Fostiator;
 using Kriptok.Views.Div;
 
-namespace Kriptok.Games.Div.Fostiator
+namespace Fostiator.Entities
 {
     /// <summary>    
     /// Maneja la sombra de los muniecos

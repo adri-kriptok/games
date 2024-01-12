@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Games.Dgs.Fostiator.Entities
+namespace Fostiator.Entities
 {
     /// <summary>
     /// Tipo de control del munieco.

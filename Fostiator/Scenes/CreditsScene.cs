@@ -2,7 +2,7 @@
 using Kriptok.Views.Texts;
 using System.Drawing;
 
-namespace Kriptok.Games.Dgs.Fostiator.Scenes
+namespace Fostiator.Scenes
 {
     internal class CreditsScene : SceneBase
     {

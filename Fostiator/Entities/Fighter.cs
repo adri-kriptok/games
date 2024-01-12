@@ -3,10 +3,6 @@ using Kriptok.Div;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Entities.Collisions.Queries;
-using Kriptok.Entities.Queries.Base;
-using Kriptok.Games.Dgs.Fostiator.Entities;
-using Kriptok.Games.Div.Fostiator;
-using Kriptok.Games.Fostiator;
 using Kriptok.Views.Div;
 using Kriptok.Views.Gdip;
 using Kriptok.Views.Primitives;
@@ -15,9 +11,9 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using static Kriptok.Games.Fostiator.Global2;
+using static Fostiator.Global2;
 
-namespace Kriptok.Games.Dgs.Fostiator.Scenes
+namespace Fostiator.Entities
 {
     public class Fighter : ProcessBase<DivFileXView>
     {
@@ -37,8 +33,8 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
         private static readonly int[] anim12 = new int[] { 1, 42, 42, 43, 43, 42, 42 };
         private static readonly int[] anim13 = new int[] { 1, 42, 42, 43, 43, 44, 44, 45, 45, 46, 46, 47, 47, 48, 48, 49, 49, 50 };
 
-        internal Fighter enemigo;
-        internal int energia;
+        internal Fighter Enemy;
+        internal int Health;
         private readonly FighterControlEnum tipo_control;
         private readonly int luchador;
 
@@ -119,14 +115,14 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
 
         protected override void OnBegin()
         {
-            energia = 203;        // Inicializa la energia
+            Health = 203;        // Inicializa la energia
             Frame();
             Add(new Shadow(this));           // Crea la sombra del munieco
 
             if (tipo_control != 0)
             {                      
                 // Si el ordenador no lleva este munieco
-                if (enemigo.tipo_control == 0)
+                if (Enemy.tipo_control == 0)
                 {          
                     // Pero lleva el del enemigo
                     switch (Global2.DifficultyLevel)
@@ -176,7 +172,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         }
                         if (View.Flip != FlipEnum.None)
                         {             // Hace que los muniecos se miren
-                            if (enemigo.Location.X < Location.X)
+                            if (Enemy.Location.X < Location.X)
                             {
                                 View.Flip = FlipEnum.None;
                             }
@@ -184,30 +180,30 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         }
                         else
                         {
-                            if (enemigo.Location.X > Location.X)
+                            if (Enemy.Location.X > Location.X)
                             {
                                 View.Flip = FlipEnum.FlipX;
                             }
                         }
                         // Comprueba si se quiere cambiar de estado
-                        if (Control(FighterActionEnum.golpear, this))
+                        if (Control(FighterActionEnum.Hit, this))
                         {      // Comprueba si se quiere golpear
                             nuevo_estado = FighterStatusEnum._punietazo; // Y golpea...
                         }
-                        if (Control(FighterActionEnum.saltar, this))
+                        if (Control(FighterActionEnum.Jump, this))
                         {        // Comprueba si se quiere saltar
                             nuevo_estado = FighterStatusEnum._saltando; // Y salta...
                             inc_y = -16; inc_x = 0;     // Inicializa los incrementos para el salto
                         }
-                        if (Control(FighterActionEnum.agacharse, this))
+                        if (Control(FighterActionEnum.Duck, this))
                         {    // Comprueba si se quiere agachar
                             nuevo_estado = FighterStatusEnum._agachandose;  // Y se agacha...
                         }
-                        if (Control(FighterActionEnum.retroceder, this))
+                        if (Control(FighterActionEnum.Backward, this))
                         {  // Comprueba si se quiere retroceder
                             nuevo_estado = FighterStatusEnum._retrocediendo;// Y retrocede...
                         }
-                        if (Control(FighterActionEnum.avanzar, this))
+                        if (Control(FighterActionEnum.Foward, this))
                         {       // Comprueba si se quiere avanzar
                             nuevo_estado = FighterStatusEnum._avanzando;// Y avanza...
                         }
@@ -229,11 +225,11 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                             Location.X -= 4;
                         }
                         // Comprueba si se quieren hacer otras acciones
-                        if (Control(FighterActionEnum.golpear, this))
+                        if (Control(FighterActionEnum.Hit, this))
                         {          // Se quiere golpear
                             nuevo_estado = FighterStatusEnum._patada_normal;
                         }
-                        if (Control(FighterActionEnum.saltar, this))
+                        if (Control(FighterActionEnum.Jump, this))
                         {             // Se quiere saltar
                             nuevo_estado = FighterStatusEnum._saltando;
                             inc_y = -16;
@@ -263,12 +259,12 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                             Location.X += 4;
                         }
                         // Se mira si se quieren hacer otras acciones posibles
-                        if (Control(FighterActionEnum.golpear, this))
+                        if (Control(FighterActionEnum.Hit, this))
                         {
                             nuevo_estado = FighterStatusEnum._patada_giratoria;
                             inc_y = -10;
                         }
-                        if (Control(FighterActionEnum.saltar, this))
+                        if (Control(FighterActionEnum.Jump, this))
                         {
                             nuevo_estado = FighterStatusEnum._saltando;
                             inc_y = -16;
@@ -296,25 +292,25 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         if (View.Flip != FlipEnum.None)
                         {
                             // Pone al grafico mirando al otro
-                            if (enemigo.Location.X < Location.X)
+                            if (Enemy.Location.X < Location.X)
                             {
                                 View.Flip = FlipEnum.None;
                             }
                         }
                         else
                         {
-                            if (enemigo.Location.X > Location.X)
+                            if (Enemy.Location.X > Location.X)
                             {
                                 View.Flip = FlipEnum.FlipX;
                             }
                         }
 
                         // Comprueba si se quiere hacer otras acciones
-                        if (Control(FighterActionEnum.golpear, this))
+                        if (Control(FighterActionEnum.Hit, this))
                         {        // Comprueba si se quiere golpear
                             nuevo_estado = FighterStatusEnum._golpe_bajo;
                         }
-                        if (!Control(FighterActionEnum.agacharse, this))
+                        if (!Control(FighterActionEnum.Duck, this))
                         {   // Si no quiere agacharse
                             nuevo_estado = FighterStatusEnum._levantandose; // Se pone levantandose
                         }
@@ -342,7 +338,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
 
                                 Add(new Dust(Location.X, Location.Y));     // Crea polvo cuando cae
                                                                             // Mira si se quiere saltar otra vez
-                                if (Control(FighterActionEnum.saltar, this))
+                                if (Control(FighterActionEnum.Jump, this))
                                 {
                                     nuevo_estado = FighterStatusEnum._parado;
                                 }
@@ -352,7 +348,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                 }
                             }
                         }
-                        if (Control(FighterActionEnum.golpear, this))
+                        if (Control(FighterActionEnum.Hit, this))
                         {    // Comprueba si se quiere golpear
                             nuevo_estado = FighterStatusEnum._patada_aerea;
                             nuevo_paso = animationStep;
@@ -478,7 +474,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                 Location.Y = 440;
 
                                 Add(new Dust(Location.X, Location.Y));
-                                if (Control(FighterActionEnum.saltar, this))
+                                if (Control(FighterActionEnum.Jump, this))
                                 {
                                     nuevo_estado = FighterStatusEnum._parado;
                                 }
@@ -614,12 +610,12 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                     // Y leyendo las teclas que se usan para ello
                     switch (action)
                     {        // Mira que accion se esta comprobando
-                        case FighterActionEnum.saltar:
+                        case FighterActionEnum.Jump:
 
                             return Input.Key(Keys.Up);   // Devuelve TRUE si esta pulsada la tecla
-                        case FighterActionEnum.agacharse:
+                        case FighterActionEnum.Duck:
                             return Input.Key(Keys.Down);
-                        case FighterActionEnum.avanzar:
+                        case FighterActionEnum.Foward:
                             // Dependiendo hacia donde mire
                             if (fighter.View.Flip != FlipEnum.None)
                             {
@@ -629,7 +625,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                             {
                                 return Input.Key(Keys.Left);     // O la otra
                             }
-                        case FighterActionEnum.retroceder:
+                        case FighterActionEnum.Backward:
                             if (fighter.View.Flip != FlipEnum.None)
                             {
                                 return Input.Key(Keys.Left);
@@ -638,7 +634,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                             {
                                 return Input.Key(Keys.Right);
                             }
-                        case FighterActionEnum.golpear:
+                        case FighterActionEnum.Hit:
                             return Input.Key(Keys.RControlKey);
                     }
                     break;
@@ -646,10 +642,10 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                     switch (action)
                     {
                         // Se comprueba igual que antes.
-                        case FighterActionEnum.saltar: return Input.Key(Keys.U);
-                        case FighterActionEnum.agacharse: return Input.Key(Keys.J);
+                        case FighterActionEnum.Jump: return Input.Key(Keys.U);
+                        case FighterActionEnum.Duck: return Input.Key(Keys.J);
 
-                        case FighterActionEnum.avanzar:
+                        case FighterActionEnum.Foward:
                             if (fighter.View.Flip != FlipEnum.None)
                             {
                                 return Input.Key(Keys.K);
@@ -659,7 +655,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                 return Input.Key(Keys.H);
                             }
 
-                        case FighterActionEnum.retroceder:
+                        case FighterActionEnum.Backward:
                             if (fighter.View.Flip != FlipEnum.None)
                             {
                                 return Input.Key(Keys.H);
@@ -668,14 +664,14 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                             {
                                 return Input.Key(Keys.K);
                             }
-                        case FighterActionEnum.golpear: return Input.Key(Keys.Q);
+                        case FighterActionEnum.Hit: return Input.Key(Keys.Q);
 
                     }
                     break;
                 case FighterControlEnum.Computer:
                     // Lo maneja el ordenador
                     // Halla la distancia entre los muniecos
-                    dist = Math.Abs(id_luchador1.Location.X - id_luchador2.Location.X);
+                    dist = Math.Abs(Fighter1.Location.X - Fighter2.Location.X);
                     switch (fighter.estado)
                     {
                         // Mira que se quiere comprobar
@@ -684,7 +680,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         case FighterStatusEnum._parado:
                             switch (action)
                             {
-                                case FighterActionEnum.saltar:
+                                case FighterActionEnum.Jump:
                                     // Si se esta a distancia correcta y...
                                     // da la suerte devuelve TRUE
                                     if (dist < 160 && Rand.Next(0, 35) == 0)
@@ -692,13 +688,13 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.agacharse: // Igual para las demas acciones
+                                case FighterActionEnum.Duck: // Igual para las demas acciones
                                     if (dist < 160 && Rand.Next(0, 25) == 0)
                                     {
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.avanzar:
+                                case FighterActionEnum.Foward:
                                     if (dist > 400)
                                     {
                                         if (Rand.Next(0, 4) == 0)
@@ -714,7 +710,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                         }
                                     }
                                     break;
-                                case FighterActionEnum.retroceder:
+                                case FighterActionEnum.Backward:
                                     if (dist < 180 && Rand.Next(0, 25) == 0)
                                     {
                                         return true;
@@ -724,7 +720,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.golpear:
+                                case FighterActionEnum.Hit:
                                     if (dist < 180 && dist > 60 && Rand.Next(0, 5) == 0)
                                     {
                                         return true;
@@ -735,13 +731,13 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         case FighterStatusEnum._avanzando:
                             switch (action)
                             {
-                                case FighterActionEnum.saltar:
+                                case FighterActionEnum.Jump:
                                     if (dist > 180 && dist < 300 && Rand.Next(0, 8) == 0)
                                     {
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.golpear:
+                                case FighterActionEnum.Hit:
                                     if (dist < 140)
                                     {
                                         return true;
@@ -752,13 +748,13 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         case FighterStatusEnum._retrocediendo:
                             switch (action)
                             {
-                                case FighterActionEnum.saltar:
+                                case FighterActionEnum.Jump:
                                     if (dist < 120 && Rand.Next(0, 6) == 0)
                                     {
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.golpear:
+                                case FighterActionEnum.Hit:
                                     if (dist > 70 && dist < 150)
                                     {
                                         return true;
@@ -769,13 +765,13 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         case FighterStatusEnum._agachado:
                             switch (action)
                             {
-                                case FighterActionEnum.agacharse:
+                                case FighterActionEnum.Duck:
                                     if (Rand.Next(0, 5) != 0)
                                     {
                                         return true;
                                     }
                                     break;
-                                case FighterActionEnum.golpear:
+                                case FighterActionEnum.Hit:
                                     if (dist < 180 && Rand.Next(0, 5) == 0)
                                     {
                                         return true;
@@ -786,7 +782,7 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                         case FighterStatusEnum._saltando:
                             switch (action)
                             {
-                                case FighterActionEnum.golpear:
+                                case FighterActionEnum.Hit:
                                     if (Rand.Next(0, 10) == 0)
                                     {
                                         return true;
@@ -866,13 +862,13 @@ namespace Kriptok.Games.Dgs.Fostiator.Scenes
                                     break;
                             }
                             enemy.animationStep = 0;               // Actualiza la animacion del que ha sido tocado
-                            enemy.energia -= damage / 2;      // Le quita energia
+                            enemy.Health -= damage / 2;      // Le quita energia
 #if DEBUG
-                            Trace.WriteLine($"{enemy.Id} : {enemy.energia}");
+                            Trace.WriteLine($"{enemy.Id} : {enemy.Health}");
 #endif
-                            if (enemy.energia <= 0)       // Si no le queda energia
+                            if (enemy.Health <= 0)       // Si no le queda energia
                             {
-                                enemy.energia = 0;        // Es que esta muerto
+                                enemy.Health = 0;        // Es que esta muerto
                                 enemy.estado = FighterStatusEnum._muerto;
                                 Global2.GameState = 2;
 

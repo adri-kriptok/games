@@ -1,11 +1,11 @@
 ﻿using Kriptok.Entities.Base;
-using Kriptok.Games.Dgs.Fostiator.Scenes;
+using Fostiator.Scenes;
 using Kriptok.Views;
 using Kriptok.Views.Sprites;
 using System;
 using System.Drawing;
 
-namespace Kriptok.Games.Div.Fostiator.Objects
+namespace Fostiator.Entities
 {
     /// <summary>    
     /// Barra de energía del jugador.
@@ -34,7 +34,7 @@ namespace Kriptok.Games.Div.Fostiator.Objects
                     Die();
                 }
 
-                var newEnergy = owner.energia;
+                var newEnergy = owner.Health;
                 if (newEnergy != energy)
                 {
                     energy = newEnergy;

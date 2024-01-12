@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kriptok.Games.Dgs.Fostiator.Entities
+namespace Fostiator.Entities
 {
     /// <summary>
     /// Distintas posiciones de los muniecos.
     /// </summary>
     public enum FighterActionEnum
     {
-        saltar = 0,
-        agacharse = 1,
-        avanzar = 2,
-        retroceder = 3,
-        golpear = 4
+        Jump = 0,
+        Duck = 1,
+        Foward = 2,
+        Backward = 3,
+        Hit = 4
     }
 }

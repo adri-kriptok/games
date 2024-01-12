@@ -1,8 +1,8 @@
 ﻿using Kriptok.Entities.Base;
-using Kriptok.Games.Fostiator;
+using Fostiator;
 using Kriptok.Views.Div;
 
-namespace Kriptok.Games.Div.Fostiator
+namespace Fostiator.Entities
 {
     /// <summary>    
     /// Pone un grafico alternativo al de la sangre para los modos sin ella
