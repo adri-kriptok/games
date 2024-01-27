@@ -145,20 +145,6 @@ namespace Pacoman.Scenes
                             h.Set(new IntroScene());
                         }
                         return;
-                    //case GameMessage.EatedBlinker:
-                    //    {
-                    //        // Audio.PlayWave(typeof(Paco).Assembly, "Assets.Sounds.EatBlinker.wav");
-                    //        //h.StopAllWaves();
-                    //        // h.StopMusic();
-                    //        h.PlayMusic(new PlayMusicOptions(typeof(Paco).Assembly, "Assets.Sounds.EatBlinker.wav")
-                    //        {
-                    //            RestartIfPlaying = true,
-                    //            // From = 0,
-                    //            Loop = false,      
-                    //            Volume = 1f /* Que suene más fuerte que una música. */
-                    //        });
-                    //        break;
-                    //    }
                     case GameMessage.BackToIntro:
                         {
                             h.StopMusic();
