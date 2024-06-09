@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Billiard")]
+[assembly: AssemblyTitle("Kriptok.JAEditor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kriptok Entretenimiento")]
-[assembly: AssemblyProduct("Billiard")]
-[assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2018")]
+[assembly: AssemblyProduct("Kriptok.JAEditor")]
+[assembly: AssemblyCopyright("Copyright © Kriptok Entretenimiento 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f2407c89-010f-45be-8ed6-9228c865ddec")]
+[assembly: Guid("4c84d3af-472d-44e9-9abd-f5da27f3b175")]
 
 // Version information for an assembly consists of the following four values:
 //
