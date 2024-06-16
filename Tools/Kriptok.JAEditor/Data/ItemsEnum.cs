@@ -33,8 +33,11 @@ namespace Kriptok.JAEditor.Data
         CombatKnife = 16,
         Mine = 17,
 
-        // SmokeBomb,
-        // EagleSmokeball,
+        // EnemyMine = 18, // BUG!!!
+        // FlaggedMine = 19, // BUG!!! 
+        // SmokeBomb = 20,
+        // EagleSmokeBall = 21,
+
         TearGas = 22 | Max5,
         EagleScreamer = 23,
         StunGrenade = 24 | Max5,
@@ -59,9 +62,11 @@ namespace Kriptok.JAEditor.Data
         // --------------------------------------------------------------
         SunGoggles = 39 | IsFaceItem | Max3,
         GasMask = 40 | IsFaceItem,
+        // UnusedFace = 41,
         // --------------------------------------------------------------
         Radio = 42 | IsEarsItem,
         ExtendedEar = 43 | IsEarsItem,
+        // UnusedRadio = 44,
         // --------------------------------------------------------------
         KevlarVest = 45 | IsBodyItem,
         TreatedKevlarVest = 46 | IsBodyItem,
@@ -78,10 +83,13 @@ namespace Kriptok.JAEditor.Data
         Ammo_45 = 55 | IsAmmo,
         Ammo_9mm = 56 | IsAmmo,
         Ammo_357 = 57 | IsAmmo,
+        // UnusedBullets_58 = 58 | IsAmmo,
         Ammo_12g = 59 | IsAmmo,
         // --------------------------------------------------------------
         Ammo_14m = 60 | IsAmmo,
         Ammo_16m = 61 | IsAmmo,
+        // UnusedBullets_62 = 62,
+        // UnusedBullets_63 = 63,
         Detonator = 64 | Max2,
         Canteen = 65 | Max5,
         SniperScope = 66 | Max2,
@@ -98,29 +106,66 @@ namespace Kriptok.JAEditor.Data
         Toolbox = 75,
         Locksmith = 76,
         MetalDetector = 77,
-        // GasDetector,
+        // GasDetector = 78,
         CaseBeer = 79,
-        // --------------------------------------------------------------
-        // WarningFlag,
+        // --------------------------------------------------------------        
+        // MineMarker = 80,
         PomillaFlower = 81,
-        // PlasticBag,
+        // PlasticBag = 82,
         GasCan = 83,
-        GasCanWithOil = 131,
-        GasCanWithRag = 132,
-        GasCanWithOilAndRag = 133,
         GlassJar = 84 | Max3,
         Rag = 85 | Max3,
         OilCan = 86,
+        // ---------------------------------------------------------------
+        Key = 87 | Max5,
+        PadlockKey = 88 | Max5,
+        Note01 = 89,
+        Note02 = 90,
         // --------------------------------------------------------------
         Silencer = 91 | Max3,
+        // --------------------------------------------------------------
+        BrendasBra = 92,
+        // --------------------------------------------------------------
         Rock = 93 | Max5,
-        //Antidote,
-        //Sapling,
-        //BrendasJournal,
+        // --------------------------------------------------------------
+        Antidote = 94,
+        Sapling = 95,
+        // --------------------------------------------------------------
+        Note03 = 96,
+        Note04 = 97,
+        Note05 = 98,
+        Note06 = 99,
+        Note07 = 100,
+        Note08 = 101,
+        Note09 = 102,
+        Note10 = 103,
+        Note11 = 104,
+        Note12_Brenda = 105,
+        Note13 = 106,
+
+        Note14 = 107,
+        Note15 = 108,
+        // Note_Empty = 109,
+        BrendasJournal = 110,
+        // Unused = 111,
+        // Unused = 112,
+        // Unused = 113,
+        // Unused = 114,
+        // ---------------------------------------------------------------
+        PieceOfPaper1 = 115 | Max3,
+        PieceOfPaper2 = 116,
+        // ---------------------------------------------------------------
+        FishRemains = 117,
         Crowbar = 118,
-        AlarmClock,
+        TumbStone = 119,
         // ---------------------------------------------------------------
         ClockBugDetector = 120,
+        // ---------------------------------------------------------------        
+        Micropurifier = 121,
+        BrendasBlouse = 122,
+        DestroyedSapling = 123,
+        DestroyedJournal = 124,
+        // ---------------------------------------------------------------        
         GlassJarWithOil = 125,
         GlassJarWithGas = 126,
         GlassJarWithRag = 127,
@@ -128,26 +173,12 @@ namespace Kriptok.JAEditor.Data
         GlassJarWithGasAndRag = 129,
         GlassJarWithOilAndRag = 130,
         // ---------------------------------------------------------------
-        Key = 87 | Max5,
-        PadlockKey = 88 | Max5,
-        Note01 = 89,
-        Note02 = 97,
-        Note03 = 98,
-        Note04 = 99,
-        Note05 = 100,
-        Note06 = 101,
-        Note07 = 102,
-        Note08 = 103,
-        Note09 = 104,
-        Note10 = 107,
-        Note11 = 108,
-        PieceOfPaper1 = 115 | Max3,
-        PieceOfPaper2 = 116,
-        PieceOfPaper3 = 135,
-        // ---------------------------------------------------------------
-        BrendasBra = 92,
-        BrendasBlouse = 122,
+        GasCanWithOil = 131,
+        GasCanWithRag = 132,
+        GasCanWithOilAndRag = 133,      
         BrendasLabCoat = 134,
+        // ---------------------------------------------------------------
+        PieceOfPaper3 = 135,
         // ---------------------------------------------------------------
         Max2             = 0b100000000,
         Max3             = 0b1000000000,
