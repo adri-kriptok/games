@@ -39,6 +39,8 @@ namespace Kriptok.JAEditor.Data
             Pocket5 = new ItemSlot(132, bytes, false);            
         }
 
+        public override string ToString() => $"[Merc] {Name}";        
+
         /// <summary>
         /// 6 caracteres.
         /// </summary>
@@ -53,7 +55,7 @@ namespace Kriptok.JAEditor.Data
                 }
                 else
                 {
-                    return string.Join(string.Empty, Encoding.ASCII.GetChars(n).Select(p => p.ToString())).Trim();
+                    return string.Join(string.Empty, Encoding.ASCII.GetChars(n).Select(p => p.ToString())).Split('\0').First().Trim();
                 }
             }
         }
