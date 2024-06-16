@@ -142,7 +142,6 @@ namespace Kriptok.JAEditor.Data
         Note11 = 104,
         Note12_Brenda = 105,
         Note13 = 106,
-
         Note14 = 107,
         Note15 = 108,
         // Note_Empty = 109,
