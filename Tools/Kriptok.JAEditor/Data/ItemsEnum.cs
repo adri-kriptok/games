@@ -242,6 +242,10 @@ namespace Kriptok.JAEditor.Data
             {
                 return 3;
             }
+            else if ((ie & ItemsEnum.Max4) == ItemsEnum.Max4)
+            {
+                return 4;
+            }
             else if ((ie & ItemsEnum.Max5) == ItemsEnum.Max5)
             {
                 return 5;
@@ -287,6 +291,7 @@ namespace Kriptok.JAEditor.Data
                 ItemsEnum.IsAmmo,
                 ItemsEnum.Max2,
                 ItemsEnum.Max3,
+                ItemsEnum.Max4,
                 ItemsEnum.Max5,
                 ItemsEnum.IsHelmet,
                 ItemsEnum.IsFaceItem,
