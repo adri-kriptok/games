@@ -25,10 +25,8 @@ namespace Kriptok.Intruder
              Engine.Start(new TheBeachMapScene(), p =>            
             //Engine.Start(new IntroScene(), p =>
             {
-#if DEBUG
-                p.FullScreen = false;
-#else
-                p.FullScreen = true;
+#if !DEBUG
+                p.FullScreen();
 #endif
                 //p.Mode = Core.WindowSizeEnum.W226x128;
                 p.Mode = Core.WindowSizeEnum.W340x192;
@@ -36,6 +34,7 @@ namespace Kriptok.Intruder
                 p.Title = "Intruder | Kriptok";
                 p.OpenMidiNotePlayer();
                 p.ExtractMidiPlayer();
+                p.CaptureMouse();
             });
         }
     }

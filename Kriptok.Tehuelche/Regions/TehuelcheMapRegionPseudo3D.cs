@@ -6,6 +6,7 @@ using Kriptok.Regions.Pseudo3D.Cameras;
 using Kriptok.Regions.Pseudo3D.VoxelSpace;
 using Kriptok.Regions.VoxelSpace;
 using Kriptok.Views.Base;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Kriptok.Tehuelche.Regions
         private PlayerCam camera;
 
         public TehuelcheMapRegionPseudo3D(Rectangle region, VoxelTerrain voxelTerrain, Resource background) 
-            : base(region, voxelTerrain, 0.008f)
+            : base(region, voxelTerrain, 0.008f, false)
         {
             this.background = new VoxelSpaceShearingBackground(this, background);
             this.PlayArea = GetTerrainBounds(voxelTerrain);
@@ -45,9 +46,9 @@ namespace Kriptok.Tehuelche.Regions
         /// </summary>        
         internal float GetCameraVerticalAngle() => camera.GetVerticalAngle();
 
-        protected override void Render(VoxelSpaceContext context, IList<IRenderizable> views)
+        protected override void Render(VoxelSpaceContext context, IEnumerable<IRenderizable> views)
         {
-            background.Render(context);
+            background.Render(context, Array.Empty<IRenderizable>());
 
             // ---------------------------------------------------------------------------------------
             // Filtro todo lo que esté cubierto por la neblina.

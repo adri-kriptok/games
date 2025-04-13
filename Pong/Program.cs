@@ -23,8 +23,7 @@ namespace Pong
         static void Main()
         {
             Engine.Start(new InitScene(), s =>
-            {
-                s.FullScreen = false;
+            {                
                 s.Mode = WindowSizeEnum.M320x200;
                 s.Title = "Pong | Kriptok";
             });

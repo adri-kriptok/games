@@ -8,7 +8,7 @@ namespace Galax
 {
     public class PlayerMisile : EntityBase<IndexedSpriteView>
     {
-        private IQuery<bool> outOfScreen;
+        private IQuery<bool?> outOfScreen;
 
         /// <summary>
         /// Bandera del misil.
@@ -35,7 +35,7 @@ namespace Galax
 
         protected override void OnFrame()
         {
-            if (outOfScreen.Result)
+            if (outOfScreen.Result.GetValueOrDefault(false))
             {
                 KillMisile();
                 return;

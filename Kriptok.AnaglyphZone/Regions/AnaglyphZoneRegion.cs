@@ -7,11 +7,11 @@ namespace Kriptok.AZ.Regions
 {
     internal class AnaglyphZoneRegion : Pseudo3DRegion
     {
-        private readonly Anaglyph3DHandler<AnaglyphZoneRegion, Pseudo3DRenderContext> anaglyph3D;
+        private readonly AnaglyphPseudo3DHandler<AnaglyphZoneRegion, Pseudo3DRenderContext> anaglyph3D;
 
         public AnaglyphZoneRegion(Rectangle rectangle) : base(rectangle)
         {
-            anaglyph3D = new Anaglyph3DHandler<AnaglyphZoneRegion, Pseudo3DRenderContext>(this);           
+            anaglyph3D = new AnaglyphPseudo3DHandler<AnaglyphZoneRegion, Pseudo3DRenderContext>(this);           
         }
 
         public float DistanceModifier 

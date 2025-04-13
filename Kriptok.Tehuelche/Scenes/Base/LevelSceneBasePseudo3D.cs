@@ -30,11 +30,7 @@ namespace Kriptok.Tehuelche.Scenes.Base
             var terrain = VoxelTerrain.Create(texture, GetTerrain(), mapScale);
 
             // Creo el entorno de juego.
-            var region = h.StartPseudo3D(new TehuelcheMapRegionPseudo3D(rect, terrain, GetBackground())
-            {
-                //TextureScale = 0.5f
-                TextureScale = mapScale
-            });
+            var region = h.StartPseudo3D(new TehuelcheMapRegionPseudo3D(rect, terrain, GetBackground()));
             region.Ambience.SetLightSource(1f, 4f, 2f);
 
             var player = h.Add(region, new PlayerHelicopterPseudo3D(region, 810f, 1560f));

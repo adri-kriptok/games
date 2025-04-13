@@ -80,7 +80,7 @@ namespace Galax.Entities
         /// <summary>
         /// Consulta para saber si salió de la pantalla.
         /// </summary>
-        private IQuery<bool> outOfScreen;
+        private IQuery<bool?> outOfScreen;
 
         /// <summary>
         /// Sonido de disparo.
@@ -129,7 +129,7 @@ namespace Galax.Entities
                 Location.Y += 2f;
 
                 // Comprueba si ha salido de pantalla
-                if (outOfScreen.Result)
+                if (outOfScreen.Result.GetValueOrDefault(false))
                 {
                     // Cambia las coordenadas a arriba                      
                     Location.Y = 0;

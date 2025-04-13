@@ -18,12 +18,11 @@ namespace PerdidoEnElTiempo
         [STAThread]
         static void Main()
         {
-            Config.Load<BaseConfiguration>().Mute();
 #if DEBUG
+            Config.Load<BaseConfiguration>().Mute();
 #endif
             Engine.Start(new InitScene(), s =>
             {
-                s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200To240;
                 s.Title = "Perdido en el Tiempo | Kriptok";
             });

@@ -21,7 +21,6 @@ namespace Fostiator
             Engine.Start(new IntroScene(), p =>
             {
                 p.Title = "DIV - Fostiator | Kriptok";
-                p.FullScreen = false;
                 p.Mode = WindowSizeEnum.M640x480;
                 p.TimerInterval = 16;
             });

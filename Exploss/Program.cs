@@ -22,10 +22,9 @@ namespace Exploss
 #endif
             Engine.Start(new MenuScene(), p =>
             {
-                p.Title = "Exploss | Kriptok";
-                p.FullScreen = false;
+                p.Title = "Exploss | Kriptok";                
                 p.Mode = WindowSizeEnum.M640x480;
-                p.TimerInterval = 50;
+                p.TimerInterval = 40;
             });
         }
     }

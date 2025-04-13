@@ -27,7 +27,7 @@ namespace Tutorials.Level1
         {
             Engine.Start(new InitScene(), s =>
             {
-                s.FullScreen = true;
+                s.FullScreen();
                 s.Mode = WindowSizeEnum.W680x384;
                 s.Title = "Tutor - 1 - 0 - Scroll | Kriptok";
             });

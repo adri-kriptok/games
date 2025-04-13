@@ -19,8 +19,7 @@ namespace Snake
         static void Main()
         {
             Engine.Start(new GameScene(), s =>
-            {
-                s.FullScreen = false;    
+            {                
                 s.Mode = WindowSizeEnum.M320x200;
                 s.Title = "Snake | Kriptok";
                 s.TimerInterval = 45;

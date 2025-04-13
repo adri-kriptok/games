@@ -19,7 +19,6 @@ namespace Noid
             Global.ResetValues();            
             Engine.Start(new DivIntroVideoScene<IntroScene>(false), s =>
             {
-                s.FullScreen = false;
                 s.Mode = WindowSizeEnum.M320x200;
                 s.Title = "Noid | Kriptok";
                 s.TimerInterval = 16;

@@ -13,7 +13,7 @@ namespace Galax
     public abstract class EnemyShotBase<T> : EnemyShotBase
         where T : ISpriteView
     {
-        private IQuery<bool> outOfScreen;
+        private IQuery<bool?> outOfScreen;
 
         protected EnemyShotBase(T view, float x, float y) : base(view, x, y)
         {
@@ -33,7 +33,7 @@ namespace Galax
 
         protected override void OnFrame()
         {
-            if (outOfScreen.Result)
+            if (outOfScreen.Result.GetValueOrDefault(false))
             {
                 Die();
                 return;

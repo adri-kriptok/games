@@ -27,11 +27,12 @@ namespace Tutorials.Level0
 #if DEBUG
             Config.Get<BaseConfiguration>().Mute();
 #endif
-            Engine.Start(new InitScene(), s =>
+            Engine.Start(new InitScene(), p =>
             {
-                s.FullScreen = true;
-                s.Mode = WindowSizeEnum.W800x450;
-                s.Title = "Tutor - 0 - 0 | Kriptok";
+                p.FullScreen();
+                p.Mode = WindowSizeEnum.W800x450;
+                p.Title = "Tutor - 0 - 0 | Kriptok";
+                p.CaptureMouse();
             });
         }
 
@@ -180,7 +181,7 @@ namespace Tutorials.Level0
             /// <summary>
             /// Utilizado para evaluar si el objeto se encuentra fuera de la pantalla.
             /// </summary>
-            private IQuery<bool> outOfScreen;
+            private IQuery<bool?> outOfScreen;
 
             public Asteroid(int x, int modX, float size)
                 : base(new IndexedSpriteView(DivResources.Image($"Tutorial.Asteroid0.png"), 5, 4))
@@ -208,7 +209,7 @@ namespace Tutorials.Level0
                     View.Rotate();
                 }
 
-                if (outOfScreen.Result)
+                if (outOfScreen.Result.GetValueOrDefault(false))
                 {
                     Die();
                     return;

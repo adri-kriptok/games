@@ -17,10 +17,9 @@ namespace Galax
         {            
             Engine.Start(new DivIntroVideoScene<TitleScene>(false), s =>
             {
-                s.Title = "Galax | Kriptok";
-                s.FullScreen = false;
+                s.Title = "Galax | Kriptok";                
                 s.Mode = WindowSizeEnum.M320x200;
-                s.TimerInterval = 26;
+                s.TimerInterval = 20;
                 s.ExtractMidiPlayer();
             });
         }

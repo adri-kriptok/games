@@ -12,7 +12,7 @@ namespace Asteroids.Entities
 {
     class Shot : EntityBase<RectangleView>
     {
-        private IQuery<bool> outOfScreen;
+        private IQuery<bool?> outOfScreen;
 
         public Shot(Vector3F location, float angle) : base(new RectangleView(16, 4, Color.White))
         {
@@ -31,7 +31,7 @@ namespace Asteroids.Entities
 
         protected override void OnFrame()
         {
-            if (outOfScreen.Result)
+            if (outOfScreen.Result.GetValueOrDefault(false))
             {
                 Die();
                 return;

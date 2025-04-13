@@ -17,13 +17,11 @@ namespace Kriptok.Games.Pacoman
 #if DEBUG
             Config.Load<BaseConfiguration>().Mute();
 #endif                  
-            Engine.Start(new DivIntroVideoScene<IntroScene>(false), p =>
-            // Engine.Start(new GameScene(0), p =>
+            Engine.Start(new DivIntroVideoScene<IntroScene>(false), p =>            
             {
-                p.Title = "Pacoman | Kriptok";
-                p.FullScreen = false;                
+                p.Title = "Pacoman | Kriptok";          
                 p.Mode = WindowSizeEnum.M640x480;
-                p.TimerInterval = 32;
+                p.TimerInterval = 24;
             });
         }
     }

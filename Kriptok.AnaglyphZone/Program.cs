@@ -26,7 +26,7 @@ namespace Kriptok.AZ
             // Engine.Start(new StarsScene(), s =>
             Engine.Start(new TitleScene(), s =>
             {
-                s.FullScreen = true;
+                s.FullScreen();
                 s.Mode = WindowSizeEnum.W340x192;
                 s.Title = "Anaglyph Zone | Kriptok";
             });

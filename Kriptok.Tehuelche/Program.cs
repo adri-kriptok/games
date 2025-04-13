@@ -21,12 +21,13 @@ namespace Kriptok.Tehuelche
             Config.Load<BaseConfiguration>().Mute();
 #endif
 
-            Engine.Start(new Map01Scene(), p =>
+            Engine.Start(new Map01SceneAx(), p =>
             {
-                p.FullScreen = true;
+                p.FullScreen();
                 p.Mode = WindowSizeEnum.W340x192;
                 p.Title = "Kriptok - Tehuelche";
                 p.OpenMidiNotePlayer();
+                p.CaptureMouse();
             });
         }        
     }

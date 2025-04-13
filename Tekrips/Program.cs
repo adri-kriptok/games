@@ -14,8 +14,7 @@ namespace Tekrips
         static void Main()
         {            
             Engine.Start(new BoardScene(), p => 
-            {
-                p.FullScreen = false;
+            {                
                 p.Mode = WindowSizeEnum.M320x200;
                 p.Title = "Tekrips | Kriptok";
 				p.ExtractMidiPlayer();

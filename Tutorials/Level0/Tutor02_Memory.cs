@@ -23,7 +23,7 @@ namespace Tutorials.Level0
         {
             Engine.Start(new InitScene(), s =>
             {
-                s.FullScreen = true;
+                s.FullScreen();
                 s.Mode = WindowSizeEnum.W800x450;
                 s.Title = "Tutor - 0 - 1 - Memory | Kriptok";
             });

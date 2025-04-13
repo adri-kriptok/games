@@ -31,7 +31,7 @@ namespace Tutorials.Level0
 #endif
             Engine.Start(new InitScene(), s => 
             {
-                s.FullScreen = true;                
+                s.FullScreen();                
                 s.Mode = WindowSizeEnum.W800x450;
                 s.Title = "Tutor - 0 - 1 | Kriptok";
             });
@@ -184,8 +184,7 @@ namespace Tutorials.Level0
                 {
                     Angle.Z -= rotation;
                 }
-
-                if (Input.Right())
+                else if (Input.Right())
                 {
                     Angle.Z += rotation;
                 }
@@ -193,14 +192,13 @@ namespace Tutorials.Level0
                 if (Input.Up())
                 {
                     Advance2D(5);
-                }
-
-                if (Input.Down())
+                } 
+                else if (Input.Down())
                 {
                     Advance2D(-5);
                 }
 
-                if (Input.Key(Keys.Space))
+                if (Input.Button03())
                 {
                     if (shootCounter <= 0)
                     {
@@ -225,7 +223,7 @@ namespace Tutorials.Level0
             /// <summary>
             /// Consulta para ver si salió de la pantalla.
             /// </summary>
-            private IQuery<bool> outOfScreen;
+            private IQuery<bool?> outOfScreen;
 
             public Shot(float x, float y, float angle) : base(new SpriteView(DivResources.Image("Tutorial.Shot.png")))
             {
@@ -246,7 +244,7 @@ namespace Tutorials.Level0
 
             protected override void OnFrame()
             {
-                if (outOfScreen.Result)
+                if (outOfScreen.Result.GetValueOrDefault(false))
                 {
                     Die();
                     return;

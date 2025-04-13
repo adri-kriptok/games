@@ -99,6 +99,11 @@ namespace Kriptok.Tehuelche.Entities.Enemies
                 {
                 }
 
+                protected override IShape Clone(VertexBase v0, VertexBase v1)
+                {
+                    throw new NotImplementedException();
+                }            
+
                 // public override bool IsVisible2D(IRenderContext2D context) => false;
                 // public override bool IsVisible3D(IRenderContext3D context) => false;
 

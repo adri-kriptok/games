@@ -4,6 +4,68 @@
         <name>Kriptok.Sdk.Tools</name>
     </assembly>
     <members>
+        <member name="F:Kriptok.Sdk.Tools.Controls.CustomizablePalette.mousePaletteCoords">
+            <summary>
+            Última coordenada del mouse leída.
+            </summary>
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Controls.CustomizablePalette.transparentFirstValue">
+            <summary>
+            Indica si debe forzar a que se transparente el primer valor.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Controls.CustomizablePalette.Palette">
+            <summary>
+            Paleta de colores generada.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Controls.CustomizablePalette.EightBitColor">
+            <summary>
+            Indica si se debe ignorar la transparencia para los colores.
+            </summary>
+        </member>
+        <member name="P:Kriptok.Sdk.Tools.Controls.CustomizablePalette.TransparentFirstValue">
+            <summary>
+            Indica si debe forzar a que se transparente el primer valor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Controls.CustomizablePalette.ClassicEvent">
+            <summary>
+            Típica definición de eventos.
+            </summary>        
+        </member>
+        <member name="E:Kriptok.Sdk.Tools.Controls.CustomizablePalette.Regenerate">
+            <summary>
+            Evento que se dispara al modificar la paleta para regenerar la imagen.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.CustomizablePalette.GetPalette">
+            <summary>
+            Obtiene la paleta para guardar o renderizar.
+            </summary>        
+        </member>
+        <member name="F:Kriptok.Sdk.Tools.Controls.CustomizablePalette.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.CustomizablePalette.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Controls.CustomizablePalette.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Kriptok.Sdk.Tools.Controls.CustomPictureBox">
+            <summary>
+            PictureBox con algunas modificaciones.
+            </summary>
+        </member>
         <member name="P:Kriptok.Sdk.Tools.Controls.Direction360.ValueInDegrees">
             <summary>
             Obtiene el valor en grados.
@@ -194,6 +256,11 @@
             Establece el título del formulario.
             </summary>        
         </member>
+        <member name="M:Kriptok.Sdk.Tools.Helpers.FormHelper.TryOpenFile(System.String[],System.String,System.Action{System.String},System.Action,System.Action)">
+            <summary>
+            Abre un archivo o despliega un cuadro de diálogo correspondiente dependiendo de los parámetros de la línea de comando.
+            </summary>
+        </member>
         <member name="T:Kriptok.Sdk.Tools.Helpers.KeyboardHelper">
             <summary>
             Esta clase es utilizada para descubrir las interacciones del usuario.
@@ -212,6 +279,11 @@
         <member name="M:Kriptok.Sdk.Tools.Helpers.ToolStripComboBoxHelper.GenerateComboBox``1(System.Windows.Forms.ToolStripComboBox,``0,System.Func{``0,System.String})">
             <summary>
             Genera un combo en base a un enumerado.
+            </summary>        
+        </member>
+        <member name="M:Kriptok.Sdk.Tools.Forms.ColorArgbForm.Bind(System.Windows.Forms.PictureBox,System.Func{System.Drawing.Color},System.Action{System.Drawing.Color})">
+            <summary>
+            Convierte un pictureBox común en un control de selección de color.
             </summary>        
         </member>
         <member name="F:Kriptok.Sdk.Tools.Forms.ColorArgbForm.components">

@@ -14,8 +14,7 @@ namespace Asteroids
         {
             Engine.Start(new TitleScene(), p =>
             {
-                p.Title = "Asteroids | Kriptok";
-                p.FullScreen = false;
+                p.Title = "Asteroids | Kriptok";                
                 p.Mode = WindowSizeEnum.M960x600;
                 p.TimerInterval = 25;
             });

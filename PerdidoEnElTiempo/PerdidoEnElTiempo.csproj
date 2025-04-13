@@ -34,10 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.23.11\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.24.4\lib\net462\Kriptok.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.23.9\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Sdk.0.24.3\lib\net462\Kriptok.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -173,9 +174,6 @@
     <EmbeddedResource Include="Assets\Images\choice3doors.png" />
     <EmbeddedResource Include="Assets\Images\choicespace.png" />
     <EmbeddedResource Include="Assets\Images\choiceship.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />

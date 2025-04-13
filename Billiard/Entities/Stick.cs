@@ -115,7 +115,7 @@ namespace Billiard.Entities
                         Global.Mode = GameModeEnum.Effect;
 
                         // Coge las coordenadas del raton y las guarda en variables propias
-                        mouse = Mouse.XY();                        
+                        mouse = new Point(Mouse.X, Mouse.Y);                        
                     }
                     else
                     {

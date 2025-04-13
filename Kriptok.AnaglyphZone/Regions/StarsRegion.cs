@@ -51,8 +51,8 @@ namespace Kriptok.AZ.Regions
             buffer.SetPixel(x+1, y+1, color);
         }
 
-        protected override void Render(Pseudo3DRenderContext context, IList<IRenderizable> views)
-        {        
+        protected override void Render(Pseudo3DRenderContext context, IEnumerable<IRenderizable> views)
+        {
             var camLocation = context.Camera.Location;
 
             var g = context.Graphics;

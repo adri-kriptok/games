@@ -25,7 +25,7 @@ namespace Kriptok.Games.Billar
 #endif
             {
                 p.Title = "Billar | Kriptok";
-                p.FullScreen = false;
+                p.CaptureMouse();
                 p.Mode = WindowSizeEnum.M640x480;
                 p.ExtractMidiPlayer();
                 p.TimerInterval = 15;
