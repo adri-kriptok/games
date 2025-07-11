@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Div;
+using Kriptok.Div.Extensions;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
@@ -14,6 +15,7 @@ using Kriptok.Views.Shapes;
 using Kriptok.Views.Shapes.Base;
 using Kriptok.Views.Shapes.Vertices;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 
@@ -22,8 +24,8 @@ namespace Kriptok.Tehuelche.Entities
     internal abstract class PlayerHelicopterBase : EntityBase
     {
         internal const float ThirdPersonAngleModifier = MathHelper.QuarterPIF * 1.625f;
-
-        private const float modifier = 0.25f;
+        
+        private const float inverseTimeDelta = 1f / 16f;
         
         private readonly ITerrain terrain;
 
@@ -73,27 +75,28 @@ namespace Kriptok.Tehuelche.Entities
             this.autoAim = Add(new PlayerAutoAim(this));
 
             h.SetCollision3DViewOBB();
-            this.shootSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.DISPARO9.WAV"));
+            this.shootSound = h.Audio.GetDivWaveHandler("Guerra.DISPARO9.WAV");
         }
 
-        protected override void OnFrame()
-        {
-            var timeDelta = Sys.TimeDelta;            
-            var fowardSpeed = timeDelta * 0.002f;
+        protected sealed override void OnFrame() => OnFrame(Sys.TimeDelta * inverseTimeDelta);        
+
+        protected virtual void OnFrame(float multiplier)
+        {            
+            var fowardSpeed = Sys.TimeDelta * 0.002f;
             var backSpeed = fowardSpeed * 0.5f;
             var strafeSpeed = fowardSpeed * 0.2f;
-            
-            CameraAngle -= (CameraAngle - Angle.Z) * modifier * modifier * 0.5f;
+
+            CameraAngle -= (CameraAngle - Angle.Z) * 0.03125f;// modifier * modifier * 0.5f;
 
             if (Input.Up())
-            {                
+            {
                 var cos = (float)Math.Cos(Angle.Z) * fowardSpeed;
                 var sin = (float)Math.Sin(Angle.Z) * fowardSpeed;
                 movementSpeed = movementSpeed.Plus(cos, sin);
                 Angle.Y += strafeSpeed;
             }
             else if (Input.Down())
-            {                
+            {
                 var cos = (float)Math.Cos(Angle.Z) * backSpeed;
                 var sin = (float)Math.Sin(Angle.Z) * backSpeed;
                 movementSpeed = movementSpeed.Minus(cos, sin);
@@ -108,7 +111,7 @@ namespace Kriptok.Tehuelche.Entities
                 Angle.X += strafeSpeed;
             }
             else if (Input.Left())
-            {                
+            {
                 var cos = (float)Math.Cos(Angle.Z - MathHelper.HalfPIF) * strafeSpeed;
                 var sin = (float)Math.Sin(Angle.Z - MathHelper.HalfPIF) * strafeSpeed;
                 movementSpeed = movementSpeed.Plus(cos, sin);
@@ -116,7 +119,7 @@ namespace Kriptok.Tehuelche.Entities
             }
 
             if (Mouse.RightPressed())
-            {                
+            {
                 shootSound.Play();
                 if (autoAim.LockedOnEnemy(out EnemyBase enemy))
                 {
@@ -131,8 +134,8 @@ namespace Kriptok.Tehuelche.Entities
             // ----------------------------------------------
             // Ajusto los valores.
             // ----------------------------------------------
-            movementSpeed.X = movementSpeed.X.Clamp(-2f, 2f);
-            movementSpeed.Y = movementSpeed.Y.Clamp(-2f, 2f);
+            // movementSpeed.X = movementSpeed.X.Clamp(-2f, 2f);
+            // movementSpeed.Y = movementSpeed.Y.Clamp(-2f, 2f);
             Angle.Y = Angle.Y.Clamp(-0.1f, 0.3f);
             Angle.X = Angle.X.Clamp(-0.1f, 0.1f);
 
@@ -150,9 +153,10 @@ namespace Kriptok.Tehuelche.Entities
             // ----------------------------------------------
             // Listo, ajusto todos los valores.
             // ----------------------------------------------
-            movementSpeed = movementSpeed.Scale(0.99f);
-            Angle.Y = Angle.Y * 0.99f;
-            Angle.X = Angle.X * 0.99f;
+            var adjustment = 0.99f;
+            movementSpeed = movementSpeed.Scale(adjustment);
+            Angle.Y = Angle.Y * adjustment;
+            Angle.X = Angle.X * adjustment;
             Location.X = Location.X.Clamp(playArea.MinX, playArea.MaxX);
             Location.Y = Location.Y.Clamp(playArea.MinY, playArea.MaxY);
         }

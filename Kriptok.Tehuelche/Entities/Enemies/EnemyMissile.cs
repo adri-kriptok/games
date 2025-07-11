@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Div;
+using Kriptok.Div.Extensions;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions.Queries;
@@ -42,8 +43,8 @@ namespace Kriptok.Tehuelche.Enemies
 
             playerCollision = h.GetCollision3D<PlayerHelicopterBase>();
 
-            explosi6Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
-            explosi8Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI8.WAV"));
+            explosi6Sound = h.Audio.GetDivWaveHandler("Guerra.EXPLOSI6.WAV");
+            explosi8Sound = h.Audio.GetDivWaveHandler("Guerra.EXPLOSI8.WAV");
         }
 
         protected override void OnFrame()

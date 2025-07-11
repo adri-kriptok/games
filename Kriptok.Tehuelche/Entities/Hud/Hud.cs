@@ -10,6 +10,8 @@ namespace Kriptok.Tehuelche.Entities.Hud
 {
     internal class Hud : EntityBase<SpriteView>
     {
+        public const int MinHeight = 64;
+
         public Hud() : base(new SpriteView(typeof(Hud).Assembly, "Assets.Images.Hud.Hud.png"))
         {
         }

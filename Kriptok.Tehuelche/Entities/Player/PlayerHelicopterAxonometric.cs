@@ -15,14 +15,14 @@ namespace Kriptok.Tehuelche.Entities
             this.region = region;
         }
 
-        protected override void OnFrame()
+        protected override void OnFrame(float deltaModifier)
         {     
             var ang = region.RotationWithMouseHorizontally(1) * 0.05f;
             
             Angle.X += ang * modifier;
             Angle.Z += ang * modifier;
 
-            base.OnFrame();
+            base.OnFrame(deltaModifier);
 
             region.CameraHeight = (region.CameraHeight + Location.Z) * 0.5f/*- 16f*/;
             region.Rotation = -CameraAngle - MathHelper.HalfPIF;

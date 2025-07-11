@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Div;
+using Kriptok.Div.Extensions;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Helpers;
@@ -30,7 +31,7 @@ namespace Kriptok.Tehuelche.Enemies
         {
             base.OnStart(h);
             h.SetCollision3DViewOBB();
-            dyingSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOS00.WAV"));
+            dyingSound = h.Audio.GetDivWaveHandler("Guerra.EXPLOS00.WAV");
         }
 
         protected override void OnFrame()

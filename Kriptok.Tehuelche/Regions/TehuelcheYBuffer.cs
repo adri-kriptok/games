@@ -2,8 +2,10 @@
 using Kriptok.Extensions;
 using Kriptok.Regions.Pseudo3D.VoxelSpace;
 using Kriptok.Regions.VoxelSpace;
+using Kriptok.Tehuelche.Entities.Hud;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +19,7 @@ namespace Kriptok.Tehuelche.Regions
 
         public TehuelcheYBuffer(Size size, int screenHeight) : base(size)
         {
-            resetValues = InitResetValues(screenHeight);
+            // resetValues = InitResetValues(screenHeight);
         }
 
         public override void Reset()
@@ -43,7 +45,7 @@ namespace Kriptok.Tehuelche.Regions
                     {
                         if (bmp.Sample(i, j) != tc)
                         {
-                            arr[i] = (ushort)(diff + j);
+                            arr[i] = (ushort)(diff + j + Hud.MinHeight);
                             break;
                         }
                     }

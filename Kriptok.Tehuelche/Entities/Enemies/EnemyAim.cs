@@ -53,8 +53,6 @@ namespace Kriptok.Tehuelche.Entities.Enemies
             {
                 Target = false;
             }
-
-            //Angle = owner.GetAimAngle();
         }
 
         private class EnemyAimView : GdipShapeView
@@ -66,23 +64,17 @@ namespace Kriptok.Tehuelche.Entities.Enemies
             }, shapes =>
             {
                 var verts = shapes.GetVertices().ToArray();
-
+#if DEBUG
                 // shapes.Add(Strokes.Red, 0, 1);
+#endif
                 shapes.Add(new InvisibleLine(verts[0], verts[1]));
-
-                //shapes.Add(new InvisibleFace(verts[0], verts[1], verts[2]));
-                //#if DEBUG || SHOWFPS
-                //                shapes.Add(transparenteMaterial, 0, 1, 2);
-                //                shapes.Add(transparenteMaterial, 0, 2, 1);
-                //#endif
             })
             {
-                // this.owner = owner;
             }
-
+#if !DEBUG && !SHOWFPS
             public override bool IsVisible2D(IRenderContext2D context) => false;
             public override bool IsVisible3D(IRenderContext3D context) => false;                            
-
+#endif
             public override float GetPriority(IProjector context)
             {
                 return base.GetPriority(context) - 100f;
@@ -102,7 +94,7 @@ namespace Kriptok.Tehuelche.Entities.Enemies
                 protected override IShape Clone(VertexBase v0, VertexBase v1)
                 {
                     throw new NotImplementedException();
-                }            
+                }
 
                 // public override bool IsVisible2D(IRenderContext2D context) => false;
                 // public override bool IsVisible3D(IRenderContext3D context) => false;

@@ -17,16 +17,19 @@ namespace Kriptok.Tehuelche
         [STAThread]
         static void Main()
         {
-#if DEBUG
+#if DEBUG || SHOWFPS
             Config.Load<BaseConfiguration>().Mute();
 #endif
-
-            Engine.Start(new Map01SceneAx(), p =>
+            Engine.Start(new Map00Scene(), p =>
+            //Engine.Start(new Map01Scene(), p =>
+            //Engine.Start(new Map02Scene(), p =>
             {
                 p.FullScreen();
                 p.Mode = WindowSizeEnum.W340x192;
-                p.Title = "Kriptok - Tehuelche";
+                //p.Mode = WindowSizeEnum.W384x216;
+                p.Title = "Tehuelche | Kriptok";
                 p.OpenMidiNotePlayer();
+                //p.TimerInterval = 30;
                 p.CaptureMouse();
             });
         }        

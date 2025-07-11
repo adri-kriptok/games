@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Div;
+using Kriptok.Div.Extensions;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities;
 using Kriptok.Entities.Base;
@@ -13,6 +14,7 @@ using Kriptok.Tehuelche.Scenes.Base;
 using Kriptok.Views.Shapes;
 using Kriptok.Views.Shapes.Vertices;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using static Kriptok.Tehuelche.Enemies.Tank;
 
@@ -22,7 +24,7 @@ namespace Kriptok.Tehuelche.Enemies
     {
         private readonly PlayerHelicopterBase player;
         private readonly ITerrain terrain;
-        private float hatchAngle = 0f;
+        private float relativeHatchAngle = 0f;
         private float cannonAngle = 0f;
         private EnemyAim aim;
 
@@ -52,25 +54,18 @@ namespace Kriptok.Tehuelche.Enemies
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
-            // Radius = 7;
-            // h.SetCollision3DSphere();
             h.SetCollision3DViewOBB();
             ResetHatchAngle();
 
             aim = Add(new EnemyAim(this));
-            explosi7Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI7.WAV"));
-            dyingSound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOS02.WAV"));
+            UpdateAim();
+            explosi7Sound = h.Audio.GetDivWaveHandler("Guerra.EXPLOSI7.WAV");
+            dyingSound = h.Audio.GetDivWaveHandler("Guerra.EXPLOS02.WAV");
         }
 
         protected override void OnFrame()
         {
             base.OnFrame();
-
-            // Me fijo si tengo al jugador en la mira.
-            if (aim.Target)
-            {
-
-            }
 
             var distToPlayer = GetDistance2D(player);
 
@@ -101,11 +96,10 @@ namespace Kriptok.Tehuelche.Enemies
             if ((shootCounter += Sys.TimeDelta) > 1000f)
             {
                 if (aim.Target)
-                {                    
+                {
                     explosi7Sound.Play();
 
-                    Add(new EnemyMissile(this, terrain, View.CannonTip.GetCalculatedLocation(),
-                        hatchAngle, cannonAngle));
+                    Add(new EnemyMissile(this, terrain, View.CannonTip.GetCalculatedLocation(), GetHatchAngle(), cannonAngle));
                     shootCounter = 0f;
                 }
             }
@@ -114,47 +108,44 @@ namespace Kriptok.Tehuelche.Enemies
             // Check de datos.
             // -----------------------------------------------------------------------
             Location.Z = (terrain.GetHeight(Location.XY()) + Location.Z) * 0.5f;
+            UpdateAim();
+        }
+
+        private void UpdateAim()
+        {
             aim.Location = View.GetAimLocation();
             aim.Angle = GetAimAngle();
         }
 
         private void PointToPlayer(float distToPlayer, float timeDelta)
         {
+            const float pointAtSpeed = 0.025f;
+            const float mPointAtSpeed = -pointAtSpeed;
+
             // --------------------------------------------------------------------------------
             // Rotación de la escotilla.
             // --------------------------------------------------------------------------------
             ResetHatchAngle();
 
-            var angleToPlayer = GetAngle2D(player);
-            var difference = (angleToPlayer - hatchAngle);
+            var difference = PolarVector.MinAngleDifference(relativeHatchAngle, GetAngle2D(player) - Angle.Z);
 
-            if (difference.Abs() > MathHelper.PIF)
+#if DEBUG
+            if (difference > Math.PI)
             {
-                if (angleToPlayer < hatchAngle)
-                {
-                    angleToPlayer += MathHelper.TwoPIF;
-                }
-                else // if (difference > hatchAngle)
-                {
-                    angleToPlayer -= MathHelper.TwoPIF;
-                }
-                difference = (angleToPlayer - hatchAngle);
-                hatchAngle = MathHelper.SimplifyAngle(hatchAngle);
+                Debugger.Break();
             }
+#endif
 
-            var pointAtSpeed = 0.025f;
-
-            hatchAngle = hatchAngle + (difference * 0.5f).Clamp(-pointAtSpeed, pointAtSpeed) * timeDelta;
-            View.Hatch.RotateZ(hatchAngle);
+            relativeHatchAngle = relativeHatchAngle + (difference * 0.5f).Clamp(mPointAtSpeed, pointAtSpeed) * timeDelta;
+            View.Hatch.RotateZ(relativeHatchAngle);
 
             // --------------------------------------------------------------------------------
             // Altura del cañón.
-            // --------------------------------------------------------------------------------
-            var cannonLocation = View.Cannon.GetCalculatedLocation();
-            var newCannonAngle = -MathHelper.GetAngleF(0f, 0f, distToPlayer, player.Location.Z - cannonLocation.Z);
+            // --------------------------------------------------------------------------------                        
+            var newCannonAngle = View.Cannon.GetAngleRotationToY(distToPlayer, player.Location.Z);
 
             cannonAngle = cannonAngle +
-                ((newCannonAngle - cannonAngle) * 0.5f).Clamp(-pointAtSpeed, pointAtSpeed) * timeDelta;
+                ((newCannonAngle - cannonAngle) * 0.5f).Clamp(mPointAtSpeed, pointAtSpeed) * timeDelta;
 
             View.Cannon.Reset();
             View.Cannon.RotateY(cannonAngle);
@@ -165,12 +156,11 @@ namespace Kriptok.Tehuelche.Enemies
             // Reseteo el ángulo de la escotilla a cero, para que se pueda
             // calcular todo independientemente del ángulo del tanque.
             View.Hatch.Reset();
-            View.Hatch.RotateZ(-Angle.Z);
         }
 
         internal override void OnDying()
         {
-            base.OnDying();            
+            base.OnDying();
             dyingSound.Play();
             Add(new PlayerMissileExplosion(Location, 2f));
         }
@@ -178,8 +168,10 @@ namespace Kriptok.Tehuelche.Enemies
         internal override Vector3F GetAimAngle() => new Vector3F()
         {
             Y = cannonAngle,
-            Z = hatchAngle //+ Angle.Z
+            Z = GetHatchAngle()
         };
+
+        private float GetHatchAngle() => relativeHatchAngle + Angle.Z;        
 
         public class TankView : HierarchicalShapeViewBase
         {
@@ -187,10 +179,10 @@ namespace Kriptok.Tehuelche.Enemies
             public HierarchicalBranchVertex Cannon;
             public HierarchicalLeafVertex CannonTip;
 
-            // private float cannonLength;
-
             protected override void Build(HierarchicalShapeIntializer builder)
             {
+                const string resourceName = "Assets.Models.Tank.mqo";
+
                 Hatch = builder.Central.AppendH(0f, 5f, 0f);
                 Cannon = Hatch.AppendH(0f, 0f, 2.5f);
 
@@ -199,11 +191,11 @@ namespace Kriptok.Tehuelche.Enemies
                 // builder.Add(Strokes.Red,  Hatch, Cannon);
                 // builder.Add(Strokes.Yellow, Cannon, cannonEnd);
 
-                var chatapilar = new MqoBuilder(Assembly, "Assets.Models.Tank.mqo", 0);
+                var chatapilar = new MqoBuilder(Assembly, resourceName, 0);
                 chatapilar.ScaleTransform(0.05f, 0.05f, 0.05f);
                 builder.AppendMesh(builder.Central, chatapilar);
 
-                var cannon = new MqoBuilder(Assembly, "Assets.Models.Tank.mqo", 1);
+                var cannon = new MqoBuilder(Assembly, resourceName, 1);
                 cannon.ScaleTransform(0.05f, 0.05f, 0.05f);
                 cannon.TranslateToCenter();
                 cannon.TranslateTo000(false, false, true);
@@ -213,7 +205,7 @@ namespace Kriptok.Tehuelche.Enemies
                 // tienen que salir los disparos.
                 CannonTip = Cannon.AppendP(0f, 0f, cannon.Vertices.Max(p => p.Location.Z));
 
-                var hatch = new MqoBuilder(Assembly, "Assets.Models.Tank.mqo", 2);
+                var hatch = new MqoBuilder(Assembly, resourceName, 2);
                 hatch.TranslateToCenter();
                 hatch.ScaleTransform(0.05f, 0.05f, 0.05f);
                 builder.AppendMesh(Hatch, hatch);

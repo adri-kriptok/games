@@ -1,4 +1,5 @@
 ﻿using Kriptok.Core;
+using Kriptok.Entities.Base;
 using Kriptok.Regions.Scroll;
 using Kriptok.Scenes;
 using Kriptok.Tehuelche.Entities;
@@ -34,5 +35,8 @@ namespace Kriptok.Tehuelche.Scenes.Base
         internal void Add(MinimapEnemy enemy) => h.Add(Minimap, enemy);
 
         internal void Add(EnemyBase enemy) => h.Add((RegionBase)Terrain, enemy);
+
+
+        internal void Add(EntityBase enemy) => h.Add((RegionBase)Terrain, enemy);
     }
 }

@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>true</UseVSHostingProcess>
@@ -96,9 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Common\Explosion.cs" />
+    <Compile Include="Entities\Enemies\Battleship.cs" />
     <Compile Include="Entities\Enemies\EnemyAim.cs" />
     <Compile Include="Entities\Enemies\EnemyBase.cs" />
     <Compile Include="Entities\Enemies\EnemyMissile.cs" />
+    <Compile Include="Testing\TestBattleshipCannon.cs" />
+    <Compile Include="Views\IRenderizableReflection.cs" />
     <Compile Include="Entities\Player\PlayerHelicopterAxonometric.cs" />
     <Compile Include="Entities\Player\PlayerHelicopterBase.cs" />
     <Compile Include="Entities\Player\PlayerMissileExplosion.cs" />
@@ -113,7 +116,7 @@
     <Compile Include="Regions\ITerrain.cs" />
     <Compile Include="Regions\PlayerTarget.cs" />
     <Compile Include="Regions\TehuelcheMapRegionAxonometric.cs" />
-    <Compile Include="Regions\TehuelcheMapRegionPseudo3D.cs" />
+    <Compile Include="Regions\TehuelcheMapRegionPseudo3DBase.cs" />
     <Compile Include="Regions\MinimapScrollRegion.cs" />
     <Compile Include="Regions\PlayerCam.cs" />
     <Compile Include="Entities\Player\PlayerHelicopterPseudo3D.cs" />
@@ -129,6 +132,11 @@
     <Compile Include="Scenes\Map01\Map01SceneAx.cs" />
     <Compile Include="Scenes\Map01\Map01Scene.cs" />
     <Compile Include="Scenes\Map02\Map02Scene.cs" />
+    <Compile Include="Testing\Axonometric.cs" />
+    <Compile Include="Testing\Glaciar.cs" />
+    <Compile Include="Testing\Grass.cs" />
+    <Compile Include="Testing\Lava.cs" />
+    <Compile Include="Testing\TestTank.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map00\Terrain.png" />
@@ -150,6 +158,21 @@
     <EmbeddedResource Include="Scenes\Map01\Texture.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\Clouds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\GrassTerrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\GrassTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\LavaTerrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Testing\Assets\LavaTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Assets\Images\Skies\Sky00.png" />
   </ItemGroup>
   <ItemGroup>
@@ -165,8 +188,13 @@
     <EmbeddedResource Include="Scenes\Map02\Texture.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Models\Battleship.mqo" />
+    <EmbeddedResource Include="Assets\Models\BattleshipCannon.mqo" />
     <None Include=".sdk\bin\lib-selector.bat" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scenes\Map00\Water.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".sdk\bin\Debug\Kriptok.dll" />

@@ -1,5 +1,6 @@
 ﻿using Kriptok.Audio;
 using Kriptok.Div;
+using Kriptok.Div.Extensions;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions.Queries;
 using Kriptok.Tehuelche.Entities.Enemies;
@@ -52,7 +53,7 @@ namespace Kriptok.Tehuelche.Entities
 
             enemyCollision = h.GetCollision3D<EnemyBase>();
 
-            this.explosi6Sound = h.Audio.GetWaveHandler(DivResources.Sound("Guerra.EXPLOSI6.WAV"));
+            this.explosi6Sound = h.Audio.GetDivWaveHandler("Guerra.EXPLOSI6.WAV");
         }
 
         protected override void OnFrame()

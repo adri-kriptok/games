@@ -1,6 +1,9 @@
 ﻿using Kriptok.Drawing.Algebra;
+using Kriptok.Extensions;
 using Kriptok.Helpers;
 using Kriptok.Tehuelche.Regions;
+using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Kriptok.Tehuelche.Entities
@@ -9,10 +12,10 @@ namespace Kriptok.Tehuelche.Entities
     {
         private const float modifier = 0.25f;
 
-        private readonly TehuelcheMapRegionPseudo3D terrain;
+        private readonly TehuelcheMapRegionPseudo3DBase terrain;
 
-        public PlayerHelicopterPseudo3D(TehuelcheMapRegionPseudo3D region, float x, float y) 
-            : base(region, x, y, 0.05f)
+        public PlayerHelicopterPseudo3D(TehuelcheMapRegionPseudo3DBase region, Vector2F location) 
+            : base(region, location.X, location.Y, 0.05f)
         {            
             this.terrain = region;
         }
@@ -22,19 +25,26 @@ namespace Kriptok.Tehuelche.Entities
         /// </summary>
         internal bool UserFirstPersonCamera { get; private set; } = true;
 
-        protected override void OnFrame()
-        {
+        //int counter = 0;
+        //float acum = 0f;
+
+        protected override void OnFrame(float multiplier)
+        {         
             if (Input.KeyPressed(Keys.Tab))
             {
                 UserFirstPersonCamera = !UserFirstPersonCamera;
             }
 
-            var ang = terrain.RotationWithMouseHorizontally(1) * 0.05f;
-            terrain.TiltAngle = -ang;
-            Angle.X += ang * modifier;
-            Angle.Z += ang * modifier;
+            var ang = terrain.RotationWithMouseHorizontally(Math.Max(1, multiplier.Round())) * 0.05f;
 
-            base.OnFrame();
+            terrain.TiltAngle = -ang;
+
+            var mod = modifier * multiplier;
+
+            Angle.X += ang * mod;
+            Angle.Z += ang * mod;
+
+            base.OnFrame(multiplier);
         }
 
         /// <summary>

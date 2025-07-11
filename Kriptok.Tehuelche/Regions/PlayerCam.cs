@@ -11,7 +11,7 @@ namespace Kriptok.Tehuelche.Regions
 {
     internal class PlayerCam : TargetPseudo3DCameraBase    
     {
-        private const float camModifierVert = 3.25f;
+        private const float camModifierVert = 4f;
         internal const float CamModifier = 60f;
         private const float thirdPersonCameraDistance = 17.5f;
         private const float inverseThirdPersonCameraDistance = 1f / thirdPersonCameraDistance;
