@@ -24,7 +24,7 @@ namespace Kriptok.Tehuelche
             //Engine.Start(new Map01Scene(), p =>
             //Engine.Start(new Map02Scene(), p =>
             {
-                p.FullScreen();
+                //p.FullScreen();
                 p.Mode = WindowSizeEnum.W340x192;
                 //p.Mode = WindowSizeEnum.W384x216;
                 p.Title = "Tehuelche | Kriptok";

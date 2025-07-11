@@ -100,7 +100,6 @@
     <Compile Include="Entities\Enemies\EnemyAim.cs" />
     <Compile Include="Entities\Enemies\EnemyBase.cs" />
     <Compile Include="Entities\Enemies\EnemyMissile.cs" />
-    <Compile Include="Testing\TestBattleshipCannon.cs" />
     <Compile Include="Views\IRenderizableReflection.cs" />
     <Compile Include="Entities\Player\PlayerHelicopterAxonometric.cs" />
     <Compile Include="Entities\Player\PlayerHelicopterBase.cs" />
@@ -132,11 +131,6 @@
     <Compile Include="Scenes\Map01\Map01SceneAx.cs" />
     <Compile Include="Scenes\Map01\Map01Scene.cs" />
     <Compile Include="Scenes\Map02\Map02Scene.cs" />
-    <Compile Include="Testing\Axonometric.cs" />
-    <Compile Include="Testing\Glaciar.cs" />
-    <Compile Include="Testing\Grass.cs" />
-    <Compile Include="Testing\Lava.cs" />
-    <Compile Include="Testing\TestTank.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map00\Terrain.png" />
@@ -156,21 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map01\Texture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\Clouds.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\GrassTerrain.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\GrassTexture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\LavaTerrain.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Testing\Assets\LavaTexture.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Images\Skies\Sky00.png" />
