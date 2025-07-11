@@ -22,6 +22,7 @@ build/
 **/obj/Debug/
 **/obj/Release/
 packages/
+!/packages/Kriptok**
 
 *.bak
 

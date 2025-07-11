@@ -52,7 +52,7 @@ namespace Kriptok.AZ.Regions
         }
 
         protected override void Render(Pseudo3DRenderContext context, IEnumerable<IRenderizable> views)
-        {
+        {        
             var camLocation = context.Camera.Location;
 
             var g = context.Graphics;

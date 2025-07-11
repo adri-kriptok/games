@@ -16,8 +16,7 @@ namespace Fostiator
         {
 #if DEBUG
             Config.Load<BaseConfiguration>().Mute();
-#endif
-            
+#endif            
             Engine.Start(new IntroScene(), p =>
             {
                 p.Title = "DIV - Fostiator | Kriptok";

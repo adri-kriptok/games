@@ -63,14 +63,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.24.4\lib\net462\Kriptok.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Kriptok.0.24.11\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Div.0.24.4\lib\net462\Kriptok.Div.dll</HintPath>
-    </Reference>
-    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.24.3\lib\net462\Kriptok.Sdk.dll</HintPath>
+      <HintPath>..\packages\Kriptok.Div.0.24.11\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -110,7 +106,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include=".sdk\bin\lib-selector.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,22 +163,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\ExplosionGenerator.exe" />
-    <Content Include=".sdk\tools\FlicPlayer.exe" />
-    <Content Include=".sdk\tools\Kriptok.dll" />
-    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\Kriptok.xml" />
-    <Content Include=".sdk\tools\MidiNoteTester.exe" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

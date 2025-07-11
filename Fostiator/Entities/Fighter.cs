@@ -864,7 +864,7 @@ namespace Fostiator.Entities
                             enemy.animationStep = 0;               // Actualiza la animacion del que ha sido tocado
                             enemy.Health -= damage / 2;      // Le quita energia
 #if DEBUG
-                            Trace.WriteLine($"{enemy.Id} : {enemy.Health}");
+                            Trace.WriteLine($"{enemy.GetId()} : {enemy.Health}");
 #endif
                             if (enemy.Health <= 0)       // Si no le queda energia
                             {

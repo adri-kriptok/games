@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Font xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FontName>Arial Rounded MT Bold</FontName>
+  <Size>39.75</Size>
+  <Style>Regular</Style>
+  <Color1>4294901760</Color1>
+  <Color2>4294967040</Color2>
+  <ShadowColor>4278190080</ShadowColor>
+  <ShadowX>2</ShadowX>
+  <ShadowY>2</ShadowY>
+  <BorderColor>4294967295</BorderColor>
+  <BorderWidth>2</BorderWidth>
+</Font>

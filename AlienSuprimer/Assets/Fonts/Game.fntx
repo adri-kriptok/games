@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Font xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FontName>Moire</FontName>
+  <Size>24</Size>
+  <Style>Bold</Style>
+  <Color1>4293918720</Color1>
+  <Color2>4294967040</Color2>
+  <ShadowColor>3061841920</ShadowColor>
+  <ShadowX>2</ShadowX>
+  <ShadowY>2</ShadowY>
+  <BorderColor>4286578688</BorderColor>
+  <BorderWidth>0</BorderWidth>
+</Font>

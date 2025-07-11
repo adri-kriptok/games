@@ -12,13 +12,11 @@ namespace Galax.Scenes
         protected override void Init(SceneInitializer init)
         {
             base.Init(init);
-
 #if DEBUG
             Config.Load<BaseConfiguration>().Mute();
 #else
             Config.Load<BaseConfiguration>();
 #endif
-
             Global.Score = 0;
             Global.Lives = 3;
             Global.Level = 1;

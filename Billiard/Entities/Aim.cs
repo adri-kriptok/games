@@ -27,7 +27,7 @@ namespace Billiard.Entities
 
         public Aim(Ball ball, float angle) : base(new EllipseView(28, 28, null, Strokes.Get(Color.CornflowerBlue)))
         {
-            this.ballId = ball.Id;
+            this.ballId = ball.GetId();
             this.angle = angle;            
             Location.Z = -200;
 
@@ -62,7 +62,7 @@ namespace Billiard.Entities
                 // Va comprobando si colisiona con cualquiera otra bola
                 foreach (var ball in Radius2DCollisions<Ball>())
                 {
-                    if (ball.Id != ballId)
+                    if (ball.GetId() != ballId)
                     {
                         impact = true;
                         break;

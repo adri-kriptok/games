@@ -22,7 +22,7 @@ namespace Kriptok.AZ.Entities.Enemies
 
         protected override void OnFrame()
         {
-            Location.Y += 1f;
+            Location.Y += 2f;
             if (counter++ >= 100)
             {
                 Die();

@@ -123,7 +123,7 @@ namespace Tutorials.Level0
         public class Shot : EntityBase<SpriteView>
         {
 #if DEBUG
-            private IQuery<bool> outOfScreen;
+            private IQuery<bool?> outOfScreen;
 #endif
 
             public Shot(float x) : base(new SpriteView(DivResources.Image("Tutorial.Shot.png")))
@@ -153,7 +153,7 @@ namespace Tutorials.Level0
                 // Es mucho más performante validar por coordenada Y.
                 // Pero utilizar la query de "salir de la pantalla" en modo debug, ayuda a testear el motor.
 #if DEBUG
-                if (outOfScreen.Result)
+                if (outOfScreen.Result.GetValueOrDefault(false))
 #else
                 if (Location.Y < 0)
 #endif

@@ -24,11 +24,11 @@ namespace Kriptok.AZ
 #endif
 
             // Engine.Start(new StarsScene(), s =>
-            Engine.Start(new TitleScene(), s =>
+            Engine.Start(new TitleScene(), p =>
             {
-                s.FullScreen();
-                s.Mode = WindowSizeEnum.W340x192;
-                s.Title = "Anaglyph Zone | Kriptok";
+                p.FullScreen();
+                p.Mode = WindowSizeEnum.W384x216;
+                p.Title = "Anaglyph Zone | Kriptok";
             });
         }
     }

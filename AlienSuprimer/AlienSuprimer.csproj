@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B250673F-8B6D-4B7A-832C-0F7E65EF0FDD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AlienSuprimer</RootNamespace>
+    <AssemblyName>AlienSuprimer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
+    <OutputPath>bin\Release-FPS\</OutputPath>
+    <DefineConstants>TRACE;SHOWFPS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.0.24.11\lib\net462\Kriptok.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Div.0.24.11\lib\net462\Kriptok.Div.dll</HintPath>
+    </Reference>
+    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kriptok.Sdk.0.24.11\lib\net462\Kriptok.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Enemies\Helicopters.cs" />
+    <Compile Include="Entities\Enemies\FinalEnemy.cs" />
+    <Compile Include="Entities\Enemies\Bunker.cs" />
+    <Compile Include="Entities\Enemies\Tank.cs" />
+    <Compile Include="Entities\Explosions.cs" />
+    <Compile Include="Entities\Hud.cs" />
+    <Compile Include="Entities\Impact.cs" />
+    <Compile Include="Entities\PlayerMissile.cs" />
+    <Compile Include="Entities\Robot.cs" />
+    <Compile Include="Entities\RobotLegs.cs" />
+    <Compile Include="Entities\RobotShot.cs" />
+    <Compile Include="Entities\Smoke.cs" />
+    <Compile Include="Regions\AlienScrollTarget.cs" />
+    <Compile Include="Scenes\BgSound\HelicopterSoundManager.cs" />
+    <Compile Include="Scenes\CreditsScene.cs" />
+    <Compile Include="Scenes\IntroScene.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\LevelMessageEnum.cs" />
+    <Compile Include="Scenes\MainMenuScene.cs" />
+    <Compile Include="Scenes\BgSound\TankSoundManager.cs" />
+    <Compile Include="Scenes\TestScene.cs" />
+    <Compile Include="Scenes\LevelScene.cs" />
+    <Compile Include="Regions\ScrollX2Region.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Assets\INTRO.FLI" />
+    <EmbeddedResource Include="Assets\Fonts\Menu.fntx" />
+    <EmbeddedResource Include="Assets\Fonts\Game.fntx" />
+    <EmbeddedResource Include="Assets\Fonts\GameOver.fntx" />
+    <EmbeddedResource Include="Assets\Fonts\Credits.fntx" />
+    <None Include=".sdk\bin\lib-selector.bat" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\MapTexture.png" />
+    <EmbeddedResource Include="Assets\Images\MapHardnesses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Credits.png" />
+    <EmbeddedResource Include="Assets\SUPRIMER.FPG.001.png" />
+    <EmbeddedResource Include="Assets\TitleScreen.png" />
+    <EmbeddedResource Include="Assets\TitleBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Sounds\ALIEN.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\BIP.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\ESCO_AT1.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\EXPLOSI8.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\EXPLOSIO.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\GOLPE20.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\LASER6.WAV" />
+    <EmbeddedResource Include="Assets\Sounds\MOTOR.WAV" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\RobotShot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Robot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Impact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Bunker0.png" />
+    <EmbeddedResource Include="Assets\Images\Bunker1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\BunkerShot0.png" />
+    <EmbeddedResource Include="Assets\Images\BunkerShot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\Explosion2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\TankCannon.png" />
+    <EmbeddedResource Include="Assets\Images\HudMissile.png" />
+    <EmbeddedResource Include="Assets\Images\Tank0.png" />
+    <EmbeddedResource Include="Assets\Images\Tank1.png" />
+    <EmbeddedResource Include="Assets\Images\Explosion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\TankShot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\EnergyBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\HelicopterHelix.png" />
+    <EmbeddedResource Include="Assets\Images\Helicopter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\HelicopterShot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\PlayerMissile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\RobotLegs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\FinalEnemyShot.png" />
+    <EmbeddedResource Include="Assets\Images\FinalEnemy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
+    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
+    <Content Include=".sdk\bin\Release\Kriptok.dll" />
+    <Content Include=".sdk\bin\Release\Kriptok.xml" />
+    <Content Include=".sdk\tools\ExplosionGenerator.exe" />
+    <Content Include=".sdk\tools\FlicPlayer.exe" />
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
