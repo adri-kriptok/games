@@ -121,7 +121,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include=".sdk\bin\lib-selector.bat" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -172,18 +171,6 @@
     <EmbeddedResource Include="Assets\Images\Menues\Adn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\ExplosionGenerator.exe" />
-    <Content Include=".sdk\tools\FlicPlayer.exe" />
-    <Content Include=".sdk\tools\Kriptok.dll" />
-    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\Kriptok.xml" />
-    <Content Include=".sdk\tools\MidiNoteTester.exe" />
     <Content Include="Assets\Libs\Kriptok.Sdk.RM.dll" />
     <Content Include="Assets\Libs\Kriptok.Sdk.RM.VX.dll" />
     <Content Include="Assets\Libs\Kriptok.Sdk.RM2000.dll" />

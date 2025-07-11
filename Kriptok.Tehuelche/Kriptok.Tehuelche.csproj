@@ -190,25 +190,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Models\Battleship.mqo" />
     <EmbeddedResource Include="Assets\Models\BattleshipCannon.mqo" />
-    <None Include=".sdk\bin\lib-selector.bat" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenes\Map00\Water.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".sdk\bin\Debug\Kriptok.dll" />
-    <Content Include=".sdk\bin\Debug\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release-FPS\Kriptok.xml" />
-    <Content Include=".sdk\bin\Release\Kriptok.dll" />
-    <Content Include=".sdk\bin\Release\Kriptok.xml" />
-    <Content Include=".sdk\tools\ExplosionGenerator.exe" />
-    <Content Include=".sdk\tools\FlicPlayer.exe" />
-    <Content Include=".sdk\tools\Kriptok.dll" />
-    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
-    <Content Include=".sdk\tools\Kriptok.xml" />
-    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
