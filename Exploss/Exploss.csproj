@@ -40,9 +40,6 @@
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Div.0.24.11\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
-    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.24.11\lib\net462\Kriptok.Sdk.dll</HintPath>
-    </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.24.11\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
@@ -101,6 +98,7 @@
     <EmbeddedResource Include="Assets\Levels\Map04.explossx" />
     <EmbeddedResource Include="Assets\Levels\Map09.explossx" />
     <EmbeddedResource Include="Assets\Levels\Map08.explossx" />
+    <None Include=".sdk\tools\TileMapEditor.exe.config" />
     <None Include="bin\Exploss.zip" />
     <None Include="DivManiaN01-47-49.pdf" />
     <None Include="packages.config" />
@@ -154,9 +152,19 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Images\Shot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.xml" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+    <Content Include=".sdk\tools\TileMapEditor.exe" />
+    <Content Include=".sdk\tools\TileMapEditor.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

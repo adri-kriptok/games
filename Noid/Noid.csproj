@@ -54,9 +54,6 @@
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Div.0.24.11\lib\net462\Kriptok.Div.dll</HintPath>
     </Reference>
-    <Reference Include="Kriptok.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.Sdk.0.24.11\lib\net462\Kriptok.Sdk.dll</HintPath>
-    </Reference>
     <Reference Include="Kriptok.Sdk.TileMapEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Sdk.TileMapEditor.0.24.11\lib\net462\Kriptok.Sdk.TileMapEditor.dll</HintPath>
     </Reference>
@@ -121,6 +118,7 @@
     <EmbeddedResource Include="Assets\Levels\Level10.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level11.noidx" />
     <EmbeddedResource Include="Assets\Levels\Level12.noidx" />
+    <None Include=".sdk\tools\TileMapEditor.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -176,12 +174,22 @@
     <EmbeddedResource Include="Assets\Sounds\Up.wav" />
     <EmbeddedResource Include="Assets\Sounds\BUIU.WAV" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".sdk\tools\Kriptok.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.dll" />
+    <Content Include=".sdk\tools\Kriptok.Sdk.Tools.xml" />
+    <Content Include=".sdk\tools\Kriptok.xml" />
+    <Content Include=".sdk\tools\MidiNoteTester.exe" />
+    <Content Include=".sdk\tools\TileMapEditor.exe" />
+    <Content Include=".sdk\tools\TileMapEditor.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

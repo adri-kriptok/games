@@ -47,12 +47,12 @@ namespace Kriptok.Intruder.Entities.Hud
             private readonly static Pen shadowPen = Pens.Black;
             private readonly static Brush shadowBrush = Brushes.Black;
 
-            internal const float Width = 50f;
-            internal const float Height = 6f;
-            internal const float Height1 = Height - 1f;
+            internal const float BaseWidth = 50f;
+            internal const float BaseHeight = 6f;
+            internal const float Height1 = BaseHeight - 1f;
 
-            private const float width3 = Width + 3f;
-            private const float height2 = Height + 2f;
+            private const float width3 = BaseWidth + 3f;
+            private const float height2 = BaseHeight + 2f;
 
 
             private readonly LinearGradientBrush brush;
@@ -90,7 +90,7 @@ namespace Kriptok.Intruder.Entities.Hud
                 // Sombra del contenedor.
                 context.Graphics.DrawRectangle(shadowPen, locationX1, locationY1, Rectangle.Width, Rectangle.Height);
 
-                var val = (owner.GetValue().Clamp(0f, 1f) * Width).Floor();
+                var val = (owner.GetValue().Clamp(0f, 1f) * BaseWidth).Floor();
 
                 context.Graphics.FillRectangle(shadowBrush, locationX3, locationY3, val, Height1);
 
@@ -106,7 +106,7 @@ namespace Kriptok.Intruder.Entities.Hud
         private readonly Player player;
         private static readonly LinearGradientBrush brush
             = new LinearGradientBrush(new RectangleF(0f, 0f,
-                BarView.Width, BarView.Height), ColorHelper.Green, Color.Green, 90f);
+                BarView.BaseWidth, BarView.BaseHeight), ColorHelper.Green, Color.Green, 90f);
 
         public EnergyBar(Player player) : base(brush)
         {
@@ -125,7 +125,7 @@ namespace Kriptok.Intruder.Entities.Hud
 
         private static readonly LinearGradientBrush brush
           = new LinearGradientBrush(new RectangleF(0f, 0f,
-              BarView.Width, BarView.Height), Color.Red, Color.DarkRed, 90f);
+              BarView.BaseWidth, BarView.BaseHeight), Color.Red, Color.DarkRed, 90f);
 
         public LifeBar(Player player) : base(brush)
         {
