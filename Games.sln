@@ -58,6 +58,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kriptok.Pokefight", "Kripto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokenkai", "Tokenkai\Tokenkai.csproj", "{13EA1990-8151-4BBE-B967-C44463506CC4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MsDos", "MsDos", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JazzJackRabbit", "JazzJackRabbit\JazzJackRabbit.csproj", "{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Code Analysis|Any CPU = Code Analysis|Any CPU
@@ -277,6 +281,16 @@ Global
 		{13EA1990-8151-4BBE-B967-C44463506CC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13EA1990-8151-4BBE-B967-C44463506CC4}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
 		{13EA1990-8151-4BBE-B967-C44463506CC4}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Code Analysis|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Code Analysis|Any CPU.Build.0 = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Debug-Performance|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Debug-Performance|Any CPU.Build.0 = Debug|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -298,6 +312,7 @@ Global
 		{B250673F-8B6D-4B7A-832C-0F7E65EF0FDD} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
 		{7B610982-06EE-4C5F-9E72-96A8CA604B5E} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
 		{13EA1990-8151-4BBE-B967-C44463506CC4} = {9D0FCEEC-00DB-4DDC-BB80-EB72BCD98DB5}
+		{6BFB9DC3-3E45-4B9B-B8C2-2D4601868EC2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E7D7099-E367-4117-9677-045165DB4B95}
