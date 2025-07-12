@@ -26,7 +26,7 @@ namespace Kriptok.Intruder
             //Engine.Start(new IntroScene(), p =>
             {
 #if !DEBUG
-                p.FullScreen();
+                //p.FullScreen();
 #endif
                 //p.Mode = Core.WindowSizeEnum.W226x128;
                 p.Mode = Core.WindowSizeEnum.W340x192;

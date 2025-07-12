@@ -8,8 +8,6 @@
 
 # Build results
 
-Kriptok.Sdk.Resources.Lib/
-
 [Dd]ebug/
 [Rr]elease/
 x64/
@@ -22,7 +20,7 @@ build/
 **/obj/Debug/
 **/obj/Release/
 packages/
-!/packages/Kriptok**
+!/packages/Kriptok.**
 
 *.bak
 

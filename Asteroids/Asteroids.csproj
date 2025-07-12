@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kriptok.0.24.11\lib\net462\Kriptok.dll</HintPath>
+      <HintPath>..\packages\Kriptok.0.24.18\lib\net462\Kriptok.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

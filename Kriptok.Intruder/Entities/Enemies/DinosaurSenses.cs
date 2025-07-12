@@ -161,7 +161,14 @@ namespace Kriptok.Intruder.Entities
             }
         }
 
+#if DEBUG
         /// <inheritdoc/>        
         public override bool IsAlive() => dinosaur.IsAlive();
+#else
+        /// <summary>
+        /// Indica si la entidad que escucha está aún viva.
+        /// </summary>        
+        internal new bool IsAlive() => dinosaur.IsAlive();
+#endif
     }
 }
