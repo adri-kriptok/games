@@ -58,6 +58,7 @@ namespace Kriptok.Games.BlastemUp.Player
         private ISingleCollisionQuery<Bonus> bonusCollision;
 		private ISoundHandler bonusSound;
 		private ISoundHandler laserSound;
+		private bool bLaserSound;
 
 		/// <summary>
 		/// Objeto utilizado para crear las letras en la barra de arriba.
@@ -179,6 +180,7 @@ namespace Kriptok.Games.BlastemUp.Player
 				else
 				{
 					disparando = false;      // Tecla soltada
+					bLaserSound = false;
 				}
 
 				// Mira si hay colision con el enemigo.
@@ -299,8 +301,11 @@ namespace Kriptok.Games.BlastemUp.Player
 
 		public void Shoot(int info)
 		{
-			// Realiza sonido			
-			laserSound.Play();
+			if (bLaserSound = !bLaserSound)
+			{
+				// Realiza sonido			
+				laserSound.Play();
+			}
 
 			// Comprueba el numero de balas
 			switch (info)
