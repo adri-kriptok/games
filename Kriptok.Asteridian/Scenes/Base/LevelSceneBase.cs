@@ -1,18 +1,22 @@
-﻿using Kriptok.Audio;
+﻿using Kriptok.Asteridian.Entities;
+using Kriptok.Asteridian.Entities.Enemies.Base;
+using Kriptok.Asteridian.Regions;
+using Kriptok.Audio;
 using Kriptok.Core;
 using Kriptok.Drawing.Algebra;
-using Kriptok.Regions.Scroll.Base;
+using Kriptok.Entities.Base;
+using Kriptok.Extensions;
 using Kriptok.Regions.Scroll;
+using Kriptok.Regions.Scroll.Base;
 using Kriptok.Scenes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Kriptok.Asteridian.Entities;
-using Kriptok.Extensions;
-using Kriptok.Asteridian.Regions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Kriptok.Asteridian.Scenes.Base
 {
@@ -22,8 +26,8 @@ namespace Kriptok.Asteridian.Scenes.Base
     public abstract class LevelSceneBase : SceneBase
     {
 
-        internal Player PlayerShip;
-        private ScrollTarget target;
+        internal PlayerShip PlayerShip;
+        private AsteridianScrollTarget target;
         protected float fSpeedInPixels = 0.5f;
         protected int iSpeedInPixels = 1;
         private LayeredScrollRegionBase scroll = null;
@@ -38,9 +42,10 @@ namespace Kriptok.Asteridian.Scenes.Base
 
         protected override void Run(SceneHandler h)
         {
+            GlobalConsts.ScreenSize = h.ScreenRegion.Size;
+
             var levelRegion = h.ScreenRegion.Rectangle;
             levelRegion.Width = levelRegion.Width * 13 / 16;
-            Init(levelRegion);
 
             scroll = StartScroll(h, levelRegion);
 
@@ -48,115 +53,130 @@ namespace Kriptok.Asteridian.Scenes.Base
 
             scroll.Ambience.SetLightSource(-0.33f, 0.66f, 1f);
 
-            OnStartingLevel();
+            PlayerShip = h.Add(scroll, new PlayerShip(this));
 
-            PlayerShip = h.Add(scroll, new Player(this));
-
-            this.target = new ScrollTarget(scroll.Rectangle, PlayerShip, ((IAsteridianScroll)scroll).GetLevelHeight());
+            this.target = new AsteridianScrollTarget(scroll.Rectangle, PlayerShip, ((IAsteridianScroll)scroll).GetLevelHeight());
             scroll.SetTarget(target);
+            PlayerShip.Camera = target;
+
+            var list = new LevelEventList();
+            GetEventList(list);
+
+            h.Add(scroll, new EventGenerator(list, target));
 
             h.FadeOn();
-            int i = 0;
-
+            
 #if DEBUG
             var start = DateTime.Now;
-            h.ResetTimer();
-#endif
-
-            h.While(() => target.KeepMoving(), () =>
-            {
-                OnLocation(i);
-                i += iSpeedInPixels;
-            });
+            //h.ResetTimer();
+#endif            
+            //var dt = 0f;
+            //h.While(() => target.KeepMoving(), () =>
+            //{
+            //    var dt2 = dt + Sys.TimeDelta;
+            //    OnLocation(new OnFrameHandler(h, dt, dt2));
+            //    dt = dt2;
+            //});
 
 #if DEBUG
             var end = DateTime.Now - start;
 #endif
-
-            //while (Location.Y < maxY)
-            //{
-            //    Location.X = PlayerShip.UpdateY().Round();
-
-            //    Frame();
-            //}
         }
+
+        /// <summary>
+        /// Permite agregar los elementos a la lista de eventos.
+        /// </summary>        
+        protected abstract void GetEventList(LevelEventList list);
 
         protected abstract LayeredScrollRegionBase StartScroll(SceneHandler h, Rectangle rectangle);
 
-        /// <summary>
-        /// Inicializa variables importantes para el desarrollo del juego.
-        /// </summary>        
-        private static void Init(Rectangle region)
-        {
-            GlobalConsts.ShotBase_MinX = -50f;
-            GlobalConsts.ShotBase_MinY = -50f;
-            GlobalConsts.ShotBase_MaxX = region.Size.Width + 100f;
-            GlobalConsts.ShotBase_MaxY = region.Size.Height + 50f;
-
-            GlobalConsts.PlayerShip_MinX = 100; // 50 + 50 + 100 - 25 - 25- 5;
-            GlobalConsts.PlayerShip_MaxX = 700; // (950f / 800f * Screen.Size.Width).Round() + 25 + 25 + 50;
-            GlobalConsts.PlayerShip_MidX = (GlobalConsts.PlayerShip_MaxX - GlobalConsts.PlayerShip_MinX) / 2 + GlobalConsts.PlayerShip_MinX;
-
-            //GlobalConsts.PlayerShip_MinModifierY = 50;
-            //GlobalConsts.PlayerShip_MaxModifierY = (550f / 450f * Screen.Size.Height).Round();
-
-            GlobalConsts.PlayerShip_MinModifierY = -(region.Size.Height / 2) + 35;
-            GlobalConsts.PlayerShip_MaxModifierY = (region.Size.Height / 2) - 30;
-
-            GlobalConsts.MouseMinX = (816 - region.Size.Width) / 2;
-        }
-
-        internal float GetLocationY() => target.GetLocation2D().Y;
+        internal float GetLocationY() => target.GetLocationY();
 
         protected virtual void OnStartingLevel()
         {
         }
 
-        protected abstract void OnLocation(int y);
-
-        protected void SetViewProperties(RegionBase region, int totalWidth, int totalHeight)
+        public class OnFrameHandler
         {
+            private SceneHandler h;
+            private readonly float timeIntervalFrom;
+            private readonly float timeIntervalTo;
 
-
-        }
-
-        //internal Vector2F CalculateLocation(ObjectBase obj)
-        //{
-        //    return scroll.CalculateScreenCoords(obj.Location.X, obj.Location.Y);
-        //}
-
-        private class ScrollTarget : IScrollTarget
-        {
-            private readonly float maxY;
-            private readonly float minY;
-
-            private readonly Player playerShip;
-            private Vector2F location;
-
-            public ScrollTarget(Rectangle region, Player playerShip, int levelHeight)
+            public OnFrameHandler(SceneHandler h, float dt, float dt2)
             {
-                this.playerShip = playerShip;
-
-                minY = region.Size.Height / 2;
-                maxY = levelHeight - region.Size.Height / 2;
-
-                location.X = region.Size.Width / 2;
-                location.Y = maxY;
+                this.h = h;
+                this.timeIntervalFrom = dt;
+                this.timeIntervalTo = dt2;
             }
 
-            public Vector2F GetLocation2D() => location;
+            public bool Contains(float dt) => (dt >= timeIntervalFrom && dt < timeIntervalTo);
+        }
 
-            internal bool KeepMoving()
+        public class LevelEventList
+        {
+            private readonly IList<LevelEvent> list = new List<LevelEvent>();
+
+            internal float Timer = 0f;
+
+            internal void Enqueue(float relativeTimer, EnemyBase entity)                
             {
-                var keepMoving = location.Y > minY;
+                list.Add(new LevelEvent(Timer, entity));
+                Timer += relativeTimer;
+            }
 
-                if (keepMoving)
+            internal Queue<LevelEvent> GetEvents()
+            {
+                return new Queue<LevelEvent>(list.OrderBy(p => p.Time));
+            }
+        }
+
+        internal class LevelEvent
+        {
+            public LevelEvent(float timer, EnemyBase entity)
+            {
+                this.Time = timer;
+                this.Entity = entity;
+            }
+
+            internal readonly float Time;            
+            internal readonly EnemyBase Entity;
+        }
+
+        private class EventGenerator : EntityBase
+        {
+            private readonly Queue<LevelEvent> queue;
+            private readonly AsteridianScrollTarget target;
+            private float counter = 0f;
+
+            public EventGenerator(LevelEventList list, AsteridianScrollTarget target)
+            {
+                this.queue = list.GetEvents();
+                this.target = target;
+            }
+
+            protected override void OnFrame()
+            {
+                counter += Sys.TimeDelta;
+                var next = queue.Peek();
+
+                while (next.Time < counter)
                 {
-                    location.Y -= 1f;
-                    location.X = playerShip.UpdateY().Round();
-                }
+                    queue.Pop(Execute);
+                    
+                    if (queue.Count == 0)
+                    {
+                        Die();
+                        return;
+                    }
 
-                return keepMoving;
+                    next = queue.Peek();
+                }
+            }
+
+            private void Execute(LevelEvent ev)
+            {
+                ev.Entity.StartOnTop(target.GetStartOnTopY());
+                Add(ev.Entity);
             }
         }
     }

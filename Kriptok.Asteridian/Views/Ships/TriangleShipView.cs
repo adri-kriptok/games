@@ -15,14 +15,16 @@ namespace Kriptok.Asteridian.Views.Ships
     {
         private static readonly PointF[] vertices = new PointF[]
         {
-            new PointF(  4f, 12f),
-            new PointF(  0f, 18f),
-            new PointF( 18f, 9f),
-            new PointF(  0f, 0f),
-            new PointF(  4f, 6f),
+            new PointF( 00f, 00f),
+                new PointF( 18f, 08f),
+                new PointF( 18f, 10f),
+                //new PointF( 18f, 11f),
+            new PointF( 00f, 18f),
+            new PointF( 04f, 12f),
+            new PointF( 04f, 06f),
         };
 
-        public TriangleShipView(Color color) : base(vertices, new FillConfig(Color.Black), Strokes.Get(color, 1f))
+        public TriangleShipView(Color line, Color fill) : base(vertices, new FillConfig(fill), Strokes.Get(line, 1f))
         {            
             //this.Rounded = true;
         }

@@ -19,32 +19,44 @@ namespace Kriptok.Asteridian.Regions
         public OpenSpaceScrollRegion(Rectangle region)
             : base(region, new StarsScrollLayer())
         {
-            AddLayer(new GdipBrushScrollLayer(GetBmp(Color.DarkCyan, 100), true, true)
-            {
-                ScaleX = 2f,
-                ScaleY = 2f,
 
-                ReScaleX = 0.5f,
-                ReScaleY = 0.5f,
+            AddLayer(new GdipBrushScrollLayer(GetBmp(Color.LightGray, 10), true, true)
+            {
+                ScaleX = 0.25f,
+                ScaleY = 0.25f,
+
+                ReScaleX = 4f,
+                ReScaleY = 4f,
+                Priority = -10000
+            });
+
+            //AddLayer(new GdipBrushScrollLayer(GetBmp(Color.DarkOrange, 25), true, true)
+            //{
+            //    ScaleX = 0.25f,
+            //    ScaleY = 0.25f,
+
+            //    ReScaleX = 4f,
+            //    ReScaleY = 4f,
+            //    Priority = -20000
+            //});
+
+            AddLayer(new GdipBrushScrollLayer(GetBmp(Color.DarkCyan, 50), true, true)
+            {
+                ScaleX = 0.5f,
+                ScaleY = 0.5f,
+
+                ReScaleX = 2f,
+                ReScaleY = 2f,
                 Priority = -20000
             });
 
-            AddLayer(new GdipBrushScrollLayer(GetBmp(Color.DarkBlue, 200), true, true)
-            {
-                ScaleX = 4f,
-                ScaleY = 4f,
-
-                ReScaleX = 0.25f,
-                ReScaleY = 0.25f,
-                Priority = - 10000
-            });
         }
 
         public override int GetLevelHeight() => GlobalConsts.MaxLevelSize;
 
         private class StarsScrollLayer : GdipBrushScrollLayer
         {
-            public StarsScrollLayer() : base(GetBmp(Color.Gray, 50), true, true)
+            public StarsScrollLayer() : base(GetBmp(Color.DarkBlue, 100), true, true)
             {
             }
 

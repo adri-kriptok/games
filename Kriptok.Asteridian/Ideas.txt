@@ -1,2 +1,5 @@
 Naves "boomerang", que se comporten como las minas del Blast'em up, aparezcan hagan un arco y desaparezcan.
-|
+
+Burbujas.
+
+
