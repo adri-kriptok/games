@@ -22,7 +22,6 @@ namespace Kriptok.Games.BlastemUp
 #else
             Config.Load<BaseConfiguration>();
 #endif            
-
             Engine.Start(new TitleScreenScene(), p =>
             {
                 p.Title = "DIV - Blast'em Up | Kriptok";

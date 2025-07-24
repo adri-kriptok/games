@@ -1,4 +1,5 @@
-﻿using Kriptok.Common;
+﻿using Kriptok.Asteridian.Scenes.Base;
+using Kriptok.Common;
 using Kriptok.Drawing;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Extensions;
@@ -16,8 +17,8 @@ namespace Kriptok.Asteridian.Regions
 {
     class OpenSpaceScrollRegion : Asteridian3DScrollBase
     {
-        public OpenSpaceScrollRegion(Rectangle region)
-            : base(region, new StarsScrollLayer())
+        public OpenSpaceScrollRegion(LevelSceneBase level, Rectangle region)
+            : base(level, region, new StarsScrollLayer())
         {
 
             AddLayer(new GdipBrushScrollLayer(GetBmp(Color.LightGray, 10), true, true)

@@ -1,4 +1,6 @@
 ﻿using Kriptok.Asteridian.Entities.Enemies.Base;
+using Kriptok.Asteridian.Helpers;
+using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
 using Kriptok.Helpers;
@@ -17,12 +19,29 @@ namespace Kriptok.Asteridian.Entities.Enemies
 {
     internal class Asteroid : EnemyBase
     {
+        private const float defaultHealth = 35f;
         private readonly float rot;
+        private readonly Vector2F speed;
+        private readonly int size;
 
-        public Asteroid(float x) : base(new AsteroidView())
+        public Asteroid(float x, float speed) : this(x, speed, 3)
         {
+        }
+
+        private Asteroid(float x, float speed, int size) : base(defaultHealth * 3f / size, new AsteroidView(size))
+        {
+            this.size = size;
             Location.X = x;
-            rot = Rand.NextF() * 0.1f;
+            rot = (Rand.NextF() - 0.5f) * 0.1f;
+            this.speed = new Vector2F(0f, speed);
+        }
+
+        private Asteroid(Vector3F location, Vector2F speed, float rotation, int size) : base(defaultHealth * 3f / size, new AsteroidView(size))
+        {
+            this.size = size;
+            Location = location;
+            rot = rotation;
+            this.speed = speed;
         }
 
         protected override void OnStart(EntityStartHandler h)
@@ -36,6 +55,8 @@ namespace Kriptok.Asteridian.Entities.Enemies
             base.OnFrame();
 
             Angle.Z += rot;
+            Location.X += speed.X * Sys.TimeDelta;
+            Location.Y += speed.Y * Sys.TimeDelta;
         }
 
         internal override void StartOnTop(float y)
@@ -45,9 +66,23 @@ namespace Kriptok.Asteridian.Entities.Enemies
             Location.Y = y + height * ((AsteroidView)View).Center.Y - height;
         }
 
+        protected override void OnDying()
+        {
+            base.OnDying();
+
+            if (size < 5)
+            {                
+                var mod = 0.15f / size;
+                var v0 = new Vector2F(speed.X - mod, speed.Y + 0.025f);
+                var v1 = new Vector2F(speed.X + mod, speed.Y + 0.025f);
+                Add(new Asteroid(Location, v0, rot * +2f, size + 1));
+                Add(new Asteroid(Location, v1, rot * -2f, size + 1));
+            }
+        }
+
         private class AsteroidView : PolygonView
         {            
-            public AsteroidView() : base(GetPoints(3), new FillConfig(Color.DarkSlateGray), Strokes.Get(Color.Gray))
+            public AsteroidView(int size) : base(GetPoints(size), new FillConfig(Color.DarkSlateGray), Strokes.Get(Color.Gray))
             {
                 Rounded = true;
             }
@@ -73,19 +108,7 @@ namespace Kriptok.Asteridian.Entities.Enemies
                     });
                 }
 
-                var arr = list.ToArray();
-                var avg = PointFHelper.GetRectangleF(arr);
-                
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    arr[i] = new PointF()
-                    {
-                        X = arr[i].X - avg.X,
-                        Y = arr[i].Y - avg.Y
-                    };
-                }
-
-                return arr;
+                return ViewHelper.Translate(list);                
             }
         }
     }

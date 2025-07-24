@@ -23,7 +23,6 @@ namespace Kriptok.AZ
             Config.Load<BaseConfiguration>().Mute();
 #endif
 
-            // Engine.Start(new StarsScene(), s =>
             Engine.Start(new TitleScene(), p =>
             {
                 p.FullScreen();

@@ -46,7 +46,7 @@ namespace Kriptok.Asteridian.Entities
 
         private CustomMouseLocationQuery mouseLocationQuery;
 
-        public PlayerShip(LevelSceneBase level) : base(new TriangleShipView(Color.Yellow, Color.DarkOrange))
+        public PlayerShip(LevelSceneBase level) : base(new TriangleShipView(Color.DarkOrange, Color.Goldenrod))
         {
             Location.Z = GlobalConsts.ZLevel.StandarAir;
 
@@ -68,17 +68,27 @@ namespace Kriptok.Asteridian.Entities
             //this.shadow = Add(new ShipShadow(this));
             this.mouseLocationQuery = new CustomMouseLocationQuery(h, Level);
 
-            this.FrontGun = Add(new FrontLaserGun0(this));
-            //this.FrontGun = Add(new FrontProtonGun9(this));
+            this.FrontGun = Add(new FrontProtonGun0(this));
         }
 
         protected override void OnFrame()
         {
             UpdateY();
 
-#if DEBUG
-            if (Input.Key(Keys.Add)) FrontGun = FrontGun.GetLevelUp();            
-            if (Input.Key(Keys.Subtract)) FrontGun = FrontGun.GetLevelDown();            
+#if DEBUG || SHOWFPS
+            if (Input.Key(Keys.D1))
+            {
+                FrontGun.Die();
+                FrontGun = Add(new FrontProtonGun0(this));
+            }
+            else if (Input.Key(Keys.D2))
+            {
+                FrontGun.Die();
+                FrontGun = Add(new FrontLaserGun0(this));
+            }
+
+            if (Input.KeyPressed(Keys.Add)) FrontGun = FrontGun.GetLevelUp();
+            if (Input.KeyPressed(Keys.Subtract)) FrontGun = FrontGun.GetLevelDown();
 #endif
         }
 
@@ -102,7 +112,7 @@ namespace Kriptok.Asteridian.Entities
 
         private void CheckForMovement()
         {
-            //Location = new Vector3F(mouseLocationQuery.GetLocation(), Location.Z);
+            Location = new Vector3F(mouseLocationQuery.GetLocation(), Location.Z);
 
             Speed = Math.Max(MinSpeed, Speed - Sys.TimeDelta * speedDecrement);
 
@@ -123,7 +133,7 @@ namespace Kriptok.Asteridian.Entities
             {
                 MoveLeft(acelerating, Math.Min(Location.X - mouseCoords.X, Speed));
             }
-          
+
             if (mouseCoords.Y < Location.Y)
             {
                 MoveUp(acelerating, Math.Min(Location.Y - mouseCoords.Y, Speed));
@@ -136,13 +146,13 @@ namespace Kriptok.Asteridian.Entities
 
         private void MoveRight(bool acelerating, float speed)
         {
-            Location.X += speed; 
+            Location.X += speed;
             Acelerate(acelerating);
         }
 
         private void MoveLeft(bool acelerating, float speed)
         {
-            Location.X -= speed; 
+            Location.X -= speed;
             Acelerate(acelerating);
         }
 
@@ -165,41 +175,43 @@ namespace Kriptok.Asteridian.Entities
                 Speed += Sys.TimeDelta * speedIncrement;
             }
         }
-    }
 
-    internal class CustomMouseLocationQuery : ItemBase, IMouseLocationQuery
-    {
-        private readonly LevelSceneBase level;
-        private readonly float halfScreenWidth;
-        private readonly float halfScreenHeight;
-        private readonly float minY;
-        private readonly float relY;
-
-        public CustomMouseLocationQuery(EntityStartHandler h, LevelSceneBase level)
+        private class CustomMouseLocationQuery : ItemBase, IMouseLocationQuery
         {
-            this.level = level;
-            this.halfScreenWidth = GlobalConsts.ScreenSize.Width * 0.5f;
-            this.halfScreenHeight = GlobalConsts.ScreenSize.Height * 0.5f;
+            private readonly LevelSceneBase level;
+            private readonly float halfScreenWidth;
+            private readonly float halfScreenHeight;
+            private readonly float minY;
+            private readonly float relY;
 
-            this.minY = halfScreenHeight + PlayerShip.VerticalMin;
-            this.relY = ((halfScreenHeight + PlayerShip.VerticalMax) - minY) / GlobalConsts.ScreenSize.Height;
-        }
+            public CustomMouseLocationQuery(EntityStartHandler h, LevelSceneBase level)
+            {
+                this.level = level;
+                this.halfScreenWidth = GlobalConsts.ScreenSize.Width * 0.5f;
+                this.halfScreenHeight = GlobalConsts.ScreenSize.Height * 0.5f;
 
-        public Vector2F Result
-        {
-            get
+                this.minY = halfScreenHeight + PlayerShip.VerticalMin;
+                this.relY = ((halfScreenHeight + PlayerShip.VerticalMax) - minY) / GlobalConsts.ScreenSize.Height;
+
+                // this.map = (IAsteridianScroll)h.Region;
+            }
+
+            public Vector2F Result
+            {
+                get
+                {
+                    var mouseY = (Mouse.Y * relY) + minY;
+
+                    return new Vector2F((Mouse.X - halfScreenWidth) * 0.8f, level.GetLocationY() + mouseY - halfScreenHeight);
+                }
+            }
+
+            internal Vector2F GetLocation()
             {
                 var mouseY = (Mouse.Y * relY) + minY;
 
                 return new Vector2F((Mouse.X - halfScreenWidth) * 0.8f, level.GetLocationY() + mouseY - halfScreenHeight);
             }
-        }
-
-        internal Vector2F GetLocation()
-        {
-            var mouseY = (Mouse.Y * relY) + minY;
-
-            return new Vector2F((Mouse.X - halfScreenWidth) * 0.8f, level.GetLocationY() + mouseY - halfScreenHeight);
         }
     }
 }

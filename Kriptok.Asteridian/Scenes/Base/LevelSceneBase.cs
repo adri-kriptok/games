@@ -20,12 +20,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Kriptok.Asteridian.Scenes.Base
 {
+    public interface IDifficultyManager
+    {
+        /// <summary>
+        /// Obtiene la energía base con la que empieza un enemigo, en base a la dificultad y la salud inicial. 
+        /// </summary>        
+        float CalculateEnemyHealth(float health);
+    }
+
     /// <summary>
     /// Esta clase representa los comportamientos básicos de todos los niveles del juego.
     /// </summary>
-    public abstract class LevelSceneBase : SceneBase
+    public abstract class LevelSceneBase : SceneBase, IDifficultyManager
     {
-
         internal PlayerShip PlayerShip;
         private AsteridianScrollTarget target;
         protected float fSpeedInPixels = 0.5f;
@@ -92,26 +99,12 @@ namespace Kriptok.Asteridian.Scenes.Base
 
         internal float GetLocationY() => target.GetLocationY();
 
-        protected virtual void OnStartingLevel()
-        {
-        }
+        /// <inheritdoc/>
+        public float CalculateEnemyHealth(float health) => health;
 
-        public class OnFrameHandler
-        {
-            private SceneHandler h;
-            private readonly float timeIntervalFrom;
-            private readonly float timeIntervalTo;
-
-            public OnFrameHandler(SceneHandler h, float dt, float dt2)
-            {
-                this.h = h;
-                this.timeIntervalFrom = dt;
-                this.timeIntervalTo = dt2;
-            }
-
-            public bool Contains(float dt) => (dt >= timeIntervalFrom && dt < timeIntervalTo);
-        }
-
+        /// <summary>
+        /// Lista de eventos a agregar en el nivel.
+        /// </summary>
         public class LevelEventList
         {
             private readonly IList<LevelEvent> list = new List<LevelEvent>();

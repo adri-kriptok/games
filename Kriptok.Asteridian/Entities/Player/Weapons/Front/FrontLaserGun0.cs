@@ -1,5 +1,6 @@
 ﻿using Kriptok.Asteridian.Entities.Enemies.Base;
 using Kriptok.Asteridian.Entities.Player.Weapons.Base;
+using Kriptok.Asteridian.Helpers;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Entities.Collisions;
@@ -37,20 +38,20 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            aim.Shoot(playerLocation);
+            aim.Shoot(playerLocation, Laser.GetColorPurple());
         }        
 
         protected override FrontWeaponBase LevelDown(PlayerShip player) => this;
 
-        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun9(player);        
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun1(player);        
     }
     
-    internal class FrontLaserGun9 : FrontWeaponBase
+    internal class FrontLaserGun1 : FrontWeaponBase
     {
         private readonly PlayerShip player;
         private LaserAim aim;
 
-        public FrontLaserGun9(PlayerShip player) : base(player, 45f)
+        public FrontLaserGun1(PlayerShip player) : base(player, 45f)
         {
             this.player = player;
         }
@@ -64,15 +65,311 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            aim.Shoot(playerLocation);
+            aim.Shoot(playerLocation, Laser.GetColorPurple());
         }
 
-        // protected override void Shoot(Vector3F playerLocation)
-        // {
-        //     Add(new Laser(3, new Vector3F(playerLocation.X, playerLocation.Y - Sys.TimeDelta, playerLocation.Z)));            
-        // }
-
         protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun0(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun2(player);
+    }
+
+    internal class FrontLaserGun2 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1;
+
+        private static readonly Vector2F v0 = new Vector2F(-3f, 0f);
+        private static readonly Vector2F v1 = new Vector2F(+3f, 0f);
+
+        public FrontLaserGun2(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 2, v0));
+            this.aim1 = Add(new LaserAim(player, 2, v1));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var col = Laser.GetColorPurple();
+            aim0.Shoot(playerLocation, col);
+            aim1.Shoot(playerLocation, col);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun1(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun3(player);
+    }
+
+    internal class FrontLaserGun3 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2;
+
+        private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(+0f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+5f, +2f);
+
+        public FrontLaserGun3(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 1, v0));
+            this.aim1 = Add(new LaserAim(player, 3, v1));
+            this.aim2 = Add(new LaserAim(player, 1, v2));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var col = Laser.GetColorCyan();
+            aim0.Shoot(playerLocation, col);
+            aim1.Shoot(playerLocation, Laser.GetColorPurple());
+            aim2.Shoot(playerLocation, col);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun2(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun4(player);
+    }
+
+    internal class FrontLaserGun4 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1;
+
+        private static readonly Vector2F v0 = new Vector2F(-4f, 0f);
+        private static readonly Vector2F v1 = new Vector2F(+4f, 0f);
+
+        public FrontLaserGun4(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 3, v0));
+            this.aim1 = Add(new LaserAim(player, 3, v1));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var col = Laser.GetColorPurple();
+            aim0.Shoot(playerLocation, col);
+            aim1.Shoot(playerLocation, col);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun3(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun5(player);
+    }
+
+    internal class FrontLaserGun5 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2;
+        
+        private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(+0f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+5f, +2f);
+
+        public FrontLaserGun5(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 3, v0));
+            this.aim1 = Add(new LaserAim(player, 1, v1));
+            this.aim2 = Add(new LaserAim(player, 3, v2));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var col = Laser.GetColorPurple();
+            aim0.Shoot(playerLocation, col);
+            aim1.Shoot(playerLocation, Laser.GetColorCyan());
+            aim2.Shoot(playerLocation, col);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun4(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun6(player);
+    }
+
+    internal class FrontLaserGun6 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2, aim3;
+
+        private static readonly Vector2F v0 = new Vector2F(-6f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(-2f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+3f, +0f);
+        private static readonly Vector2F v3 = new Vector2F(+7f, +2f);
+
+        public FrontLaserGun6(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 2, v0));
+            this.aim1 = Add(new LaserAim(player, 4, v1));
+            this.aim2 = Add(new LaserAim(player, 4, v2));
+            this.aim3 = Add(new LaserAim(player, 2, v3));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var purple = Laser.GetColorPurple();
+            var cyan = Laser.GetColorCyan();
+            aim0.Shoot(playerLocation, cyan);
+            aim1.Shoot(playerLocation, purple);
+            aim2.Shoot(playerLocation, purple);
+            aim3.Shoot(playerLocation, cyan);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun5(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun7(player);
+    }
+
+    internal class FrontLaserGun7 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2;
+
+        private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(+0f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+5f, +2f);
+
+        public FrontLaserGun7(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 4, v0));
+            this.aim1 = Add(new LaserAim(player, 4, v1));
+            this.aim2 = Add(new LaserAim(player, 4, v2));            
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var purple = Laser.GetColorPurple();
+            var cyan = Laser.GetColorCyan();
+            aim0.Shoot(playerLocation, purple);
+            aim1.Shoot(playerLocation, Laser.GetColorCyan());
+            aim2.Shoot(playerLocation, purple);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun6(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun8(player);
+    }
+
+    internal class FrontLaserGun8 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2, aim3, aim4;
+
+        private static readonly Vector2F v0 = new Vector2F(-8f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(-3f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+0f, +0f);
+        private static readonly Vector2F v3 = new Vector2F(+4f, +0f);
+        private static readonly Vector2F v4 = new Vector2F(+9f, +2f);
+
+        public FrontLaserGun8(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 4, v0));
+            this.aim1 = Add(new LaserAim(player, 4, v1));
+            this.aim4 = Add(new LaserAim(player, 1, v2));
+            this.aim2 = Add(new LaserAim(player, 4, v3));
+            this.aim3 = Add(new LaserAim(player, 4, v4));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var purple = Laser.GetColorPurple();
+            var cyan = Laser.GetColorCyan();
+            aim0.Shoot(playerLocation, purple);
+            aim1.Shoot(playerLocation, cyan);
+            aim4.Shoot(playerLocation, purple);
+            aim2.Shoot(playerLocation, cyan);
+            aim3.Shoot(playerLocation, purple);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun7(player);
+
+        protected override FrontWeaponBase LevelUp(PlayerShip player) => new FrontLaserGun9(player);
+    }
+
+    internal class FrontLaserGun9 : FrontWeaponBase
+    {
+        private readonly PlayerShip player;
+        private LaserAim aim0, aim1, aim2, aim3, aim4;
+
+        private static readonly Vector2F v0 = new Vector2F(-10f, +2f);
+        private static readonly Vector2F v1 = new Vector2F(-05f, +0f);
+        private static readonly Vector2F v2 = new Vector2F(+00f, +0f);
+        private static readonly Vector2F v3 = new Vector2F(+05f, +0f);
+        private static readonly Vector2F v4 = new Vector2F(+10f, +2f);
+
+        public FrontLaserGun9(PlayerShip player) : base(player, 45f)
+        {
+            this.player = player;
+        }
+
+        protected override void OnStart(EntityStartHandler h)
+        {
+            base.OnStart(h);
+
+            this.aim0 = Add(new LaserAim(player, 4, v0));
+            this.aim1 = Add(new LaserAim(player, 4, v1));
+            this.aim4 = Add(new LaserAim(player, 4, v2));
+            this.aim2 = Add(new LaserAim(player, 4, v3));
+            this.aim3 = Add(new LaserAim(player, 4, v4));
+        }
+
+        protected override void Shoot(Vector3F playerLocation)
+        {
+            var purple = Laser.GetColorPurple();
+            var cyan = Laser.GetColorCyan();
+            aim0.Shoot(playerLocation, purple);
+            aim1.Shoot(playerLocation, cyan);
+            aim4.Shoot(playerLocation, cyan);
+            aim2.Shoot(playerLocation, cyan);
+            aim3.Shoot(playerLocation, purple);
+        }
+
+        protected override FrontWeaponBase LevelDown(PlayerShip player) => new FrontLaserGun8(player);
 
         protected override FrontWeaponBase LevelUp(PlayerShip player) => this;
     }
@@ -81,10 +378,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
     {
         private readonly PlayerShip owner;
         private readonly int width;
+        private readonly Vector2F location;
         private IMultipleCollisionQuery<EnemyBase> collisionQuery;
         private float? collisionY;
 
+
         public LaserAim(PlayerShip owner, int width)
+            : this(owner, width, Vector2F.Empty)
+        {
+        }
+
+        public LaserAim(PlayerShip owner, int width, Vector2F location)
             : base(new RectangleView(width, GlobalConsts.ScreenSize.Height, Color.Transparent)
             {
                 Center = new PointF(0.5f, 1f)
@@ -92,6 +396,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         {
             this.owner = owner;
             this.width = width;
+            this.location = location;
         }
 
         /// <inheritdoc/>
@@ -105,7 +410,8 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         /// <inheritdoc/>
         protected override void OnFrame()
         {
-            Location = owner.Location;
+            // Location = owner.Location.PlusXY(locationX, -Sys.TimeDelta, 0f);
+
             if (collisionQuery.ClosestCollision(out EnemyBase closer))
             {
                 collisionY = closer.Location.Y;
@@ -117,39 +423,46 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         }
 
         /// <inheritdoc/>
-        public override Vector3F GetRenderLocation() => owner.GetRenderLocation();
+        public override Vector3F GetRenderLocation() => owner.GetRenderLocation().PlusXY(location);
 
         /// <inheritdoc/>
         public override bool IsAlive() => base.IsAlive() && owner.IsAlive();
 
-        internal void Shoot(Vector3F playerLocation)
+        internal void Shoot(Vector3F playerLocation, Color color)
         {
-            var locationY = playerLocation.Y - Sys.TimeDelta;
+            var locationY = playerLocation.Y + location.Y - Sys.TimeDelta;
+            var locX = playerLocation.X + location.X;
+
             if (collisionY.HasValue(out float val))
             {
                 var height = (locationY - val).Round();
                 if (height > 0)
                 {
-                    Add(new Laser(width, new Vector3F(playerLocation.X, locationY, playerLocation.Z), height));
+                    Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), height, color));
                 }
                 else
                 {
-                    Add(new Laser(width, new Vector3F(playerLocation.X, locationY, playerLocation.Z)));
+                    Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), color));
                 }
             }
             else
             {
-                Add(new Laser(width, new Vector3F(playerLocation.X, locationY, playerLocation.Z)));
+                Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), color));
             }
         }
     }
 
-    internal class Laser : EntityBase<RectangleView>
+    /// <summary>
+    /// Laser no hereda de <see cref="PlayerShotBase"/> ya que no necesita verificar si "salió de la pantalla"
+    /// para saber cuándo morir.
+    /// </summary>
+    internal class Laser : PlayerShotBaseBase
     {
+        private readonly float damage;
         private bool shown = false;
 
-        public Laser(int width, Vector3F location)
-            : base(new RectangleView(width, GlobalConsts.ScreenSize.Height, GetColor())
+        public Laser(int width, Vector3F location, Color color)
+            : base(new RectangleView(width, GlobalConsts.ScreenSize.Height, color)
             {
                 Center = new PointF(0.5f, 1f)
             })
@@ -157,29 +470,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
             this.Location = location;            
         }
 
-        public Laser(int width, Vector3F location, int height)
-            : base(new RectangleView(width, height, GetColor())
+        public Laser(int width, Vector3F location, int height, Color color)
+            : base(new RectangleView(width, height, color)
             {
                 Center = new PointF(0.5f, 1f)
             })
         {
+            this.damage = width;
             this.Location = location;
         }
 
-        private static Color GetColor() 
-        {
-            var rnd = Rand.Next(105, 255);
-            return Color.FromArgb(rnd, 0, rnd);
-        }
-
-        protected override void OnStart(EntityStartHandler h)
-        {
-            base.OnStart(h);
-            
-            h.CollisionType = Collision2DTypeEnum.Auto;
-        }
-
-        protected override void OnFrame()
+        protected override void Frame()
         {
             if (shown)
             {
@@ -188,6 +489,20 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
             }
 
             shown = true;
+        }
+
+        protected override float GetDamage() => damage;
+
+        internal static Color GetColorPurple()
+        {
+            var rnd = Rand.Next(200, 255);
+            return Color.FromArgb(rnd, 0, rnd);
+        }
+
+        internal static Color GetColorCyan()
+        {
+            var rnd = Rand.Next(200, 255);
+            return Color.FromArgb(0, rnd, rnd);
         }
     }
 }

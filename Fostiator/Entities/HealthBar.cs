@@ -22,7 +22,7 @@ namespace Fostiator.Entities
             this.update = update;
             Location.X = x;
             Location.Y = y;
-            Location.Z = 10;   // Lo pone por debajo de otros graficos
+            Location.Z = 9;   // Lo pone por debajo de otros graficos
         }
 
         protected override void OnFrame()
@@ -32,6 +32,7 @@ namespace Fostiator.Entities
                 if (!owner.IsAlive())
                 {
                     Die();
+                    return;
                 }
 
                 var newEnergy = owner.Health;

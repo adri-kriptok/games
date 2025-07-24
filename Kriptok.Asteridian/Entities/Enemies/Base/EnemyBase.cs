@@ -1,4 +1,6 @@
-﻿using Kriptok.Entities.Base;
+﻿using Kriptok.Asteridian.Regions;
+using Kriptok.Asteridian.Scenes.Base;
+using Kriptok.Entities.Base;
 using Kriptok.Entities.Queries.Base;
 using Kriptok.Extensions;
 using Kriptok.Views.Base;
@@ -13,17 +15,30 @@ namespace Kriptok.Asteridian.Entities.Enemies.Base
 {
     internal abstract class EnemyBase : EntityBase
     {
+        /// <summary>
+        /// Indica si salió de la pantalla.
+        /// </summary>
         private IQuery<bool?> outOfScreenQuery;
+
+        /// <summary>
+        /// Indica si entró a la pantalla.
+        /// </summary>
         private bool isOnScreen = false;
 
-        protected EnemyBase()
-        {
-            Location.Z = GlobalConsts.ZLevel.EnemyInAir;
-        }
+        /// <summary>
+        /// Vida actual del enemigo.
+        /// </summary>
+        private float health = 0f;
 
-        public EnemyBase(IView view) : base(view)
+        // protected EnemyBase()
+        // {
+        //     Location.Z = GlobalConsts.ZLevel.EnemyInAir;
+        // }
+
+        public EnemyBase(float baseHealth, IView view) : base(view)
         {
             Location.Z = GlobalConsts.ZLevel.EnemyInAir;
+            this.health = baseHealth;
         }
 
         protected override void OnStart(EntityStartHandler h)
@@ -31,6 +46,7 @@ namespace Kriptok.Asteridian.Entities.Enemies.Base
             base.OnStart(h);
 
             this.outOfScreenQuery = h.GetOutOfScreenQuery();
+            health = ((IAsteridianScroll)h.Region).CalculateEnemyHealth(health);
         }
 
         protected override void OnFrame()
@@ -47,6 +63,20 @@ namespace Kriptok.Asteridian.Entities.Enemies.Base
                 }
                 isOnScreen = !outOfScreenQuery.Result.Value;
             }
+            
+            if (health < 0f)
+            {
+                OnDying();
+                Die();
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Método a ejecutar cuando el objeto muere.
+        /// </summary>
+        protected virtual void OnDying()
+        {            
         }
 
         internal virtual void StartOnTop(float y)
@@ -57,6 +87,14 @@ namespace Kriptok.Asteridian.Entities.Enemies.Base
   
                 Location.Y = y + height * rect.Center.Y - height;
             }            
+        }
+
+        /// <summary>
+        /// Recibe daño directo del arma.
+        /// </summary>        
+        internal virtual void Hit(float damage)
+        {
+            health -= damage;
         }
     }
 }

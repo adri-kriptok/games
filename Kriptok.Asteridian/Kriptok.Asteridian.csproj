@@ -32,6 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-FPS|AnyCPU'">
+    <OutputPath>bin\Release-FPS\</OutputPath>
+    <DefineConstants>TRACE;SHOWFPS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.0.24.22\lib\net462\Kriptok.dll</HintPath>
@@ -58,9 +68,11 @@
     <Compile Include="Entities\Enemies\Asteroid.cs" />
     <Compile Include="Entities\Enemies\Base\EnemyBase.cs" />
     <Compile Include="Entities\Player\PlayerShip.cs" />
+    <Compile Include="Entities\Player\PlayerShotBase.cs" />
     <Compile Include="Entities\Player\Weapons\Base\FrontWeaponBase.cs" />
     <Compile Include="Entities\Player\Weapons\Front\FrontLaserGun0.cs" />
     <Compile Include="Entities\Player\Weapons\Front\FrontProtonGun0.cs" />
+    <Compile Include="Helpers\ViewHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions\Asteridian3DScrollBase.cs" />
@@ -106,4 +118,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>..\..\.sdk\bin\lib-selector.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

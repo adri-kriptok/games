@@ -21,15 +21,15 @@ namespace Kriptok.Asteridian.Scenes
 
         protected override LayeredScrollRegionBase StartScroll(SceneHandler h, Rectangle rectangle)
         {
-            return h.StartScroll(new OpenSpaceScrollRegion(rectangle));
+            return h.StartScroll(new OpenSpaceScrollRegion(this, rectangle));
         }
 
         protected override void GetEventList(LevelEventList list)
         {
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 300; i++)
             {
                 int x = ((i * 1366)) % 321 - 153;
-                list.Enqueue(500, new Asteroid(x));
+                list.Enqueue(500, new Asteroid(x, ((float)Math.Abs(Math.Cos(i))) * 0.0625f));
             }
         }
     }

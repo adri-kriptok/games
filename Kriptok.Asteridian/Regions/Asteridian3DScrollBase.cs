@@ -1,4 +1,5 @@
 ﻿using Kriptok.Asteridian.Entities;
+using Kriptok.Asteridian.Scenes.Base;
 using Kriptok.Drawing.Algebra;
 using Kriptok.Entities.Base;
 using Kriptok.Regions.Context.Base;
@@ -13,17 +14,23 @@ using System.Threading.Tasks;
 
 namespace Kriptok.Asteridian.Regions
 {
-    public interface IAsteridianScroll
+    public interface IAsteridianScroll : IDifficultyManager
     {
         int GetLevelHeight();
     }
 
     public abstract class Asteridian3DScrollBase : FixedScroll3DRegion, IAsteridianScroll
     {
-        public Asteridian3DScrollBase(Rectangle region, ScrollLayerBase mainLayer) 
+        private readonly LevelSceneBase level;
+
+        public Asteridian3DScrollBase(LevelSceneBase level, Rectangle region, ScrollLayerBase mainLayer) 
             : base(region, mainLayer)
         {
+            this.level = level;
         }
+
+        /// <inheritdoc/>
+        public float CalculateEnemyHealth(float health) => level.CalculateEnemyHealth(health);
 
         /// <inheritdoc/>
         public abstract int GetLevelHeight();

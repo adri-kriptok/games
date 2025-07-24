@@ -313,8 +313,8 @@ Global
 		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Debug-Performance|Any CPU.Build.0 = Debug|Any CPU
 		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release-FPS|Any CPU.ActiveCfg = Release|Any CPU
-		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release-FPS|Any CPU.Build.0 = Release|Any CPU
+		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release-FPS|Any CPU.ActiveCfg = Release-FPS|Any CPU
+		{DCEAC1FB-805F-421D-8A8A-B3A733C060B3}.Release-FPS|Any CPU.Build.0 = Release-FPS|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
