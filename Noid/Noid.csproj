@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="Kriptok, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.0.24.22\lib\net462\Kriptok.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Kriptok.Div, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kriptok.Div.0.24.22\lib\net462\Kriptok.Div.dll</HintPath>

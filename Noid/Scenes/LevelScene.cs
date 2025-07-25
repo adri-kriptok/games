@@ -146,6 +146,7 @@ namespace Noid.Scenes
                             racket.Die();
                             h.Kill<PillBase>();
                             h.Kill<Life>();
+                            h.Kill<Laser>();
                             h.FindAll<Brick>().ForEach(b => b.KillIfFalling());                            
 #if !DEBUG
                             if (Global.LifeCount == 0) 
@@ -157,6 +158,7 @@ namespace Noid.Scenes
 #endif
                                 // Si no es debug, sigo jugando igual, aunque no tenga más vidas.
                                 Global.LifeCount = Math.Max(0, Global.LifeCount - 1);
+                                h.Wait(500);
                                 Play(h);
 #if !DEBUG
                             }
