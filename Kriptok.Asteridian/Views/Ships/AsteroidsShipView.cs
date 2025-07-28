@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Kriptok.Asteridian.Views.Ships
 {
-    class TriangleShipView : PolygonView
+    class AsteroidsShipView : PolygonView
     {
         private static readonly PointF[] vertices = new PointF[]
         {
@@ -24,9 +24,11 @@ namespace Kriptok.Asteridian.Views.Ships
             new PointF( 04f, -3f),
         };
 
-        public TriangleShipView(Color line, Color fill) : base(ViewHelper.Translate(vertices), new FillConfig(fill), Strokes.Get(line, 1f))
-        {            
-            //this.Rounded = true;
+        public AsteroidsShipView() 
+            : base(ViewHelper.Translate(vertices), 
+                  new FillConfig(Color.Yellow, Color.Goldenrod, GradientDirectionEnum.Vertical), 
+                  Strokes.Get(Color.DarkOrange, 1f))
+        {
         }
     }
 }

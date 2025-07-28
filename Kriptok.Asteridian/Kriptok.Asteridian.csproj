@@ -73,6 +73,7 @@
     <Compile Include="Entities\Player\Weapons\Base\FrontWeaponBase.cs" />
     <Compile Include="Entities\Player\Weapons\Front\FrontLaserGun0.cs" />
     <Compile Include="Entities\Player\Weapons\Front\FrontProtonGun0.cs" />
+    <Compile Include="Entities\Enemies\AsciiInvaders.cs" />
     <Compile Include="Helpers\ViewHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Regions\OpenSpaceScrollRegion.cs" />
     <Compile Include="Scenes\Base\LevelSceneBase.cs" />
     <Compile Include="Scenes\Level00.cs" />
-    <Compile Include="Views\Ships\TriangleShipView.cs" />
+    <Compile Include="Views\Ships\AsteroidsShipView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

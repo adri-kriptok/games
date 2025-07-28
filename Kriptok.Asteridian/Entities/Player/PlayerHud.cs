@@ -36,7 +36,7 @@ namespace Kriptok.Asteridian.Entities.Player
             private static readonly Pen whitePen = Pens.White;
             private static readonly Pen cyanPen = Pens.Cyan;                        
 
-            private static readonly Font baseFont = new Font(GlobalConsts.DefaultFontFamily, 8f);
+            private static readonly Font baseFont = new Font(GlobalConsts.EightBitFontFamily, 9f);
 
             private readonly PlayerShip playerShip;
             private readonly int relativeX;

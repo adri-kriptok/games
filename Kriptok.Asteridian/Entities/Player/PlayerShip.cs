@@ -46,7 +46,7 @@ namespace Kriptok.Asteridian.Entities
 
         private CustomMouseLocationQuery mouseLocationQuery;
 
-        public PlayerShip(LevelSceneBase level) : base(new TriangleShipView(Color.DarkOrange, Color.Goldenrod))
+        public PlayerShip(LevelSceneBase level) : base(new AsteroidsShipView())
         {
             Location.Z = GlobalConsts.ZLevel.StandarAir;
 

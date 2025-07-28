@@ -48,7 +48,7 @@ namespace Kriptok.Asteridian
         /// </summary>
         public const int MaxLevelSize = int.MaxValue >> 8;
 
-        public static FontFamily DefaultFontFamily =
+        public static FontFamily EightBitFontFamily =
             Fonts.GetFontFamily(typeof(Program).Assembly, "8bitoperator.ttf");
 
         //public static readonly SuperFont MenutFont = SuperFont.Build(builder =>
