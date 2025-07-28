@@ -36,7 +36,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Base
 
         protected sealed override void OnFrame()
         {
-            timeCounter += Sys.TimeDelta;
+            timeCounter += Sys2.TimeDelta;
 
             if (timeCounter >= timeInterval)
             {

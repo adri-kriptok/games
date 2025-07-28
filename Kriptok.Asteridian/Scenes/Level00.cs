@@ -1,6 +1,7 @@
 ﻿using Kriptok.Asteridian.Entities.Enemies;
 using Kriptok.Asteridian.Regions;
 using Kriptok.Asteridian.Scenes.Base;
+using Kriptok.Extensions;
 using Kriptok.Regions.Scroll.Base;
 using Kriptok.Scenes;
 using System;
@@ -24,12 +25,16 @@ namespace Kriptok.Asteridian.Scenes
             return h.StartScroll(new OpenSpaceScrollRegion(this, rectangle));
         }
 
-        protected override void GetEventList(LevelEventList list)
+        protected override void LoadLevelEvents(LevelEventContext context)
         {
-            for (int i = 0; i < 300; i++)
+            context.Wait(3000);
+
+            var rnd = new Random(2);
+            for (int i = 0; i < 15; i++)
             {
-                int x = ((i * 1366)) % 321 - 153;
-                list.Enqueue(500, new Asteroid(x, ((float)Math.Abs(Math.Cos(i))) * 0.0625f));
+                var x = ((rnd.NextFloat() * 2f) - 1f) * context.ScreenWidth * 0.5f;
+
+                context.Enqueue(2500 - i * 150, new Asteroid(x, ((float)Math.Abs(Math.Cos(i))) * 0.0625f));
             }
         }
     }

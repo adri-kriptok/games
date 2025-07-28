@@ -94,7 +94,7 @@ namespace Kriptok.Asteridian.Entities
 
         internal void UpdateY()
         {
-            var newY = Camera.Inc(Sys.TimeDelta * 0.0625f);
+            var newY = Camera.Inc(Sys2.TimeDelta * 0.0625f);
 
             Location.Y = newY + ModifierY;
             //shadow.Update();
@@ -114,7 +114,7 @@ namespace Kriptok.Asteridian.Entities
         {
             Location = new Vector3F(mouseLocationQuery.GetLocation(), Location.Z);
 
-            Speed = Math.Max(MinSpeed, Speed - Sys.TimeDelta * speedDecrement);
+            Speed = Math.Max(MinSpeed, Speed - Sys2.TimeDelta * speedDecrement);
 
             var acelerating = Speed < MaxSpeed;
 
@@ -172,7 +172,7 @@ namespace Kriptok.Asteridian.Entities
         {
             if (acelerating)
             {
-                Speed += Sys.TimeDelta * speedIncrement;
+                Speed += Sys2.TimeDelta * speedIncrement;
             }
         }
 

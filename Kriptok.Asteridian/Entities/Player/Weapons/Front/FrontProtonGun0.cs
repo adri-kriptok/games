@@ -23,7 +23,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var y = playerLocation.Y - Sys.TimeDelta;
+            var y = playerLocation.Y - PlayerShotBaseBase.VerticalDistance;
             Add(new Proton(2, new Vector3F(playerLocation.X - 4f, y, playerLocation.Z), Proton.SP_0000));
             Add(new Proton(2, new Vector3F(playerLocation.X + 4f, y, playerLocation.Z), Proton.SP_0000));
         }
@@ -41,7 +41,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var y = playerLocation.Y - Sys.TimeDelta;
+            var y = playerLocation.Y - PlayerShotBaseBase.VerticalDistance;
             Add(new Proton(4, new Vector3F(playerLocation.X - 4f, y, playerLocation.Z), Proton.SP_0000));
             Add(new Proton(4, new Vector3F(playerLocation.X + 4f, y, playerLocation.Z), Proton.SP_0000));
         }
@@ -59,7 +59,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var y = playerLocation.Y - Sys.TimeDelta;
+            var y = playerLocation.Y - PlayerShotBaseBase.VerticalDistance;
             var y2 = y + 1f;
             Add(new Proton(2, new Vector3F(playerLocation.X - 5f, y2, playerLocation.Z), Proton.SP_1500));
             Add(new Proton(4, new Vector3F(playerLocation.X,      y, playerLocation.Z), Proton.SP_0000));
@@ -79,7 +79,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var y = playerLocation.Y - Sys.TimeDelta;
+            var y = playerLocation.Y - PlayerShotBaseBase.VerticalDistance;
             var y2 = y + 1f;
             Add(new Proton(2, new Vector3F(playerLocation.X - 10f, y2, playerLocation.Z ), Proton.SP_1500));
             Add(new Proton(4, new Vector3F(playerLocation.X - 04f, y, playerLocation.Z), Proton.SP_0000));
@@ -100,7 +100,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var y = playerLocation.Y - Sys.TimeDelta;
+            var y = playerLocation.Y - PlayerShotBaseBase.VerticalDistance;
             Add(new Proton(2, new Vector3F(playerLocation.X - 11f, y + 3f, playerLocation.Z), Proton.SP_4000));
             Add(new Proton(4, new Vector3F(playerLocation.X - 06f, y + 1f, playerLocation.Z), Proton.SP_2000));
             Add(new Proton(4, new Vector3F(playerLocation.X - 00f, y, playerLocation.Z), Proton.SP_0000));
@@ -136,8 +136,8 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         protected override void Frame()
         {
-            Location.X += Sys.TimeDelta * speedVector.X;
-            Location.Y += Sys.TimeDelta * speedVector.Y;
+            Location.X += Sys2.TimeDelta * speedVector.X;
+            Location.Y += Sys2.TimeDelta * speedVector.Y;
         }
 
         protected override float GetDamage() => damage;

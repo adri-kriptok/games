@@ -25,6 +25,12 @@ namespace Kriptok.Asteridian.Entities.Player
         {
         }
 
+        /// <summary>
+        /// Obtiene la distancia a la que deben dispararse verticalmente los proyectiles.
+        /// </summary>
+        internal protected static float VerticalDistance => 16f + Sys2.TimeDelta % 2f;
+
+        /// <inheritdoc/>
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
@@ -88,8 +94,7 @@ namespace Kriptok.Asteridian.Entities.Player
             base.OnStart(h);
 
             this.outOfScreen = h.GetOutOfScreenQuery();
-        }
-        
+        }        
 
         protected sealed override void OnFrame()
         {

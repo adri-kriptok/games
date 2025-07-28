@@ -1,5 +1,6 @@
 ﻿using Kriptok.Asteridian.Entities;
 using Kriptok.Asteridian.Entities.Enemies.Base;
+using Kriptok.Asteridian.Entities.Player;
 using Kriptok.Asteridian.Regions;
 using Kriptok.Audio;
 using Kriptok.Core;
@@ -33,10 +34,10 @@ namespace Kriptok.Asteridian.Scenes.Base
     /// </summary>
     public abstract class LevelSceneBase : SceneBase, IDifficultyManager
     {
-        internal PlayerShip PlayerShip;
-        private AsteridianScrollTarget target;
-        protected float fSpeedInPixels = 0.5f;
-        protected int iSpeedInPixels = 1;
+        internal PlayerShip PlayerShip = null;
+        internal PlayerHud PlayerHud = null;
+
+        private AsteridianScrollTarget target = null;
         private LayeredScrollRegionBase scroll = null;
 
         public LevelSceneBase()
@@ -52,7 +53,7 @@ namespace Kriptok.Asteridian.Scenes.Base
             GlobalConsts.ScreenSize = h.ScreenRegion.Size;
 
             var levelRegion = h.ScreenRegion.Rectangle;
-            levelRegion.Width = levelRegion.Width * 13 / 16;
+            levelRegion.Width = levelRegion.Width - GlobalConsts.HudWidth;
 
             scroll = StartScroll(h, levelRegion);
 
@@ -61,13 +62,14 @@ namespace Kriptok.Asteridian.Scenes.Base
             scroll.Ambience.SetLightSource(-0.33f, 0.66f, 1f);
 
             PlayerShip = h.Add(scroll, new PlayerShip(this));
+            PlayerHud = h.Add(new PlayerHud(this));
 
             this.target = new AsteridianScrollTarget(scroll.Rectangle, PlayerShip, ((IAsteridianScroll)scroll).GetLevelHeight());
             scroll.SetTarget(target);
             PlayerShip.Camera = target;
 
-            var list = new LevelEventList();
-            GetEventList(list);
+            var list = new LevelEventContext(levelRegion.Width);
+            LoadLevelEvents(list);
 
             h.Add(scroll, new EventGenerator(list, target));
 
@@ -93,7 +95,7 @@ namespace Kriptok.Asteridian.Scenes.Base
         /// <summary>
         /// Permite agregar los elementos a la lista de eventos.
         /// </summary>        
-        protected abstract void GetEventList(LevelEventList list);
+        protected abstract void LoadLevelEvents(LevelEventContext list);
 
         protected abstract LayeredScrollRegionBase StartScroll(SceneHandler h, Rectangle rectangle);
 
@@ -105,22 +107,43 @@ namespace Kriptok.Asteridian.Scenes.Base
         /// <summary>
         /// Lista de eventos a agregar en el nivel.
         /// </summary>
-        public class LevelEventList
+        public class LevelEventContext
         {
             private readonly IList<LevelEvent> list = new List<LevelEvent>();
 
-            internal float Timer = 0f;
+            /// <summary>
+            /// Contador de tiempo durante la construcción del nivel.
+            /// </summary>
+            private float timer = 0f;
 
+            /// <summary>
+            /// Ancho de la pantalla.
+            /// </summary>
+            public readonly int ScreenWidth;
+
+            public LevelEventContext(int screenWidth)
+            {
+                ScreenWidth = screenWidth;
+            }
+
+            /// <summary>
+            /// Encola los eventos después del tiempo indicado.
+            /// </summary>            
             internal void Enqueue(float relativeTimer, EnemyBase entity)                
             {
-                list.Add(new LevelEvent(Timer, entity));
-                Timer += relativeTimer;
+                list.Add(new LevelEvent(timer, entity));
+                timer += relativeTimer;
             }
 
-            internal Queue<LevelEvent> GetEvents()
-            {
-                return new Queue<LevelEvent>(list.OrderBy(p => p.Time));
-            }
+            /// <summary>
+            /// Obtiene todos los eventos ordenados por tiempo.
+            /// </summary>            
+            internal Queue<LevelEvent> GetEvents() => new Queue<LevelEvent>(list.OrderBy(p => p.Time));            
+
+            /// <summary>
+            /// Agrega tiempo sin nada al contador de eventos.
+            /// </summary>            
+            internal void Wait(int v) => timer += v;
         }
 
         internal class LevelEvent
@@ -141,7 +164,7 @@ namespace Kriptok.Asteridian.Scenes.Base
             private readonly AsteridianScrollTarget target;
             private float counter = 0f;
 
-            public EventGenerator(LevelEventList list, AsteridianScrollTarget target)
+            public EventGenerator(LevelEventContext list, AsteridianScrollTarget target)
             {
                 this.queue = list.GetEvents();
                 this.target = target;
@@ -149,7 +172,7 @@ namespace Kriptok.Asteridian.Scenes.Base
 
             protected override void OnFrame()
             {
-                counter += Sys.TimeDelta;
+                counter += Sys2.TimeDelta;
                 var next = queue.Peek();
 
                 while (next.Time < counter)

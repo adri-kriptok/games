@@ -55,8 +55,8 @@ namespace Kriptok.Asteridian.Entities.Enemies
             base.OnFrame();
 
             Angle.Z += rot;
-            Location.X += speed.X * Sys.TimeDelta;
-            Location.Y += speed.Y * Sys.TimeDelta;
+            Location.X += speed.X * Sys2.TimeDelta;
+            Location.Y += speed.Y * Sys2.TimeDelta;
         }
 
         internal override void StartOnTop(float y)

@@ -1,5 +1,6 @@
 ﻿using Kriptok.Asteridian.Scenes;
 using Kriptok.Core;
+using Kriptok.Entities.Base;
 using Kriptok.Views.Texts;
 using System;
 using System.Collections.Generic;
@@ -37,29 +38,25 @@ namespace Kriptok.Asteridian
         /// </summary>
         public static Size ScreenSize;
 
-        //public const string IntroMusic = "Kryrian.Resources.Music.Menu.TheDelRe_TheMoon.mp3";
-
-        //public const int ShadowXModifier = -30;
-        //public const int ShadowYModifier = 30;
-
-        //public static int EnemiesXMin = -500;
-        //public static int EnemiesXMax = 500;
-        //public static int EnemiesYMin = -100;
-        //public static int EnemiesYMax = 700;
+        /// <summary>
+        /// Ancho de la barra de información.
+        /// </summary>
+        public const int HudWidth = 60;
 
         /// <summary>
         /// Máximo tamaño que puede tener un nivel y que no se pierda precisión al pasarlo a float.
         /// </summary>
         public const int MaxLevelSize = int.MaxValue >> 8;
 
-        public const int ShootInterval = 10;
+        public static FontFamily DefaultFontFamily =
+            Fonts.GetFontFamily(typeof(Program).Assembly, "8bitoperator.ttf");
 
-        public static readonly SuperFont MenutFont = SuperFont.Build(builder =>
-        {
-            builder.Font = Fonts.Arial20BoldItalic;
-            builder.SetColor(Color.Cyan, Color.White);
-            builder.SetShadow(2, 2, Color.Blue);
-        });
+        //public static readonly SuperFont MenutFont = SuperFont.Build(builder =>
+        //{
+        //    builder.Font = Fonts.Arial20BoldItalic;
+        //    builder.SetColor(Color.Cyan, Color.White);
+        //    builder.SetShadow(2, 2, Color.Blue);
+        //});
 
         public static class ZLevel
         {
@@ -71,5 +68,11 @@ namespace Kriptok.Asteridian
             public const float Shadows = -1;
 
         }
+    }
+
+    public class Sys2 : ItemBase
+    {
+        //public static float TimeDelta => Sys.TimeDelta;
+        public const float TimeDelta = 16;
     }
 }
