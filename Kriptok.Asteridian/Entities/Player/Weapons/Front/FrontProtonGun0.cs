@@ -115,6 +115,8 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class Proton : PlayerShotBase
     {
+        private static readonly Color LightBlue = Color.FromArgb(0, 128, 255);
+
         private readonly float damage;
         private readonly Vector2F speedVector;
 
@@ -127,7 +129,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         internal static readonly Vector2F SP_0040 = new Vector2F(+0.40f, -1.25f).Normalized(1.25f);
 
         public Proton(int size, Vector3F location, Vector2F speedVector)
-            : base(new EllipseView(size, size, Color.LightCyan, Color.CornflowerBlue))
+            : base(new EllipseView(size, size, Color.White, LightBlue))
         {
             this.damage = size;
             this.speedVector = speedVector;

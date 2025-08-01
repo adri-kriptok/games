@@ -21,19 +21,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 {    
     internal class FrontLaserGun0 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim;
 
         public FrontLaserGun0(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
             
-            this.aim = Add(new LaserAim(player, 1));
+            this.aim = Add(new LaserAim(this, 1, 1f)); // 1
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -48,19 +46,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
     
     internal class FrontLaserGun1 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim;
 
         public FrontLaserGun1(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim = Add(new LaserAim(player, 3));
+            this.aim = Add(new LaserAim(this, 3, 1f)); // 3
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -75,7 +71,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun2 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1;
 
         private static readonly Vector2F v0 = new Vector2F(-3f, 0f);
@@ -83,15 +78,14 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun2(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 2, v0));
-            this.aim1 = Add(new LaserAim(player, 2, v1));
+            this.aim0 = Add(new LaserAim(this, 2, v0, 1f)); // 2
+            this.aim1 = Add(new LaserAim(this, 2, v1, 1f)); // 2
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -108,7 +102,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun3 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2;
 
         private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
@@ -117,23 +110,22 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun3(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 1, v0));
-            this.aim1 = Add(new LaserAim(player, 3, v1));
-            this.aim2 = Add(new LaserAim(player, 1, v2));
+            this.aim0 = Add(new LaserAim(this, 1, v0, 1f)); // 1
+            this.aim1 = Add(new LaserAim(this, 3, v1, 1f)); // 3
+            this.aim2 = Add(new LaserAim(this, 1, v2, 1f)); // 1
         }
 
         protected override void Shoot(Vector3F playerLocation)
         {
-            var col = Laser.GetColorCyan();
+            var col = Laser.GetColorPurple();// Laser.GetColorCyan();
             aim0.Shoot(playerLocation, col);
-            aim1.Shoot(playerLocation, Laser.GetColorPurple());
+            aim1.Shoot(playerLocation, col);
             aim2.Shoot(playerLocation, col);
         }
 
@@ -144,7 +136,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun4 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1;
 
         private static readonly Vector2F v0 = new Vector2F(-4f, 0f);
@@ -152,15 +143,14 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun4(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 3, v0));
-            this.aim1 = Add(new LaserAim(player, 3, v1));
+            this.aim0 = Add(new LaserAim(this, 3, v0, 1f)); // 3
+            this.aim1 = Add(new LaserAim(this, 3, v1, 1f)); // 3
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -177,7 +167,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun5 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2;
         
         private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
@@ -186,16 +175,15 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun5(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 3, v0));
-            this.aim1 = Add(new LaserAim(player, 1, v1));
-            this.aim2 = Add(new LaserAim(player, 3, v2));
+            this.aim0 = Add(new LaserAim(this, 3, v0, 1f)); // 3
+            this.aim1 = Add(new LaserAim(this, 1, v1, 2f)); // 2
+            this.aim2 = Add(new LaserAim(this, 3, v2, 1f)); // 3
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -213,27 +201,25 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun6 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2, aim3;
 
         private static readonly Vector2F v0 = new Vector2F(-6f, +2f);
         private static readonly Vector2F v1 = new Vector2F(-2f, +0f);
         private static readonly Vector2F v2 = new Vector2F(+3f, +0f);
-        private static readonly Vector2F v3 = new Vector2F(+7f, +2f);
+        private static readonly Vector2F v3 = new Vector2F(+6f, +2f);
 
         public FrontLaserGun6(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 2, v0));
-            this.aim1 = Add(new LaserAim(player, 4, v1));
-            this.aim2 = Add(new LaserAim(player, 4, v2));
-            this.aim3 = Add(new LaserAim(player, 2, v3));
+            this.aim0 = Add(new LaserAim(this, 1, v0, 2f)); // 2
+            this.aim1 = Add(new LaserAim(this, 4, v1, 1f)); // 4
+            this.aim2 = Add(new LaserAim(this, 4, v2, 1f)); // 4
+            this.aim3 = Add(new LaserAim(this, 1, v3, 2f)); // 2
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -253,7 +239,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun7 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2;
 
         private static readonly Vector2F v0 = new Vector2F(-5f, +2f);
@@ -262,16 +247,15 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun7(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 4, v0));
-            this.aim1 = Add(new LaserAim(player, 4, v1));
-            this.aim2 = Add(new LaserAim(player, 4, v2));            
+            this.aim0 = Add(new LaserAim(this, 4, v0, 1f)); // 4
+            this.aim1 = Add(new LaserAim(this, 4, v1, 2f)); // 8
+            this.aim2 = Add(new LaserAim(this, 4, v2, 1f)); // 4          
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -290,7 +274,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun8 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2, aim3, aim4;
 
         private static readonly Vector2F v0 = new Vector2F(-8f, +2f);
@@ -301,18 +284,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun8(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 4, v0));
-            this.aim1 = Add(new LaserAim(player, 4, v1));
-            this.aim4 = Add(new LaserAim(player, 1, v2));
-            this.aim2 = Add(new LaserAim(player, 4, v3));
-            this.aim3 = Add(new LaserAim(player, 4, v4));
+            this.aim0 = Add(new LaserAim(this, 4, v0, 1f)); // 4
+            this.aim1 = Add(new LaserAim(this, 4, v1, 2f)); // 8
+            this.aim4 = Add(new LaserAim(this, 1, v2, 1f)); // 1
+            this.aim2 = Add(new LaserAim(this, 4, v3, 2f)); // 8
+            this.aim3 = Add(new LaserAim(this, 4, v4, 1f)); // 4
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -333,7 +315,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class FrontLaserGun9 : FrontWeaponBase
     {
-        private readonly PlayerShip player;
         private LaserAim aim0, aim1, aim2, aim3, aim4;
 
         private static readonly Vector2F v0 = new Vector2F(-10f, +2f);
@@ -344,18 +325,17 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         public FrontLaserGun9(PlayerShip player) : base(player, 45f)
         {
-            this.player = player;
         }
 
         protected override void OnStart(EntityStartHandler h)
         {
             base.OnStart(h);
 
-            this.aim0 = Add(new LaserAim(player, 4, v0));
-            this.aim1 = Add(new LaserAim(player, 4, v1));
-            this.aim4 = Add(new LaserAim(player, 4, v2));
-            this.aim2 = Add(new LaserAim(player, 4, v3));
-            this.aim3 = Add(new LaserAim(player, 4, v4));
+            this.aim0 = Add(new LaserAim(this, 4, v0, 1f)); // 4
+            this.aim1 = Add(new LaserAim(this, 4, v1, 2f)); // 8
+            this.aim4 = Add(new LaserAim(this, 4, v2, 2f)); // 8
+            this.aim2 = Add(new LaserAim(this, 4, v3, 2f)); // 8
+            this.aim3 = Add(new LaserAim(this, 4, v4, 1f)); // 4
         }
 
         protected override void Shoot(Vector3F playerLocation)
@@ -376,19 +356,19 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
     internal class LaserAim : EntityBase
     {
-        private readonly PlayerShip owner;
+        private readonly FrontWeaponBase owner;
         private readonly int width;
         private readonly Vector2F location;
+        private readonly float damageMultiplier;
         private IMultipleCollisionQuery<EnemyBase> collisionQuery;
         private float? collisionY;
 
-
-        public LaserAim(PlayerShip owner, int width)
-            : this(owner, width, Vector2F.Empty)
+        public LaserAim(FrontWeaponBase owner, int width, float damageMultiplier)
+            : this(owner, width, Vector2F.Empty, damageMultiplier)
         {
         }
 
-        public LaserAim(PlayerShip owner, int width, Vector2F location)
+        public LaserAim(FrontWeaponBase owner, int width, Vector2F location, float damageMultiplier)
             : base(new RectangleView(width, GlobalConsts.ScreenSize.Height, Color.Transparent)
             {
                 Center = new PointF(0.5f, 1f)
@@ -397,6 +377,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
             this.owner = owner;
             this.width = width;
             this.location = location;
+            this.damageMultiplier = damageMultiplier;
         }
 
         /// <inheritdoc/>
@@ -430,7 +411,7 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
 
         internal void Shoot(Vector3F playerLocation, Color color)
         {
-            var locationY = playerLocation.Y + location.Y - Sys.TimeDelta;
+            var locationY = playerLocation.Y + location.Y - PlayerShotBaseBase.VerticalDistance;
             var locX = playerLocation.X + location.X;
 
             if (collisionY.HasValue(out float val))
@@ -438,16 +419,16 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
                 var height = (locationY - val).Round();
                 if (height > 0)
                 {
-                    Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), height, color));
+                    Add(new Laser(width, damageMultiplier, new Vector3F(locX, locationY, playerLocation.Z), height, color));
                 }
                 else
                 {
-                    Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), color));
+                    Add(new Laser(width, damageMultiplier, new Vector3F(locX, locationY, playerLocation.Z), color));
                 }
             }
             else
             {
-                Add(new Laser(width, new Vector3F(locX, locationY, playerLocation.Z), color));
+                Add(new Laser(width, damageMultiplier, new Vector3F(locX, locationY, playerLocation.Z), color));
             }
         }
     }
@@ -461,22 +442,18 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         private readonly float damage;
         private bool shown = false;
 
-        public Laser(int width, Vector3F location, Color color)
-            : base(new RectangleView(width, GlobalConsts.ScreenSize.Height, color)
-            {
-                Center = new PointF(0.5f, 1f)
-            })
-        {
-            this.Location = location;            
+        public Laser(int width, float multiplier, Vector3F location, Color color)
+            :this (width, multiplier, location, GlobalConsts.ScreenSize.Height, color)            
+        {            
         }
 
-        public Laser(int width, Vector3F location, int height, Color color)
+        public Laser(int width, float multiplier, Vector3F location, int height, Color color)
             : base(new RectangleView(width, height, color)
             {
                 Center = new PointF(0.5f, 1f)
             })
         {
-            this.damage = width;
+            this.damage = width * multiplier;
             this.Location = location;
         }
 

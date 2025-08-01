@@ -51,17 +51,17 @@ namespace Kriptok.Asteridian.Entities.Enemies.Base
 
         protected override void OnFrame()
         {
-            if (outOfScreenQuery.Result.HasValue)
+            if (outOfScreenQuery.Result.HasValue(out bool val))
             {
                 if (isOnScreen)
                 {
-                    if (outOfScreenQuery.Result.Value)
+                    if (val)
                     {
                         Die();
                         return;
                     }
                 }
-                isOnScreen = !outOfScreenQuery.Result.Value;
+                isOnScreen = !val;
             }
             
             if (health < 0f)
