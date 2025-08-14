@@ -110,6 +110,9 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Base
         /// Devuelve el nivel anterior de poder de la misma arma.
         /// </summary>        
         protected abstract FrontWeaponBase LevelDown(PlayerShip player);
+
+        /// <inheritdoc/>
+        public override Vector3F GetRenderLocation() => player.GetRenderLocation();
     }
 
     internal abstract class RearWeaponBase : PlayerWeaponBase

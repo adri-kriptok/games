@@ -391,8 +391,6 @@ namespace Kriptok.Asteridian.Entities.Player.Weapons.Front
         /// <inheritdoc/>
         protected override void OnFrame()
         {
-            // Location = owner.Location.PlusXY(locationX, -Sys.TimeDelta, 0f);
-
             if (collisionQuery.ClosestCollision(out EnemyBase closer))
             {
                 collisionY = closer.Location.Y;

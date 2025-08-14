@@ -19,7 +19,7 @@ namespace Kriptok.Asteridian.Entities.Enemies
 {
     internal class AsciiInvader : EnemyBase
     {
-        public AsciiInvader(float x) : base(100f, new ClubAsciiView())
+        public AsciiInvader(float x) : base(100f, new SpaceInvaderView())
         {
             Location.X = x;
         }
@@ -41,7 +41,8 @@ namespace Kriptok.Asteridian.Entities.Enemies
 
         protected override void OnFrame()
         {
-            base.OnFrame();   
+            base.OnFrame();
+            Angle.Z -= 0.1f;
         }
 
         internal override void StartOnTop(float y)
@@ -64,7 +65,8 @@ namespace Kriptok.Asteridian.Entities.Enemies
             {
                 fb.SetColor(Color.FromArgb(0, 255, 0));
                 //fb.Font  = new Font("Arial", 19f);
-                fb.Font = new Font(GlobalConsts.EightBitFontFamily, 15f, FontStyle.Bold);
+                fb.Font = new Font(GlobalConsts.EightBitFontFamily, 15f, FontStyle.Bold);                
+                fb.Border = Strokes.Red;
             });
 
             public SpaceInvaderView2() : base(superFont, "♀")
@@ -81,8 +83,7 @@ namespace Kriptok.Asteridian.Entities.Enemies
                 fb.Font = new Font("Arial", 15f, FontStyle.Bold | FontStyle.Underline | FontStyle.Strikeout);
             });
 
-            public SpaceInvaderView3()
-                : base(superFont, "U")
+            public SpaceInvaderView3() : base(superFont, "U")
             {
                 Flip = FlipEnum.FlipY;
             }
@@ -93,19 +94,21 @@ namespace Kriptok.Asteridian.Entities.Enemies
             private static readonly SuperFont superFont = SuperFont.Build(fb =>
             {
                 fb.SetColor(Color.FromArgb(0, 0, 255));
-                //fb.Font  = new Font("Arial", 19f);
+                fb.Font  = new Font("Arial", 15f);
                 //fb.Font = new Font("Arial", 18f, FontStyle.Bold | FontStyle.Strikeout);
-                fb.Font = new Font("Times New Roman", 24f);
+                //fb.Font = new Font("Times New Roman", 24f;
+                fb.Border = Strokes.Red;
             });
 
             public SpaceInvaderView()
-                : base(superFont, "♠♣♦♥")
+                : base(superFont, "§")
+            // : base(superFont, "♠♣♦♥")
             //: base(superFont, "♂♀♪♫☼►♠♣♦♥☻☺")
             //: base(superFont, "☺☻♥♦♣♠•◘○◙♂♀♪")
             // : base(superFont, "◙")
             // : base(superFont, ((char)8).ToString())
             {
-                Flip = FlipEnum.FlipY;
+                // Flip = FlipEnum.FlipY;
             }
         }
 
